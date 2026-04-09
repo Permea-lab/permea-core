@@ -14,15 +14,12 @@ Open by default. Reproducible by design.
 
 <p align="center">
 
-![Sequence-first](https://img.shields.io/badge/Sequence--first-0F766E?style=for-the-badge)
-![Delivery engineering](https://img.shields.io/badge/Delivery_engineering-14B8A6?style=for-the-badge)
-![mRNA design](https://img.shields.io/badge/mRNA_design-0EA5A4?style=for-the-badge)
-
-<br>
-
-![Benchmarks](https://img.shields.io/badge/Benchmarks-115E59?style=for-the-badge)
-![Reproducible workflows](https://img.shields.io/badge/Reproducible_workflows-0F766E?style=for-the-badge)
-![Technical foundation](https://img.shields.io/badge/Technical_foundation-134E4A?style=for-the-badge)
+![Sequence-first](https://img.shields.io/badge/Sequence--first-0F766E?style=flat-square)
+![Delivery](https://img.shields.io/badge/Delivery-14B8A6?style=flat-square)
+![mRNA](https://img.shields.io/badge/mRNA-0EA5A4?style=flat-square)
+![Benchmarks](https://img.shields.io/badge/Benchmarks-115E59?style=flat-square)
+![Reproducible](https://img.shields.io/badge/Reproducible-334155?style=flat-square)
+![Foundation](https://img.shields.io/badge/Foundation-1E293B?style=flat-square)
 </p>
 
 </div>
