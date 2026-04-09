@@ -2,9 +2,9 @@
   <table>
     <tr>
       <td align="center">
-        <img src="assets/Permea Logo_Main.png" alt="Permea symbol" width="300" />
+        <img src="assets/Permea Logo_Main.png" alt="Permea symbol" width="280" />
         <br>
-        <img src="assets/Permea_text_logo_color.png" alt="Permea wordmark" width="320" />
+        <img src="assets/Permea_text_logo_color.png" alt="Permea wordmark" width="300" />
       </td>
     </tr>
   </table>
