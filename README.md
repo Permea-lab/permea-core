@@ -1,15 +1,4 @@
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="assets/Permea Logo_Main.png" alt="Permea symbol" width="280" />
-        <br>
-        <img src="assets/Permea_text_logo_color.png" alt="Permea wordmark" width="300" />
-      </td>
-    </tr>
-  </table>
-</div>
-
+<div align="center"> <img src="assets/Permea Logo_Main.png" alt="Permea symbol" width="300" /> <br /> <img src="assets/Permea_text_logo_color.png" alt="Permea wordmark" width="320" /> </div>
 <div align="center">
 
 # PERMEA CORE
