@@ -1,7 +1,6 @@
 <div align="center">
   <img src="assets/Permea Logo_Main.png" alt="Permea symbol" width="300" />
-   <br />
-  <img src="assets/Permea_text_logo_color.png" alt="Permea wordmark" width="320" />
+  <img src="assets/Permea_text_logo_color.png" alt="Permea wordmark" width="320" style="display:block; margin: -8px auto 0 auto;" />
 </div>
 
 <div align="center">
