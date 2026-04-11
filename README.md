@@ -36,6 +36,8 @@ Permea exists to address that gap with a benchmark-first approach:
 - support reproducible workflows rather than presentation-only results
 - make the work inspectable by outside technical contributors
 
+assets/core_biological_barrier_bottleneck.png
+
 ## What Permea Core Is
 
 Permea Core is the base open-source layer of the Permea project. It is intended to provide:
