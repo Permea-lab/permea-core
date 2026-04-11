@@ -1,0 +1,17 @@
+benchmark_id: "mrna_expression_baseline"
+benchmark_version: "0.1.0"
+run_id: "2026-04-10-baseline-a"
+dataset_ref: "datasets/expression_panel/v0.1.0/train_manifest.yaml"
+code_revision: "9f31c8d"
+config_ref: "configs/baselines/expression_baseline_v1.yaml"
+execution_timestamp: "2026-04-10T09:15:00Z"
+output_artifacts:
+  - artifact_type: "predictions"
+    path: "results/2026-04-10-baseline-a/predictions.parquet"
+    description: "Per-record benchmark predictions."
+  - artifact_type: "evaluation_report"
+    path: "results/2026-04-10-baseline-a/metrics.json"
+    description: "Machine-readable evaluation summary."
+metrics_summary:
+  pearson_r: 0.0
+  mae: 0.0
