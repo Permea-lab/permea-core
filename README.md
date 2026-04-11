@@ -36,17 +36,15 @@ Permea exists to address that gap with a benchmark-first approach:
 - support reproducible workflows rather than presentation-only results
 - make the work inspectable by outside technical contributors
 
-
 <br>
 
 <div align="center">
   <img src="assets/core_biological_barrier_bottleneck.png" alt="Biological barrier bottleneck" width="900" />
 </div>
 
-<p align="center"><em>Biological barriers such as the BBB, the cell membrane, <br>and the nuclear membrane remain major delivery constraints for large-molecule therapeutics.</em></p>
+<p align="center"><em>Biological barriers such as the BBB, the cell membrane, <br> and the nuclear membrane remain major delivery constraints for large-molecule therapeutics.</em></p>
 
 <br>
-
 
 ## What Permea Core Is
 
