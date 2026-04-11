@@ -45,7 +45,7 @@ Permea exists to address that gap with a benchmark-first approach:
 
 <br>
 
-<p align="center"><em>Biological barriers such as the BBB, the cell membrane, and the nuclear membrane remain major delivery constraints for large-molecule therapeutics.</em></p>
+<p align="center"><em>Biological barriers such as the BBB, the cell membrane, <br>and the nuclear membrane remain major delivery constraints for large-molecule therapeutics.</em></p>
 
 <br>
 
