@@ -36,7 +36,7 @@ Permea exists to address that gap with a benchmark-first approach:
 - support reproducible workflows rather than presentation-only results
 - make the work inspectable by outside technical contributors
 
-assets/core_biological_barrier_bottleneck.png
+[assets/core_biological_barrier_bottleneck.png](https://github.com/Permea-lab/permea-core/blob/main/assets/core_biological_barrier_bottleneck.png)
 
 ## What Permea Core Is
 
