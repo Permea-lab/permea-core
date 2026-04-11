@@ -43,8 +43,6 @@ Permea exists to address that gap with a benchmark-first approach:
   <img src="assets/core_biological_barrier_bottleneck.png" alt="Biological barrier bottleneck" width="900" />
 </div>
 
-<br>
-
 <p align="center"><em>Biological barriers such as the BBB, the cell membrane, <br>and the nuclear membrane remain major delivery constraints for large-molecule therapeutics.</em></p>
 
 <br>
