@@ -62,6 +62,10 @@ It is not a claim of validated biological performance. It is the technical progr
 - [Manifesto](MANIFESTO.md)
 - [Specification](docs/SPEC.md)
 - [Architecture Design](docs/DD-ARCHITECTURE.md)
+- [Delivery Taxonomy](docs/DELIVERY-TAXONOMY.md)
+- [Evidence Ladder](docs/EVIDENCE-LADDER.md)
+- [Benchmark Contract](docs/BENCHMARK-CONTRACT.md)
+- [Result Artifact Schema](docs/RESULT-ARTIFACT-SCHEMA.md)
 - [ADR-0001: Open-Source-First](docs/adr/ADR-0001-open-source-first.md)
 - [ADR-0002: Benchmark-First](docs/adr/ADR-0002-benchmark-first.md)
 

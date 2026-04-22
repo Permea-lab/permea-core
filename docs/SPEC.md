@@ -18,6 +18,8 @@ This creates a practical problem: even when methods appear related, it is often 
 
 Permea Core addresses this problem by defining shared repository-level contracts for benchmark specification, execution, evaluation, and provenance.
 
+The current standard-layer companion docs include `DELIVERY-TAXONOMY.md`, `EVIDENCE-LADDER.md`, `BENCHMARK-CONTRACT.md`, and `RESULT-ARTIFACT-SCHEMA.md`.
+
 ## Intended Users
 
 Permea Core is intended for:
