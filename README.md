@@ -69,6 +69,53 @@ It is not a claim of validated biological performance. It is the technical progr
 - [ADR-0001: Open-Source-First](docs/adr/ADR-0001-open-source-first.md)
 - [ADR-0002: Benchmark-First](docs/adr/ADR-0002-benchmark-first.md)
 
+## Permea OSS Operating System
+
+Permea Core provides governance and operating infrastructure for open scientific OSS work. It does not claim completed wet-lab validation, clinical efficacy, or dataset redistribution rights. "AlphaFold for Delivery" may be used only as an ambition or positioning phrase, not as a claim of achieved maturity.
+
+Core community files:
+
+- [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security](SECURITY.md)
+- [Support](SUPPORT.md)
+- [Citation](CITATION.cff)
+- [OSS Operating Docs Map](docs/OSS_OPERATING_DOCS_MAP.md)
+
+Scientific governance:
+
+- [Claim Registry](docs/scientific-governance/CLAIM_REGISTRY.md)
+- [Dataset Policy](docs/scientific-governance/DATASET_POLICY.md)
+- [Public-Safe Artifact Policy](docs/scientific-governance/PUBLIC_SAFE_ARTIFACT_POLICY.md)
+- [Reproducibility Guide](docs/scientific-governance/REPRODUCIBILITY_GUIDE.md)
+- [Paper Alignment Policy](docs/paper-alignment/PAPER_ALIGNMENT_POLICY.md)
+
+Release, attribution, and archive governance:
+
+- [Release Review Process](docs/release/RELEASE_REVIEW_PROCESS.md)
+- [Public Release Checklist](docs/release/PUBLIC_RELEASE_CHECKLIST.md)
+- [Release Ownership Matrix](docs/release/RELEASE_OWNERSHIP_MATRIX.md)
+- [Versioning Policy](docs/release/VERSIONING_POLICY.md)
+- [Archive and Deprecation Policy](docs/release/ARCHIVE_AND_DEPRECATION_POLICY.md)
+- [Attribution Policy](docs/release/ATTRIBUTION_POLICY.md)
+
+Contributor, reviewer, and community governance:
+
+- [Contributor Levels](docs/contributors/CONTRIBUTOR_LEVELS.md)
+- [Authorship Policy](docs/contributors/AUTHORSHIP_POLICY.md)
+- [Dry-Lab Contribution Policy](docs/contributors/DRY_LAB_CONTRIBUTION_POLICY.md)
+- [Wet-Lab Collaboration Policy](docs/contributors/WET_LAB_COLLABORATION_POLICY.md)
+- [Community Governance](docs/community/COMMUNITY_GOVERNANCE.md)
+- [Maintainer Guide](docs/community/MAINTAINER_GUIDE.md)
+- [Reviewer Workflow](docs/community/REVIEWER_WORKFLOW.md)
+- [Reviewer Credit Policy](docs/community/REVIEWER_CREDIT_POLICY.md)
+
+Derivative project governance:
+
+- [Derivative Project Policy](docs/derivatives/DERIVATIVE_PROJECT_POLICY.md)
+- [Project Registry](docs/derivatives/PROJECT_REGISTRY.md)
+- [Derivative Review Checklist](docs/derivatives/DERIVATIVE_REVIEW_CHECKLIST.md)
+
 ## Current Scope
 
 The current scope is deliberately narrow:
