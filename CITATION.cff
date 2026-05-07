@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Permea Core, cite the specific release, tag, commit, schema, benchmark contract, or artifact version you used. Paper-specific results should cite the relevant paper or preprint in addition to Permea Core."
+title: "Permea Core"
+abstract: "Permea Core is an open-source technical foundation for sequence-first delivery and mRNA expression engineering, including benchmark-oriented standards, governance docs, and reproducibility policies."
+version: "0.0.0-placeholder"
+date-released: "2026-05-07"
+repository-code: "https://github.com/Permea-lab/permea-core"
+license: "MIT"
+authors:
+  - name: "Permea-lab"
+    affiliation: "TODO: confirm project-level affiliation before formal release citation"
+preferred-citation:
+  type: generic
+  title: "Permea Core"
+  authors:
+    - name: "Permea-lab"
+      affiliation: "TODO: confirm project-level affiliation before formal release citation"
+  version: "0.0.0-placeholder"
+  url: "https://github.com/Permea-lab/permea-core"
+  notes: "No DOI is recorded in this file. Do not infer an archive DOI until an actual archive is created. Cite paper-specific evidence packages separately."
