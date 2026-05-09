@@ -68,13 +68,11 @@ Permea Core should contain durable public operating standards:
 - paper-specific release blockers
 - paper-specific review packets
 
-### Local-Only ChatGPT Context
+### Private Local Operator Context
 
-Local-only ChatGPT context should remain outside public repos:
+Private local operator context should remain outside public repos.
 
-- `/Users/albertkim/02_PROJECTS/18_Permea-lab.local_chatgpt_context/`
-
-It should contain project memory and orchestration rules only. It must not be committed.
+It may contain project memory, local operating notes, and nonpublic coordination rules. It must not be committed.
 
 ## 4. Existing Docs Inventory
 
@@ -425,16 +423,16 @@ Public repos may contain:
 - reproducibility guides
 - paper alignment policies
 
-Local-only context must remain outside public repos:
+Private local operator context must remain outside public repos:
 
-- ChatGPT project source
-- ChatGPT instructions
-- source manifest
-- private orchestration notes
+- private project source
+- private operator instructions
+- private source manifests
+- private coordination notes
 - local path memory
 - nonpublic task context
 
-Never commit local-only context to `permea-core` or `permea-signal-ml`.
+Never commit private local operator context to `permea-core` or `permea-signal-ml`.
 
 ## 25. Implementation Priority Order
 

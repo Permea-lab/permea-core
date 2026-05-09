@@ -1,3 +1,6 @@
 .DS_Store
 permea-signal-ml/
-ChatGPT_Permea_Guerilla_Positioning
+# Private/local operator artifacts
+.local/
+*.local.md
+*_private*
