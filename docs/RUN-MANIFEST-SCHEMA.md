@@ -6,6 +6,9 @@ The run manifest is the canonical provenance artifact for a benchmark execution 
 
 The schema is intentionally narrow. It is designed to support reproducibility and audit before broader execution infrastructure exists.
 
+For a newcomer-friendly explanation of the example manifest, see
+[Run Manifest Walkthrough](RUN-MANIFEST-WALKTHROUGH.md).
+
 ## Required Fields
 
 - `benchmark_id`: stable benchmark identifier
