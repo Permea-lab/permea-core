@@ -1,162 +1,142 @@
 # Contributing to Permea Core
 
-## Welcome and Project Scope
+## Welcome
 
-Permea Core is an open toolkit and benchmarks foundation for sequence-first delivery and mRNA expression engineering.
+Permea Core is building the open execution layer for delivery engineering. Contributions should help make delivery evidence benchmarkable, reproducible, and reusable.
 
-The project is benchmark-first, documentation-as-contract, and open-source-first. Contributions should improve the clarity, reproducibility, provenance, reviewability, or governance of Permea's technical surfaces.
+The project is benchmark-first and evidence-bounded. Good contributions make tasks, data, labels, metrics, outputs, provenance, and limitations easier to inspect.
 
-Permea Core is not a claim of validated biological performance, clinical efficacy, universal delivery prediction, or production-grade drug delivery platform status.
-
-## Permea Core vs Evidence Repos
-
-Permea Core contains durable public operating standards:
-
-- benchmark contracts
-- result artifact schemas
-- run manifest expectations
-- evidence and claim-boundary rules
-- reproducibility standards
-- contributor and community governance
-- dataset and public artifact policies
-- release review policies
-
-Evidence repositories, such as `permea-signal-ml`, contain project-specific evidence packages:
-
-- manuscript and supplement drafts
-- benchmark runs and result artifacts
-- paper-specific source-to-claim audits
-- review packets
-- artifact manifests and release blockers
-
-Do not move paper-specific evidence, restricted row-level data, or local orchestration context into Permea Core without prior review.
-
-## Contribution Types
+## What Kinds of Contributions Are Useful
 
 Useful contributions include:
 
+- dataset cards
+- benchmark tasks
+- evidence cards
+- run manifests
+- feature descriptors
+- baseline models or baseline configurations
+- reproduction reports
 - documentation improvements
-- code that supports reproducible benchmark workflows
-- benchmark contracts
-- result artifact schemas
-- run manifest and provenance improvements
-- reproducibility tooling
-- dataset and provenance policy improvements
-- public-safe artifact policy improvements
-- claim review and source-to-claim review
-- dry-lab analysis that stays within documented evidence boundaries
-- reviewer feedback on clarity, assumptions, or reproducibility
+- source attribution improvements
+- claim-boundary review
 
-## What Not to Contribute Without Prior Discussion
+See [docs/CONTRIBUTION_OBJECTS.md](docs/CONTRIBUTION_OBJECTS.md) for the contribution object model.
 
-Please open an issue before contributing:
+## Before Contributing
 
-- row-level restricted datasets
-- unlicensed or unclear-license data
-- private, confidential, or partner-controlled data
-- secrets, credentials, API keys, tokens, or private keys
-- human subject data or privacy-sensitive records
-- biological validation claims
-- wet-lab validation claims
-- medical, therapeutic, or clinical claims
-- claims that Permea has achieved AlphaFold-level performance, adoption, or standardization
-- broad universal delivery prediction claims
+Before opening an issue or PR:
 
-If in doubt, do not upload the material. Open a minimal issue describing the question without exposing restricted content.
+- confirm the contribution can be discussed publicly
+- identify the source or citation when relevant
+- define the task, label, metric, or artifact boundary
+- document limitations and uncertainty
+- avoid uploading private or restricted row-level data
+- avoid uploading secrets, credentials, tokens, or private keys
+- use conservative scientific language
 
-## Issue Guidelines
+If release status is unclear, open a minimal issue describing the question without exposing restricted material.
 
-Good issues should include:
+## Public / Private Safety Rules
 
-- the document, benchmark, schema, or workflow being discussed
-- the current ambiguity or problem
-- the proposed change or question
-- any relevant repo path
-- whether the issue touches data, artifacts, claims, or release readiness
+Do not include:
 
-Use conservative language for scientific issues. Distinguish observed repo facts from interpretation, policy decisions, and future work.
+- private or proprietary data without rights to share it
+- private sequences or sensitive candidate rankings
+- restricted row-level datasets or row-level predictions without release approval
+- credentials, tokens, passwords, private keys, or environment values
+- private workflow notes or internal execution context
+- private resource or program references
 
-## PR Guidelines
+Public contributions should focus on source attribution, reproducibility, benchmark structure, and claim boundaries.
 
-Pull requests should:
+## Claim Boundaries
 
-- stay scoped to one document family or technical change
-- explain why the change is needed
-- list files changed
-- describe any claim-boundary impact
-- describe any dataset or artifact-release impact
-- avoid unrelated formatting churn
-- avoid adding data unless explicitly reviewed first
-
-For benchmark or result-schema changes, include how the change affects provenance, rerunability, and comparison across runs.
-
-## Claim Hygiene Checklist
-
-Before submitting a contribution, check that it does not imply:
-
-- completed wet-lab validation unless documented
-- clinical efficacy
-- therapeutic efficacy
-- universal delivery prediction
-- production-grade drug delivery platform status
-- AlphaFold-level performance, adoption, or standardization
-- dataset redistribution permission without source/license approval
-- benchmark performance beyond the dataset, split, metric, and evidence level actually used
-
-Permea may use "AlphaFold for Delivery" as an ambition or positioning phrase only. It must not be written as an achieved status.
+Permea Core does not claim solved delivery, wet-lab validation, clinical or therapeutic effect, universal delivery prediction, state-of-the-art status, or maturity comparable to AlphaFold.
 
 Benchmark claims must remain scoped to:
 
 - dataset
-- split
-- metric
-- benchmark contract
+- label policy
+- split policy
+- metric set
+- model or baseline
 - evidence level
 - provenance state
 - release boundary
 
-## Dataset and Artifact Safety Checklist
+Use "AlphaFold-for-Delivery" only as an ambition and infrastructure direction, not achieved status.
 
-Before adding any data or result artifact, confirm:
+## Contribution Workflow
 
-- the source and license are known
-- redistribution terms are documented
-- row-level records are allowed for public release
-- private or partner-controlled data are not included
-- secrets and credentials are not included
-- generated artifacts do not reveal restricted row-level data
-- rankings, predictions, split manifests, and group assignments are reviewed before public release
+1. Open an issue using the relevant template.
+2. Maintainers triage the issue for scope, data posture, and claim boundaries.
+3. Draft the contribution object or implementation.
+4. Reproducibility, citation, and claim-boundary review happens before acceptance.
+5. Open a pull request with a narrow scope.
+6. Maintainers review and merge when the contribution is public-safe and useful.
 
-When source terms are unclear, use aggregate descriptions and path-level references rather than uploading row-level data.
+## How to Propose a Dataset Card
 
-## Review Process
+Use the dataset card issue template.
 
-Maintainers may review contributions for:
+Include the dataset name, task family, source or citation, sequence type, label definition, positive and negative criteria, assay context, limitations, suggested metrics, and public/private data status.
 
-- technical correctness
-- consistency with existing benchmark contracts
-- reproducibility and provenance
-- claim hygiene
-- data and artifact safety
-- public-readiness boundaries
-- community conduct
+Do not upload row-level data unless public release rights are clear.
 
-Review may request narrower wording even when a stronger claim feels plausible. This is intentional; Permea prefers evidence-bounded claims.
+## How to Propose a Benchmark Task
 
-## Authorship Note
+Use the benchmark task issue template.
 
-Contribution credit and paper authorship are related but not automatic.
+Include the task name, task family, dataset card link or source reference, input schema, label schema, split policy, baseline models, metrics, output artifacts, and non-claims.
 
-Software, documentation, benchmark, review, data, and scientific contributions may be recognized in different ways. Formal authorship criteria will be defined separately in a future authorship policy and may require manual review.
+Benchmark tasks should be reproducible and bounded. A useful task definition is clear about what the benchmark does and does not support.
 
-Do not assume a merged pull request creates paper authorship.
+## How to Submit an Evidence Card
 
-## Code of Conduct
+Use the evidence card issue template.
 
-Participation is governed by [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+Include the source paper or database, molecule or sequence reference, barrier or task, assay type, cargo context, organism or cell context, reported outcome, evidence strength, limitations, citation, extraction method, and human review status.
 
-## Security and Support
+Do not strengthen the original source claim. Evidence cards should preserve context and uncertainty.
 
-For sensitive disclosures, see [SECURITY.md](SECURITY.md).
+## How to Submit a Reproduction Report
 
-For questions and support scope, see [SUPPORT.md](SUPPORT.md).
+Use the reproduction report issue template.
+
+Include the benchmark or task, repository commit, environment, command run, output artifacts, observed metrics, expected metrics if known, deviations, logs or excerpts, and reviewer notes.
+
+Reproduction reports may confirm a result, surface drift, or identify missing instructions.
+
+## Good First Issues
+
+Good first issues should map to a real contribution object. Examples:
+
+- draft a dataset card for a public source
+- summarize a benchmark task boundary
+- add a feature descriptor explanation
+- create an evidence card from a source
+- reproduce a documented benchmark run
+- improve a guide or docs map
+
+## Pull Request Expectations
+
+Pull requests should:
+
+- stay scoped to one contribution object or document family
+- list changed files
+- describe claim-boundary impact
+- describe any data or artifact release impact
+- include reproduction notes when relevant
+- avoid unrelated formatting churn
+- avoid adding data unless release status is clear
+
+## Code and Documentation Style Expectations
+
+Documentation should be direct, source-aware, and conservative about claims.
+
+Code or configuration contributions should preserve reproducibility through clear inputs, outputs, versions, and provenance. Prefer simple, reviewable baselines before complex model additions.
+
+## Contact
+
+Questions about contribution scope can be sent to a.kim@permea.us.

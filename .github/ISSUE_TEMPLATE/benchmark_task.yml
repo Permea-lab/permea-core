@@ -1,0 +1,82 @@
+name: Benchmark task
+description: Propose a benchmark task for delivery engineering.
+title: "[Benchmark Task]: "
+labels: ["benchmark-task", "triage"]
+body:
+  - type: input
+    id: task_name
+    attributes:
+      label: Task name
+      description: Short name for the proposed benchmark task.
+    validations:
+      required: true
+  - type: input
+    id: task_family
+    attributes:
+      label: Task family
+      description: Example families include BBB peptide, CPP / membrane penetration, localization / targeting, RNA / delivery-adjacent, or literature evidence graph.
+    validations:
+      required: true
+  - type: input
+    id: dataset_card_link
+    attributes:
+      label: Dataset card link
+      description: Link to an existing dataset card issue, PR, or document if available.
+    validations:
+      required: false
+  - type: textarea
+    id: input_schema
+    attributes:
+      label: Input schema
+      description: Describe accepted inputs and required fields.
+    validations:
+      required: true
+  - type: textarea
+    id: label_schema
+    attributes:
+      label: Label schema
+      description: Describe labels, allowed values, positive/negative definitions, and excluded cases.
+    validations:
+      required: true
+  - type: textarea
+    id: split_policy
+    attributes:
+      label: Split policy
+      description: Describe train/test or evaluation split expectations.
+    validations:
+      required: true
+  - type: textarea
+    id: baseline_models
+    attributes:
+      label: Baseline models
+      description: List proposed baselines and why they are appropriate.
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Metrics
+      description: List metrics and why they fit the task.
+    validations:
+      required: true
+  - type: textarea
+    id: output_artifacts
+    attributes:
+      label: Output artifacts
+      description: List expected outputs such as metrics.json, manifest.yaml, benchmark_card.md, or evidence_cards.json.
+    validations:
+      required: true
+  - type: textarea
+    id: non_claims
+    attributes:
+      label: Non-claims
+      description: State what this benchmark does not support.
+    validations:
+      required: true
+  - type: textarea
+    id: reviewer_notes
+    attributes:
+      label: Reviewer notes
+      description: Add open questions, risks, or review needs.
+    validations:
+      required: false

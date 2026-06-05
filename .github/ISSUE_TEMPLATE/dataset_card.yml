@@ -1,0 +1,106 @@
+name: Dataset card
+description: Propose a delivery-relevant dataset card.
+title: "[Dataset Card]: "
+labels: ["dataset-card", "triage"]
+body:
+  - type: input
+    id: dataset_name
+    attributes:
+      label: Dataset name
+      description: Name of the dataset or dataset candidate.
+    validations:
+      required: true
+  - type: input
+    id: task_family
+    attributes:
+      label: Task family
+      description: Example families include BBB peptide, CPP / membrane penetration, localization / targeting, RNA / delivery-adjacent, or literature evidence graph.
+    validations:
+      required: true
+  - type: textarea
+    id: source_citation
+    attributes:
+      label: Source / citation
+      description: Provide source paper, database, identifier, or public source page.
+    validations:
+      required: true
+  - type: input
+    id: sequence_type
+    attributes:
+      label: Sequence type
+      description: Describe the input object, such as peptide sequence, RNA sequence, formulation-adjacent record, or literature-derived record.
+    validations:
+      required: true
+  - type: textarea
+    id: label_definition
+    attributes:
+      label: Label definition
+      description: Define the label and what it means in this source.
+    validations:
+      required: true
+  - type: textarea
+    id: positive_criteria
+    attributes:
+      label: Positive criteria
+      description: Describe how positives are defined.
+    validations:
+      required: true
+  - type: textarea
+    id: negative_criteria
+    attributes:
+      label: Negative criteria
+      description: Describe how negatives are defined.
+    validations:
+      required: true
+  - type: textarea
+    id: assay_context
+    attributes:
+      label: Assay context
+      description: Describe assay, biological context, cargo context, endpoint, or threshold when known.
+    validations:
+      required: false
+  - type: textarea
+    id: known_limitations
+    attributes:
+      label: Known limitations
+      description: Include class imbalance, label uncertainty, assay caveats, source caveats, or release limitations.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_metrics
+    attributes:
+      label: Suggested metrics
+      description: Suggest metrics such as ROC-AUC, PR-AUC, MCC, precision, recall, F1, or task-specific metrics.
+    validations:
+      required: false
+  - type: dropdown
+    id: public_private_status
+    attributes:
+      label: Public/private data status
+      options:
+        - Public source only
+        - Public metadata only; row-level data not proposed
+        - Release rights unclear; review needed
+        - Contains restricted material; do not upload
+    validations:
+      required: true
+  - type: input
+    id: contributor
+    attributes:
+      label: Contributor
+      description: GitHub handle or preferred contributor name.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety_checklist
+    attributes:
+      label: Safety checklist
+      options:
+        - label: I am not uploading private or proprietary data without rights to share it.
+          required: true
+        - label: I am not uploading secrets, credentials, tokens, or private keys.
+          required: true
+        - label: I am not making unsupported validation, clinical, universal prediction, or state-of-the-art claims.
+          required: true
+        - label: I have included source attribution and known limitations.
+          required: true
