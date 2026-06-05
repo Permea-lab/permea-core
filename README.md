@@ -169,6 +169,7 @@ Open-source operating docs:
 
 Contributor and community docs:
 
+- [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md)
 - [Contributor Levels](docs/contributors/CONTRIBUTOR_LEVELS.md)
 - [Authorship Policy](docs/contributors/AUTHORSHIP_POLICY.md)
 - [Dry-Lab Contribution Policy](docs/contributors/DRY_LAB_CONTRIBUTION_POLICY.md)

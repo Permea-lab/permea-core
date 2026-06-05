@@ -1,0 +1,75 @@
+name: Reproduction report
+description: Report a reproduction attempt for a benchmark or documented workflow.
+title: "[Reproduction]: "
+labels: ["reproduction", "triage"]
+body:
+  - type: input
+    id: benchmark_task
+    attributes:
+      label: Benchmark / task
+      description: Name or link for the benchmark or task reproduced.
+    validations:
+      required: true
+  - type: input
+    id: repo_commit
+    attributes:
+      label: Repository commit
+      description: Commit hash or release version used.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Python/runtime versions, dependencies, and relevant configuration.
+    validations:
+      required: true
+  - type: textarea
+    id: command_run
+    attributes:
+      label: Command run
+      description: Commands or workflow steps used.
+    validations:
+      required: true
+  - type: textarea
+    id: output_artifacts
+    attributes:
+      label: Output artifacts
+      description: List generated artifacts such as metrics.json, manifest.yaml, figures, or reports.
+    validations:
+      required: true
+  - type: textarea
+    id: observed_metrics
+    attributes:
+      label: Observed metrics
+      description: Provide aggregate metrics or summaries. Do not upload restricted row-level outputs.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_metrics
+    attributes:
+      label: Expected metrics if known
+      description: Provide expected metrics or link to documented values if available.
+    validations:
+      required: false
+  - type: textarea
+    id: deviations
+    attributes:
+      label: Deviations
+      description: Describe deviations from documented instructions, environment, inputs, or results.
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste relevant public-safe log excerpts. Do not include secrets, private paths, or restricted data.
+    validations:
+      required: false
+  - type: textarea
+    id: reviewer_notes
+    attributes:
+      label: Reviewer notes
+      description: Add open questions or review requests.
+    validations:
+      required: false

@@ -1,0 +1,99 @@
+name: Evidence card
+description: Propose a source-backed evidence card.
+title: "[Evidence Card]: "
+labels: ["evidence-card", "triage"]
+body:
+  - type: textarea
+    id: source
+    attributes:
+      label: Source paper / database
+      description: Provide source title, database, identifier, or public source page.
+    validations:
+      required: true
+  - type: input
+    id: molecule_or_sequence
+    attributes:
+      label: Molecule or sequence reference
+      description: Provide a public-safe reference, identifier, or description.
+    validations:
+      required: true
+  - type: input
+    id: barrier_task
+    attributes:
+      label: Barrier / task
+      description: Describe the barrier, delivery task, or evidence category.
+    validations:
+      required: true
+  - type: input
+    id: assay_type
+    attributes:
+      label: Assay type
+      description: Describe assay type when known.
+    validations:
+      required: false
+  - type: input
+    id: cargo_context
+    attributes:
+      label: Cargo context
+      description: Describe cargo or modality context when relevant.
+    validations:
+      required: false
+  - type: input
+    id: organism_cell_context
+    attributes:
+      label: Organism / cell context
+      description: Describe organism, cell type, barrier model, or biological context when known.
+    validations:
+      required: false
+  - type: textarea
+    id: reported_outcome
+    attributes:
+      label: Reported outcome
+      description: Summarize what the source reports without strengthening the claim.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_strength
+    attributes:
+      label: Evidence strength
+      options:
+        - Literature mention
+        - Structured evidence draft
+        - Dataset candidate support
+        - Benchmark-ready support
+        - External validation evidence
+        - Unclear; review needed
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations
+      description: Include source limitations, assay caveats, uncertainty, or missing context.
+    validations:
+      required: true
+  - type: textarea
+    id: citation
+    attributes:
+      label: Citation
+      description: Provide citation details or a public identifier.
+    validations:
+      required: true
+  - type: input
+    id: extraction_method
+    attributes:
+      label: Extraction method
+      description: Describe whether this was manual extraction, source curation, or another reviewed method.
+    validations:
+      required: true
+  - type: dropdown
+    id: human_review_status
+    attributes:
+      label: Human review status
+      options:
+        - Draft; needs review
+        - Reviewed for source fidelity
+        - Reviewed for benchmark relevance
+        - Hold; claim boundary concern
+    validations:
+      required: true

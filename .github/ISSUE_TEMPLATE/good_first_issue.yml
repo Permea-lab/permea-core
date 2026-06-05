@@ -1,0 +1,62 @@
+name: Good first issue
+description: Propose a beginner-friendly contribution task.
+title: "[Good First Issue]: "
+labels: ["good first issue", "triage"]
+body:
+  - type: dropdown
+    id: contribution_type
+    attributes:
+      label: Contribution type
+      options:
+        - Dataset card
+        - Benchmark task
+        - Evidence card
+        - Feature descriptor
+        - Baseline model
+        - Reproduction report
+        - Documentation
+        - Visualization / UI
+    validations:
+      required: true
+  - type: textarea
+    id: task_description
+    attributes:
+      label: Beginner-friendly task description
+      description: Describe the task clearly enough for a new contributor.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_output
+    attributes:
+      label: Expected output
+      description: Describe the file, issue, document, run report, or artifact expected.
+    validations:
+      required: true
+  - type: textarea
+    id: relevant_docs
+    attributes:
+      label: Relevant docs
+      description: Link relevant docs such as CONTRIBUTING.md or docs/CONTRIBUTION_OBJECTS.md.
+    validations:
+      required: false
+  - type: input
+    id: required_skills
+    attributes:
+      label: Required skills
+      description: List skills such as documentation, Python, literature review, ML evaluation, or visualization.
+    validations:
+      required: false
+  - type: textarea
+    id: claim_privacy_caution
+    attributes:
+      label: Claim/privacy caution
+      description: Note any claim boundaries, data release limits, or public/private considerations.
+    validations:
+      required: true
+  - type: textarea
+    id: maintainer_notes
+    attributes:
+      label: Maintainer notes
+      description: Add scope boundaries or review expectations.
+    validations:
+      required: false
