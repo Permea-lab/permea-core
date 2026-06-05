@@ -180,10 +180,10 @@ Contributor and community docs:
 
 Planned public docs:
 
-- Manifesto refresh
-- Scientific Thesis
+- [Permea Manifesto](docs/PERMEA_MANIFESTO.md)
+- [Scientific Thesis](docs/SCIENTIFIC_THESIS.md)
 - Delivery Dataset Commons
-- Benchmark Execution Layer
+- [Benchmark Execution Layer](docs/BENCHMARK_EXECUTION_LAYER.md)
 - Research Intelligence Layer
 - Frontier Model Tool Layer
 - Open Movement and Community
