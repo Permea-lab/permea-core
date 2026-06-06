@@ -183,10 +183,10 @@ Planned public docs:
 
 - [Permea Manifesto](docs/PERMEA_MANIFESTO.md)
 - [Scientific Thesis](docs/SCIENTIFIC_THESIS.md)
-- Delivery Dataset Commons
+- [Delivery Dataset Commons](docs/DELIVERY_DATASET_COMMONS.md)
 - [Benchmark Execution Layer](docs/BENCHMARK_EXECUTION_LAYER.md)
-- Research Intelligence Layer
-- Frontier Model Tool Layer
+- [Research Intelligence Layer](docs/RESEARCH_INTELLIGENCE_LAYER.md)
+- [Frontier Model Tool Layer](docs/FRONTIER_MODEL_TOOL_LAYER.md)
 - Open Movement and Community
 
 These planned docs are not linked here until they exist in the repository.
