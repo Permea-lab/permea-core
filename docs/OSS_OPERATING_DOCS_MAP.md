@@ -78,58 +78,90 @@ It may contain project memory, local operating notes, and nonpublic coordination
 
 Existing root-level docs:
 
-- `README.md`
-- `LICENSE`
-- `MANIFESTO.md`
+- `README.md` - project overview and the main index into benchmark, governance, and community docs
+- `LICENSE` - the repository license terms for reuse and redistribution
+- `MANIFESTO.md` - the high-level rationale for Permea's benchmark-first, open-by-default posture
+- `CONTRIBUTING.md` - contribution scope, claim hygiene, and artifact-safety expectations for contributors
+- `CODE_OF_CONDUCT.md` - participation rules for public collaboration and scientific discussion
+- `SECURITY.md` - private reporting path for vulnerabilities and sensitive repo concerns
+- `SUPPORT.md` - contributor guidance on where to ask questions and what support channels exist
+- `CITATION.cff` - citation metadata for referencing the project in research and software contexts
 
 Existing core docs:
 
-- `docs/SPEC.md`
-- `docs/DD-ARCHITECTURE.md`
-- `docs/DELIVERY-TAXONOMY.md`
-- `docs/EVIDENCE-LADDER.md`
-- `docs/BENCHMARK-CONTRACT.md`
-- `docs/RESULT-ARTIFACT-SCHEMA.md`
-- `docs/RUN-MANIFEST-SCHEMA.md`
-- `docs/ROADMAP.md`
+- `docs/SPEC.md` - the core repository specification and system boundaries
+- `docs/DD-ARCHITECTURE.md` - the architecture design framing for repository structure and technical surfaces
+- `docs/DELIVERY-TAXONOMY.md` - shared terminology for delivery concepts used across the project
+- `docs/EVIDENCE-LADDER.md` - evidence levels and the claim strength each level can support
+- `docs/BENCHMARK-CONTRACT.md` - the durable contract for benchmark definitions and evaluation expectations
+- `docs/RESULT-ARTIFACT-SCHEMA.md` - the structure expected for published benchmark result artifacts
+- `docs/RUN-MANIFEST-SCHEMA.md` - the required provenance fields for benchmark and workflow runs
+- `docs/RUN-MANIFEST-WALKTHROUGH.md` - a practical guide to producing valid run manifests
+- `docs/ROADMAP.md` - the near-term repository growth plan and sequencing of major work
+
+Existing scientific governance docs:
+
+- `docs/scientific-governance/CLAIM_REGISTRY.md` - allowed, conditional, and prohibited public claim patterns
+- `docs/scientific-governance/DATASET_POLICY.md` - dataset source, licensing, and redistribution boundaries
+- `docs/scientific-governance/PUBLIC_SAFE_ARTIFACT_POLICY.md` - rules for what artifacts are safe to release publicly
+- `docs/scientific-governance/REPRODUCIBILITY_GUIDE.md` - reproducibility expectations for methods, artifacts, and reviewability
+- `docs/paper-alignment/PAPER_ALIGNMENT_POLICY.md` - alignment rules between papers, docs, and public-facing claims
+
+Existing community and contributor docs:
+
+- `docs/community/COMMUNITY_GOVERNANCE.md` - decision-making and community operating norms
+- `docs/community/MAINTAINER_GUIDE.md` - maintainer responsibilities, review standards, and stewardship expectations
+- `docs/community/REVIEWER_WORKFLOW.md` - how reviewers should evaluate contributions and log blockers
+- `docs/community/REVIEWER_CREDIT_POLICY.md` - how review work is recognized without conflating it with authorship
+- `docs/contributors/CONTRIBUTOR_LEVELS.md` - contribution modes and expected scope at each level
+- `docs/contributors/AUTHORSHIP_POLICY.md` - authorship boundaries and review criteria for attribution
+- `docs/contributors/DRY_LAB_CONTRIBUTION_POLICY.md` - allowed dry-lab contribution patterns and their evidence limits
+- `docs/contributors/WET_LAB_COLLABORATION_POLICY.md` - how wet-lab collaboration is scoped, reviewed, and communicated
+
+Existing derivative and release docs:
+
+- `docs/derivatives/DERIVATIVE_PROJECT_POLICY.md` - the rules downstream projects must follow when building on Permea Core
+- `docs/derivatives/DERIVATIVE_REVIEW_CHECKLIST.md` - review checklist for derivative-project readiness and claim hygiene
+- `docs/derivatives/PROJECT_REGISTRY.md` - the public list of recognized derivative projects and their status
+- `docs/release/RELEASE_REVIEW_PROCESS.md` - the review path before a public release is approved
+- `docs/release/PUBLIC_RELEASE_CHECKLIST.md` - release-gate checklist for public artifacts and claims
+- `docs/release/RELEASE_OWNERSHIP_MATRIX.md` - ownership expectations for release decisions and sign-off
+- `docs/release/VERSIONING_POLICY.md` - how version labels should be applied and interpreted
+- `docs/release/ARCHIVE_AND_DEPRECATION_POLICY.md` - how docs or artifacts are retired without losing provenance
+- `docs/release/ATTRIBUTION_POLICY.md` - attribution expectations for releases and derivative use
 
 Existing ADRs:
 
-- `docs/adr/ADR-0001-open-source-first.md`
-- `docs/adr/ADR-0002-benchmark-first.md`
+- `docs/adr/ADR-0001-open-source-first.md` - why the project treats public inspectability as a foundational constraint
+- `docs/adr/ADR-0002-benchmark-first.md` - why benchmark contracts lead implementation and evidence packaging
 
 ## 5. Missing Docs Inventory
 
-Missing root-level OSS docs:
+Still-missing root-level or map-referenced docs:
 
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
-- `SECURITY.md`
-- `SUPPORT.md`
-- `CITATION.cff`
+- none at the root level covered by the current OSS operating set
 
-Missing scientific governance docs:
+Still-missing scientific governance docs:
 
-- `CLAIM_REGISTRY.md`
-- `DATASET_POLICY.md`
-- `PUBLIC_SAFE_ARTIFACT_POLICY.md`
-- `PAPER_ALIGNMENT_POLICY.md`
-- `REPRODUCIBILITY_GUIDE.md`
+- `docs/scientific-governance/CLAIM_BOUNDARY_CHECKLIST.md`
 
-Missing community and contributor docs:
+Still-missing community and contributor docs:
 
-- `COMMUNITY_GOVERNANCE.md`
-- `MAINTAINER_GUIDE.md`
-- `REVIEWER_WORKFLOW.md`
-- `CONTRIBUTOR_LEVELS.md`
-- `AUTHORSHIP_POLICY.md`
-- `DRY_LAB_CONTRIBUTION_POLICY.md`
-- `WET_LAB_COLLABORATION_POLICY.md`
+- `docs/community/SUPPORT_MODEL.md`
+- `docs/community/MODERATION_PROCESS.md`
 
-Missing derivative and release docs:
+Still-missing derivative and release docs:
 
-- `DERIVATIVE_PROJECT_POLICY.md`
-- `RELEASE_REVIEW_PROCESS.md`
+- `docs/derivatives/DERIVATIVE_PROJECT_TEMPLATE.md`
+- `docs/derivatives/ATTRIBUTION_REQUIREMENTS.md`
+- `docs/derivatives/CLAIM_INHERITANCE_RULES.md`
+- `docs/release/ARTIFACT_RELEASE_MATRIX.md`
+
+Still-missing paper-alignment docs:
+
+- `docs/paper-alignment/PREPRINT_READINESS_CHECKLIST.md`
+- `docs/paper-alignment/SOURCE_TO_CLAIM_REVIEW.md`
+- `docs/paper-alignment/README_CLAIM_SYNC_CHECKLIST.md`
 
 Optional future docs:
 
