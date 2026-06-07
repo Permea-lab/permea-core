@@ -157,6 +157,31 @@ Documentation expectations:
 - avoid causal mechanism claims from descriptor values alone
 - include enough detail for reproducible feature extraction
 
+### Example: GRAVY
+
+GRAVY stands for **Grand Average of Hydropathy**. It is a sequence-derived
+summary of residue hydropathy values, usually computed by averaging a
+hydropathy scale such as Kyte-Doolittle across all residues in a peptide or
+protein sequence.
+
+For Permea-style benchmark work, a GRAVY descriptor note should include:
+
+- **Input**: an amino-acid sequence with the alphabet and preprocessing policy
+  made explicit
+- **Calculation**: the hydropathy table used and the averaging rule
+- **Interpretation**: higher values generally indicate a more hydrophobic
+  sequence summary, while lower values indicate a more hydrophilic summary
+- **Reproducibility**: the implementation reference, version, and any sequence
+  normalization rules
+- **Limits**: GRAVY is a coarse physicochemical summary, not direct evidence of
+  transport, uptake mechanism, tissue penetration, or therapeutic effect
+
+GRAVY can be useful as one transparent feature in delivery-related benchmark
+analysis, especially when compared alongside charge, length, aromaticity, and
+other sequence-derived descriptors. However, descriptor values alone should not
+be treated as causal mechanism proof or as a substitute for assay context and
+experimental validation.
+
 ## Baseline Model
 
 What it is: A reproducible baseline implementation or configuration for a benchmark task.
