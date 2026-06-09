@@ -119,6 +119,10 @@ Good first issues should map to a real contribution object. Examples:
 - reproduce a documented benchmark run
 - improve a guide or docs map
 
+See [docs/ISSUE_LABEL_GUIDE.md](docs/ISSUE_LABEL_GUIDE.md) for the label taxonomy
+used to distinguish contribution-object scope, review posture, and beginner-safe
+onramps.
+
 ## Pull Request Expectations
 
 Pull requests should:
