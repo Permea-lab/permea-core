@@ -65,7 +65,7 @@ The intended execution stack includes:
 
 Permea Core is not another single BBB predictor.
 
-It does not claim that delivery is solved. It does not claim wet-lab validation. It does not make clinical or therapeutic effect claims. It does not claim universal delivery prediction. It does not claim SOTA status.
+It does not claim that delivery is solved. It does not claim wet-lab validation. It does not make clinical or therapeutic effect claims. It does not claim universal delivery prediction. It does not claim state-of-the-art status.
 
 ## Core Architecture
 
@@ -230,10 +230,10 @@ Permea public materials should preserve clear evidence levels:
 - computational evidence only unless otherwise stated
 - candidate prioritization before wet-lab
 - no wet-lab validation claim
-- no clinical efficacy claim
+- no clinical or therapeutic effect claim
 - no universal delivery prediction claim
-- no SOTA claim
-- no solved delivery claim
+- no state-of-the-art claim
+- no delivery-is-solved claim
 
 Benchmark metrics summarize behavior under a defined computational task. They do not prove transport, mechanism, safety, therapeutic effect, or generalization beyond the benchmark scope.
 
