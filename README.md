@@ -8,9 +8,9 @@
 
 # Permea Core
 
-The open execution layer for delivery engineering.
+Open execution layer for sequence-first biological delivery engineering.
 
-Making delivery evidence benchmarkable, reproducible, and reusable.
+Benchmark-first infrastructure for reproducible, computational delivery evidence.
 
 <p align="center">
 
@@ -25,46 +25,47 @@ Making delivery evidence benchmarkable, reproducible, and reusable.
 
 ## Overview
 
-Permea is building the open execution layer for delivery engineering: shared datasets, benchmark contracts, run manifests, evidence cards, and reproducible workflows for computational delivery research.
+Permea Core is an open technical foundation for making biological delivery more benchmarkable, reproducible, and evidence-backed. It organizes delivery-related datasets, benchmark tasks, run manifests, output cards, and contribution workflows so researchers can compare sequence-first delivery hypotheses before wet-lab validation.
 
-Permea Core turns scattered delivery evidence into benchmarked, reproducible, evidence-backed dry-lab workflows. It begins with sequence-first delivery benchmarks and expands across delivery task families while keeping claims tied to explicit datasets, metrics, provenance, and limitations.
+Permea is not another single predictor. Permea Core is the public execution layer for benchmark-first delivery engineering: shared specifications, reusable artifacts, and reproducible workflows for computational evidence before experimental follow-up.
 
-## Why Permea Exists
+## Why This Exists
 
 Delivery is one of the bottlenecks for next-generation therapeutics. Peptides, RNA systems, mRNA designs, protein therapeutics, gene-editing payloads, and targeted biologics all depend on reaching the right biological context, but delivery evidence is still fragmented across datasets, papers, predictors, assays, and internal pipelines.
 
 That fragmentation makes results hard to compare:
 
 - dataset sources and label definitions are often unclear
-- predictors can use different task definitions and split policies
+- benchmark tasks, split policies, and metrics differ across projects
 - assays and biological contexts are not always comparable
 - candidate rankings can be difficult to audit
 - dry-lab evidence is rarely packaged for reuse before experimental follow-up
 
-Permea exists to make delivery evidence benchmarkable and reusable. The goal is not to replace experimental work. The goal is to make the path into experimental work more structured, inspectable, and evidence-backed.
+Permea Core exists to create public technical defaults for this problem: dataset cards, benchmark cards, evidence cards, run manifests, output formats, and contribution workflows that make delivery-related computational evidence easier to inspect and reproduce.
 
-## What Permea Core Is
+## What Permea Core Provides
 
-Permea Core is the public movement entry point and technical foundation for reusable delivery-engineering workflows. It is intended to provide:
+Permea Core is early-stage public infrastructure. Some components are present as specifications and documentation, while others are roadmap surfaces that will grow as benchmark contracts stabilize.
 
-- an open execution layer for delivery benchmark tasks
-- a delivery dataset commons built around dataset cards and evidence cards
-- a benchmark registry for task definitions, metrics, and claim boundaries
-- baseline and evaluation runners for reproducible computational evidence
-- provenance and output-package conventions
-- the backend foundation for a future DryLab workbench
-- a research intelligence layer for structured claims, sources, and candidate explanations
-- an open contribution model for delivery evidence
+The intended execution stack includes:
 
-The repository currently emphasizes specifications, benchmark contracts, governance, and reproducibility docs. Implementation surfaces can grow over time as the public contracts stabilize.
+- **Benchmark Registry**: task definitions, dataset references, label schemas, metrics, baseline requirements, output artifacts, versions, and claim boundaries.
+- **Dataset Assembly**: loading, validation, schema normalization, feature-extraction inputs, label checks, and source attribution.
+- **Baseline Runner**: reproducible baseline configurations for transparent benchmark execution.
+- **Evaluation Engine**: aggregate metrics, ranking behavior, sensitivity summaries, and limitation notes.
+- **Provenance Tracking**: run identifiers, benchmark versions, dataset versions, code versions, configuration hashes, feature sets, and artifact lists.
+- **Output Formatter**: standard benchmark packages for review, reproduction, and publication-safe summaries.
+- **Dataset Cards**: public records for dataset source, labels, readiness, limitations, and provenance.
+- **Benchmark Cards**: scoped benchmark definitions with inputs, metrics, splits, baselines, and claim boundaries.
+- **Evidence Cards**: structured literature or computational evidence with uncertainty and review status.
+- **Run Manifests**: reproducibility records for how a result was produced.
+- **Contribution Workflows**: review paths for dataset cards, benchmark tasks, evidence cards, feature descriptors, baselines, reproduction reports, and documentation improvements.
 
 ## What Permea Core Is Not
 
 Permea Core is not another single BBB predictor.
 
-It does not claim that delivery is solved. It does not claim wet-lab validation. It does not make clinical or therapeutic effect claims. It does not claim universal delivery prediction. It does not claim state-of-the-art status. It does not claim maturity comparable to AlphaFold.
-
-"AlphaFold-for-Delivery" is an ambition and infrastructure direction: a shorthand for making delivery engineering more benchmarkable, reproducible, explainable, and executable. It is not an achieved-status claim.
+It does not claim that delivery is solved. It does not claim wet-lab validation. It does not make clinical or therapeutic effect claims. It does not claim universal delivery prediction. It does not claim SOTA status.
 
 ## Core Architecture
 
@@ -129,6 +130,21 @@ Current and planned directions:
 - literature evidence graph for structured claims, sources, and evidence cards
 
 Each task should remain bounded by its data source, label policy, split policy, metric set, limitations, and release posture.
+
+## Current Scope
+
+Permea Core is an early-stage public foundation. Current work focuses on delivery-related sequence features, benchmark surfaces, run specifications, and candidate prioritization before wet-lab.
+
+The first public computational evidence package is [`permea-signal-ml`](https://github.com/Permea-lab/permea-signal-ml). Permea Core provides the benchmark/specification/execution-layer foundation that future evidence packages can reuse.
+
+Wet-lab validation is a future or external validation path, not a current claim of this repository.
+
+## Relationship to `permea-signal-ml`
+
+- [`permea-core`](https://github.com/Permea-lab/permea-core): benchmark, specification, and execution-layer foundation.
+- [`permea-signal-ml`](https://github.com/Permea-lab/permea-signal-ml): first computational evidence package for a reproducible benchmark-oriented demonstration.
+
+`permea-signal-ml` shows how bounded sequence-derived delivery-related signal can be packaged for reproduction and review. `permea-core` defines the reusable infrastructure that should support many future benchmark tasks and contribution objects.
 
 ## Related Repositories
 
@@ -197,13 +213,13 @@ Permea needs contributions that make delivery evidence easier to inspect, compar
 
 Useful contribution paths include:
 
-- propose a dataset card
-- propose a benchmark task
-- add an evidence card
-- document a feature descriptor
-- add a baseline model or baseline configuration
-- submit a reproduction report
-- improve documentation
+- **Dataset Card**: describe a dataset source, labels, provenance, readiness, and limitations.
+- **Benchmark Task**: define inputs, labels, metrics, split policy, baselines, and expected outputs.
+- **Evidence Card**: structure literature or computational evidence with uncertainty and review status.
+- **Feature Descriptor**: document a sequence-derived descriptor, computation method, limitations, and references.
+- **Baseline Model**: add a comparable model or configuration with reproducible evaluation.
+- **Reproduction Report**: report whether a benchmark run or evidence package reproduces as documented.
+- **Documentation improvement**: clarify specs, contribution paths, limitations, or release guidance.
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md). Community standards are in [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), security reporting is in [SECURITY.md](SECURITY.md), and support guidance is in [SUPPORT.md](SUPPORT.md).
 
@@ -212,12 +228,12 @@ Start with [CONTRIBUTING.md](CONTRIBUTING.md). Community standards are in [CODE_
 Permea public materials should preserve clear evidence levels:
 
 - computational evidence only unless otherwise stated
-- candidate prioritization before experimental follow-up
+- candidate prioritization before wet-lab
 - no wet-lab validation claim
-- no clinical or therapeutic effect claim
-- no universal prediction claim
-- no state-of-the-art claim
-- AlphaFold-for-Delivery is ambition and infrastructure direction, not achieved status
+- no clinical efficacy claim
+- no universal delivery prediction claim
+- no SOTA claim
+- no solved delivery claim
 
 Benchmark metrics summarize behavior under a defined computational task. They do not prove transport, mechanism, safety, therapeutic effect, or generalization beyond the benchmark scope.
 
