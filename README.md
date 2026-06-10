@@ -184,6 +184,13 @@ Open-source operating docs:
 - [Archive and Deprecation Policy](docs/release/ARCHIVE_AND_DEPRECATION_POLICY.md)
 - [Attribution Policy](docs/release/ATTRIBUTION_POLICY.md)
 
+Artifact specs:
+
+- [Dataset Card Spec](docs/specs/DATASET_CARD_SPEC.md)
+- [Benchmark Task Spec](docs/specs/BENCHMARK_TASK_SPEC.md)
+- [Evidence Card Spec](docs/specs/EVIDENCE_CARD_SPEC.md)
+- [Run Manifest Spec](docs/specs/RUN_MANIFEST_SPEC.md)
+
 Contributor and community docs:
 
 - [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md)
