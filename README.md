@@ -160,6 +160,7 @@ Core project documents:
 - [Manifesto](MANIFESTO.md)
 - [Delivery Taxonomy](docs/DELIVERY-TAXONOMY.md)
 - [Evidence Ladder](docs/EVIDENCE-LADDER.md)
+- [Claim Boundary](docs/CLAIM_BOUNDARY.md)
 - [Roadmap](docs/ROADMAP.md)
 - [ADR-0001: Open-Source-First](docs/adr/ADR-0001-open-source-first.md)
 - [ADR-0002: Benchmark-First](docs/adr/ADR-0002-benchmark-first.md)
@@ -186,6 +187,7 @@ Open-source operating docs:
 Contributor and community docs:
 
 - [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md)
+- [Community Roadmap](docs/COMMUNITY_ROADMAP.md)
 - [Contributor Levels](docs/contributors/CONTRIBUTOR_LEVELS.md)
 - [Authorship Policy](docs/contributors/AUTHORSHIP_POLICY.md)
 - [Dry-Lab Contribution Policy](docs/contributors/DRY_LAB_CONTRIBUTION_POLICY.md)
@@ -222,6 +224,8 @@ Useful contribution paths include:
 - **Documentation improvement**: clarify specs, contribution paths, limitations, or release guidance.
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md). Community standards are in [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), security reporting is in [SECURITY.md](SECURITY.md), and support guidance is in [SUPPORT.md](SUPPORT.md).
+
+For public contribution surfaces, see [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md), [Claim Boundary](docs/CLAIM_BOUNDARY.md), and [Community Roadmap](docs/COMMUNITY_ROADMAP.md).
 
 ## Claim Boundaries
 

@@ -4,52 +4,52 @@ Status: Public documentation
 
 ## Purpose
 
-Permea Core is an open execution layer for delivery engineering. Contributions should therefore be more structured than general suggestions or one-off files.
+Permea Core is an open execution layer for delivery engineering. Contributions should be structured enough to make delivery evidence inspectable, reproducible, and bounded in interpretation.
 
-This document defines the public contribution objects that make delivery evidence easier to inspect, compare, reproduce, and extend.
+This document defines the public contribution objects that make Permea useful as a community movement: Dataset Card, Benchmark Task, Evidence Card, Run Manifest, Feature Descriptor, Baseline Model, and Candidate Report.
 
-## Why Contribution Objects Matter
-
-Delivery evidence is fragmented across datasets, papers, assays, predictors, and internal workflows. A contribution object gives each proposed addition a common structure: source, task, label meaning, provenance, limitations, review status, and claim boundaries.
-
-Structured contribution objects help Permea remain open without weakening scientific discipline. They make it possible to accept useful early contributions while still distinguishing draft evidence, benchmark-ready datasets, reproducible runs, and later external validation.
+Each object should make clear what is being contributed, why it matters, what a contributor should provide, how reviewers should evaluate it, and what public claim boundary applies.
 
 ## Dataset Card
 
 What it is: A structured description of a dataset or dataset candidate.
 
-Who contributes it: Researchers, data curators, computational biologists, delivery scientists, and contributors who can document a public source clearly.
+Why it matters: Dataset cards make source, label meaning, assay context, provenance, limitations, and release posture visible before a dataset becomes part of a benchmark surface.
 
-Required fields:
+What a contributor should provide:
 
 - dataset name
 - task family
 - source and citation
 - sequence type or input object
 - label definition
-- positive criteria
-- negative criteria
-- assay context
+- positive and negative criteria
+- assay or evidence context where known
+- inclusion and exclusion criteria
 - known limitations
 - suggested metrics
 - allowed outputs or release posture
-- contributor
+- contributor name or handle
 - review status
 
 Review criteria:
 
 - source attribution is clear
 - label meaning is bounded and does not imply universal biological truth
-- assay context is described when known
-- limitations are explicit
-- public/private data status is clear
+- assay or evidence context is described where relevant
+- limitations and missing context are explicit
+- public release posture is clear
 - no unsupported validation or performance claim is made
+
+Public claim boundary: A dataset card can support dataset transparency and benchmark readiness review. It does not prove delivery, mechanism, safety, therapeutic effect, or clinical performance.
 
 ## Benchmark Task
 
 What it is: A proposed executable task that connects a dataset card to input schemas, label schemas, split policy, baseline models, metrics, outputs, and non-claims.
 
-Required fields:
+Why it matters: Benchmark tasks make computational delivery evidence comparable by fixing what is being measured and how results should be interpreted.
+
+What a contributor should provide:
 
 - task name
 - task family
@@ -63,47 +63,37 @@ Required fields:
 - non-claims
 - reviewer notes
 
-Metrics, split, and label expectations:
-
-- labels should be treated as benchmark labels with provenance
-- split policy should be explicit enough to reproduce
-- metrics should match task type and class balance
-- baseline models should be transparent before complex models are introduced
-- outputs should include aggregate summaries and provenance
-
 Review criteria:
 
 - task boundary is clear
 - dataset and label assumptions are inspectable
 - metrics and baselines are appropriate for the task
-- outputs support reproduction
+- split policy is explicit enough to reproduce
+- outputs include aggregate summaries and provenance
 - non-claims prevent overinterpretation
+
+Public claim boundary: A benchmark task can define a computational benchmark surface. It does not establish biological truth, universal prediction, or external validation by itself.
 
 ## Evidence Card
 
 What it is: A structured source-backed evidence object extracted from a paper, database, supplement, or reviewed public source.
 
-Required fields:
+Why it matters: Evidence cards preserve source context so delivery-related statements can be reviewed without losing citation, assay, limitation, or uncertainty details.
 
-- source paper or database
+What a contributor should provide:
+
+- source paper, database, or public record
 - molecule or sequence reference
-- barrier or task
-- assay type
-- cargo context
-- organism or cell context
+- barrier or task context
+- assay or evidence type
+- cargo context where relevant
+- organism, cell, or experimental context where relevant
 - reported outcome
 - evidence strength
 - limitations
 - citation
-- extraction method
-- human review status
-
-Source and citation expectations:
-
-- cite the source clearly enough for reviewers to inspect
-- separate the source claim from Permea interpretation
-- preserve limitations, uncertainty, and assay context
-- mark draft extractions as drafts until reviewed
+- extraction notes
+- review status
 
 Review criteria:
 
@@ -111,12 +101,17 @@ Review criteria:
 - extraction does not strengthen the original claim
 - biological context is not omitted when claim-relevant
 - evidence strength and limitations are explicit
+- draft evidence is marked as draft until reviewed
+
+Public claim boundary: An evidence card can document source-backed evidence and uncertainty. It does not upgrade a source claim into wet-lab validation, clinical evidence, or a general delivery claim.
 
 ## Run Manifest
 
 What it is: A provenance record for a computational benchmark run.
 
-Required fields:
+Why it matters: Run manifests make results rerunnable by recording the benchmark task, dataset version, code version, configuration, features, metrics, and output artifacts.
+
+What a contributor should provide:
 
 - run ID
 - benchmark task
@@ -128,19 +123,25 @@ Required fields:
 - metrics
 - output artifacts
 - reproducibility notes
+- deviations from expected commands or settings
 
-Reproducibility expectations:
+Review criteria:
 
 - enough configuration is recorded to rerun the analysis
 - outputs are tied to a known task and dataset version
-- deviations from expected commands or metrics are documented
+- metrics match the benchmark task
+- deviations are documented
 - public outputs avoid restricted row-level artifacts unless release status is clear
+
+Public claim boundary: A run manifest supports reproducibility review for a computational run. It does not prove biological transport, mechanism, safety, or therapeutic effect.
 
 ## Feature Descriptor
 
-What it is: A definition of a feature or descriptor used in a delivery benchmark.
+What it is: A definition of a sequence-derived descriptor or benchmark descriptor used in a delivery benchmark.
 
-Required fields:
+Why it matters: Feature descriptors make derived inputs auditable, reproducible, and easier to compare across baseline models and benchmark tasks.
+
+What a contributor should provide:
 
 - descriptor name
 - biological or computational rationale
@@ -148,45 +149,26 @@ Required fields:
 - calculation method
 - units or value range where applicable
 - implementation reference
+- version or parameter choices where relevant
 - limitations
 
-Documentation expectations:
+Review criteria:
 
-- explain what the descriptor measures
-- explain what it does not prove
-- avoid causal mechanism claims from descriptor values alone
-- include enough detail for reproducible feature extraction
+- descriptor meaning is clear
+- calculation method is reproducible
+- input assumptions are explicit
+- limitations are visible
+- descriptor values are not treated as causal proof
 
-### Example: GRAVY
-
-GRAVY stands for **Grand Average of Hydropathy**. It is a sequence-derived
-summary of residue hydropathy values, usually computed by averaging a
-hydropathy scale such as Kyte-Doolittle across all residues in a peptide or
-protein sequence.
-
-For Permea-style benchmark work, a GRAVY descriptor note should include:
-
-- **Input**: an amino-acid sequence with the alphabet and preprocessing policy
-  made explicit
-- **Calculation**: the hydropathy table used and the averaging rule
-- **Interpretation**: higher values generally indicate a more hydrophobic
-  sequence summary, while lower values indicate a more hydrophilic summary
-- **Reproducibility**: the implementation reference, version, and any sequence
-  normalization rules
-- **Limits**: GRAVY is a coarse physicochemical summary, not direct evidence of
-  transport, uptake mechanism, tissue penetration, or therapeutic effect
-
-GRAVY can be useful as one transparent feature in delivery-related benchmark
-analysis, especially when compared alongside charge, length, aromaticity, and
-other sequence-derived descriptors. However, descriptor values alone should not
-be treated as causal mechanism proof or as a substitute for assay context and
-experimental validation.
+Public claim boundary: A feature descriptor can explain how a sequence-derived delivery-related signal is computed. It does not establish mechanism or validation on its own.
 
 ## Baseline Model
 
 What it is: A reproducible baseline implementation or configuration for a benchmark task.
 
-Required fields:
+Why it matters: Baseline models give benchmark tasks a transparent comparison point before more complex methods are introduced.
+
+What a contributor should provide:
 
 - model family
 - task
@@ -195,85 +177,65 @@ Required fields:
 - split policy
 - metrics
 - output artifacts
+- environment or version notes
 - limitations
 
-Evaluation expectations:
+Review criteria:
 
-- compare against simple baselines when relevant
-- report aggregate metrics with task context
-- include provenance and configuration
-- avoid claims beyond the dataset, split, and metrics used
+- configuration is reproducible
+- comparison is tied to the defined benchmark task
+- aggregate metrics are reported with task context
+- provenance and output artifacts are included
+- limitations and failure modes are explicit
+
+Public claim boundary: A baseline model can support benchmark comparison under a defined task. It does not justify broad best-performance, wet-lab, clinical, or universal prediction claims.
 
 ## Candidate Report
 
-What it is: An exportable prioritization summary for candidate sequences.
+What it is: An exportable prioritization summary for candidate sequences or input objects.
 
-Public/private caution:
+Why it matters: Candidate reports help reviewers understand why a candidate was prioritized before wet-lab work, including benchmark context, feature profile, evidence cards, risk flags, and limitations.
 
-- candidate reports may include sensitive sequences, rankings, or row-level outputs
-- public examples should use safe example inputs or approved public data
-- private or proprietary candidate data should not be uploaded to public issues or PRs
+What a contributor should provide:
 
-Appropriate use:
+- candidate identifier or approved public example input
+- benchmark task and dataset version
+- ranking or score context
+- feature profile
+- related evidence cards
+- risk flags
+- uncertainty and limitations
+- non-claims
+- review status
 
-- summarize candidate ranking under a defined benchmark task
-- include feature profiles, evidence cards, risk flags, and limitations
-- support prioritization before experimental follow-up
-- avoid implying guaranteed delivery, therapeutic effect, or medical advice
+Review criteria:
 
-## Reproduction Report
+- candidate context is tied to a defined benchmark task
+- ranking or score is not presented as biological proof
+- evidence cards and limitations are linked
+- sensitive sequences or row-level outputs are not exposed without approval
+- report language remains appropriate for candidate prioritization before wet-lab work
 
-What it is: A report confirming or challenging a benchmark run.
+Public claim boundary: A candidate report can support prioritization and review. It does not guarantee delivery, therapeutic effect, safety, or clinical relevance.
 
-Required fields:
+## General Public Boundary
 
-- benchmark or task
-- repository commit
-- environment
-- command run
-- output artifacts
-- observed metrics
-- expected metrics if known
-- deviations
-- logs or excerpts
-- reviewer notes
-
-## Contribution Levels
-
-| Level | Contribution | Meaning |
-| --- | --- | --- |
-| Level 0 | Literature pointer | A source or claim is suggested for review. |
-| Level 1 | Evidence card draft | A source is converted into a structured evidence object. |
-| Level 2 | Dataset card proposal | A dataset candidate is described with source, labels, and limitations. |
-| Level 3 | Benchmark task proposal | A task is proposed with input schema, label schema, metrics, and outputs. |
-| Level 4 | Reproducible run manifest | A benchmark run is submitted with provenance. |
-| Level 5 | Community-reviewed benchmark | A task and run package pass community review. |
-| Level 6 | Externally validated extension | Later evidence extends a benchmark direction beyond computational-only status. |
-
-## Claim Boundaries
-
-Contribution objects should preserve conservative evidence levels:
+All contribution objects should preserve conservative evidence levels:
 
 - computational evidence only unless otherwise stated
-- candidate prioritization before experimental follow-up
+- candidate prioritization before wet-lab work
 - no wet-lab validation claim
 - no clinical or therapeutic effect claim
-- no universal prediction claim
-- no state-of-the-art claim
-- no claim of maturity comparable to AlphaFold
-
-## Public / Private Data Caution
-
-Public contributions should not include private or proprietary data unless the contributor has rights to share it.
-
-Do not upload secrets, credentials, private sequences, partner-controlled data, restricted row-level datasets, or sensitive candidate rankings.
+- no universal delivery prediction claim
+- no unsupported best-performance claim
+- no solved-delivery claim
 
 When release status is unclear, describe the proposed contribution at aggregate or schema level and ask maintainers for review.
 
 ## Next Steps for Contributors
 
 1. Read [CONTRIBUTING.md](../CONTRIBUTING.md).
-2. Choose the issue template matching the contribution object.
+2. Choose the contribution object that matches the proposed work.
 3. Keep the first proposal narrow and reviewable.
 4. Include source attribution, limitations, and non-claims.
 5. Open a PR only after the contribution object is clear enough to review.
