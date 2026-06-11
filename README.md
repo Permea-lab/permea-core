@@ -191,6 +191,12 @@ Artifact specs:
 - [Evidence Card Spec](docs/specs/EVIDENCE_CARD_SPEC.md)
 - [Run Manifest Spec](docs/specs/RUN_MANIFEST_SPEC.md)
 
+Benchmark registry and examples:
+
+- [Benchmark Registry](docs/benchmarks/BENCHMARK_REGISTRY.md)
+- [Examples README](docs/examples/README.md)
+- [Example Output Package](docs/examples/EXAMPLE_OUTPUT_PACKAGE.md)
+
 Contributor and community docs:
 
 - [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md)
