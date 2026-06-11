@@ -1,0 +1,32 @@
+dataset_id: b3pred_dataset3
+dataset_name: B3Pred Dataset 3 dataset-card proposal
+source_ids:
+  - b3pred_dataset3
+  - b3pdb
+  - brainpeps
+benchmark_ids:
+  - bbb_b3pred_dataset3
+delivery_axis: blood-brain barrier
+biological_scope: benchmark-oriented BBB peptide classification surface
+expected_data_type: peptide sequences and source-defined benchmark labels
+label_type: binary source-defined benchmark label; label policy requires source review
+acquisition_status: benchmark-mapped
+license_access_status: source attribution and redistribution require review
+redistribution_status: not-confirmed
+provenance_requirements:
+  - source dataset name and citation lineage
+  - source construction notes
+  - peptide sequence and source-defined label
+  - access date or source version if available
+  - transformations and split policy notes
+split_policy:
+  method: stratified_kfold
+  leakage_checks:
+    - exact_sequence_duplicate_check
+    - source_group_review
+known_limitations:
+  - source access and license posture require review
+  - labels are source-defined benchmark labels
+  - dataset card does not imply row-level data is present in this repository
+claim_boundary: dataset-card metadata proposal only; no dataset downloaded, no redistribution rights confirmed, and no wet-lab validation by Permea
+next_action: trace source citation and construction policy before dataset-card review
