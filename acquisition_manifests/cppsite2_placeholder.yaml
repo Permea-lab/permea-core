@@ -1,0 +1,32 @@
+manifest_id: cppsite2_placeholder_acquisition_plan
+dataset_id: cppsite2_placeholder
+source_ids:
+  - cppsite2
+benchmark_ids:
+  - cpp_cppsite2_placeholder
+acquisition_mode: manual-source-card
+acquisition_status: source-carded
+redistribution_status: not-reviewed
+expected_local_outputs:
+  - ignored local field inventory if access is later confirmed
+  - ignored local provenance notes if acquisition is later approved
+  - generated dataset card metadata only in this repository
+provenance_requirements:
+  - source record identifier
+  - peptide sequence and modification state
+  - cargo or assay context where available
+  - source publication or PMID/DOI
+  - access date and source version if later reviewed
+license_review_required: true
+manual_review_required: true
+failure_modes:
+  - source access path changes or is unavailable
+  - license/access terms remain unclear
+  - positive-only source membership creates negative sampling risk
+  - cargo or assay context is incomplete
+fallback_strategy:
+  - keep source card and dataset card as metadata-only planning artifacts
+  - require negative sampling proposal before benchmark use
+  - defer acquisition until access and redistribution posture are reviewed
+claim_boundary: acquisition manifest metadata only; no dataset downloaded, no acquisition executed, no redistribution rights confirmed, and no wet-lab validation by Permea
+next_action: verify access path, license/access terms, field schema, and negative sampling policy before any acquisition script is proposed
