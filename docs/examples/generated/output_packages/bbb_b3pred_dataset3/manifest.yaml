@@ -1,0 +1,39 @@
+run_id: example_bbb_b3pred_dataset3_output_package
+generated_at: example-generated
+artifact_type: example_metadata_artifact
+benchmark_id: bbb_b3pred_dataset3
+task_name: bbb_peptide_prioritization_v1
+delivery_context: blood_brain_barrier_peptide_prioritization
+maturity_level: baseline-ready
+dataset:
+  dataset_card_path: docs/specs/DATASET_CARD_SPEC.md
+  dataset_version: example
+  label_version: example
+  release_posture: public_example_metadata_only
+benchmark_task:
+  benchmark_task_path: docs/specs/BENCHMARK_TASK_SPEC.md
+  task_version: example
+  task_type: example_metadata_only
+split_policy:
+  method: stratified_kfold
+  leakage_checks:
+  - exact_sequence_duplicate_check
+  - source_group_review
+metrics_output_path: metrics.json
+ranking_output_path: ranking.csv
+benchmark_card_path: benchmark_card.md
+evidence_card_paths:
+- evidence_cards.json
+example_boundaries:
+  no_model_execution: true
+  no_dataset_download: true
+  no_wet_lab_validation_by_permea: true
+  no_redistribution_rights_confirmation: true
+limitations:
+- source_attribution_and_redistribution_require_review
+- labels_are_source_defined_benchmark_labels
+- aggregate_metrics_do_not_prove_transport_or_mechanism
+claim_boundary: Computational benchmark evidence only; supports candidate prioritization
+  before wet-lab work.
+generation_note: Example metadata artifact only; no model execution, no dataset download,
+  no wet-lab validation by Permea, and no redistribution-rights confirmation.

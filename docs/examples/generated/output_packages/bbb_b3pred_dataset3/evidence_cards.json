@@ -1,0 +1,22 @@
+[
+  {
+    "artifact_type": "example_metadata_artifact",
+    "assay_or_evidence_type": "example_metadata_only",
+    "claim_boundary": "Computational benchmark evidence only; supports candidate prioritization before wet-lab work.",
+    "delivery_context": "blood_brain_barrier_peptide_prioritization",
+    "evidence_card_id": "ec_bbb_b3pred_dataset3_example_metadata",
+    "generated_at": "example-generated",
+    "generation_note": "Example metadata artifact only; no model execution, no dataset download, no wet-lab validation by Permea, and no redistribution-rights confirmation.",
+    "limitations": [
+      "source_attribution_and_redistribution_require_review",
+      "labels_are_source_defined_benchmark_labels",
+      "aggregate_metrics_do_not_prove_transport_or_mechanism"
+    ],
+    "related_objects": {
+      "benchmark_task": "docs/specs/BENCHMARK_TASK_SPEC.md",
+      "dataset_card": "docs/specs/DATASET_CARD_SPEC.md"
+    },
+    "review_status": "draft_example",
+    "support_level": "example_only"
+  }
+]
