@@ -194,6 +194,8 @@ Artifact specs:
 Benchmark registry and examples:
 
 - [Benchmark Registry](docs/benchmarks/BENCHMARK_REGISTRY.md)
+- [Online Data Source Registry](docs/data/ONLINE_DATA_SOURCE_REGISTRY.md)
+- [Acquisition and Fallback Plan](docs/data/ACQUISITION_AND_FALLBACK_PLAN.md)
 - [Examples README](docs/examples/README.md)
 - [Example Output Package](docs/examples/EXAMPLE_OUTPUT_PACKAGE.md)
 
