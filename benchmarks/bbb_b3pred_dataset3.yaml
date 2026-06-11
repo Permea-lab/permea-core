@@ -1,0 +1,32 @@
+benchmark_id: bbb_b3pred_dataset3
+task_name: bbb_peptide_prioritization_v1
+delivery_context: blood_brain_barrier_peptide_prioritization
+maturity_level: baseline-ready
+dataset_card: docs/specs/DATASET_CARD_SPEC.md
+benchmark_task_spec: docs/specs/BENCHMARK_TASK_SPEC.md
+split_policy:
+  method: stratified_kfold
+  leakage_checks:
+    - exact_sequence_duplicate_check
+    - source_group_review
+metrics:
+  primary: pr_auc
+  secondary:
+    - roc_auc
+    - mcc
+    - f1
+baseline_models:
+  - dummy
+  - logistic_regression
+  - random_forest
+output_artifacts:
+  - metrics.json
+  - ranking.csv
+  - manifest.yaml
+  - benchmark_card.md
+  - evidence_cards.json
+limitations:
+  - source_attribution_and_redistribution_require_review
+  - labels_are_source_defined_benchmark_labels
+  - aggregate_metrics_do_not_prove_transport_or_mechanism
+claim_boundary: "Computational benchmark evidence only; supports candidate prioritization before wet-lab work."

@@ -197,6 +197,12 @@ Benchmark registry and examples:
 - [Examples README](docs/examples/README.md)
 - [Example Output Package](docs/examples/EXAMPLE_OUTPUT_PACKAGE.md)
 
+Validate the benchmark registry scaffold:
+
+```bash
+python3 scripts/validate_benchmark_registry.py
+```
+
 Contributor and community docs:
 
 - [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md)
