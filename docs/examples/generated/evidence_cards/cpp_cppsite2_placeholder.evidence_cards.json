@@ -3,10 +3,10 @@
     "artifact_status": "example metadata artifact",
     "artifact_type": "example_metadata_artifact",
     "assay_or_evidence_type": "example_metadata_only",
-    "benchmark_id": "bbb_b3pred_dataset3",
-    "claim_boundary": "Computational benchmark evidence only; supports candidate prioritization before wet-lab work.",
-    "delivery_context": "blood_brain_barrier_peptide_prioritization",
-    "evidence_card_id": "ec_bbb_b3pred_dataset3_metadata_example",
+    "benchmark_id": "cpp_cppsite2_placeholder",
+    "claim_boundary": "Proposed computational benchmark surface only; no wet-lab, clinical, universal, or solved-delivery claim.",
+    "delivery_context": "cell_penetrating_peptide_membrane_penetration",
+    "evidence_card_id": "ec_cpp_cppsite2_placeholder_metadata_example",
     "evidence_type": "metadata",
     "extracted_claim": {
       "source_context_preserved": true,
@@ -15,9 +15,9 @@
     "generated_at": "example-generated",
     "generation_note": "Example metadata artifact only; no model execution, no dataset download, no wet-lab validation by Permea, and no redistribution-rights confirmation.",
     "limitations": [
-      "source_attribution_and_redistribution_require_review",
-      "labels_are_source_defined_benchmark_labels",
-      "aggregate_metrics_do_not_prove_transport_or_mechanism"
+      "dataset_card_needed",
+      "source_context_and_label_policy_require_review",
+      "placeholder_entry_not_a_completed_benchmark"
     ],
     "molecule_sequence_cargo": {
       "cargo_context": "not_specified_in_example_metadata",
@@ -32,7 +32,7 @@
     },
     "provenance_status": "metadata_only_no_source_retrieval",
     "related_objects": {
-      "benchmark_id": "bbb_b3pred_dataset3",
+      "benchmark_id": "cpp_cppsite2_placeholder",
       "benchmark_task": "docs/specs/BENCHMARK_TASK_SPEC.md",
       "dataset_card": "docs/specs/DATASET_CARD_SPEC.md"
     },
@@ -44,6 +44,6 @@
       "source_kind": "benchmark_metadata"
     },
     "support_level": "example_only",
-    "task_name": "bbb_peptide_prioritization_v1"
+    "task_name": "cpp_membrane_penetration_placeholder_v1"
   }
 ]

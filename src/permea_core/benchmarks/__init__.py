@@ -8,6 +8,15 @@ from .cards import (
     generate_benchmark_cards_from_registry,
     render_benchmark_card,
 )
+from .evidence_cards import (
+    DEFAULT_EVIDENCE_CARD_DIR,
+    DEFAULT_EVIDENCE_CARD_INPUTS,
+    EvidenceCardBatchResult,
+    EvidenceCardGenerationResult,
+    generate_evidence_card,
+    generate_evidence_cards_file,
+    generate_evidence_cards_for_inputs,
+)
 from .output_package import (
     DEFAULT_OUTPUT_PACKAGE_DIR,
     DEFAULT_OUTPUT_PACKAGE_INPUT,
@@ -33,11 +42,15 @@ from .registry import (
 __all__ = [
     "ALLOWED_MATURITY_LEVELS",
     "DEFAULT_BENCHMARK_CARD_DIR",
+    "DEFAULT_EVIDENCE_CARD_DIR",
+    "DEFAULT_EVIDENCE_CARD_INPUTS",
     "DEFAULT_OUTPUT_PACKAGE_DIR",
     "DEFAULT_OUTPUT_PACKAGE_INPUT",
     "EXPECTED_OUTPUT_ARTIFACTS",
     "OUTPUT_PACKAGE_FILES",
     "BenchmarkCardBatchResult",
+    "EvidenceCardBatchResult",
+    "EvidenceCardGenerationResult",
     "REQUIRED_REGISTRY_FIELDS",
     "BenchmarkCardGenerationResult",
     "BenchmarkDefinition",
@@ -47,7 +60,10 @@ __all__ = [
     "RegistryValidationResult",
     "generate_benchmark_card_file",
     "generate_benchmark_cards_from_registry",
+    "generate_evidence_card",
     "generate_evidence_cards",
+    "generate_evidence_cards_file",
+    "generate_evidence_cards_for_inputs",
     "generate_manifest",
     "generate_metrics",
     "generate_output_package",
