@@ -1,0 +1,31 @@
+benchmark_id: cpp_cppsite2_placeholder
+task_name: cpp_membrane_penetration_placeholder_v1
+delivery_context: cell_penetrating_peptide_membrane_penetration
+maturity_level: proposed
+dataset_card: docs/specs/DATASET_CARD_SPEC.md
+benchmark_task_spec: docs/specs/BENCHMARK_TASK_SPEC.md
+split_policy:
+  method: to_be_defined
+  leakage_checks:
+    - exact_sequence_duplicate_check
+    - source_context_review
+metrics:
+  primary: to_be_defined
+  secondary:
+    - roc_auc
+    - pr_auc
+    - mcc
+baseline_models:
+  - dummy
+  - logistic_regression
+output_artifacts:
+  - metrics.json
+  - ranking.csv
+  - manifest.yaml
+  - benchmark_card.md
+  - evidence_cards.json
+limitations:
+  - dataset_card_needed
+  - source_context_and_label_policy_require_review
+  - placeholder_entry_not_a_completed_benchmark
+claim_boundary: "Proposed computational benchmark surface only; no wet-lab, clinical, universal, or solved-delivery claim."
