@@ -211,6 +211,12 @@ Validate the source registry scaffold:
 python3 scripts/validate_source_registry.py
 ```
 
+Validate all current local registry and artifact layers:
+
+```bash
+python3 scripts/validate_permea_artifacts.py
+```
+
 Generate public-safe benchmark card examples from the registry scaffold:
 
 ```bash
