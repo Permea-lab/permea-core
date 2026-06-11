@@ -1,0 +1,20 @@
+source_id: brainpeps
+source_name: BrainPeps
+delivery_axis: blood-brain barrier
+biological_scope: BBB peptide transport evidence
+likely_data_type: peptide records, BBB transport labels, positive and negative source records where available, assay and literature context
+acquisition_mode: manual-source-card
+license_access_status: to verify
+redistribution_risk: no redistribution until source terms are confirmed
+provenance_strength: high if label polarity, assay context, PMID/DOI, and source method are preserved
+benchmark_mapping:
+  - BBB peptide benchmark candidates
+  - evidence-card support
+priority: high
+current_status: source-carded
+next_action: verify database availability, field definitions, export posture, and license/access terms
+limitations:
+  - source availability and export mode require review
+  - assay contexts may vary
+  - source labels should not be generalized beyond their source context
+claim_boundary: source inventory metadata only; benchmark use requires reviewed access, license, provenance, and label policy

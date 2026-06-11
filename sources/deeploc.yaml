@@ -1,0 +1,18 @@
+source_id: deeploc
+source_name: DeepLoc dataset / DeepLoc service documentation
+delivery_axis: localization proxy
+biological_scope: eukaryotic protein subcellular localization
+likely_data_type: protein sequences, subcellular localization labels, sorting-signal labels where available, source accessions
+acquisition_mode: no-redistribution-source-card-only
+license_access_status: to verify for dataset redistribution
+redistribution_risk: no redistribution until dataset license and terms are confirmed
+provenance_strength: medium-to-high if accession, evidence code, localization label, and split origin are preserved
+benchmark_mapping:
+  - localization / targeting proxy roadmap
+priority: medium
+current_status: source-carded
+next_action: verify dataset availability, license/access terms, label schema, and proxy-task wording
+limitations:
+  - proxy task only
+  - localization labels do not prove delivery, transport, cargo uptake, or therapeutic effect
+claim_boundary: proxy-source metadata only; does not claim direct delivery evidence or benchmark readiness
