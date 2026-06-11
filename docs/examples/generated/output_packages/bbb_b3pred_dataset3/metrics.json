@@ -1,0 +1,20 @@
+{
+  "artifact_type": "example_metadata_artifact",
+  "benchmark_id": "bbb_b3pred_dataset3",
+  "claim_boundary": "Computational benchmark evidence only; supports candidate prioritization before wet-lab work.",
+  "generated_at": "example-generated",
+  "generation_note": "Example metadata artifact only; no model execution, no dataset download, no wet-lab validation by Permea, and no redistribution-rights confirmation.",
+  "limitations": [
+    "source_attribution_and_redistribution_require_review",
+    "labels_are_source_defined_benchmark_labels",
+    "aggregate_metrics_do_not_prove_transport_or_mechanism"
+  ],
+  "metric_values": {
+    "f1": null,
+    "mcc": null,
+    "pr_auc": null,
+    "roc_auc": null
+  },
+  "model_or_baseline": "example_placeholder_no_model_execution",
+  "task_name": "bbb_peptide_prioritization_v1"
+}
