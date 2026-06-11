@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .cards import render_benchmark_card
+from .evidence_cards import generate_evidence_cards
 from .registry import load_registry_yaml, validate_registry_file, yaml
 
 
@@ -119,29 +120,6 @@ def generate_ranking(entry: dict[str, Any]) -> list[dict[str, Any]]:
             "review_status": "example_metadata_only",
             "note": "No model execution or dataset download.",
         },
-    ]
-
-
-def generate_evidence_cards(entry: dict[str, Any]) -> list[dict[str, Any]]:
-    """Generate deterministic example evidence-card metadata."""
-    benchmark_id = _required_string(entry, "benchmark_id")
-    return [
-        {
-            "evidence_card_id": f"ec_{benchmark_id}_example_metadata",
-            "artifact_type": "example_metadata_artifact",
-            "generated_at": EXAMPLE_GENERATED_AT,
-            "delivery_context": _required_string(entry, "delivery_context"),
-            "assay_or_evidence_type": "example_metadata_only",
-            "support_level": "example_only",
-            "review_status": "draft_example",
-            "related_objects": {
-                "dataset_card": _required_string(entry, "dataset_card"),
-                "benchmark_task": _required_string(entry, "benchmark_task_spec"),
-            },
-            "limitations": entry.get("limitations", []),
-            "claim_boundary": _required_string(entry, "claim_boundary"),
-            "generation_note": EXAMPLE_NOTE,
-        }
     ]
 
 
