@@ -1,0 +1,30 @@
+dataset_id: cppsite2_placeholder
+dataset_name: CPPsite 2.0 placeholder dataset-card proposal
+source_ids:
+  - cppsite2
+benchmark_ids:
+  - cpp_cppsite2_placeholder
+delivery_axis: cell penetration / membrane penetration
+biological_scope: cell-penetrating peptide benchmark candidate surface
+expected_data_type: peptide sequences, CPP annotations, cargo/context notes, modifications, and literature metadata where available
+label_type: source-defined CPP membership or experimentally reported CPP evidence; negative label policy requires review
+acquisition_status: source-carded
+license_access_status: to verify
+redistribution_status: not-reviewed
+provenance_requirements:
+  - source record identifier
+  - peptide sequence and modification state
+  - cargo or assay context where available
+  - source publication or PMID/DOI
+  - access date and source version if available
+split_policy:
+  method: to_be_defined
+  leakage_checks:
+    - exact_sequence_duplicate_check
+    - source_context_review
+known_limitations:
+  - likely positive/source-membership oriented
+  - negative sampling risk must be addressed before benchmark use
+  - access and redistribution posture require review
+claim_boundary: dataset-card metadata proposal only; no dataset downloaded, no redistribution rights confirmed, and no wet-lab validation by Permea
+next_action: verify access path, license/access terms, field schema, and negative sampling policy
