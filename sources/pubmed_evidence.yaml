@@ -1,0 +1,19 @@
+source_id: pubmed_evidence
+source_name: PubMed / NCBI literature metadata
+delivery_axis: literature evidence graph
+biological_scope: delivery-related publications and source citations
+likely_data_type: bibliographic metadata, PMID, DOI, title, abstract where permitted, publication type, full-text links where available
+acquisition_mode: literature-metadata
+license_access_status: metadata access public; abstract and full-text reuse require copyright and source review
+redistribution_risk: no redistribution of article text unless record-level rights permit it
+provenance_strength: high for citation-level provenance; content reuse varies by record
+benchmark_mapping:
+  - evidence cards for BBB, CPP, localization, and benchmark source claims
+priority: high
+current_status: source-carded
+next_action: define citation metadata fields and copyright-safe extraction policy before automated use
+limitations:
+  - PubMed is an index and citation source
+  - PubMed does not itself grant reuse rights for all linked content
+  - extracted claims require separate evidence-card review
+claim_boundary: citation and evidence-source metadata only; does not grant text reuse rights or validate extracted claims

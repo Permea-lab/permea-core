@@ -1,0 +1,20 @@
+source_id: uniprot_subcellular_location
+source_name: UniProt subcellular location annotations
+delivery_axis: localization proxy
+biological_scope: curated protein subcellular location and topology annotations
+likely_data_type: protein accessions, sequences, location annotations, topology annotations, evidence/provenance fields
+acquisition_mode: api-metadata-to-verify
+license_access_status: to verify from current UniProt license and terms
+redistribution_risk: no redistribution until current terms and record-level attribution requirements are confirmed
+provenance_strength: high if accession, release, annotation evidence, location vocabulary, and citation fields are preserved
+benchmark_mapping:
+  - localization / targeting proxy roadmap
+  - evidence-card support
+priority: medium
+current_status: source-carded
+next_action: verify license/access terms, retrieval mode, release/version recording, and evidence-code policy
+limitations:
+  - proxy task only
+  - annotations may mix evidence strengths
+  - should not be treated as direct delivery labels
+claim_boundary: source inventory metadata only; future retrieval and reuse require terms review

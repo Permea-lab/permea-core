@@ -205,6 +205,12 @@ Validate the benchmark registry scaffold:
 python3 scripts/validate_benchmark_registry.py
 ```
 
+Validate the source registry scaffold:
+
+```bash
+python3 scripts/validate_source_registry.py
+```
+
 Generate public-safe benchmark card examples from the registry scaffold:
 
 ```bash

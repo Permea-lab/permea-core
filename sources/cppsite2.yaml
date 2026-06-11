@@ -1,0 +1,19 @@
+source_id: cppsite2
+source_name: CPPsite 2.0
+delivery_axis: cell penetration / membrane penetration
+biological_scope: experimentally reported cell-penetrating peptides
+likely_data_type: peptide sequences, CPP annotations, cargo/context notes, modifications, literature metadata
+acquisition_mode: manual-source-card
+license_access_status: to verify
+redistribution_risk: no redistribution until source terms are confirmed
+provenance_strength: high if source entry identifiers, citations, cargo, modification, and assay fields are preserved
+benchmark_mapping:
+  - cpp_cppsite2_placeholder
+  - future CPP prototype benchmark task
+priority: medium
+current_status: source-carded
+next_action: verify current access path, license/access terms, field schema, and original CPPsite lineage value
+limitations:
+  - likely positive/source-membership oriented
+  - negative sampling risk must be addressed before benchmark use
+claim_boundary: source inventory metadata only; CPP benchmark use requires reviewed source terms and label policy

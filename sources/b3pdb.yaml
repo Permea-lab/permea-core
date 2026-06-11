@@ -1,0 +1,20 @@
+source_id: b3pdb
+source_name: B3PDB
+delivery_axis: blood-brain barrier
+biological_scope: blood-brain barrier penetrating peptides
+likely_data_type: peptide sequences, source-defined BBB labels, structural/source annotations, literature/source metadata
+acquisition_mode: manual-source-card
+license_access_status: to verify
+redistribution_risk: no redistribution until source terms are confirmed
+provenance_strength: medium-to-high if original source identifiers, papers, labels, and evidence context are preserved
+benchmark_mapping:
+  - bbb_b3pred_dataset3
+  - future BBB peptide benchmark candidates
+priority: high
+current_status: source-carded
+next_action: verify current access path, license/access terms, citation metadata, and fields available for review
+limitations:
+  - source context requires review
+  - labels are source-defined benchmark labels
+  - redistribution status is not confirmed
+claim_boundary: source inventory metadata only; does not claim data download, redistribution permission, wet-lab validation, or benchmark readiness
