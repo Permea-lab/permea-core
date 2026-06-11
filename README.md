@@ -205,6 +205,12 @@ Validate the benchmark registry scaffold:
 python3 scripts/validate_benchmark_registry.py
 ```
 
+Generate public-safe benchmark card examples from the registry scaffold:
+
+```bash
+python3 scripts/generate_benchmark_card.py
+```
+
 Contributor and community docs:
 
 - [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md)
