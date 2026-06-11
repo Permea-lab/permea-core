@@ -1,0 +1,34 @@
+manifest_id: b3pred_dataset3_acquisition_plan
+dataset_id: b3pred_dataset3
+source_ids:
+  - b3pred_dataset3
+  - b3pdb
+  - brainpeps
+benchmark_ids:
+  - bbb_b3pred_dataset3
+acquisition_mode: no-redistribution-source-card-only
+acquisition_status: no-redistribution-source-card-only
+redistribution_status: not-confirmed
+expected_local_outputs:
+  - ignored local source review notes if access is later confirmed
+  - ignored local provenance ledger if acquisition is later approved
+  - generated dataset card metadata only in this repository
+provenance_requirements:
+  - source dataset name and citation lineage
+  - source construction notes
+  - source-defined label policy
+  - access date or source version if later reviewed
+  - transformation and split policy notes
+license_review_required: true
+manual_review_required: true
+failure_modes:
+  - source access cannot be confirmed
+  - license terms do not allow redistribution
+  - source construction policy remains ambiguous
+  - provenance fields are insufficient for benchmark use
+fallback_strategy:
+  - keep dataset in source-card-only mode
+  - retain benchmark mapping as metadata only
+  - defer dataset card promotion until source and license review pass
+claim_boundary: acquisition manifest metadata only; no dataset downloaded, no acquisition executed, no redistribution rights confirmed, and no wet-lab validation by Permea
+next_action: review source citation lineage, access posture, and license terms before any acquisition script is proposed
