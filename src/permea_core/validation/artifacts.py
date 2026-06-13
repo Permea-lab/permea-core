@@ -17,11 +17,13 @@ VALIDATION_STEPS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("benchmark registry validation", ("scripts/validate_benchmark_registry.py",)),
     ("dataset card validation", ("scripts/validate_dataset_cards.py",)),
     ("acquisition manifest validation", ("scripts/validate_acquisition_manifests.py",)),
+    ("run manifest validation", ("scripts/validate_run_manifests.py",)),
     ("benchmark card generation", ("scripts/generate_benchmark_card.py",)),
     ("output package generation", ("scripts/generate_output_package.py",)),
     ("evidence card generation", ("scripts/generate_evidence_cards.py",)),
     ("dataset card generation", ("scripts/generate_dataset_cards.py",)),
     ("acquisition manifest generation", ("scripts/generate_acquisition_manifests.py",)),
+    ("run manifest generation", ("scripts/generate_run_manifests.py",)),
 )
 
 
