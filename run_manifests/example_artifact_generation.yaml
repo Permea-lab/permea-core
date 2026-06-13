@@ -1,0 +1,50 @@
+run_id: example_artifact_generation
+run_type: artifact-generation-example
+generated_at: example-generated
+artifact_status: example-metadata-artifact
+benchmark_ids:
+  - bbb_b3pred_dataset3
+  - cpp_cppsite2_placeholder
+dataset_ids:
+  - b3pred_dataset3
+  - cppsite2_placeholder
+source_ids:
+  - b3pred_dataset3
+  - cppsite2
+acquisition_manifest_ids:
+  - b3pred_dataset3_acquisition_plan
+  - cppsite2_placeholder_acquisition_plan
+commands:
+  - python3 scripts/generate_permea_artifacts.py
+  - python3 scripts/validate_permea_artifacts.py
+generated_artifacts:
+  - docs/examples/generated/benchmark_cards/bbb_b3pred_dataset3.md
+  - docs/examples/generated/benchmark_cards/cpp_cppsite2_placeholder.md
+  - docs/examples/generated/output_packages/bbb_b3pred_dataset3/manifest.yaml
+  - docs/examples/generated/output_packages/bbb_b3pred_dataset3/metrics.json
+  - docs/examples/generated/output_packages/bbb_b3pred_dataset3/ranking.csv
+  - docs/examples/generated/output_packages/bbb_b3pred_dataset3/benchmark_card.md
+  - docs/examples/generated/output_packages/bbb_b3pred_dataset3/evidence_cards.json
+  - docs/examples/generated/evidence_cards/bbb_b3pred_dataset3.evidence_cards.json
+  - docs/examples/generated/evidence_cards/cpp_cppsite2_placeholder.evidence_cards.json
+  - docs/examples/generated/dataset_cards/b3pred_dataset3.md
+  - docs/examples/generated/dataset_cards/cppsite2_placeholder.md
+  - docs/examples/generated/acquisition_manifests/b3pred_dataset3.md
+  - docs/examples/generated/acquisition_manifests/cppsite2_placeholder.md
+validation_steps:
+  - python3 scripts/validate_run_manifests.py
+  - python3 scripts/validate_permea_artifacts.py
+  - python3 -m pytest tests/test_run_manifests.py
+provenance_summary: "Example metadata record for deterministic local artifact generation and validation. It records commands and artifact paths only."
+claim_boundary: "Metadata-only run manifest for deterministic artifact examples; no dataset acquisition, no model execution, no wet-lab validation by Permea, and no model performance claim."
+limitations:
+  - Example metadata only.
+  - Commands record local artifact generation and validation surfaces.
+  - Artifact paths point to public-safe generated examples.
+non_claims:
+  - no dataset downloaded
+  - no acquisition executed
+  - no redistribution rights confirmed
+  - no wet-lab validation by Permea
+  - no model performance claim
+next_action: "Review run manifest metadata before any real benchmark execution record."

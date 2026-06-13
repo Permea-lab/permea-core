@@ -217,6 +217,12 @@ Validate all current local registry and artifact layers:
 python3 scripts/validate_permea_artifacts.py
 ```
 
+Validate run manifest examples:
+
+```bash
+python3 scripts/validate_run_manifests.py
+```
+
 Generate public-safe benchmark card examples from the registry scaffold:
 
 ```bash
@@ -227,6 +233,12 @@ Generate all current deterministic artifact examples:
 
 ```bash
 python3 scripts/generate_permea_artifacts.py
+```
+
+Generate run manifest examples:
+
+```bash
+python3 scripts/generate_run_manifests.py
 ```
 
 Contributor and community docs:

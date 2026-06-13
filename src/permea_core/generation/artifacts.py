@@ -18,6 +18,7 @@ GENERATION_STEPS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("evidence card generation", ("scripts/generate_evidence_cards.py",)),
     ("dataset card generation", ("scripts/generate_dataset_cards.py",)),
     ("acquisition manifest generation", ("scripts/generate_acquisition_manifests.py",)),
+    ("run manifest generation", ("scripts/generate_run_manifests.py",)),
 )
 
 
