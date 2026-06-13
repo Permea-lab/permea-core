@@ -1,0 +1,165 @@
+{
+  "commands_executed": [
+    {
+      "command": "python3 scripts/validate_benchmark_registry.py",
+      "name": "benchmark registry validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/validate_dataset_cards.py",
+      "name": "dataset card validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/validate_acquisition_manifests.py",
+      "name": "acquisition manifest validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/validate_run_manifests.py",
+      "name": "run manifest validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/generate_benchmark_card.py",
+      "name": "benchmark card generation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/generate_evidence_cards.py",
+      "name": "evidence card generation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/generate_output_package.py",
+      "name": "output package generation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/generate_run_manifests.py",
+      "name": "run manifest generation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/generate_artifact_index.py",
+      "name": "artifact index generation",
+      "return_code": 0,
+      "status": "PASS"
+    }
+  ],
+  "dry_run_id": "example_benchmark_dry_run",
+  "dry_run_type": "benchmark-dry-run-example",
+  "generated_artifacts": [
+    {
+      "label": "benchmark card",
+      "path": "docs/examples/generated/benchmark_cards/bbb_b3pred_dataset3.md"
+    },
+    {
+      "label": "evidence cards",
+      "path": "docs/examples/generated/evidence_cards/bbb_b3pred_dataset3.evidence_cards.json"
+    },
+    {
+      "label": "output package manifest",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/manifest.yaml"
+    },
+    {
+      "label": "output package metrics metadata",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/metrics.json"
+    },
+    {
+      "label": "output package ranking metadata",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/ranking.csv"
+    },
+    {
+      "label": "generated run manifest",
+      "path": "docs/examples/generated/run_manifests/example_artifact_generation.md"
+    },
+    {
+      "label": "artifact index",
+      "path": "docs/examples/generated/ARTIFACT_INDEX.md"
+    }
+  ],
+  "generated_at": "example-generated",
+  "input_artifacts": [
+    {
+      "label": "benchmark registry",
+      "path": "benchmarks/registry.yaml"
+    },
+    {
+      "label": "benchmark metadata",
+      "path": "benchmarks/bbb_b3pred_dataset3.yaml"
+    },
+    {
+      "label": "dataset card metadata",
+      "path": "dataset_cards/b3pred_dataset3.yaml"
+    },
+    {
+      "label": "acquisition manifest metadata",
+      "path": "acquisition_manifests/b3pred_dataset3.yaml"
+    },
+    {
+      "label": "run manifest metadata",
+      "path": "run_manifests/example_artifact_generation.yaml"
+    }
+  ],
+  "limitations": [
+    "This dry-run is generated from local metadata and example artifacts only.",
+    "It does not load source datasets or inspect row-level biological data.",
+    "It does not evaluate baselines, train models, score candidates, or measure performance.",
+    "It does not confirm access, license, redistribution, or acquisition readiness."
+  ],
+  "next_action": "Review generated dry-run artifacts and run unified validation.",
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no model performance claim"
+  ],
+  "output_paths": {
+    "json": "docs/examples/generated/dry_runs/example_benchmark_dry_run.json",
+    "markdown": "docs/examples/generated/dry_runs/example_benchmark_dry_run.md",
+    "readme": "docs/examples/generated/dry_runs/README.md"
+  },
+  "status": "PASS",
+  "validation_steps": [
+    {
+      "command": "python3 scripts/validate_benchmark_registry.py",
+      "name": "benchmark registry validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/validate_dataset_cards.py",
+      "name": "dataset card validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/validate_acquisition_manifests.py",
+      "name": "acquisition manifest validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/validate_run_manifests.py",
+      "name": "run manifest validation",
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 scripts/generate_artifact_index.py",
+      "name": "artifact index generation",
+      "return_code": 0,
+      "status": "PASS"
+    }
+  ]
+}

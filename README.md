@@ -217,6 +217,12 @@ Validate all current local registry and artifact layers:
 python3 scripts/validate_permea_artifacts.py
 ```
 
+Run the deterministic benchmark dry-run:
+
+```bash
+python3 scripts/run_permea_dry_run.py
+```
+
 Generate the public artifact index:
 
 ```bash
@@ -242,6 +248,8 @@ python3 scripts/generate_permea_artifacts.py
 ```
 
 Current generated artifacts are indexed at [Public Artifact Index](docs/examples/generated/ARTIFACT_INDEX.md).
+
+Generated benchmark dry-run reports are available under [Generated Benchmark Dry-Run Reports](docs/examples/generated/dry_runs/README.md).
 
 Generate run manifest examples:
 

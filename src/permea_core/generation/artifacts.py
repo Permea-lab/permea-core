@@ -20,6 +20,7 @@ GENERATION_STEPS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("acquisition manifest generation", ("scripts/generate_acquisition_manifests.py",)),
     ("run manifest generation", ("scripts/generate_run_manifests.py",)),
     ("artifact index generation", ("scripts/generate_artifact_index.py",)),
+    ("benchmark dry-run generation", ("scripts/run_permea_dry_run.py",)),
 )
 
 
