@@ -223,6 +223,12 @@ Generate public-safe benchmark card examples from the registry scaffold:
 python3 scripts/generate_benchmark_card.py
 ```
 
+Generate all current deterministic artifact examples:
+
+```bash
+python3 scripts/generate_permea_artifacts.py
+```
+
 Contributor and community docs:
 
 - [Contribution Objects](docs/CONTRIBUTION_OBJECTS.md)
