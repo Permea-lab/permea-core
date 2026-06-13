@@ -217,6 +217,12 @@ Validate all current local registry and artifact layers:
 python3 scripts/validate_permea_artifacts.py
 ```
 
+Generate the public artifact index:
+
+```bash
+python3 scripts/generate_artifact_index.py
+```
+
 Validate run manifest examples:
 
 ```bash
@@ -234,6 +240,8 @@ Generate all current deterministic artifact examples:
 ```bash
 python3 scripts/generate_permea_artifacts.py
 ```
+
+Current generated artifacts are indexed at [Public Artifact Index](docs/examples/generated/ARTIFACT_INDEX.md).
 
 Generate run manifest examples:
 
