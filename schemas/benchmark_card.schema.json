@@ -1,0 +1,51 @@
+{
+  "$id": "https://permea-core.local/schemas/benchmark_card.schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "benchmark_id": {
+      "type": "string"
+    },
+    "claim_boundary": {
+      "type": "string"
+    },
+    "dataset_card_refs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "metric_set": {
+      "type": "object"
+    },
+    "output_artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "split_policy": {
+      "type": "object"
+    },
+    "task_type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "benchmark_id",
+    "task_type",
+    "dataset_card_refs",
+    "split_policy",
+    "metric_set",
+    "output_artifacts",
+    "limitations",
+    "claim_boundary"
+  ],
+  "title": "Permea Benchmark Card",
+  "type": "object"
+}

@@ -1,0 +1,2 @@
+"""Public artifact specification registry."""
+

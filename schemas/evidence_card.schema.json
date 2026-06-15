@@ -1,0 +1,47 @@
+{
+  "$id": "https://permea-core.local/schemas/evidence_card.schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "claim_boundary": {
+      "type": "string"
+    },
+    "evidence_id": {
+      "type": "string"
+    },
+    "evidence_type": {
+      "type": "string"
+    },
+    "extracted_claim": {
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "related_artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "review_status": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "evidence_id",
+    "source",
+    "evidence_type",
+    "extracted_claim",
+    "limitations",
+    "review_status",
+    "claim_boundary"
+  ],
+  "title": "Permea Evidence Card",
+  "type": "object"
+}

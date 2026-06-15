@@ -35,7 +35,7 @@ Examples are not wet-lab validation.
 
 Examples are not clinical claims.
 
-Examples are not universal prediction.
+Examples are not broad prediction across delivery contexts.
 
 Examples are not evidence that a benchmark is complete, reproducible, or community-reviewed unless the example explicitly links to reviewed public artifacts that support that status.
 

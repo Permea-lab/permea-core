@@ -49,6 +49,11 @@ PRIMARY_ENTRY_POINTS: tuple[tuple[str, str, str], ...] = (
         "EVALUATION_PACKET.md",
         "Generated template/reference evaluation packet for artifact-system extension.",
     ),
+    (
+        "Public artifact specifications",
+        "../../../docs/specs/README.md",
+        "Public standards for artifact families and their schemas.",
+    ),
 )
 
 ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
@@ -67,6 +72,7 @@ ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
 REPRODUCIBILITY_COMMANDS: tuple[tuple[str, str], ...] = (
     ("reproduce public bundle", "python3 scripts/permea_reproduce.py"),
     ("validate public bundle", "python3 scripts/permea_validate.py"),
+    ("inspect artifact specs", "python3 scripts/permea_specs.py"),
     ("generate evaluation packet", "python3 scripts/permea_evaluate.py"),
     ("generate evidence surface", "python3 scripts/generate_evidence_surface.py"),
     ("generate demo packet", "python3 scripts/generate_demo_packet.py"),

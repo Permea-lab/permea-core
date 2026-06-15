@@ -27,6 +27,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 - Benchmark dry-run report: [dry_runs/example_benchmark_dry_run.md](dry_runs/example_benchmark_dry_run.md) - Generated dry-run output for local metadata and example artifacts. (present)
 - Reproducibility report: [REPRODUCIBILITY_REPORT.md](REPRODUCIBILITY_REPORT.md) - Generated report for reproduction commands, validation checks, lineage, and non-claims. (present)
 - Evaluation packet: [EVALUATION_PACKET.md](EVALUATION_PACKET.md) - Generated template/reference evaluation packet for artifact-system extension. (present)
+- Public artifact specifications: [../../../docs/specs/README.md](../../../docs/specs/README.md) - Public standards for artifact families and their schemas. (present)
 
 ## Artifact families
 
@@ -41,6 +42,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 
 - reproduce public bundle: `python3 scripts/permea_reproduce.py`
 - validate public bundle: `python3 scripts/permea_validate.py`
+- inspect artifact specs: `python3 scripts/permea_specs.py`
 - generate evaluation packet: `python3 scripts/permea_evaluate.py`
 - generate evidence surface: `python3 scripts/generate_evidence_surface.py`
 - generate demo packet: `python3 scripts/generate_demo_packet.py`

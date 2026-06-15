@@ -1,0 +1,46 @@
+{
+  "$id": "https://permea-core.local/schemas/output_package.schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "benchmark_card_path": {
+      "type": "string"
+    },
+    "claim_boundary": {
+      "type": "string"
+    },
+    "evidence_card_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "manifest_path": {
+      "type": "string"
+    },
+    "metrics_path": {
+      "type": "string"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "ranking_path": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "package_id",
+    "manifest_path",
+    "metrics_path",
+    "benchmark_card_path",
+    "limitations",
+    "claim_boundary"
+  ],
+  "title": "Permea Output Package",
+  "type": "object"
+}
