@@ -271,6 +271,12 @@ Generate the public evidence matrix:
 python3 scripts/generate_evidence_matrix.py
 ```
 
+Generate the public evaluation packet:
+
+```bash
+python3 scripts/permea_evaluate.py
+```
+
 Current generated artifacts are indexed at [Public Artifact Index](docs/examples/generated/ARTIFACT_INDEX.md).
 
 Generated benchmark dry-run reports are available under [Generated Benchmark Dry-Run Reports](docs/examples/generated/dry_runs/README.md).
@@ -280,6 +286,8 @@ The generated public demo packet is available at [Public Demo Packet](docs/examp
 The generated public evidence matrix is available at [Public Evidence Matrix](docs/examples/generated/EVIDENCE_MATRIX.md).
 
 Quick local setup starts at [Quickstart](QUICKSTART.md). The reproducibility contract is documented in [Reproducibility](REPRODUCIBILITY.md). The generated reproducibility report is available at [Public Reproducibility Report](docs/examples/generated/REPRODUCIBILITY_REPORT.md).
+
+The public evaluation pattern is documented in [Evaluation Bundle](EVALUATION.md). The generated evaluation packet is available at [Public Evaluation Packet](docs/examples/generated/EVALUATION_PACKET.md).
 
 Generate run manifest examples:
 

@@ -28,6 +28,7 @@ def main() -> int:
     steps: list[tuple[str, list[str]]] = []
     if not args.report_only:
         steps.append(("generate public artifact surfaces", [sys.executable, "scripts/generate_permea_artifacts.py"]))
+        steps.append(("generate evaluation packet", [sys.executable, "scripts/permea_evaluate.py"]))
     steps.append(("write reproducibility report", [sys.executable, "scripts/permea_reproduce.py", "--report-only"]))
 
     if args.report_only:
@@ -53,6 +54,7 @@ def main() -> int:
             return completed.returncode
     print("PASS Permea public reproduction")
     print("- evidence surface: docs/examples/generated/README.md")
+    print("- evaluation packet: docs/examples/generated/EVALUATION_PACKET.md")
     print("- reproducibility report: docs/examples/generated/REPRODUCIBILITY_REPORT.md")
     return 0
 

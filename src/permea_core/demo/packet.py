@@ -34,6 +34,7 @@ INPUT_ARTIFACTS: tuple[tuple[str, str], ...] = (
 
 GENERATED_ARTIFACTS: tuple[tuple[str, str], ...] = (
     ("artifact index", "docs/examples/generated/ARTIFACT_INDEX.md"),
+    ("evaluation packet", "docs/examples/generated/EVALUATION_PACKET.md"),
     ("reproducibility report", "docs/examples/generated/REPRODUCIBILITY_REPORT.md"),
     ("benchmark dry-run Markdown", "docs/examples/generated/dry_runs/example_benchmark_dry_run.md"),
     ("benchmark dry-run JSON", "docs/examples/generated/dry_runs/example_benchmark_dry_run.json"),
@@ -203,6 +204,7 @@ def render_demo_packet(packet: dict[str, Any]) -> str:
         "",
         "- [Generated evidence surface](README.md)",
         f"- [Public artifact index]({packet['artifact_index_path']})",
+        "- [Public evaluation packet](EVALUATION_PACKET.md)",
         "- [Public evidence matrix](EVIDENCE_MATRIX.md)",
         "- [Public reproducibility report](REPRODUCIBILITY_REPORT.md)",
         "- [Benchmark dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)",

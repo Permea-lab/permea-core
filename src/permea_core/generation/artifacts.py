@@ -24,6 +24,7 @@ GENERATION_STEPS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("demo packet generation", ("scripts/generate_demo_packet.py",)),
     ("evidence matrix generation", ("scripts/generate_evidence_matrix.py",)),
     ("evidence surface generation", ("scripts/generate_evidence_surface.py",)),
+    ("evaluation packet generation", ("scripts/permea_evaluate.py",)),
     ("reproducibility report generation", ("scripts/permea_reproduce.py", "--report-only")),
 )
 

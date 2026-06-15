@@ -17,6 +17,7 @@ from permea_core.reproducibility.bundle import (  # noqa: E402
     PASS,
     validate_reproducibility_bundle,
 )
+from permea_core.evaluation.bundle import validate_evaluation_bundle  # noqa: E402
 
 
 def main() -> int:
@@ -26,9 +27,14 @@ def main() -> int:
         action="store_true",
         help="validate only reproducibility bundle files and links",
     )
+    parser.add_argument(
+        "--evaluation-only",
+        action="store_true",
+        help="validate only evaluation packet files and links",
+    )
     args = parser.parse_args()
 
-    if not args.bundle_only:
+    if not args.bundle_only and not args.evaluation_only:
         completed = subprocess.run(
             [sys.executable, "scripts/validate_permea_artifacts.py"],
             cwd=ROOT,
@@ -38,6 +44,15 @@ def main() -> int:
         print(f"- {'PASS' if completed.returncode == 0 else 'FAIL'} unified artifact validation")
         if completed.returncode != 0:
             return completed.returncode
+
+    evaluation = validate_evaluation_bundle(ROOT)
+    print(f"{evaluation['status']} evaluation bundle validation")
+    for check in evaluation["checks"]:
+        print(f"- {check['status']} {check['name']}")
+    if evaluation["status"] != PASS:
+        return 1
+    if args.evaluation_only:
+        return 0
 
     result = validate_reproducibility_bundle(ROOT)
     print(f"{result['status']} reproducibility bundle validation")

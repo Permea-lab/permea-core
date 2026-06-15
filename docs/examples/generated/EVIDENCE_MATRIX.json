@@ -17,6 +17,11 @@
     },
     {
       "exists": true,
+      "label": "public evaluation packet",
+      "path": "docs/examples/generated/EVALUATION_PACKET.md"
+    },
+    {
+      "exists": true,
       "label": "public reproducibility report",
       "path": "docs/examples/generated/REPRODUCIBILITY_REPORT.md"
     },
