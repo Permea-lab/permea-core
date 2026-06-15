@@ -247,9 +247,17 @@ Generate all current deterministic artifact examples:
 python3 scripts/generate_permea_artifacts.py
 ```
 
+Generate the public demo packet:
+
+```bash
+python3 scripts/generate_demo_packet.py
+```
+
 Current generated artifacts are indexed at [Public Artifact Index](docs/examples/generated/ARTIFACT_INDEX.md).
 
 Generated benchmark dry-run reports are available under [Generated Benchmark Dry-Run Reports](docs/examples/generated/dry_runs/README.md).
+
+The generated public demo packet is available at [Public Demo Packet](docs/examples/generated/DEMO_PACKET.md).
 
 Generate run manifest examples:
 
