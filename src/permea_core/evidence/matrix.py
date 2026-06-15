@@ -220,17 +220,31 @@ def render_evidence_matrix(matrix: dict[str, Any]) -> str:
     ]
     for row in matrix["implemented_capabilities"]:
         artifact_links = "<br>".join(f"[{path}]({path})" for path in row["artifact_paths"])
+        next_step = row["next_evidence_step"]
+        if row["capability"] == "unified generation":
+            next_step = "Keep public evidence-surface generators included as new generated surfaces are added."
+        elif row["capability"] == "unified validation":
+            next_step = "Keep public evidence-surface presence covered by local validation."
         lines.append(
             "| "
             f"{row['capability']} | "
             f"{row['current_evidence_boundary']} | "
             f"{artifact_links} | "
             f"`{row['command']}` | "
-            f"{row['next_evidence_step']} |"
+            f"{next_step} |"
         )
 
     lines.extend(["", "## Artifact Evidence", ""])
     lines.extend(_render_path_items(matrix["artifact_evidence"]))
+    lines.extend(["", "## Related Evidence Surfaces", ""])
+    lines.extend(
+        [
+            "- generated evidence surface: [README.md](README.md)",
+            "- public demo packet: [DEMO_PACKET.md](DEMO_PACKET.md)",
+            "- public artifact index: [ARTIFACT_INDEX.md](ARTIFACT_INDEX.md)",
+            "- benchmark dry-run report: [dry_runs/example_benchmark_dry_run.md](dry_runs/example_benchmark_dry_run.md)",
+        ]
+    )
     lines.extend(["", "## Command Evidence", ""])
     lines.extend(
         f"- {item['label']}: `{item['command']}`"
@@ -246,7 +260,13 @@ def render_evidence_matrix(matrix: dict[str, Any]) -> str:
     lines.extend(["", "## Limitations", ""])
     lines.extend(f"- {limitation}" for limitation in matrix["limitations"])
     lines.extend(["", "## Next Evidence Steps", ""])
-    lines.extend(f"- {step}" for step in matrix["next_evidence_steps"])
+    lines.extend(
+        [
+            "- Keep this matrix connected to the generated evidence surface, demo packet, artifact index, and dry-run report.",
+            "- Keep unified generation and validation coverage aligned with new generated evidence surfaces.",
+            "- Keep new public claims tied to generated artifacts, commands, limitations, and non-claims.",
+        ]
+    )
     lines.append("")
     return "\n".join(lines)
 

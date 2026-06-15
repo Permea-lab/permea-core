@@ -41,6 +41,13 @@ This deterministic dry-run is generated from metadata and local example artifact
 - generated run manifest: [docs/examples/generated/run_manifests/example_artifact_generation.md](docs/examples/generated/run_manifests/example_artifact_generation.md)
 - artifact index: [docs/examples/generated/ARTIFACT_INDEX.md](docs/examples/generated/ARTIFACT_INDEX.md)
 
+## Related Evidence Surfaces
+
+- generated evidence surface: [../README.md](../README.md)
+- public demo packet: [../DEMO_PACKET.md](../DEMO_PACKET.md)
+- public artifact index: [../ARTIFACT_INDEX.md](../ARTIFACT_INDEX.md)
+- public evidence matrix: [../EVIDENCE_MATRIX.md](../EVIDENCE_MATRIX.md)
+
 ## Validation Steps
 
 - PASS `python3 scripts/validate_benchmark_registry.py`

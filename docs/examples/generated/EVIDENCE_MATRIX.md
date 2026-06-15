@@ -24,8 +24,8 @@ This public evidence matrix maps current Permea Core artifact capabilities to ge
 | artifact index generation | Generates a public index of current registry inputs and generated artifacts. | [docs/examples/generated/ARTIFACT_INDEX.md](docs/examples/generated/ARTIFACT_INDEX.md) | `python3 scripts/generate_artifact_index.py` | Add new artifact families only after generator and validation coverage exist. |
 | demo packet generation | Generates a public entry point for inspecting current artifact-system outputs. | [docs/examples/generated/DEMO_PACKET.md](docs/examples/generated/DEMO_PACKET.md)<br>[docs/examples/generated/DEMO_PACKET.json](docs/examples/generated/DEMO_PACKET.json) | `python3 scripts/generate_demo_packet.py` | Keep the packet refreshed as new generated entry points are added. |
 | benchmark dry-run orchestration | Runs local metadata checks and example generators for a deterministic dry-run report. | [docs/examples/generated/dry_runs/example_benchmark_dry_run.md](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)<br>[docs/examples/generated/dry_runs/example_benchmark_dry_run.json](docs/examples/generated/dry_runs/example_benchmark_dry_run.json) | `python3 scripts/run_permea_dry_run.py` | Add broader dry-run coverage only after public-safe task contracts are stable. |
-| unified generation | Runs current deterministic artifact generators through one local command. | [scripts/generate_permea_artifacts.py](scripts/generate_permea_artifacts.py) | `python3 scripts/generate_permea_artifacts.py` | Integrate the evidence matrix into unified generation in a later bounded run. |
-| unified validation | Runs current local validation and generation checks through one command. | [scripts/validate_permea_artifacts.py](scripts/validate_permea_artifacts.py) | `python3 scripts/validate_permea_artifacts.py` | Integrate evidence-matrix presence checks in a later bounded run. |
+| unified generation | Runs current deterministic artifact generators through one local command. | [scripts/generate_permea_artifacts.py](scripts/generate_permea_artifacts.py) | `python3 scripts/generate_permea_artifacts.py` | Keep public evidence-surface generators included as new generated surfaces are added. |
+| unified validation | Runs current local validation and generation checks through one command. | [scripts/validate_permea_artifacts.py](scripts/validate_permea_artifacts.py) | `python3 scripts/validate_permea_artifacts.py` | Keep public evidence-surface presence covered by local validation. |
 
 ## Artifact Evidence
 
@@ -42,6 +42,13 @@ This public evidence matrix maps current Permea Core artifact capabilities to ge
 - output package metrics metadata: [docs/examples/generated/output_packages/bbb_b3pred_dataset3/metrics.json](docs/examples/generated/output_packages/bbb_b3pred_dataset3/metrics.json) (present)
 - output package ranking metadata: [docs/examples/generated/output_packages/bbb_b3pred_dataset3/ranking.csv](docs/examples/generated/output_packages/bbb_b3pred_dataset3/ranking.csv) (present)
 - run manifest example: [docs/examples/generated/run_manifests/example_artifact_generation.md](docs/examples/generated/run_manifests/example_artifact_generation.md) (present)
+
+## Related Evidence Surfaces
+
+- generated evidence surface: [README.md](README.md)
+- public demo packet: [DEMO_PACKET.md](DEMO_PACKET.md)
+- public artifact index: [ARTIFACT_INDEX.md](ARTIFACT_INDEX.md)
+- benchmark dry-run report: [dry_runs/example_benchmark_dry_run.md](dry_runs/example_benchmark_dry_run.md)
 
 ## Command Evidence
 
@@ -86,6 +93,6 @@ This public evidence matrix maps current Permea Core artifact capabilities to ge
 
 ## Next Evidence Steps
 
-- Integrate this matrix into unified generation in a later bounded run.
-- Add validation coverage for matrix file presence in a later bounded run.
+- Keep this matrix connected to the generated evidence surface, demo packet, artifact index, and dry-run report.
+- Keep unified generation and validation coverage aligned with new generated evidence surfaces.
 - Keep new public claims tied to generated artifacts, commands, limitations, and non-claims.

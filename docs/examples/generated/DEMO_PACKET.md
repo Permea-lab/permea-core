@@ -13,6 +13,10 @@ This public demo packet is a generated entry point for the current Permea Core a
 
 `python3 scripts/generate_demo_packet.py`
 
+Start from the generated evidence surface:
+
+- [docs/examples/generated/README.md](README.md)
+
 This command writes:
 
 - `docs/examples/generated/DEMO_PACKET.md`
@@ -76,6 +80,13 @@ Runs local metadata checks and example artifact generators, then writes determin
 ## Public artifact index
 
 - [docs/examples/generated/ARTIFACT_INDEX.md](docs/examples/generated/ARTIFACT_INDEX.md)
+
+## Related evidence surfaces
+
+- [Generated evidence surface](README.md)
+- [Public artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
+- [Public evidence matrix](EVIDENCE_MATRIX.md)
+- [Benchmark dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
 
 ## Available Commands
 

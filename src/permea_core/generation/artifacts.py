@@ -21,6 +21,9 @@ GENERATION_STEPS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("run manifest generation", ("scripts/generate_run_manifests.py",)),
     ("artifact index generation", ("scripts/generate_artifact_index.py",)),
     ("benchmark dry-run generation", ("scripts/run_permea_dry_run.py",)),
+    ("demo packet generation", ("scripts/generate_demo_packet.py",)),
+    ("evidence matrix generation", ("scripts/generate_evidence_matrix.py",)),
+    ("evidence surface generation", ("scripts/generate_evidence_surface.py",)),
 )
 
 

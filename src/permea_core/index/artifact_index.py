@@ -50,9 +50,21 @@ ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
 )
 
 UNIFIED_COMMANDS: tuple[str, ...] = (
+    "python3 scripts/generate_evidence_surface.py",
+    "python3 scripts/generate_demo_packet.py",
     "python3 scripts/generate_artifact_index.py",
+    "python3 scripts/generate_evidence_matrix.py",
+    "python3 scripts/run_permea_dry_run.py",
     "python3 scripts/generate_permea_artifacts.py",
     "python3 scripts/validate_permea_artifacts.py",
+)
+
+CORE_SURFACES: tuple[tuple[str, str], ...] = (
+    ("Generated evidence surface", "docs/examples/generated/README.md"),
+    ("Public demo packet", "docs/examples/generated/DEMO_PACKET.md"),
+    ("Public artifact index", "docs/examples/generated/ARTIFACT_INDEX.md"),
+    ("Public evidence matrix", "docs/examples/generated/EVIDENCE_MATRIX.md"),
+    ("Benchmark dry-run report", "docs/examples/generated/dry_runs/example_benchmark_dry_run.md"),
 )
 
 NON_CLAIMS: tuple[str, ...] = (
@@ -84,6 +96,11 @@ def collect_artifact_paths(root_path: str | Path = ".") -> dict[str, Any]:
         "registry_inputs": registry_inputs,
         "artifact_families": artifact_families,
         "commands": list(UNIFIED_COMMANDS),
+        "core_surfaces": [
+            {"label": label, "path": path}
+            for label, path in CORE_SURFACES
+            if (root / path).exists()
+        ],
         "non_claims": list(NON_CLAIMS),
     }
 
@@ -105,6 +122,11 @@ def render_artifact_index(index: dict[str, Any]) -> str:
         "",
     ]
     lines.extend(f"- `{command}`" for command in index["commands"])
+    lines.extend(["", "## Core Generated Surfaces", ""])
+    lines.extend(
+        f"- {item['label']}: [{item['path']}]({item['path']})"
+        for item in index["core_surfaces"]
+    )
     lines.extend(["", "## Registry Inputs", ""])
     lines.extend(
         f"- {item['label']}: [{item['path']}]({item['path']})"

@@ -146,6 +146,15 @@ def render_dry_run_report(result: dict[str, Any]) -> str:
     )
     lines.extend(["", "## Generated Artifacts", ""])
     lines.extend(_render_path_items(result["generated_artifacts"]))
+    lines.extend(["", "## Related Evidence Surfaces", ""])
+    lines.extend(
+        [
+            "- generated evidence surface: [../README.md](../README.md)",
+            "- public demo packet: [../DEMO_PACKET.md](../DEMO_PACKET.md)",
+            "- public artifact index: [../ARTIFACT_INDEX.md](../ARTIFACT_INDEX.md)",
+            "- public evidence matrix: [../EVIDENCE_MATRIX.md](../EVIDENCE_MATRIX.md)",
+        ]
+    )
     lines.extend(["", "## Validation Steps", ""])
     lines.extend(
         f"- {step['status']} `{step['command']}`"
