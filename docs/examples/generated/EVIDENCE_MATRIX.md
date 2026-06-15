@@ -32,6 +32,7 @@ This public evidence matrix maps current Permea Core artifact capabilities to ge
 - public demo packet: [docs/examples/generated/DEMO_PACKET.md](docs/examples/generated/DEMO_PACKET.md) (present)
 - public demo packet JSON: [docs/examples/generated/DEMO_PACKET.json](docs/examples/generated/DEMO_PACKET.json) (present)
 - public artifact index: [docs/examples/generated/ARTIFACT_INDEX.md](docs/examples/generated/ARTIFACT_INDEX.md) (present)
+- public evaluation packet: [docs/examples/generated/EVALUATION_PACKET.md](docs/examples/generated/EVALUATION_PACKET.md) (present)
 - public reproducibility report: [docs/examples/generated/REPRODUCIBILITY_REPORT.md](docs/examples/generated/REPRODUCIBILITY_REPORT.md) (present)
 - benchmark dry-run report: [docs/examples/generated/dry_runs/example_benchmark_dry_run.md](docs/examples/generated/dry_runs/example_benchmark_dry_run.md) (present)
 - benchmark dry-run JSON: [docs/examples/generated/dry_runs/example_benchmark_dry_run.json](docs/examples/generated/dry_runs/example_benchmark_dry_run.json) (present)
@@ -49,6 +50,7 @@ This public evidence matrix maps current Permea Core artifact capabilities to ge
 - generated evidence surface: [README.md](README.md)
 - public demo packet: [DEMO_PACKET.md](DEMO_PACKET.md)
 - public artifact index: [ARTIFACT_INDEX.md](ARTIFACT_INDEX.md)
+- public evaluation packet: [EVALUATION_PACKET.md](EVALUATION_PACKET.md)
 - public reproducibility report: [REPRODUCIBILITY_REPORT.md](REPRODUCIBILITY_REPORT.md)
 - benchmark dry-run report: [dry_runs/example_benchmark_dry_run.md](dry_runs/example_benchmark_dry_run.md)
 

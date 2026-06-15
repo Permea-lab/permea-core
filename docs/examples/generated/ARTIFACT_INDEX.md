@@ -7,6 +7,7 @@ This generated index lists the current public registry inputs, generated example
 ## Unified Commands
 
 - `python3 scripts/generate_evidence_surface.py`
+- `python3 scripts/permea_evaluate.py`
 - `python3 scripts/permea_reproduce.py`
 - `python3 scripts/permea_validate.py`
 - `python3 scripts/generate_demo_packet.py`
@@ -22,6 +23,7 @@ This generated index lists the current public registry inputs, generated example
 - Public demo packet: [docs/examples/generated/DEMO_PACKET.md](docs/examples/generated/DEMO_PACKET.md)
 - Public artifact index: [docs/examples/generated/ARTIFACT_INDEX.md](docs/examples/generated/ARTIFACT_INDEX.md)
 - Public evidence matrix: [docs/examples/generated/EVIDENCE_MATRIX.md](docs/examples/generated/EVIDENCE_MATRIX.md)
+- Public evaluation packet: [docs/examples/generated/EVALUATION_PACKET.md](docs/examples/generated/EVALUATION_PACKET.md)
 - Public reproducibility report: [docs/examples/generated/REPRODUCIBILITY_REPORT.md](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - Benchmark dry-run report: [docs/examples/generated/dry_runs/example_benchmark_dry_run.md](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
 

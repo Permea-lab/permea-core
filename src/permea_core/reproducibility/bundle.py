@@ -17,6 +17,7 @@ REPORT_JSON = Path("docs/examples/generated/REPRODUCIBILITY_REPORT.json")
 COMMANDS: tuple[tuple[str, str, str], ...] = (
     ("reproduce public artifacts", "python3 scripts/permea_reproduce.py", "Regenerates public artifact surfaces and the reproducibility report."),
     ("validate public artifacts", "python3 scripts/permea_validate.py", "Runs unified validation and reproducibility bundle checks."),
+    ("generate evaluation packet", "python3 scripts/permea_evaluate.py", "Writes the public template/reference evaluation packet."),
     ("generate all artifacts", "python3 scripts/generate_permea_artifacts.py", "Runs deterministic local artifact generators."),
     ("validate all artifacts", "python3 scripts/validate_permea_artifacts.py", "Runs local validation and generated-artifact checks."),
 )
@@ -25,7 +26,9 @@ ARTIFACT_LINEAGE: tuple[tuple[str, str], ...] = (
     ("README", "README.md"),
     ("Quickstart", "QUICKSTART.md"),
     ("Reproducibility guide", "REPRODUCIBILITY.md"),
+    ("Evaluation guide", "EVALUATION.md"),
     ("Generated evidence surface", "docs/examples/generated/README.md"),
+    ("Evaluation packet", "docs/examples/generated/EVALUATION_PACKET.md"),
     ("Demo packet", "docs/examples/generated/DEMO_PACKET.md"),
     ("Artifact index", "docs/examples/generated/ARTIFACT_INDEX.md"),
     ("Evidence matrix", "docs/examples/generated/EVIDENCE_MATRIX.md"),
@@ -41,6 +44,8 @@ ARTIFACT_LINEAGE: tuple[tuple[str, str], ...] = (
 
 GENERATED_ARTIFACTS: tuple[tuple[str, str], ...] = (
     ("Generated evidence surface", "docs/examples/generated/README.md"),
+    ("Evaluation packet", "docs/examples/generated/EVALUATION_PACKET.md"),
+    ("Evaluation packet JSON", "docs/examples/generated/EVALUATION_PACKET.json"),
     ("Demo packet", "docs/examples/generated/DEMO_PACKET.md"),
     ("Artifact index", "docs/examples/generated/ARTIFACT_INDEX.md"),
     ("Evidence matrix", "docs/examples/generated/EVIDENCE_MATRIX.md"),

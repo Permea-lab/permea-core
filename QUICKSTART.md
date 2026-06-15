@@ -33,18 +33,27 @@ python3 scripts/permea_validate.py
 
 This runs unified artifact validation and reproducibility bundle checks.
 
+## One-command evaluation packet generation
+
+```bash
+python3 scripts/permea_evaluate.py
+```
+
+This writes a public template/reference evaluation packet that links current input families, generated surfaces, validation handoff, reproducibility handoff, explicit non-claims, and next evidence steps.
+
 ## Where generated outputs appear
 
 - [Generated evidence surface](docs/examples/generated/README.md)
 - [Demo packet](docs/examples/generated/DEMO_PACKET.md)
 - [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
 - [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
+- [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
 
 ## How to inspect the evidence surface
 
-Start with [docs/examples/generated/README.md](docs/examples/generated/README.md), then follow the links to the demo packet, artifact index, evidence matrix, reproducibility report, dry-run report, and generated artifact families.
+Start with [docs/examples/generated/README.md](docs/examples/generated/README.md), then follow the links to the evaluation packet, demo packet, artifact index, evidence matrix, reproducibility report, dry-run report, and generated artifact families.
 
 ## How to extend the artifact system
 
@@ -69,4 +78,4 @@ Add generator logic, validation logic, generated examples, tests, and claim-boun
 
 ## Next steps
 
-Read [REPRODUCIBILITY.md](REPRODUCIBILITY.md), then inspect the generated [reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md).
+Read [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [EVALUATION.md](EVALUATION.md), then inspect the generated [evaluation packet](docs/examples/generated/EVALUATION_PACKET.md) and [reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md).

@@ -80,6 +80,11 @@
     },
     {
       "exists": true,
+      "label": "evaluation packet",
+      "path": "docs/examples/generated/EVALUATION_PACKET.md"
+    },
+    {
+      "exists": true,
       "label": "reproducibility report",
       "path": "docs/examples/generated/REPRODUCIBILITY_REPORT.md"
     },

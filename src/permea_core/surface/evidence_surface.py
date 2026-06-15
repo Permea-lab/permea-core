@@ -44,6 +44,11 @@ PRIMARY_ENTRY_POINTS: tuple[tuple[str, str, str], ...] = (
         "REPRODUCIBILITY_REPORT.md",
         "Generated report for reproduction commands, validation checks, lineage, and non-claims.",
     ),
+    (
+        "Evaluation packet",
+        "EVALUATION_PACKET.md",
+        "Generated template/reference evaluation packet for artifact-system extension.",
+    ),
 )
 
 ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
@@ -62,6 +67,7 @@ ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
 REPRODUCIBILITY_COMMANDS: tuple[tuple[str, str], ...] = (
     ("reproduce public bundle", "python3 scripts/permea_reproduce.py"),
     ("validate public bundle", "python3 scripts/permea_validate.py"),
+    ("generate evaluation packet", "python3 scripts/permea_evaluate.py"),
     ("generate evidence surface", "python3 scripts/generate_evidence_surface.py"),
     ("generate demo packet", "python3 scripts/generate_demo_packet.py"),
     ("generate artifact index", "python3 scripts/generate_artifact_index.py"),
@@ -157,6 +163,7 @@ def render_evidence_surface(surface: dict[str, Any]) -> str:
         "`python3 scripts/generate_demo_packet.py`",
         "",
         "- [Public demo packet](DEMO_PACKET.md)",
+        "- [Public evaluation packet](EVALUATION_PACKET.md)",
         "- [Benchmark dry-run report](dry_runs/example_benchmark_dry_run.md)",
         "- [Reproducibility report](REPRODUCIBILITY_REPORT.md)",
         "",

@@ -153,6 +153,7 @@ def render_dry_run_report(result: dict[str, Any]) -> str:
             "- public demo packet: [../DEMO_PACKET.md](../DEMO_PACKET.md)",
             "- public artifact index: [../ARTIFACT_INDEX.md](../ARTIFACT_INDEX.md)",
             "- public evidence matrix: [../EVIDENCE_MATRIX.md](../EVIDENCE_MATRIX.md)",
+            "- public evaluation packet: [../EVALUATION_PACKET.md](../EVALUATION_PACKET.md)",
             "- public reproducibility report: [../REPRODUCIBILITY_REPORT.md](../REPRODUCIBILITY_REPORT.md)",
         ]
     )

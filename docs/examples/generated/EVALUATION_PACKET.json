@@ -103,120 +103,137 @@
       "path": "docs/examples/generated/run_manifests"
     }
   ],
-  "commands": [
-    {
-      "command": "python3 scripts/permea_reproduce.py",
-      "description": "Regenerates public artifact surfaces and the reproducibility report.",
-      "label": "reproduce public artifacts"
-    },
-    {
-      "command": "python3 scripts/permea_validate.py",
-      "description": "Runs unified validation and reproducibility bundle checks.",
-      "label": "validate public artifacts"
-    },
-    {
-      "command": "python3 scripts/permea_evaluate.py",
-      "description": "Writes the public template/reference evaluation packet.",
-      "label": "generate evaluation packet"
-    },
-    {
-      "command": "python3 scripts/generate_permea_artifacts.py",
-      "description": "Runs deterministic local artifact generators.",
-      "label": "generate all artifacts"
-    },
-    {
-      "command": "python3 scripts/validate_permea_artifacts.py",
-      "description": "Runs local validation and generated-artifact checks.",
-      "label": "validate all artifacts"
-    }
-  ],
-  "generated_artifacts": [
+  "bundle_name": "permea_core_public_evaluation_bundle",
+  "generated_at": "example-generated",
+  "generated_surfaces": [
     {
       "exists": true,
-      "label": "Generated evidence surface",
-      "path": "docs/examples/generated/README.md"
-    },
-    {
-      "exists": true,
-      "label": "Evaluation packet",
+      "label": "evaluation packet",
       "path": "docs/examples/generated/EVALUATION_PACKET.md"
     },
     {
       "exists": true,
-      "label": "Evaluation packet JSON",
+      "label": "evaluation packet JSON",
       "path": "docs/examples/generated/EVALUATION_PACKET.json"
     },
     {
       "exists": true,
-      "label": "Demo packet",
+      "label": "generated evidence surface",
+      "path": "docs/examples/generated/README.md"
+    },
+    {
+      "exists": true,
+      "label": "demo packet",
       "path": "docs/examples/generated/DEMO_PACKET.md"
     },
     {
       "exists": true,
-      "label": "Artifact index",
+      "label": "artifact index",
       "path": "docs/examples/generated/ARTIFACT_INDEX.md"
     },
     {
       "exists": true,
-      "label": "Evidence matrix",
+      "label": "evidence matrix",
       "path": "docs/examples/generated/EVIDENCE_MATRIX.md"
     },
     {
       "exists": true,
-      "label": "Reproducibility report Markdown",
+      "label": "reproducibility report",
       "path": "docs/examples/generated/REPRODUCIBILITY_REPORT.md"
     },
     {
       "exists": true,
-      "label": "Reproducibility report JSON",
-      "path": "docs/examples/generated/REPRODUCIBILITY_REPORT.json"
-    },
-    {
-      "exists": true,
-      "label": "Dry-run report",
+      "label": "benchmark dry-run report",
       "path": "docs/examples/generated/dry_runs/example_benchmark_dry_run.md"
     }
   ],
-  "generated_at": "example-generated",
   "limitations": [
-    "This bundle regenerates deterministic public metadata artifacts from repository files only.",
-    "It does not download datasets, execute acquisition, call external services, run ML, or score candidates.",
-    "It validates artifact presence, structure, links, and stated boundaries; it does not validate biological performance.",
-    "Researchers and developers should treat generated examples as infrastructure surfaces, not experimental evidence."
+    "This evaluation bundle is a reusable template and reference workflow.",
+    "It references current public example inputs and generated artifact families only.",
+    "It does not load datasets, execute acquisition, call external services, run ML, or score candidates.",
+    "It does not establish access rights, redistribution status, biological performance, or clinical utility."
   ],
   "next_evidence_steps": [
-    "Run the reproduction command after cloning or changing generator code.",
-    "Run the validation command before proposing changes to generated artifact surfaces.",
-    "Extend the artifact system by adding generator, validation, tests, and bounded claim language together."
+    "Use the packet to inspect how dataset-card, benchmark-card, and evidence-card inputs connect to generated surfaces.",
+    "Adapt the pattern by adding bounded input metadata, generator coverage, validation coverage, and tests together.",
+    "Run reproduction and validation commands before proposing a public evaluation package change."
   ],
   "non_claims": [
     "no dataset downloaded",
     "no acquisition executed",
     "no redistribution rights confirmed",
     "no wet-lab validation by Permea",
-    "no clinical-effectiveness claim",
+    "no clinical efficacy claim",
     "no model performance claim",
-    "no state-of-the-art claim",
+    "no SOTA claim",
     "no solved-delivery claim"
   ],
   "output_paths": {
-    "json": "docs/examples/generated/REPRODUCIBILITY_REPORT.json",
-    "markdown": "docs/examples/generated/REPRODUCIBILITY_REPORT.md"
+    "json": "docs/examples/generated/EVALUATION_PACKET.json",
+    "markdown": "docs/examples/generated/EVALUATION_PACKET.md"
   },
-  "run_name": "permea_core_public_reproducibility_bundle",
-  "status": "PASS",
-  "validation_checks": [
+  "overview": "This public evaluation bundle is a template/reference workflow for plugging dataset-card, benchmark-card, and evidence-card style inputs into the Permea Core artifact system and generating a reviewer-facing evaluation packet.",
+  "reference_inputs": [
     {
-      "command": "python3 scripts/validate_permea_artifacts.py",
-      "label": "unified artifact validation"
+      "description": "Dataset metadata templates and example inputs.",
+      "exists": true,
+      "label": "dataset cards",
+      "path": "dataset_cards/"
+    },
+    {
+      "description": "Benchmark-card pattern inputs for task definitions.",
+      "exists": true,
+      "label": "benchmark cards",
+      "path": "benchmark_cards/"
+    },
+    {
+      "description": "Evidence-card pattern inputs for structured evidence records.",
+      "exists": true,
+      "label": "evidence cards",
+      "path": "evidence_cards/"
+    },
+    {
+      "description": "Acquisition-plan metadata examples without execution.",
+      "exists": true,
+      "label": "acquisition manifests",
+      "path": "acquisition_manifests/"
+    },
+    {
+      "description": "Reproducibility record inputs.",
+      "exists": true,
+      "label": "run manifests",
+      "path": "run_manifests/"
+    },
+    {
+      "description": "Output-package pattern inputs for reviewer-facing results.",
+      "exists": true,
+      "label": "output packages",
+      "path": "output_packages/"
+    }
+  ],
+  "reproducibility_handoff": [
+    {
+      "command": "python3 scripts/permea_reproduce.py",
+      "label": "public reproduction"
+    },
+    {
+      "command": "python3 scripts/generate_permea_artifacts.py",
+      "label": "unified artifact generation"
+    }
+  ],
+  "status": "PASS",
+  "validation_handoff": [
+    {
+      "command": "python3 scripts/permea_evaluate.py",
+      "label": "evaluation packet generation"
     },
     {
       "command": "python3 scripts/permea_validate.py",
-      "label": "reproducibility bundle validation"
+      "label": "public reproducibility validation"
     },
     {
-      "command": "python3 -m pytest tests/test_reproducibility_bundle.py",
-      "label": "focused reproducibility tests"
+      "command": "python3 scripts/validate_permea_artifacts.py",
+      "label": "unified artifact validation"
     }
   ]
 }

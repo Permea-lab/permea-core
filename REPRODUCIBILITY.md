@@ -14,6 +14,7 @@ The current public contract is local and deterministic: repository metadata is u
 - Validate public surfaces: `python3 scripts/permea_validate.py`
 - Generate all artifacts: `python3 scripts/generate_permea_artifacts.py`
 - Validate all artifacts: `python3 scripts/validate_permea_artifacts.py`
+- Generate evaluation packet: `python3 scripts/permea_evaluate.py`
 - Run dry-run report generation: `python3 scripts/run_permea_dry_run.py`
 
 ## Generated artifact lineage
@@ -21,13 +22,15 @@ The current public contract is local and deterministic: repository metadata is u
 1. [README.md](README.md)
 2. [QUICKSTART.md](QUICKSTART.md)
 3. [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
-4. [Generated evidence surface](docs/examples/generated/README.md)
-5. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
-6. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
-7. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
-8. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
-9. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
-10. Generated artifact families under `docs/examples/generated/`
+4. [EVALUATION.md](EVALUATION.md)
+5. [Generated evidence surface](docs/examples/generated/README.md)
+6. [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
+7. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
+8. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
+9. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
+10. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
+11. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
+12. Generated artifact families under `docs/examples/generated/`
 
 ## Validation map
 
@@ -42,6 +45,8 @@ The current public contract is local and deterministic: repository metadata is u
 - `docs/examples/generated/DEMO_PACKET.md`
 - `docs/examples/generated/ARTIFACT_INDEX.md`
 - `docs/examples/generated/EVIDENCE_MATRIX.md`
+- `docs/examples/generated/EVALUATION_PACKET.md`
+- `docs/examples/generated/EVALUATION_PACKET.json`
 - `docs/examples/generated/REPRODUCIBILITY_REPORT.md`
 - `docs/examples/generated/REPRODUCIBILITY_REPORT.json`
 - `docs/examples/generated/dry_runs/example_benchmark_dry_run.md`
