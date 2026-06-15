@@ -211,7 +211,7 @@ Use placeholder values in examples and review release posture before publishing 
 
 An output package supports computational review.
 
-An output package does not establish wet-lab validation, clinical validation, therapeutic effect, biological mechanism, safety, universal prediction, or a claim that delivery is solved.
+An output package does not establish wet-lab validation, clinical validation, therapeutic effect, biological mechanism, safety, broad prediction across delivery contexts, or a claim that delivery is solved.
 
 ## Relationship To Specs
 

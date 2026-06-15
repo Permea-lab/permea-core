@@ -57,7 +57,13 @@ Start with [docs/examples/generated/README.md](docs/examples/generated/README.md
 
 ## How to extend the artifact system
 
-Add generator logic, validation logic, generated examples, tests, and claim-boundary language together. New artifact families should be linked from the generated evidence surface and covered by validation before they become public reviewer-facing surfaces.
+Start with the [public artifact specifications](docs/specs/README.md), then add generator logic, validation logic, generated examples, tests, and claim-boundary language together. New artifact families should be linked from the generated evidence surface and covered by validation before they become public reviewer-facing surfaces.
+
+Inspect the specification registry with:
+
+```bash
+python3 scripts/permea_specs.py
+```
 
 ## Explicit Non-Claims
 

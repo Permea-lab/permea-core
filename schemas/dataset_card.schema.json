@@ -1,0 +1,43 @@
+{
+  "$id": "https://permea-core.local/schemas/dataset_card.schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "claim_boundary": {
+      "type": "string"
+    },
+    "dataset_id": {
+      "type": "string"
+    },
+    "dataset_name": {
+      "type": "string"
+    },
+    "label_schema": {
+      "type": "object"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "readiness_level": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "dataset_name",
+    "source",
+    "label_schema",
+    "limitations",
+    "claim_boundary"
+  ],
+  "title": "Permea Dataset Card",
+  "type": "object"
+}

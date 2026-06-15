@@ -172,7 +172,7 @@ Include:
 
 ### Public Claim Boundary
 
-A dataset card can support source transparency, dataset review, and benchmark readiness. It does not prove delivery, mechanism, safety, therapeutic effect, clinical performance, or universal prediction.
+A dataset card can support source transparency, dataset review, and benchmark readiness. It does not prove delivery, mechanism, safety, therapeutic effect, clinical performance, or broad prediction across delivery contexts.
 
 ## Minimal Example Skeleton
 

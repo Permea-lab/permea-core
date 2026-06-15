@@ -12,6 +12,7 @@ The current public contract is local and deterministic: repository metadata is u
 
 - Reproduce public surfaces: `python3 scripts/permea_reproduce.py`
 - Validate public surfaces: `python3 scripts/permea_validate.py`
+- Inspect artifact specs: `python3 scripts/permea_specs.py`
 - Generate all artifacts: `python3 scripts/generate_permea_artifacts.py`
 - Validate all artifacts: `python3 scripts/validate_permea_artifacts.py`
 - Generate evaluation packet: `python3 scripts/permea_evaluate.py`
@@ -23,14 +24,15 @@ The current public contract is local and deterministic: repository metadata is u
 2. [QUICKSTART.md](QUICKSTART.md)
 3. [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
 4. [EVALUATION.md](EVALUATION.md)
-5. [Generated evidence surface](docs/examples/generated/README.md)
-6. [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
-7. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
-8. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
-9. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
-10. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
-11. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
-12. Generated artifact families under `docs/examples/generated/`
+5. [Public artifact specifications](docs/specs/README.md)
+6. [Generated evidence surface](docs/examples/generated/README.md)
+7. [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
+8. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
+9. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
+10. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
+11. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
+12. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
+13. Generated artifact families under `docs/examples/generated/`
 
 ## Validation map
 

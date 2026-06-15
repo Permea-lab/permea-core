@@ -23,6 +23,8 @@ The contract is local, deterministic, and metadata-only. The bundle references p
 - `run_manifests/`
 - `output_packages/`
 
+The public artifact standards are indexed at [docs/specs/README.md](docs/specs/README.md). The evaluation pattern should stay aligned with the dataset card, benchmark card, evidence card, run manifest, and output package specifications.
+
 ## One-command evaluation packet generation
 
 ```bash

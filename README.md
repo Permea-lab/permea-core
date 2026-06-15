@@ -186,6 +186,7 @@ Open-source operating docs:
 
 Artifact specs:
 
+- [Public Artifact Specifications](docs/specs/README.md)
 - [Dataset Card Spec](docs/specs/DATASET_CARD_SPEC.md)
 - [Benchmark Task Spec](docs/specs/BENCHMARK_TASK_SPEC.md)
 - [Evidence Card Spec](docs/specs/EVIDENCE_CARD_SPEC.md)
@@ -275,6 +276,12 @@ Generate the public evaluation packet:
 
 ```bash
 python3 scripts/permea_evaluate.py
+```
+
+Inspect the public artifact specification registry:
+
+```bash
+python3 scripts/permea_specs.py
 ```
 
 Current generated artifacts are indexed at [Public Artifact Index](docs/examples/generated/ARTIFACT_INDEX.md).

@@ -1,0 +1,51 @@
+{
+  "$id": "https://permea-core.local/schemas/run_manifest.schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "claim_boundary": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "inputs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "repository_commit": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "run_type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "run_id",
+    "run_type",
+    "repository_commit",
+    "command",
+    "inputs",
+    "artifact_paths",
+    "limitations",
+    "claim_boundary"
+  ],
+  "title": "Permea Run Manifest",
+  "type": "object"
+}
