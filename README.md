@@ -187,6 +187,7 @@ Open-source operating docs:
 Artifact specs:
 
 - [Public Artifact Specifications](docs/specs/README.md)
+- [Artifact Validation Guide](docs/specs/VALIDATION.md)
 - [Dataset Card Spec](docs/specs/DATASET_CARD_SPEC.md)
 - [Benchmark Task Spec](docs/specs/BENCHMARK_TASK_SPEC.md)
 - [Evidence Card Spec](docs/specs/EVIDENCE_CARD_SPEC.md)
@@ -216,6 +217,12 @@ Validate all current local registry and artifact layers:
 
 ```bash
 python3 scripts/validate_permea_artifacts.py
+```
+
+Check public example artifacts against the public artifact standards:
+
+```bash
+python3 scripts/permea_check.py --all
 ```
 
 Reproduce all public artifact surfaces:

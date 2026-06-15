@@ -54,6 +54,11 @@ PRIMARY_ENTRY_POINTS: tuple[tuple[str, str, str], ...] = (
         "../../../docs/specs/README.md",
         "Public standards for artifact families and their schemas.",
     ),
+    (
+        "Artifact validation guide",
+        "../../../docs/specs/VALIDATION.md",
+        "Public validator guidance for checking artifact examples against the specs.",
+    ),
 )
 
 ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
@@ -72,6 +77,7 @@ ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
 REPRODUCIBILITY_COMMANDS: tuple[tuple[str, str], ...] = (
     ("reproduce public bundle", "python3 scripts/permea_reproduce.py"),
     ("validate public bundle", "python3 scripts/permea_validate.py"),
+    ("check public artifacts", "python3 scripts/permea_check.py --all"),
     ("inspect artifact specs", "python3 scripts/permea_specs.py"),
     ("generate evaluation packet", "python3 scripts/permea_evaluate.py"),
     ("generate evidence surface", "python3 scripts/generate_evidence_surface.py"),
@@ -84,6 +90,7 @@ REPRODUCIBILITY_COMMANDS: tuple[tuple[str, str], ...] = (
 
 VALIDATION_COMMANDS: tuple[tuple[str, str], ...] = (
     ("validate public bundle", "python3 scripts/permea_validate.py"),
+    ("check public artifacts", "python3 scripts/permea_check.py --all"),
     ("validate all artifacts", "python3 scripts/validate_permea_artifacts.py"),
     ("validate source registry", "python3 scripts/validate_source_registry.py"),
     ("validate benchmark registry", "python3 scripts/validate_benchmark_registry.py"),

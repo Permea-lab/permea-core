@@ -28,6 +28,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 - Reproducibility report: [REPRODUCIBILITY_REPORT.md](REPRODUCIBILITY_REPORT.md) - Generated report for reproduction commands, validation checks, lineage, and non-claims. (present)
 - Evaluation packet: [EVALUATION_PACKET.md](EVALUATION_PACKET.md) - Generated template/reference evaluation packet for artifact-system extension. (present)
 - Public artifact specifications: [../../../docs/specs/README.md](../../../docs/specs/README.md) - Public standards for artifact families and their schemas. (present)
+- Artifact validation guide: [../../../docs/specs/VALIDATION.md](../../../docs/specs/VALIDATION.md) - Public validator guidance for checking artifact examples against the specs. (present)
 
 ## Artifact families
 
@@ -42,6 +43,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 
 - reproduce public bundle: `python3 scripts/permea_reproduce.py`
 - validate public bundle: `python3 scripts/permea_validate.py`
+- check public artifacts: `python3 scripts/permea_check.py --all`
 - inspect artifact specs: `python3 scripts/permea_specs.py`
 - generate evaluation packet: `python3 scripts/permea_evaluate.py`
 - generate evidence surface: `python3 scripts/generate_evidence_surface.py`
@@ -54,6 +56,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 ## Validation commands
 
 - validate public bundle: `python3 scripts/permea_validate.py`
+- check public artifacts: `python3 scripts/permea_check.py --all`
 - validate all artifacts: `python3 scripts/validate_permea_artifacts.py`
 - validate source registry: `python3 scripts/validate_source_registry.py`
 - validate benchmark registry: `python3 scripts/validate_benchmark_registry.py`
