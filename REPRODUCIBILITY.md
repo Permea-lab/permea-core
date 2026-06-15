@@ -12,6 +12,7 @@ The current public contract is local and deterministic: repository metadata is u
 
 - Reproduce public surfaces: `python3 scripts/permea_reproduce.py`
 - Validate public surfaces: `python3 scripts/permea_validate.py`
+- Check public artifacts against specs: `python3 scripts/permea_check.py --all`
 - Inspect artifact specs: `python3 scripts/permea_specs.py`
 - Generate all artifacts: `python3 scripts/generate_permea_artifacts.py`
 - Validate all artifacts: `python3 scripts/validate_permea_artifacts.py`
@@ -25,19 +26,21 @@ The current public contract is local and deterministic: repository metadata is u
 3. [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
 4. [EVALUATION.md](EVALUATION.md)
 5. [Public artifact specifications](docs/specs/README.md)
-6. [Generated evidence surface](docs/examples/generated/README.md)
-7. [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
-8. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
-9. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
-10. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
-11. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
-12. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
-13. Generated artifact families under `docs/examples/generated/`
+6. [Artifact validation guide](docs/specs/VALIDATION.md)
+7. [Generated evidence surface](docs/examples/generated/README.md)
+8. [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
+9. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
+10. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
+11. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
+12. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
+13. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
+14. Generated artifact families under `docs/examples/generated/`
 
 ## Validation map
 
 - Registry checks validate public metadata inputs.
 - Generator checks regenerate public example artifacts.
+- Artifact checks compare current public examples with public spec expectations.
 - Reproducibility checks verify report sections, lineage paths, and explicit non-claims.
 - Tests verify required sections, relative paths, command behavior, and unsupported claim hygiene.
 

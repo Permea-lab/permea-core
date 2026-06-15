@@ -25,6 +25,8 @@ The contract is local, deterministic, and metadata-only. The bundle references p
 
 The public artifact standards are indexed at [docs/specs/README.md](docs/specs/README.md). The evaluation pattern should stay aligned with the dataset card, benchmark card, evidence card, run manifest, and output package specifications.
 
+The validator handoff is documented at [docs/specs/VALIDATION.md](docs/specs/VALIDATION.md).
+
 ## One-command evaluation packet generation
 
 ```bash
@@ -56,6 +58,7 @@ Add evidence-card records only when source, uncertainty, review status, and clai
 
 ```bash
 python3 scripts/permea_evaluate.py
+python3 scripts/permea_check.py --all
 python3 scripts/permea_reproduce.py
 python3 scripts/permea_validate.py
 python3 scripts/generate_permea_artifacts.py
