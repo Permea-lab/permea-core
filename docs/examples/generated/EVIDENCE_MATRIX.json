@@ -1,0 +1,305 @@
+{
+  "artifact_evidence": [
+    {
+      "exists": true,
+      "label": "public demo packet",
+      "path": "docs/examples/generated/DEMO_PACKET.md"
+    },
+    {
+      "exists": true,
+      "label": "public demo packet JSON",
+      "path": "docs/examples/generated/DEMO_PACKET.json"
+    },
+    {
+      "exists": true,
+      "label": "public artifact index",
+      "path": "docs/examples/generated/ARTIFACT_INDEX.md"
+    },
+    {
+      "exists": true,
+      "label": "benchmark dry-run report",
+      "path": "docs/examples/generated/dry_runs/example_benchmark_dry_run.md"
+    },
+    {
+      "exists": true,
+      "label": "benchmark dry-run JSON",
+      "path": "docs/examples/generated/dry_runs/example_benchmark_dry_run.json"
+    },
+    {
+      "exists": true,
+      "label": "benchmark card example",
+      "path": "docs/examples/generated/benchmark_cards/bbb_b3pred_dataset3.md"
+    },
+    {
+      "exists": true,
+      "label": "dataset card example",
+      "path": "docs/examples/generated/dataset_cards/b3pred_dataset3.md"
+    },
+    {
+      "exists": true,
+      "label": "acquisition manifest example",
+      "path": "docs/examples/generated/acquisition_manifests/b3pred_dataset3.md"
+    },
+    {
+      "exists": true,
+      "label": "evidence card example",
+      "path": "docs/examples/generated/evidence_cards/bbb_b3pred_dataset3.evidence_cards.json"
+    },
+    {
+      "exists": true,
+      "label": "output package manifest",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/manifest.yaml"
+    },
+    {
+      "exists": true,
+      "label": "output package metrics metadata",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/metrics.json"
+    },
+    {
+      "exists": true,
+      "label": "output package ranking metadata",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/ranking.csv"
+    },
+    {
+      "exists": true,
+      "label": "run manifest example",
+      "path": "docs/examples/generated/run_manifests/example_artifact_generation.md"
+    }
+  ],
+  "command_evidence": [
+    {
+      "command": "python3 scripts/validate_source_registry.py",
+      "label": "source registry validation"
+    },
+    {
+      "command": "python3 scripts/generate_dataset_cards.py",
+      "label": "dataset card generation"
+    },
+    {
+      "command": "python3 scripts/generate_acquisition_manifests.py",
+      "label": "acquisition manifest generation"
+    },
+    {
+      "command": "python3 scripts/validate_benchmark_registry.py",
+      "label": "benchmark registry validation"
+    },
+    {
+      "command": "python3 scripts/generate_benchmark_card.py",
+      "label": "benchmark card generation"
+    },
+    {
+      "command": "python3 scripts/generate_evidence_cards.py",
+      "label": "evidence card generation"
+    },
+    {
+      "command": "python3 scripts/generate_output_package.py",
+      "label": "output package generation"
+    },
+    {
+      "command": "python3 scripts/generate_run_manifests.py",
+      "label": "run manifest generation"
+    },
+    {
+      "command": "python3 scripts/generate_artifact_index.py",
+      "label": "artifact index generation"
+    },
+    {
+      "command": "python3 scripts/generate_demo_packet.py",
+      "label": "demo packet generation"
+    },
+    {
+      "command": "python3 scripts/run_permea_dry_run.py",
+      "label": "benchmark dry-run orchestration"
+    },
+    {
+      "command": "python3 scripts/generate_permea_artifacts.py",
+      "label": "unified generation"
+    },
+    {
+      "command": "python3 scripts/validate_permea_artifacts.py",
+      "label": "unified validation"
+    }
+  ],
+  "explicit_non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical-effectiveness claim",
+    "no model performance claim",
+    "no state-of-the-art claim",
+    "no solved-delivery claim"
+  ],
+  "generated_at": "example-generated",
+  "implemented_capabilities": [
+    {
+      "artifact_paths": [
+        "sources/registry.yaml"
+      ],
+      "artifact_status": "PASS",
+      "capability": "source registry validation",
+      "command": "python3 scripts/validate_source_registry.py",
+      "current_evidence_boundary": "Validates public source registry structure and entries.",
+      "next_evidence_step": "Keep source records aligned with dataset and benchmark metadata."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/dataset_cards/b3pred_dataset3.md"
+      ],
+      "artifact_status": "PASS",
+      "capability": "dataset card generation",
+      "command": "python3 scripts/generate_dataset_cards.py",
+      "current_evidence_boundary": "Generates public dataset-card examples from local metadata.",
+      "next_evidence_step": "Add richer review status and source limitations as cards mature."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/acquisition_manifests/b3pred_dataset3.md"
+      ],
+      "artifact_status": "PASS",
+      "capability": "acquisition manifest generation",
+      "command": "python3 scripts/generate_acquisition_manifests.py",
+      "current_evidence_boundary": "Generates public acquisition-plan metadata without executing acquisition.",
+      "next_evidence_step": "Add acquisition readiness checks only after access and release policy are reviewed."
+    },
+    {
+      "artifact_paths": [
+        "benchmarks/registry.yaml"
+      ],
+      "artifact_status": "PASS",
+      "capability": "benchmark registry validation",
+      "command": "python3 scripts/validate_benchmark_registry.py",
+      "current_evidence_boundary": "Validates benchmark task registry metadata.",
+      "next_evidence_step": "Keep task definitions tied to explicit labels, metrics, splits, and limitations."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/benchmark_cards/bbb_b3pred_dataset3.md"
+      ],
+      "artifact_status": "PASS",
+      "capability": "benchmark card generation",
+      "command": "python3 scripts/generate_benchmark_card.py",
+      "current_evidence_boundary": "Generates benchmark-card examples for reviewable task definitions.",
+      "next_evidence_step": "Expand cards as benchmark contracts stabilize."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/evidence_cards/bbb_b3pred_dataset3.evidence_cards.json"
+      ],
+      "artifact_status": "PASS",
+      "capability": "evidence card generation",
+      "command": "python3 scripts/generate_evidence_cards.py",
+      "current_evidence_boundary": "Generates structured public evidence-card examples.",
+      "next_evidence_step": "Add evidence review status and uncertainty fields as source coverage grows."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/output_packages/bbb_b3pred_dataset3/manifest.yaml"
+      ],
+      "artifact_status": "PASS",
+      "capability": "output package generation",
+      "command": "python3 scripts/generate_output_package.py",
+      "current_evidence_boundary": "Generates deterministic output-package examples for benchmark review.",
+      "next_evidence_step": "Connect future benchmark outputs to the same package shape."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/run_manifests/example_artifact_generation.md"
+      ],
+      "artifact_status": "PASS",
+      "capability": "run manifest generation",
+      "command": "python3 scripts/generate_run_manifests.py",
+      "current_evidence_boundary": "Generates reproducibility records for local artifact generation.",
+      "next_evidence_step": "Keep manifest fields aligned with generated artifacts and command coverage."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/ARTIFACT_INDEX.md"
+      ],
+      "artifact_status": "PASS",
+      "capability": "artifact index generation",
+      "command": "python3 scripts/generate_artifact_index.py",
+      "current_evidence_boundary": "Generates a public index of current registry inputs and generated artifacts.",
+      "next_evidence_step": "Add new artifact families only after generator and validation coverage exist."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/DEMO_PACKET.md",
+        "docs/examples/generated/DEMO_PACKET.json"
+      ],
+      "artifact_status": "PASS",
+      "capability": "demo packet generation",
+      "command": "python3 scripts/generate_demo_packet.py",
+      "current_evidence_boundary": "Generates a public entry point for inspecting current artifact-system outputs.",
+      "next_evidence_step": "Keep the packet refreshed as new generated entry points are added."
+    },
+    {
+      "artifact_paths": [
+        "docs/examples/generated/dry_runs/example_benchmark_dry_run.md",
+        "docs/examples/generated/dry_runs/example_benchmark_dry_run.json"
+      ],
+      "artifact_status": "PASS",
+      "capability": "benchmark dry-run orchestration",
+      "command": "python3 scripts/run_permea_dry_run.py",
+      "current_evidence_boundary": "Runs local metadata checks and example generators for a deterministic dry-run report.",
+      "next_evidence_step": "Add broader dry-run coverage only after public-safe task contracts are stable."
+    },
+    {
+      "artifact_paths": [
+        "scripts/generate_permea_artifacts.py"
+      ],
+      "artifact_status": "PASS",
+      "capability": "unified generation",
+      "command": "python3 scripts/generate_permea_artifacts.py",
+      "current_evidence_boundary": "Runs current deterministic artifact generators through one local command.",
+      "next_evidence_step": "Integrate the evidence matrix into unified generation in a later bounded run."
+    },
+    {
+      "artifact_paths": [
+        "scripts/validate_permea_artifacts.py"
+      ],
+      "artifact_status": "PASS",
+      "capability": "unified validation",
+      "command": "python3 scripts/validate_permea_artifacts.py",
+      "current_evidence_boundary": "Runs current local validation and generation checks through one command.",
+      "next_evidence_step": "Integrate evidence-matrix presence checks in a later bounded run."
+    }
+  ],
+  "limitations": [
+    "This matrix is generated from repository metadata, generated examples, and local commands only.",
+    "It maps implemented artifact infrastructure, not biological or therapeutic performance.",
+    "It does not load datasets, run acquisition, call external services, run ML, or score candidates.",
+    "It records evidence boundaries for current public artifacts and does not expand scientific claims."
+  ],
+  "matrix_id": "permea_core_public_evidence_matrix",
+  "matrix_type": "public-evidence-matrix",
+  "next_evidence_steps": [
+    "Integrate this matrix into unified generation in a later bounded run.",
+    "Add validation coverage for matrix file presence in a later bounded run.",
+    "Keep new public claims tied to generated artifacts, commands, limitations, and non-claims."
+  ],
+  "output_paths": {
+    "json": "docs/examples/generated/EVIDENCE_MATRIX.json",
+    "markdown": "docs/examples/generated/EVIDENCE_MATRIX.md"
+  },
+  "overview": "This public evidence matrix maps current Permea Core artifact capabilities to generated artifacts, reproducible local commands, validation evidence, explicit non-claims, limitations, and next evidence steps.",
+  "status": "PASS",
+  "validation_evidence": [
+    {
+      "command": "python3 scripts/validate_permea_artifacts.py",
+      "label": "artifact validation"
+    },
+    {
+      "command": "python3 scripts/generate_permea_artifacts.py",
+      "label": "unified generation"
+    },
+    {
+      "command": "python3 scripts/generate_demo_packet.py",
+      "label": "demo packet generation"
+    },
+    {
+      "command": "python3 scripts/run_permea_dry_run.py",
+      "label": "benchmark dry-run"
+    }
+  ]
+}
