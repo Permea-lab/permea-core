@@ -80,6 +80,11 @@
     },
     {
       "exists": true,
+      "label": "reproducibility report",
+      "path": "docs/examples/generated/REPRODUCIBILITY_REPORT.md"
+    },
+    {
+      "exists": true,
       "label": "benchmark dry-run Markdown",
       "path": "docs/examples/generated/dry_runs/example_benchmark_dry_run.md"
     },

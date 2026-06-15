@@ -217,6 +217,18 @@ Validate all current local registry and artifact layers:
 python3 scripts/validate_permea_artifacts.py
 ```
 
+Reproduce all public artifact surfaces:
+
+```bash
+python3 scripts/permea_reproduce.py
+```
+
+Validate the public reproducibility bundle:
+
+```bash
+python3 scripts/permea_validate.py
+```
+
 Run the deterministic benchmark dry-run:
 
 ```bash
@@ -266,6 +278,8 @@ Generated benchmark dry-run reports are available under [Generated Benchmark Dry
 The generated public demo packet is available at [Public Demo Packet](docs/examples/generated/DEMO_PACKET.md).
 
 The generated public evidence matrix is available at [Public Evidence Matrix](docs/examples/generated/EVIDENCE_MATRIX.md).
+
+Quick local setup starts at [Quickstart](QUICKSTART.md). The reproducibility contract is documented in [Reproducibility](REPRODUCIBILITY.md). The generated reproducibility report is available at [Public Reproducibility Report](docs/examples/generated/REPRODUCIBILITY_REPORT.md).
 
 Generate run manifest examples:
 

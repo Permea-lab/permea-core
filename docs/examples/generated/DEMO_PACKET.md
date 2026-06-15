@@ -57,6 +57,7 @@ Validates current registry inputs and generated artifact examples with local det
 ## Generated Artifacts
 
 - artifact index: [docs/examples/generated/ARTIFACT_INDEX.md](docs/examples/generated/ARTIFACT_INDEX.md) (present)
+- reproducibility report: [docs/examples/generated/REPRODUCIBILITY_REPORT.md](docs/examples/generated/REPRODUCIBILITY_REPORT.md) (present)
 - benchmark dry-run Markdown: [docs/examples/generated/dry_runs/example_benchmark_dry_run.md](docs/examples/generated/dry_runs/example_benchmark_dry_run.md) (present)
 - benchmark dry-run JSON: [docs/examples/generated/dry_runs/example_benchmark_dry_run.json](docs/examples/generated/dry_runs/example_benchmark_dry_run.json) (present)
 - benchmark card: [docs/examples/generated/benchmark_cards/bbb_b3pred_dataset3.md](docs/examples/generated/benchmark_cards/bbb_b3pred_dataset3.md) (present)
@@ -86,6 +87,7 @@ Runs local metadata checks and example artifact generators, then writes determin
 - [Generated evidence surface](README.md)
 - [Public artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
 - [Public evidence matrix](EVIDENCE_MATRIX.md)
+- [Public reproducibility report](REPRODUCIBILITY_REPORT.md)
 - [Benchmark dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
 
 ## Available Commands
