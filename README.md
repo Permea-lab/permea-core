@@ -253,11 +253,19 @@ Generate the public demo packet:
 python3 scripts/generate_demo_packet.py
 ```
 
+Generate the public evidence matrix:
+
+```bash
+python3 scripts/generate_evidence_matrix.py
+```
+
 Current generated artifacts are indexed at [Public Artifact Index](docs/examples/generated/ARTIFACT_INDEX.md).
 
 Generated benchmark dry-run reports are available under [Generated Benchmark Dry-Run Reports](docs/examples/generated/dry_runs/README.md).
 
 The generated public demo packet is available at [Public Demo Packet](docs/examples/generated/DEMO_PACKET.md).
+
+The generated public evidence matrix is available at [Public Evidence Matrix](docs/examples/generated/EVIDENCE_MATRIX.md).
 
 Generate run manifest examples:
 
