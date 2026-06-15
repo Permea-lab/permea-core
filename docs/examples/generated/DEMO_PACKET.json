@@ -1,0 +1,195 @@
+{
+  "artifact_families": [
+    {
+      "exists": true,
+      "label": "Artifact index",
+      "path": "docs/examples/generated/ARTIFACT_INDEX.md"
+    },
+    {
+      "exists": true,
+      "label": "Benchmark dry-run reports",
+      "path": "docs/examples/generated/dry_runs/README.md"
+    },
+    {
+      "exists": true,
+      "label": "Benchmark cards",
+      "path": "docs/examples/generated/benchmark_cards"
+    },
+    {
+      "exists": true,
+      "label": "Dataset cards",
+      "path": "docs/examples/generated/dataset_cards"
+    },
+    {
+      "exists": true,
+      "label": "Acquisition manifests",
+      "path": "docs/examples/generated/acquisition_manifests"
+    },
+    {
+      "exists": true,
+      "label": "Evidence cards",
+      "path": "docs/examples/generated/evidence_cards"
+    },
+    {
+      "exists": true,
+      "label": "Output packages",
+      "path": "docs/examples/generated/output_packages"
+    },
+    {
+      "exists": true,
+      "label": "Run manifests",
+      "path": "docs/examples/generated/run_manifests"
+    }
+  ],
+  "artifact_index_path": "docs/examples/generated/ARTIFACT_INDEX.md",
+  "available_commands": [
+    {
+      "command": "python3 scripts/generate_demo_packet.py",
+      "label": "one-command demo packet"
+    },
+    {
+      "command": "python3 scripts/run_permea_dry_run.py",
+      "label": "benchmark dry-run"
+    },
+    {
+      "command": "python3 scripts/generate_permea_artifacts.py",
+      "label": "unified artifact generation"
+    },
+    {
+      "command": "python3 scripts/validate_permea_artifacts.py",
+      "label": "unified artifact validation"
+    }
+  ],
+  "dry_run_report_paths": [
+    "docs/examples/generated/dry_runs/example_benchmark_dry_run.md",
+    "docs/examples/generated/dry_runs/example_benchmark_dry_run.json"
+  ],
+  "dry_run_summary": {
+    "command": "python3 scripts/run_permea_dry_run.py",
+    "paths": [
+      "docs/examples/generated/dry_runs/example_benchmark_dry_run.md",
+      "docs/examples/generated/dry_runs/example_benchmark_dry_run.json"
+    ],
+    "summary": "Runs local metadata checks and example artifact generators, then writes deterministic dry-run Markdown and JSON reports."
+  },
+  "generated_artifacts": [
+    {
+      "exists": true,
+      "label": "artifact index",
+      "path": "docs/examples/generated/ARTIFACT_INDEX.md"
+    },
+    {
+      "exists": true,
+      "label": "benchmark dry-run Markdown",
+      "path": "docs/examples/generated/dry_runs/example_benchmark_dry_run.md"
+    },
+    {
+      "exists": true,
+      "label": "benchmark dry-run JSON",
+      "path": "docs/examples/generated/dry_runs/example_benchmark_dry_run.json"
+    },
+    {
+      "exists": true,
+      "label": "benchmark card",
+      "path": "docs/examples/generated/benchmark_cards/bbb_b3pred_dataset3.md"
+    },
+    {
+      "exists": true,
+      "label": "dataset card",
+      "path": "docs/examples/generated/dataset_cards/b3pred_dataset3.md"
+    },
+    {
+      "exists": true,
+      "label": "acquisition manifest",
+      "path": "docs/examples/generated/acquisition_manifests/b3pred_dataset3.md"
+    },
+    {
+      "exists": true,
+      "label": "evidence cards",
+      "path": "docs/examples/generated/evidence_cards/bbb_b3pred_dataset3.evidence_cards.json"
+    },
+    {
+      "exists": true,
+      "label": "output package manifest",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/manifest.yaml"
+    },
+    {
+      "exists": true,
+      "label": "output package metrics metadata",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/metrics.json"
+    },
+    {
+      "exists": true,
+      "label": "output package ranking metadata",
+      "path": "docs/examples/generated/output_packages/bbb_b3pred_dataset3/ranking.csv"
+    },
+    {
+      "exists": true,
+      "label": "run manifest",
+      "path": "docs/examples/generated/run_manifests/example_artifact_generation.md"
+    }
+  ],
+  "generated_at": "example-generated",
+  "input_artifacts": [
+    {
+      "exists": true,
+      "label": "source registry",
+      "path": "sources/registry.yaml"
+    },
+    {
+      "exists": true,
+      "label": "benchmark registry",
+      "path": "benchmarks/registry.yaml"
+    },
+    {
+      "exists": true,
+      "label": "benchmark task metadata",
+      "path": "benchmarks/bbb_b3pred_dataset3.yaml"
+    },
+    {
+      "exists": true,
+      "label": "dataset card metadata",
+      "path": "dataset_cards/b3pred_dataset3.yaml"
+    },
+    {
+      "exists": true,
+      "label": "acquisition manifest metadata",
+      "path": "acquisition_manifests/b3pred_dataset3.yaml"
+    },
+    {
+      "exists": true,
+      "label": "run manifest metadata",
+      "path": "run_manifests/example_artifact_generation.yaml"
+    }
+  ],
+  "limitations": [
+    "This packet is generated from repository metadata and generated examples only.",
+    "It is a public artifact-system demonstration, not a data acquisition run.",
+    "It does not load source datasets, inspect row-level biological data, run ML, or score candidates.",
+    "It does not confirm access, license, redistribution, acquisition readiness, or biological performance."
+  ],
+  "next_action": "Review this packet, then run the dry-run, unified generation, and unified validation commands before opening or reviewing a public PR.",
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no model performance claim"
+  ],
+  "output_paths": {
+    "json": "docs/examples/generated/DEMO_PACKET.json",
+    "markdown": "docs/examples/generated/DEMO_PACKET.md"
+  },
+  "overview": "This public demo packet is a generated entry point for the current Permea Core artifact system. It points reviewers to local commands, input metadata, generated examples, dry-run outputs, validation, and explicit non-claims.",
+  "packet_id": "permea_core_public_demo_packet",
+  "packet_type": "public-demo-packet",
+  "status": "PASS",
+  "unified_generation_summary": {
+    "command": "python3 scripts/generate_permea_artifacts.py",
+    "summary": "Regenerates the current deterministic public example artifacts."
+  },
+  "unified_validation_summary": {
+    "command": "python3 scripts/validate_permea_artifacts.py",
+    "summary": "Validates current registry inputs and generated artifact examples with local deterministic checks."
+  }
+}
