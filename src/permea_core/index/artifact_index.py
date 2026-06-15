@@ -51,6 +51,8 @@ ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
 
 UNIFIED_COMMANDS: tuple[str, ...] = (
     "python3 scripts/generate_evidence_surface.py",
+    "python3 scripts/permea_reproduce.py",
+    "python3 scripts/permea_validate.py",
     "python3 scripts/generate_demo_packet.py",
     "python3 scripts/generate_artifact_index.py",
     "python3 scripts/generate_evidence_matrix.py",
@@ -64,6 +66,7 @@ CORE_SURFACES: tuple[tuple[str, str], ...] = (
     ("Public demo packet", "docs/examples/generated/DEMO_PACKET.md"),
     ("Public artifact index", "docs/examples/generated/ARTIFACT_INDEX.md"),
     ("Public evidence matrix", "docs/examples/generated/EVIDENCE_MATRIX.md"),
+    ("Public reproducibility report", "docs/examples/generated/REPRODUCIBILITY_REPORT.md"),
     ("Benchmark dry-run report", "docs/examples/generated/dry_runs/example_benchmark_dry_run.md"),
 )
 
