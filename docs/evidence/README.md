@@ -11,6 +11,7 @@ It is a public review layer. It does not add scientific evidence, execute acquis
 - [EVIDENCE-032: Reproducibility Bundle](EVIDENCE-032-reproducibility-bundle.md)
 - [EVIDENCE-034: Evaluation Bundle](EVIDENCE-034-evaluation-bundle.md)
 - [EVIDENCE-036: Artifact Specification Layer](EVIDENCE-036-artifact-specification-layer.md)
+- [EVIDENCE-038: Artifact Validator Bundle](EVIDENCE-038-artifact-validator-bundle.md)
 
 ## Claim Registry
 

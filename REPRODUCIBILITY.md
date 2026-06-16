@@ -12,6 +12,7 @@ The current public contract is local and deterministic: repository metadata is u
 
 - Reproduce public surfaces: `python3 scripts/permea_reproduce.py`
 - Validate public surfaces: `python3 scripts/permea_validate.py`
+- Check artifact standards: `python3 scripts/permea_check.py`
 - Inspect artifact specs: `python3 scripts/permea_specs.py`
 - Generate all artifacts: `python3 scripts/generate_permea_artifacts.py`
 - Validate all artifacts: `python3 scripts/validate_permea_artifacts.py`
@@ -37,6 +38,7 @@ The current public contract is local and deterministic: repository metadata is u
 ## Validation map
 
 - Registry checks validate public metadata inputs.
+- Artifact standard checks inspect built-in public artifact examples for required fields, claim boundaries, non-claims, repo-relative paths, and evidence linkage.
 - Generator checks regenerate public example artifacts.
 - Reproducibility checks verify report sections, lineage paths, and explicit non-claims.
 - Tests verify required sections, relative paths, command behavior, and unsupported claim hygiene.
@@ -75,6 +77,7 @@ The current public contract is local and deterministic: repository metadata is u
 - Add dataset-card inputs with bounded source and claim metadata.
 - Add benchmark-task metadata with explicit labels, splits, metrics, and limitations.
 - Add artifact generators with matching validation and tests.
+- Run `python3 scripts/permea_check.py` before proposing new public artifact examples.
 - Add evidence cards only when uncertainty, source, and review status are clear.
 
 ## What this bundle does not prove

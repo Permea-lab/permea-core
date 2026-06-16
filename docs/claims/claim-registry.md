@@ -10,6 +10,7 @@ Permea Core public materials may state that the repository currently has:
 - an implemented reproducibility bundle for public generated artifacts
 - an implemented template/reference evaluation bundle
 - public artifact specifications and lightweight schemas for current artifact families
+- an artifact validator command for checking current public examples against structural, non-claim, claim-boundary, and evidence-linkage expectations
 - public decision records for major program choices
 - public claim-boundary and documentation memory surfaces
 
@@ -36,6 +37,7 @@ Permea Core public materials must not claim:
 | Public reproduction path exists | [EVIDENCE-032](../evidence/EVIDENCE-032-reproducibility-bundle.md) |
 | Evaluation transfer pattern exists | [EVIDENCE-034](../evidence/EVIDENCE-034-evaluation-bundle.md) |
 | Artifact standards exist | [EVIDENCE-036](../evidence/EVIDENCE-036-artifact-specification-layer.md) |
+| Artifact examples can be checked against Permea standards | [EVIDENCE-038](../evidence/EVIDENCE-038-artifact-validator-bundle.md) |
 | Claim-boundary discipline exists | [DEC-005](../decisions/DEC-005-no-production-or-clinical-claims-without-evidence.md) and [Claim Boundary](../CLAIM_BOUNDARY.md) |
 
 ## Required Non-Claims
@@ -67,6 +69,7 @@ Avoid wording that implies biological validation, clinical readiness, model supe
 ## Known Limitations
 
 - Current evidence is documentation, metadata, generated artifacts, and local validation.
+- Validator-assisted review checks structure and claim-boundary hygiene for public examples; it does not establish scientific performance.
 - Current evidence does not include dataset download, acquisition execution, model scoring, wet-lab results, clinical results, or redistribution-rights confirmation.
 - Decision records explain why directions were chosen; they are not evidence of scientific performance.
 

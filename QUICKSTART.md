@@ -33,6 +33,14 @@ python3 scripts/permea_validate.py
 
 This runs unified artifact validation and reproducibility bundle checks.
 
+## One-command artifact standard check
+
+```bash
+python3 scripts/permea_check.py
+```
+
+This checks built-in public dataset-card, benchmark-card, evidence-card, run-manifest, and output-package examples for required fields, repo-relative paths, non-claims, claim-boundary wording, and evidence linkage.
+
 ## One-command evaluation packet generation
 
 ```bash
@@ -65,6 +73,12 @@ Inspect the specification registry with:
 python3 scripts/permea_specs.py
 ```
 
+Check current public examples against the artifact standards with:
+
+```bash
+python3 scripts/permea_check.py
+```
+
 ## Explicit Non-Claims
 
 - no dataset downloaded
@@ -80,6 +94,7 @@ python3 scripts/permea_specs.py
 
 - If reproduction fails, run `python3 scripts/generate_permea_artifacts.py` to identify the failing generator step.
 - If validation fails, run `python3 scripts/validate_permea_artifacts.py` to identify the failing validation step.
+- If an artifact standard check fails, run `python3 scripts/permea_check.py path/to/artifact` to inspect a single public artifact path.
 - If generated files look stale, rerun `python3 scripts/permea_reproduce.py` from the repository root.
 
 ## Next steps

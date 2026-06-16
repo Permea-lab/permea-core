@@ -4,12 +4,12 @@ This file is the first continuation breadcrumb for Permea Core. It summarizes th
 
 ## Current Status
 
-Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, decision records, project memory, and bounded claim language.
+Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, decision records, project memory, and bounded claim language.
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-doc-007-evidence-layer-bootstrap`
-- Public baseline reviewed: `main` at `9b16ac6efeac76310528d5e1c620afd650eabfcb`
+- Branch used for this update: `p-core-038-artifact-validator-bundle`
+- Public baseline reviewed: `main` at `2749f987b5cc7ceca60b2c9545e091a3f1d71286`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -17,6 +17,7 @@ Current public baseline when this breadcrumb was refreshed:
 Permea Core currently provides:
 
 - public artifact specifications for dataset cards, benchmark cards, evidence cards, run manifests, and output packages
+- a lightweight public artifact validator command for current public example artifacts
 - deterministic generated example artifact surfaces under `docs/examples/generated/`
 - local commands for reproduction, validation, evaluation packet generation, dry-run generation, and specification registry inspection
 - public evidence records under `docs/evidence/`
@@ -43,10 +44,10 @@ See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/ev
 
 ## Last Completed Major Work
 
-The last completed major public documentation layer is the decision layer:
+The last completed major public documentation layer is the evidence layer:
 
-- [P-DOC-004 decision and documentation backfill report](docs/reports/p-doc-004-decision-and-documentation-backfill-v0.md)
-- [Decision records](docs/decisions/README.md)
+- [P-DOC-007 evidence layer bootstrap report](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
+- [Evidence layer](docs/evidence/README.md)
 
 ## Current Branch / Commit
 
@@ -57,7 +58,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `9b16ac6efeac76310528d5e1c620afd650eabfcb`.
+At this update, the reviewed public baseline was `2749f987b5cc7ceca60b2c9545e091a3f1d71286`.
 
 ## Primary Reports
 
@@ -65,6 +66,7 @@ At this update, the reviewed public baseline was `9b16ac6efeac76310528d5e1c620af
 - [P-DOC-001 project operating-system adoption report](docs/reports/p-doc-001-project-operating-system-adoption-v0.md)
 - [P-DOC-004 decision and documentation backfill report](docs/reports/p-doc-004-decision-and-documentation-backfill-v0.md)
 - [P-DOC-007 evidence layer bootstrap report](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
+- [P-CORE-038 artifact validator bundle report](docs/reports/p-core-038-artifact-validator-bundle-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -76,6 +78,7 @@ At this update, the reviewed public baseline was `9b16ac6efeac76310528d5e1c620af
 - [Evidence layer](docs/evidence/README.md)
 - [Evidence index](docs/evidence/evidence-index.md)
 - [Claim registry](docs/claims/claim-registry.md)
+- [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
 - [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
 - [Benchmark dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
 - [Source registry](sources/registry.yaml)
@@ -89,6 +92,7 @@ At this update, the reviewed public baseline was `9b16ac6efeac76310528d5e1c620af
 Current work should continue strengthening Permea Core as public infrastructure:
 
 - keep artifact standards inspectable and easy to extend
+- keep artifact validation aligned with public specifications and evidence-linkage expectations
 - keep generation and validation deterministic
 - keep evidence records connected to claims, artifacts, reports, validation, and limitations
 - keep paper and report language aligned with the claim boundary
@@ -97,10 +101,10 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after this evidence-layer bootstrap:
+Recommended next task after this artifact validator bundle:
 
-- Review and merge the evidence-layer bootstrap branch if clean.
-- Then continue with the next scoped documentation or validation task, prioritizing evidence-record coverage for future merged artifact layers.
+- Review and merge the artifact validator bundle branch if clean.
+- Then continue with the next scoped validation or documentation task, prioritizing validator coverage only when public artifact families require it.
 
 ## How To Continue
 
@@ -112,6 +116,7 @@ Recommended next task after this evidence-layer bootstrap:
 
 ```bash
 python3 scripts/permea_specs.py
+python3 scripts/permea_check.py
 python3 scripts/permea_validate.py
 python3 scripts/validate_permea_artifacts.py
 git diff --check

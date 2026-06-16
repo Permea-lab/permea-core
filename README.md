@@ -238,6 +238,12 @@ Validate the public reproducibility bundle:
 python3 scripts/permea_validate.py
 ```
 
+Check public artifact examples against the current Permea artifact standards:
+
+```bash
+python3 scripts/permea_check.py
+```
+
 Run the deterministic benchmark dry-run:
 
 ```bash

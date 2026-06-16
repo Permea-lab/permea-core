@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, validation, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, public artifact specification inspection, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, public artifact specification inspection, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `9b16ac6efeac76310528d5e1c620afd650eabfcb`.
+At this update point, the reviewed public baseline was `main` at `2749f987b5cc7ceca60b2c9545e091a3f1d71286`.
 
 ## Permea Layer Model
 
@@ -41,6 +41,7 @@ At this update point, the reviewed public baseline was `main` at `9b16ac6efeac76
 | Reproducibility Layer | Strong | Local commands and reports that regenerate and validate current public artifacts. |
 | Evaluation Layer | Strong | Template/reference packet for transferring the artifact pattern to users. |
 | Specification Layer | Strong | Public standards and schemas for artifact families. |
+| Standard Enforcement Layer | Developing | Lightweight public artifact checks for current example files. |
 | Memory Layer | Established | Breadcrumb, review hub, ADR, runbook, and reports for continuation. |
 
 ## Current State Summary
@@ -50,6 +51,7 @@ At this update point, the reviewed public baseline was `main` at `9b16ac6efeac76
 - Public claim registry exists at [docs/claims/claim-registry.md](docs/claims/claim-registry.md).
 - Reproducibility and evaluation bundles exist at [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [EVALUATION.md](EVALUATION.md).
 - Public artifact specifications exist at [docs/specs/README.md](docs/specs/README.md).
+- Public artifact validator exists at [scripts/permea_check.py](scripts/permea_check.py).
 - Decision records exist at [docs/decisions/README.md](docs/decisions/README.md).
 - Artifact schemas exist under [schemas/](schemas/).
 - Current artifact-system commands are listed in [QUICKSTART.md](QUICKSTART.md).
@@ -73,6 +75,7 @@ Paper-related status:
 - [EVIDENCE-032: Reproducibility Bundle](docs/evidence/EVIDENCE-032-reproducibility-bundle.md)
 - [EVIDENCE-034: Evaluation Bundle](docs/evidence/EVIDENCE-034-evaluation-bundle.md)
 - [EVIDENCE-036: Artifact Specification Layer](docs/evidence/EVIDENCE-036-artifact-specification-layer.md)
+- [EVIDENCE-038: Artifact Validator Bundle](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
 - [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
 - [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
 - [Demo packet](docs/examples/generated/DEMO_PACKET.md)
@@ -98,6 +101,7 @@ Paper-related status:
 - [P-DOC-001 project operating-system adoption v0](docs/reports/p-doc-001-project-operating-system-adoption-v0.md)
 - [P-DOC-004 decision and documentation backfill v0](docs/reports/p-doc-004-decision-and-documentation-backfill-v0.md)
 - [P-DOC-007 evidence layer bootstrap v0](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
+- [P-CORE-038 artifact validator bundle v0](docs/reports/p-core-038-artifact-validator-bundle-v0.md)
 
 Generated report-like surfaces:
 
@@ -142,13 +146,14 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Evaluation bundle: Implemented and Public-Safe.
 - Artifact specifications: Implemented and Public-Safe.
 - Evidence layer: Implemented and Public-Safe.
-- Artifact-spec validator: Prepared separately, not part of this evidence bootstrap.
+- Artifact validator bundle: Implemented for current public example artifact families.
 
 ## Validation Status
 
 Current evidence-layer validation uses:
 
 ```bash
+python3 scripts/permea_check.py
 python3 scripts/permea_specs.py
 python3 scripts/permea_evaluate.py
 python3 scripts/permea_reproduce.py
@@ -164,10 +169,11 @@ python3 scripts/validate_permea_artifacts.py
 - New evidence surfaces can become hard to review if they are not linked from the hub and breadcrumb.
 - Decision records can become stale if strategic or technical choices change without updating the Decision Layer.
 - Evidence records can become stale if reports, generated artifacts, or validation surfaces change without an evidence-layer refresh.
+- Validator checks can drift if public artifact specs are changed without matching tests.
 
 ## Current Open Questions
 
-- When should artifact schemas move from structure-only checks to a dedicated validator bundle?
+- When should artifact schemas move from lightweight checks to stricter schema enforcement?
 - Which contribution workflows should require schema validation before review?
 - Which generated surfaces should become release-gated artifacts?
 - How should future paper or report drafts cite generated evidence without expanding claims?
@@ -175,10 +181,10 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review and merge the evidence-layer bootstrap branch if validation and scans remain clean.
-2. Add evidence records for future merged artifact or validation layers.
-3. Backfill only remaining decision-critical documentation gaps.
-4. Add a dedicated artifact-spec validator bundle in a separate scoped task.
+1. Review and merge the artifact validator bundle branch if validation and scans remain clean.
+2. Extend validator coverage only when new public artifact families or stricter schemas require it.
+3. Add evidence records for future merged artifact or validation layers.
+4. Backfill only remaining decision-critical documentation gaps.
 5. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
 6. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
 
@@ -204,6 +210,7 @@ Start from the repository root and run:
 git status --short --branch
 git log -1 --oneline
 python3 scripts/permea_specs.py
+python3 scripts/permea_check.py
 python3 scripts/permea_validate.py
 ```
 
