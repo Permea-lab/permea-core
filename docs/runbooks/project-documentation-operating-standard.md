@@ -9,7 +9,8 @@ This runbook defines the public documentation operating standard for Permea Core
 Permea Core should maintain three public documentation layers:
 
 - entry breadcrumbs: `OPEN_THIS_FIRST.md` and `REVIEW_HUB.md`
-- decision records: `docs/adr/`
+- decision records: `docs/decisions/`
+- architecture decision records: `docs/adr/`
 - task and technical reports: `docs/reports/`
 
 Generated evidence surfaces should remain under `docs/examples/generated/` and should be refreshed by generators rather than hand-edited when possible.
@@ -29,9 +30,9 @@ At the end of a task:
 1. Run relevant generation and validation commands.
 2. Run `git diff --check`.
 3. Review public/private and claim-boundary language.
-4. Update `OPEN_THIS_FIRST.md`.
-5. Update `REVIEW_HUB.md`.
-6. Add or update a report under `docs/reports/` when the task changes project direction, evidence posture, or reviewer workflow.
+4. Update the relevant project memory surface for the kind of work completed.
+5. Add or update a report under `docs/reports/` when the task changes project direction, evidence posture, or reviewer workflow.
+6. Add or update a decision record under `docs/decisions/` when the task makes or changes a strategic or technical decision.
 
 ## Public / Private Separation
 
@@ -82,11 +83,17 @@ If a future task changes the documentation operating model, update or add an ADR
 
 ## Task Completion Rules
 
-Every completed task or group must update:
+Every major completed task or group must update at least one of:
 
 - `OPEN_THIS_FIRST.md`
 - `REVIEW_HUB.md`
+- `docs/reports/`
+- `docs/evidence/`
+- `docs/decisions/`
+- `docs/adr/`
 
-Exception: a task may skip these updates only when it explicitly says breadcrumb updates are exempted or when the task is purely mechanical and does not change project state, evidence, reports, roadmap, or review workflow.
+The selected surface should match the work performed. If a task makes or changes a strategic or technical decision, it must create or update a decision record.
 
-When in doubt, update the breadcrumb and review hub with the smallest accurate change.
+Exception: a task may skip these updates only when it explicitly says documentation memory updates are exempted or when the task is purely mechanical and does not change project state, evidence, reports, decisions, roadmap, or review workflow.
+
+When in doubt, update the smallest accurate memory surface.
