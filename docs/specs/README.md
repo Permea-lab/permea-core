@@ -22,9 +22,18 @@ python3 scripts/permea_specs.py
 
 The command prints the available public specs, schema paths, governed artifact families, and explicit non-claims.
 
+## Validator Command
+
+```bash
+python3 scripts/permea_check.py
+```
+
+The validator checks current public example artifacts against lightweight Permea standard expectations for required fields, artifact type recognition, repo-relative paths, non-claims, claim-boundary wording, and evidence linkage.
+
 ## Evidence Reference
 
 - [EVIDENCE-036: Artifact Specification Layer](../evidence/EVIDENCE-036-artifact-specification-layer.md)
+- [EVIDENCE-038: Artifact Validator Bundle](../evidence/EVIDENCE-038-artifact-validator-bundle.md)
 
 ## Explicit Non-Claims
 

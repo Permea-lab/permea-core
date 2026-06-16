@@ -13,6 +13,7 @@ PASS = "PASS"
 FAIL = "FAIL"
 
 VALIDATION_STEPS: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("artifact validator bundle", ("scripts/permea_check.py",)),
     ("source registry validation", ("scripts/validate_source_registry.py",)),
     ("benchmark registry validation", ("scripts/validate_benchmark_registry.py",)),
     ("dataset card validation", ("scripts/validate_dataset_cards.py",)),
