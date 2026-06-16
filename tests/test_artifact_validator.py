@@ -23,8 +23,8 @@ def test_builtin_artifact_validator_passes() -> None:
     summary = validate_builtin_artifacts(ROOT)
 
     assert summary["status"] == PASS
-    assert summary["artifacts_checked"] == 5
-    assert summary["pass_count"] == 5
+    assert summary["artifacts_checked"] == 8
+    assert summary["pass_count"] == 8
     assert summary["fail_count"] == 0
 
 
@@ -188,8 +188,8 @@ def test_cli_summary_behavior() -> None:
 
     assert completed.returncode == 0
     assert "Permea artifact validator" in completed.stdout
-    assert "Artifacts checked: 5" in completed.stdout
-    assert "Pass count: 5" in completed.stdout
+    assert "Artifacts checked: 8" in completed.stdout
+    assert "Pass count: 8" in completed.stdout
     assert "Next recommended command:" in completed.stdout
 
 

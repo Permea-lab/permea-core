@@ -11,6 +11,7 @@ Permea Core public materials may state that the repository currently has:
 - an implemented template/reference evaluation bundle
 - public artifact specifications and lightweight schemas for current artifact families
 - an artifact validator command for checking current public examples against structural, non-claim, claim-boundary, and evidence-linkage expectations
+- external reference example packages that demonstrate how to use the artifact standard
 - public decision records for major program choices
 - public claim-boundary and documentation memory surfaces
 
@@ -38,6 +39,7 @@ Permea Core public materials must not claim:
 | Evaluation transfer pattern exists | [EVIDENCE-034](../evidence/EVIDENCE-034-evaluation-bundle.md) |
 | Artifact standards exist | [EVIDENCE-036](../evidence/EVIDENCE-036-artifact-specification-layer.md) |
 | Artifact examples can be checked against Permea standards | [EVIDENCE-038](../evidence/EVIDENCE-038-artifact-validator-bundle.md) |
+| External example packages demonstrate the standard | [EVIDENCE-040](../evidence/EVIDENCE-040-external-example-packages.md) |
 | Claim-boundary discipline exists | [DEC-005](../decisions/DEC-005-no-production-or-clinical-claims-without-evidence.md) and [Claim Boundary](../CLAIM_BOUNDARY.md) |
 
 ## Required Non-Claims

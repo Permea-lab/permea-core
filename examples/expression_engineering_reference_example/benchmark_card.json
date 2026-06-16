@@ -1,0 +1,20 @@
+{
+  "artifact_type": "benchmark_card",
+  "benchmark_id": "expression_engineering_reference_benchmark",
+  "claim_boundary": "Benchmark reference template only; no expression improvement claim and no model performance claim.",
+  "dataset_card": "dataset_card.json",
+  "metrics": [
+    "example_expression_score_placeholder"
+  ],
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "task_type": "expression_engineering_reference_template"
+}

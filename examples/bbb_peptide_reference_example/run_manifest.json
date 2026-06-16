@@ -1,0 +1,22 @@
+{
+  "artifact_type": "run_manifest",
+  "claim_boundary": "Run manifest reference template only; no acquisition executed and no model performance claim.",
+  "commands": [
+    "python3 scripts/permea_check.py examples/bbb_peptide_reference_example"
+  ],
+  "generated_artifacts": [
+    "validation_result.md",
+    "validation_result.json"
+  ],
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "run_id": "bbb_peptide_reference_validation"
+}

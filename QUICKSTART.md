@@ -41,6 +41,12 @@ python3 scripts/permea_check.py
 
 This checks built-in public dataset-card, benchmark-card, evidence-card, run-manifest, and output-package examples for required fields, repo-relative paths, non-claims, claim-boundary wording, and evidence linkage.
 
+You can also validate a copyable example package:
+
+```bash
+python3 scripts/permea_check.py examples/synthetic_reference_example
+```
+
 ## One-command evaluation packet generation
 
 ```bash
@@ -58,6 +64,7 @@ This writes a public template/reference evaluation packet that links current inp
 - [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
+- [External examples](examples/README.md)
 
 ## How to inspect the evidence surface
 

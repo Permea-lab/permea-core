@@ -31,6 +31,8 @@ The artifact validator command checks whether current public examples satisfy re
 python3 scripts/permea_check.py
 ```
 
+Copyable reference packages are available in [examples/](examples/README.md). They demonstrate how evaluation handoff metadata can be packaged without expanding claims.
+
 ## One-command evaluation packet generation
 
 ```bash

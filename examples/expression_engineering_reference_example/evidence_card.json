@@ -1,0 +1,20 @@
+{
+  "artifact_type": "evidence_card",
+  "claim_boundary": "Evidence-card reference template only; no expression improvement or wet-lab validation claim.",
+  "evidence_id": "expression_engineering_reference_evidence",
+  "evidence_links": [
+    "dataset_card.json",
+    "benchmark_card.json"
+  ],
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "support_level": "reference_template_only"
+}

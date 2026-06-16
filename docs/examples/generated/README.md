@@ -30,6 +30,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 - Public artifact specifications: [../../../docs/specs/README.md](../../../docs/specs/README.md) - Public standards for artifact families and their schemas. (present)
 - Public evidence layer: [../../../docs/evidence/README.md](../../../docs/evidence/README.md) - Public index mapping claims, artifacts, reports, validation, and limitations. (present)
 - Artifact validator command: [../../../scripts/permea_check.py](../../../scripts/permea_check.py) - Local checker for public artifact structure, non-claims, claim boundaries, and evidence linkage. (present)
+- External examples: [../../../examples/README.md](../../../examples/README.md) - Copyable public-safe reference packages for using the artifact standard. (present)
 
 ## Artifact families
 
@@ -45,6 +46,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 - reproduce public bundle: `python3 scripts/permea_reproduce.py`
 - validate public bundle: `python3 scripts/permea_validate.py`
 - check artifact standards: `python3 scripts/permea_check.py`
+- check synthetic example: `python3 scripts/permea_check.py examples/synthetic_reference_example`
 - inspect artifact specs: `python3 scripts/permea_specs.py`
 - generate evaluation packet: `python3 scripts/permea_evaluate.py`
 - generate evidence surface: `python3 scripts/generate_evidence_surface.py`

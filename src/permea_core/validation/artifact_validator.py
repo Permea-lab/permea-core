@@ -23,6 +23,9 @@ BUILT_IN_ARTIFACTS: tuple[str, ...] = (
     "docs/examples/generated/evidence_cards/bbb_b3pred_dataset3.evidence_cards.json",
     "docs/examples/generated/run_manifests/example_artifact_generation.md",
     "docs/examples/generated/output_packages/bbb_b3pred_dataset3",
+    "examples/synthetic_reference_example",
+    "examples/bbb_peptide_reference_example",
+    "examples/expression_engineering_reference_example",
 )
 
 NON_CLAIM_ALIASES: dict[str, tuple[str, ...]] = {
@@ -70,6 +73,13 @@ REQUIRED_NON_CLAIMS_BY_TYPE: dict[str, tuple[str, ...]] = {
         "no redistribution rights confirmed",
         "no wet-lab validation by Permea",
     ),
+    "example_package": (
+        "no dataset downloaded",
+        "no acquisition executed",
+        "no redistribution rights confirmed",
+        "no wet-lab validation by Permea",
+        "no model performance claim",
+    ),
 }
 
 REQUIRED_FIELDS_BY_TYPE: dict[str, tuple[str, ...]] = {
@@ -105,6 +115,7 @@ SPEC_SCHEMA_BY_TYPE: dict[str, tuple[str, str]] = {
     "evidence_card": ("docs/specs/SPEC_EVIDENCE_CARD.md", "schemas/evidence_card.schema.json"),
     "run_manifest": ("docs/specs/SPEC_RUN_MANIFEST.md", "schemas/run_manifest.schema.json"),
     "output_package": ("docs/specs/SPEC_OUTPUT_PACKAGE.md", "schemas/output_package.schema.json"),
+    "example_package": ("docs/specs/README.md", "docs/specs/README.md"),
 }
 
 UNSUPPORTED_POSITIVE_CLAIMS: tuple[str, ...] = (
@@ -156,6 +167,8 @@ def validate_artifact(artifact_path: str | Path, root_path: str | Path = ".") ->
         _check_markdown_list_paths(result, path, "Generated Artifacts")
     elif artifact_type == "output_package":
         _validate_output_package(result, path)
+    elif artifact_type == "example_package":
+        _validate_example_package(result, path)
     else:
         _fail(result, "artifact_type_recognition", "unsupported artifact type")
 
@@ -216,6 +229,8 @@ def infer_artifact_type(path: Path) -> str:
     name = path.name
     if path.is_dir() and "output_packages" in parts:
         return "output_package"
+    if path.is_dir() and "examples" in parts:
+        return "example_package"
     if "dataset_cards" in parts and path.suffix == ".md":
         return "dataset_card"
     if "benchmark_cards" in parts and path.suffix == ".md":
@@ -335,6 +350,69 @@ def _validate_output_package(result: dict[str, Any], path: Path) -> None:
             _pass(result, f"required_field:{field}")
         else:
             _fail(result, f"required_field:{field}", f"output manifest missing field: {field}")
+
+
+def _validate_example_package(result: dict[str, Any], path: Path) -> None:
+    required_files = (
+        "README.md",
+        "dataset_card.json",
+        "benchmark_card.json",
+        "evidence_card.json",
+        "run_manifest.json",
+        "output_package.json",
+        "validation_result.md",
+        "validation_result.json",
+    )
+    for name in required_files:
+        candidate = path / name
+        if candidate.exists():
+            _pass(result, f"path_exists:{name}")
+            result["evidence_links_seen"].append(_display_path(ROOT, candidate))
+        else:
+            _fail(result, f"path_exists:{name}", f"example package missing file: {name}")
+
+    for name in required_files:
+        if not name.endswith(".json"):
+            continue
+        candidate = path / name
+        if not candidate.exists():
+            continue
+        try:
+            payload = json.loads(candidate.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            _fail(result, f"json_parse:{name}", f"invalid JSON in {name}: {exc}")
+            continue
+        if isinstance(payload, dict):
+            _pass(result, f"json_parse:{name}")
+        else:
+            _fail(result, f"json_parse:{name}", f"{name} must contain a JSON object")
+
+    validation = path / "validation_result.json"
+    if validation.exists():
+        payload = json.loads(validation.read_text(encoding="utf-8"))
+        for field in (
+            "example_name",
+            "status",
+            "artifacts_checked",
+            "checks",
+            "warnings",
+            "failures",
+            "non_claims",
+            "limitations",
+            "next_command",
+        ):
+            if field in payload:
+                _pass(result, f"required_field:validation_result.{field}")
+            else:
+                _fail(
+                    result,
+                    f"required_field:validation_result.{field}",
+                    f"validation_result.json missing field: {field}",
+                )
+        if payload.get("status") == PASS:
+            _pass(result, "validation_result_status")
+        else:
+            _fail(result, "validation_result_status", "validation_result.json status is not PASS")
 
 
 def _check_markdown_list_paths(result: dict[str, Any], path: Path, section: str) -> None:

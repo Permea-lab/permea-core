@@ -1,0 +1,22 @@
+{
+  "artifact_type": "output_package",
+  "claim_boundary": "Output package structure example only; no model performance claim.",
+  "included_artifacts": [
+    "dataset_card.json",
+    "benchmark_card.json",
+    "evidence_card.json",
+    "run_manifest.json",
+    "validation_result.json"
+  ],
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "package_id": "synthetic_reference_output_package"
+}

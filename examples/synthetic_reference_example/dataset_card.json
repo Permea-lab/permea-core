@@ -1,0 +1,17 @@
+{
+  "artifact_type": "dataset_card",
+  "claim_boundary": "Synthetic reference metadata only; no dataset downloaded, no acquisition executed, no redistribution rights confirmed, and no wet-lab validation by Permea.",
+  "dataset_id": "synthetic_reference_dataset",
+  "description": "Minimal synthetic metadata fixture for learning the Permea artifact structure.",
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "source_status": "synthetic_fixture_only"
+}
