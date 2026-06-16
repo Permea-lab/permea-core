@@ -2,7 +2,7 @@
 
 ## Overview
 
-This generated README is the reviewer-facing navigation surface for Permea Core public artifacts. It links the demo packet, artifact index, evidence matrix, benchmark dry-run report, generated artifact families, reproducibility commands, validation commands, explicit non-claims, limitations, and next evidence steps.
+This generated README is the reviewer-facing navigation surface for Permea Core public artifacts. It links the demo packet, artifact index, evidence matrix, benchmark dry-run report, generated artifact families, evidence layer, reproducibility commands, validation commands, explicit non-claims, limitations, and next evidence steps.
 
 - Surface ID: `permea_core_public_evidence_surface`
 - Surface type: `public-evidence-surface`
@@ -28,6 +28,7 @@ This generated README is the reviewer-facing navigation surface for Permea Core 
 - Reproducibility report: [REPRODUCIBILITY_REPORT.md](REPRODUCIBILITY_REPORT.md) - Generated report for reproduction commands, validation checks, lineage, and non-claims. (present)
 - Evaluation packet: [EVALUATION_PACKET.md](EVALUATION_PACKET.md) - Generated template/reference evaluation packet for artifact-system extension. (present)
 - Public artifact specifications: [../../../docs/specs/README.md](../../../docs/specs/README.md) - Public standards for artifact families and their schemas. (present)
+- Public evidence layer: [../../../docs/evidence/README.md](../../../docs/evidence/README.md) - Public index mapping claims, artifacts, reports, validation, and limitations. (present)
 
 ## Artifact families
 

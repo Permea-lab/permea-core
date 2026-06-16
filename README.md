@@ -159,6 +159,8 @@ Core project documents:
 
 - [Open This First](OPEN_THIS_FIRST.md)
 - [Review Hub](REVIEW_HUB.md)
+- [Evidence Layer](docs/evidence/README.md)
+- [Claim Registry](docs/claims/claim-registry.md)
 - [Decision Records](docs/decisions/README.md)
 - [Manifesto](MANIFESTO.md)
 - [Delivery Taxonomy](docs/DELIVERY-TAXONOMY.md)

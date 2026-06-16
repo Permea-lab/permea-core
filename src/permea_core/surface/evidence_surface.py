@@ -54,6 +54,11 @@ PRIMARY_ENTRY_POINTS: tuple[tuple[str, str, str], ...] = (
         "../../../docs/specs/README.md",
         "Public standards for artifact families and their schemas.",
     ),
+    (
+        "Public evidence layer",
+        "../../../docs/evidence/README.md",
+        "Public index mapping claims, artifacts, reports, validation, and limitations.",
+    ),
 )
 
 ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
@@ -129,8 +134,8 @@ def collect_evidence_surface(root_path: str | Path = ".") -> dict[str, Any]:
             "This generated README is the reviewer-facing navigation surface for "
             "Permea Core public artifacts. It links the demo packet, artifact "
             "index, evidence matrix, benchmark dry-run report, generated artifact "
-            "families, reproducibility commands, validation commands, explicit "
-            "non-claims, limitations, and next evidence steps."
+            "families, evidence layer, reproducibility commands, validation commands, "
+            "explicit non-claims, limitations, and next evidence steps."
         ),
         "primary_entry_points": _existing_link_items(root, PRIMARY_ENTRY_POINTS),
         "artifact_families": _existing_link_items(root, ARTIFACT_FAMILIES),
