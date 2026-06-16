@@ -22,6 +22,10 @@ python3 scripts/permea_specs.py
 
 The command prints the available public specs, schema paths, governed artifact families, and explicit non-claims.
 
+## Evidence Reference
+
+- [EVIDENCE-036: Artifact Specification Layer](../evidence/EVIDENCE-036-artifact-specification-layer.md)
+
 ## Explicit Non-Claims
 
 - no dataset downloaded
@@ -36,4 +40,3 @@ The command prints the available public specs, schema paths, governed artifact f
 ## Extension Policy
 
 New artifact specs should define required fields, recommended fields, field definitions, example structure, validation expectations, claim boundaries, limitations, and extension points before they become reviewer-facing standards.
-

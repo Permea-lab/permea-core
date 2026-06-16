@@ -4,12 +4,12 @@ This file is the first continuation breadcrumb for Permea Core. It summarizes th
 
 ## Current Status
 
-Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence navigation, evaluation and reproducibility bundles, artifact specifications, decision records, project memory, and bounded claim language.
+Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, decision records, project memory, and bounded claim language.
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-doc-004-decision-documentation-backfill-layer`
-- Public baseline reviewed: `main` at `d1806acf83d327855d69a0b1be999f8adcb8a40e`
+- Branch used for this update: `p-doc-007-evidence-layer-bootstrap`
+- Public baseline reviewed: `main` at `9b16ac6efeac76310528d5e1c620afd650eabfcb`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -19,6 +19,8 @@ Permea Core currently provides:
 - public artifact specifications for dataset cards, benchmark cards, evidence cards, run manifests, and output packages
 - deterministic generated example artifact surfaces under `docs/examples/generated/`
 - local commands for reproduction, validation, evaluation packet generation, dry-run generation, and specification registry inspection
+- public evidence records under `docs/evidence/`
+- public claim registry at `docs/claims/claim-registry.md`
 - decision records for major program choices under `docs/decisions/`
 - public claim-boundary and paper-alignment policies
 - lightweight schemas under `schemas/`
@@ -37,15 +39,14 @@ Permea's current public program model is:
 - Specification Layer: Strong
 - Memory Layer: Established
 
-See [Decision Records](docs/decisions/README.md) for the decision-critical backfill.
+See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
-The last completed major public documentation layer is the project memory layer:
+The last completed major public documentation layer is the decision layer:
 
-- [P-DOC-001 project operating-system adoption report](docs/reports/p-doc-001-project-operating-system-adoption-v0.md)
-- [Project documentation operating standard](docs/runbooks/project-documentation-operating-standard.md)
-- [ADR-001 project breadcrumb and review hub standard](docs/adr/ADR-001-project-breadcrumb-and-review-hub-standard.md)
+- [P-DOC-004 decision and documentation backfill report](docs/reports/p-doc-004-decision-and-documentation-backfill-v0.md)
+- [Decision records](docs/decisions/README.md)
 
 ## Current Branch / Commit
 
@@ -56,13 +57,14 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `d1806acf83d327855d69a0b1be999f8adcb8a40e`.
+At this update, the reviewed public baseline was `9b16ac6efeac76310528d5e1c620afd650eabfcb`.
 
 ## Primary Reports
 
 - [P-CORE-036 artifact specification layer report](docs/reports/p-core-036-artifact-specification-layer.md)
 - [P-DOC-001 project operating-system adoption report](docs/reports/p-doc-001-project-operating-system-adoption-v0.md)
 - [P-DOC-004 decision and documentation backfill report](docs/reports/p-doc-004-decision-and-documentation-backfill-v0.md)
+- [P-DOC-007 evidence layer bootstrap report](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -71,6 +73,9 @@ At this update, the reviewed public baseline was `d1806acf83d327855d69a0b1be999f
 ## Primary Evidence
 
 - [Generated evidence surface](docs/examples/generated/README.md)
+- [Evidence layer](docs/evidence/README.md)
+- [Evidence index](docs/evidence/evidence-index.md)
+- [Claim registry](docs/claims/claim-registry.md)
 - [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
 - [Benchmark dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
 - [Source registry](sources/registry.yaml)
@@ -85,24 +90,24 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 - keep artifact standards inspectable and easy to extend
 - keep generation and validation deterministic
-- keep evidence surfaces navigable from repository entry points
+- keep evidence records connected to claims, artifacts, reports, validation, and limitations
 - keep paper and report language aligned with the claim boundary
 - keep decision records current when strategy or technical direction changes
 - add validators and contribution workflows only when they preserve public-safe evidence boundaries
 
 ## Recommended Next Task
 
-Recommended next task after this decision-layer backfill:
+Recommended next task after this evidence-layer bootstrap:
 
-- Review and merge the decision and documentation backfill branch if clean.
-- Then continue with the next scoped documentation or validation task, prioritizing public-safe documentation gaps and artifact-spec validation coverage.
+- Review and merge the evidence-layer bootstrap branch if clean.
+- Then continue with the next scoped documentation or validation task, prioritizing evidence-record coverage for future merged artifact layers.
 
 ## How To Continue
 
 1. Start with this file.
 2. Read [REVIEW_HUB.md](REVIEW_HUB.md).
 3. Check current Git state with `git status --short --branch` and `git log -1 --oneline`.
-4. Review [Claim Boundary](docs/CLAIM_BOUNDARY.md) before changing public claims.
+4. Review [Claim Registry](docs/claims/claim-registry.md) and [Claim Boundary](docs/CLAIM_BOUNDARY.md) before changing public claims.
 5. Run the current local validation commands before committing:
 
 ```bash

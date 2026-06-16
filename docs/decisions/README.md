@@ -27,6 +27,12 @@ Permea's current public documentation and evidence model uses these layers:
 - [DEC-005: No production or clinical claims without evidence](DEC-005-no-production-or-clinical-claims-without-evidence.md)
 - [DEC-006: Project memory layer required for continuation](DEC-006-project-memory-layer-required-for-continuation.md)
 
+## Related Evidence Layer
+
+- [Evidence layer](../evidence/README.md)
+- [Evidence index](../evidence/evidence-index.md)
+- [Public claim registry](../claims/claim-registry.md)
+
 ## Update Rule
 
 If a task makes or changes a strategic or technical decision, it must create or update a decision record.

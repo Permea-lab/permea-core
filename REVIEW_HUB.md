@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, validation, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public artifact specification inspection, decision records, and project memory.
+The repository currently supports local artifact generation, validation, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, public artifact specification inspection, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `d1806acf83d327855d69a0b1be999f8adcb8a40e`.
+At this update point, the reviewed public baseline was `main` at `9b16ac6efeac76310528d5e1c620afd650eabfcb`.
 
 ## Permea Layer Model
 
@@ -46,6 +46,8 @@ At this update point, the reviewed public baseline was `main` at `d1806acf83d327
 ## Current State Summary
 
 - Public evidence surface exists at [docs/examples/generated/README.md](docs/examples/generated/README.md).
+- Public evidence layer exists at [docs/evidence/README.md](docs/evidence/README.md).
+- Public claim registry exists at [docs/claims/claim-registry.md](docs/claims/claim-registry.md).
 - Reproducibility and evaluation bundles exist at [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [EVALUATION.md](EVALUATION.md).
 - Public artifact specifications exist at [docs/specs/README.md](docs/specs/README.md).
 - Decision records exist at [docs/decisions/README.md](docs/decisions/README.md).
@@ -65,6 +67,12 @@ Paper-related status:
 ## Evidence Index
 
 - [Generated evidence surface](docs/examples/generated/README.md)
+- [Evidence layer](docs/evidence/README.md)
+- [Evidence index](docs/evidence/evidence-index.md)
+- [EVIDENCE-030: Evidence Surface Layer](docs/evidence/EVIDENCE-030-evidence-surface-layer.md)
+- [EVIDENCE-032: Reproducibility Bundle](docs/evidence/EVIDENCE-032-reproducibility-bundle.md)
+- [EVIDENCE-034: Evaluation Bundle](docs/evidence/EVIDENCE-034-evaluation-bundle.md)
+- [EVIDENCE-036: Artifact Specification Layer](docs/evidence/EVIDENCE-036-artifact-specification-layer.md)
 - [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
 - [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
 - [Demo packet](docs/examples/generated/DEMO_PACKET.md)
@@ -89,6 +97,7 @@ Paper-related status:
 - [P-CORE-036 artifact specification layer](docs/reports/p-core-036-artifact-specification-layer.md)
 - [P-DOC-001 project operating-system adoption v0](docs/reports/p-doc-001-project-operating-system-adoption-v0.md)
 - [P-DOC-004 decision and documentation backfill v0](docs/reports/p-doc-004-decision-and-documentation-backfill-v0.md)
+- [P-DOC-007 evidence layer bootstrap v0](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
 
 Generated report-like surfaces:
 
@@ -124,7 +133,28 @@ Current non-claims:
 - no state-of-the-art claim
 - no solved-delivery claim
 
-Use [Claim Boundary](docs/CLAIM_BOUNDARY.md) and [Claim Registry](docs/scientific-governance/CLAIM_REGISTRY.md) before changing public claims.
+Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](docs/CLAIM_BOUNDARY.md), and [Scientific Claim Registry](docs/scientific-governance/CLAIM_REGISTRY.md) before changing public claims.
+
+## Current Technical Surface
+
+- Artifact generation: Implemented through local scripts and generated example outputs.
+- Reproducibility bundle: Implemented and Public-Safe.
+- Evaluation bundle: Implemented and Public-Safe.
+- Artifact specifications: Implemented and Public-Safe.
+- Evidence layer: Implemented and Public-Safe.
+- Artifact-spec validator: Prepared separately, not part of this evidence bootstrap.
+
+## Validation Status
+
+Current evidence-layer validation uses:
+
+```bash
+python3 scripts/permea_specs.py
+python3 scripts/permea_evaluate.py
+python3 scripts/permea_reproduce.py
+python3 scripts/permea_validate.py
+python3 scripts/validate_permea_artifacts.py
+```
 
 ## Current Risks
 
@@ -133,6 +163,7 @@ Use [Claim Boundary](docs/CLAIM_BOUNDARY.md) and [Claim Registry](docs/scientifi
 - Artifact specifications can become too narrow if future work overfits them to one example.
 - New evidence surfaces can become hard to review if they are not linked from the hub and breadcrumb.
 - Decision records can become stale if strategic or technical choices change without updating the Decision Layer.
+- Evidence records can become stale if reports, generated artifacts, or validation surfaces change without an evidence-layer refresh.
 
 ## Current Open Questions
 
@@ -144,11 +175,12 @@ Use [Claim Boundary](docs/CLAIM_BOUNDARY.md) and [Claim Registry](docs/scientifi
 
 ## Recommended Next Tasks
 
-1. Review and merge the decision and documentation backfill branch if validation and scans remain clean.
-2. Backfill only remaining decision-critical documentation gaps.
-3. Add a dedicated artifact-spec validator bundle in a separate scoped task.
-4. Keep generated evidence surfaces, reports, and decision records refreshed as new artifact families are added.
-5. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
+1. Review and merge the evidence-layer bootstrap branch if validation and scans remain clean.
+2. Add evidence records for future merged artifact or validation layers.
+3. Backfill only remaining decision-critical documentation gaps.
+4. Add a dedicated artifact-spec validator bundle in a separate scoped task.
+5. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
+6. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
 
 ## How To Resume With A Review Assistant
 
@@ -157,6 +189,8 @@ Start with:
 - [OPEN_THIS_FIRST.md](OPEN_THIS_FIRST.md)
 - [REVIEW_HUB.md](REVIEW_HUB.md)
 - [Claim Boundary](docs/CLAIM_BOUNDARY.md)
+- [Claim Registry](docs/claims/claim-registry.md)
+- [Evidence Layer](docs/evidence/README.md)
 - [Decision Records](docs/decisions/README.md)
 - [Generated evidence surface](docs/examples/generated/README.md)
 

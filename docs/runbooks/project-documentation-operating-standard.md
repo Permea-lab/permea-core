@@ -10,6 +10,8 @@ Permea Core should maintain three public documentation layers:
 
 - entry breadcrumbs: `OPEN_THIS_FIRST.md` and `REVIEW_HUB.md`
 - decision records: `docs/decisions/`
+- evidence records: `docs/evidence/`
+- claim registry: `docs/claims/claim-registry.md`
 - architecture decision records: `docs/adr/`
 - task and technical reports: `docs/reports/`
 
@@ -33,6 +35,7 @@ At the end of a task:
 4. Update the relevant project memory surface for the kind of work completed.
 5. Add or update a report under `docs/reports/` when the task changes project direction, evidence posture, or reviewer workflow.
 6. Add or update a decision record under `docs/decisions/` when the task makes or changes a strategic or technical decision.
+7. Add or update an evidence record under `docs/evidence/` when the task changes claim support, generated artifacts, validation surfaces, or limitations.
 
 ## Public / Private Separation
 
@@ -93,6 +96,7 @@ Every major completed task or group must update at least one of:
 - `docs/adr/`
 
 The selected surface should match the work performed. If a task makes or changes a strategic or technical decision, it must create or update a decision record.
+If a task changes supported claims, generated evidence artifacts, validation surfaces, or limitations, it must create or update an evidence record.
 
 Exception: a task may skip these updates only when it explicitly says documentation memory updates are exempted or when the task is purely mechanical and does not change project state, evidence, reports, decisions, roadmap, or review workflow.
 

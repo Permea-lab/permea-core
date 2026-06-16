@@ -138,12 +138,12 @@ Do not include:
 - local filesystem paths
 - credentials
 - authentication values
-- private infrastructure notes
+- restricted infrastructure notes
 - private resource or support details
 
 ### Public / Private Boundary
 
-The run manifest should expose enough information for reproducibility and audit while excluding private infrastructure, credentials, restricted row-level data, and sensitive candidate information.
+The run manifest should expose enough information for reproducibility and audit while excluding restricted infrastructure, credentials, restricted row-level data, and sensitive candidate information.
 
 ## Minimal YAML Example
 
