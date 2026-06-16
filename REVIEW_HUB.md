@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `6934d05738b269dd9933bc5d268b6194dab75be6`.
+At this update point, the reviewed public baseline was `main` at `ab8393df12a555b3c5cb5ffbd605db11b081b9db`.
 
 ## Permea Layer Model
 
@@ -54,6 +54,7 @@ At this update point, the reviewed public baseline was `main` at `6934d05738b269
 - Public artifact specifications exist at [docs/specs/README.md](docs/specs/README.md).
 - Public artifact validator exists at [scripts/permea_check.py](scripts/permea_check.py).
 - External example packages exist at [examples/README.md](examples/README.md).
+- EOD/SOD operating handoffs exist under [docs/reports/eod/](docs/reports/eod/) and [docs/reports/sod/](docs/reports/sod/).
 - Decision records exist at [docs/decisions/README.md](docs/decisions/README.md).
 - Artifact schemas exist under [schemas/](schemas/).
 - Current artifact-system commands are listed in [QUICKSTART.md](QUICKSTART.md).
@@ -106,6 +107,8 @@ Paper-related status:
 - [P-DOC-007 evidence layer bootstrap v0](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
 - [P-CORE-038 artifact validator bundle v0](docs/reports/p-core-038-artifact-validator-bundle-v0.md)
 - [P-CORE-040 external example packages v0](docs/reports/p-core-040-external-example-packages-v0.md)
+- [EOD 2026-06-16 operating handoff](docs/reports/eod/permea_eod_2026-06-16.md)
+- [SOD 2026-06-17 operating handoff](docs/reports/sod/permea_sod_2026-06-17.md)
 
 Generated report-like surfaces:
 
@@ -177,6 +180,7 @@ python3 scripts/validate_permea_artifacts.py
 - Evidence records can become stale if reports, generated artifacts, or validation surfaces change without an evidence-layer refresh.
 - Validator checks can drift if public artifact specs are changed without matching tests.
 - External examples can become misleading if they are not kept template-oriented and explicit about non-claims.
+- First-run documentation can become fragmented if quickstart, examples, validator, reproducibility, and evaluation commands are not presented in one clear path.
 
 ## Current Open Questions
 
@@ -189,12 +193,13 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review and merge the external example packages branch if validation and scans remain clean.
-2. Extend example packages only when public-safe fixture values and validator coverage are ready.
-3. Extend validator coverage only when new public artifact families or stricter schemas require it.
-4. Add evidence records for future merged artifact or validation layers.
-5. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
-6. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
+1. Group P-CORE-042 - Quickstart Experience Layer.
+2. Improve first-run command order, expected outputs, example inspection, validation, and troubleshooting.
+3. Extend example packages only when public-safe fixture values and validator coverage are ready.
+4. Extend validator coverage only when new public artifact families or stricter schemas require it.
+5. Add evidence records for future merged artifact or validation layers.
+6. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
+7. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
 
 ## How To Resume With A Review Assistant
 
@@ -207,6 +212,7 @@ Start with:
 - [Evidence Layer](docs/evidence/README.md)
 - [Decision Records](docs/decisions/README.md)
 - [Generated evidence surface](docs/examples/generated/README.md)
+- [SOD 2026-06-17 operating handoff](docs/reports/sod/permea_sod_2026-06-17.md)
 
 Ask the session to inspect live Git state before giving implementation guidance.
 

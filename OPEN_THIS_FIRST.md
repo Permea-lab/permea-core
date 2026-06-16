@@ -8,8 +8,8 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-040-external-example-packages`
-- Public baseline reviewed: `main` at `6934d05738b269dd9933bc5d268b6194dab75be6`
+- Branch used for this update: `p-doc-009-eod-sod-operating-handoff`
+- Public baseline reviewed: `main` at `ab8393df12a555b3c5cb5ffbd605db11b081b9db`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -46,10 +46,16 @@ See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/ev
 
 ## Last Completed Major Work
 
-The last completed major public infrastructure layer is the artifact validator bundle:
+The last completed major public infrastructure layer is the external example package layer:
 
-- [P-CORE-038 artifact validator bundle report](docs/reports/p-core-038-artifact-validator-bundle-v0.md)
-- [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
+- [P-CORE-040 external example packages report](docs/reports/p-core-040-external-example-packages-v0.md)
+- [External examples evidence](docs/evidence/EVIDENCE-040-external-example-packages.md)
+- [External examples](examples/README.md)
+
+The latest operating handoffs are:
+
+- [EOD 2026-06-16](docs/reports/eod/permea_eod_2026-06-16.md)
+- [SOD 2026-06-17](docs/reports/sod/permea_sod_2026-06-17.md)
 
 ## Current Branch / Commit
 
@@ -60,7 +66,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `6934d05738b269dd9933bc5d268b6194dab75be6`.
+At this update, the reviewed public baseline was `ab8393df12a555b3c5cb5ffbd605db11b081b9db`.
 
 ## Primary Reports
 
@@ -70,6 +76,8 @@ At this update, the reviewed public baseline was `6934d05738b269dd9933bc5d268b61
 - [P-DOC-007 evidence layer bootstrap report](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
 - [P-CORE-038 artifact validator bundle report](docs/reports/p-core-038-artifact-validator-bundle-v0.md)
 - [P-CORE-040 external example packages report](docs/reports/p-core-040-external-example-packages-v0.md)
+- [EOD 2026-06-16 operating handoff](docs/reports/eod/permea_eod_2026-06-16.md)
+- [SOD 2026-06-17 operating handoff](docs/reports/sod/permea_sod_2026-06-17.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -107,10 +115,10 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after this external example package layer:
+Recommended next task after the 2026-06-16 EOD handoff:
 
-- Review and merge the external example packages branch if clean.
-- Then continue with the next scoped example, validation, or contributor-flow task.
+- Group P-CORE-042 - Quickstart Experience Layer.
+- Focus on first-run usability, command order, expected outputs, example inspection, validation, and troubleshooting without changing claim boundaries.
 
 ## How To Continue
 
