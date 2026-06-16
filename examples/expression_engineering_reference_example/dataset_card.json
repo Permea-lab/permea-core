@@ -1,0 +1,17 @@
+{
+  "artifact_type": "dataset_card",
+  "claim_boundary": "Expression engineering reference metadata only; no dataset downloaded, no acquisition executed, no redistribution rights confirmed, and no wet-lab validation by Permea.",
+  "dataset_id": "expression_engineering_reference_dataset",
+  "description": "Public-safe fixture for a sequence-first expression engineering artifact package.",
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "source_status": "reference_template_no_source_retrieval"
+}

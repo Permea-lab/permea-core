@@ -1,0 +1,28 @@
+{
+  "artifacts_checked": 5,
+  "checks": [
+    "required files present",
+    "json files parse",
+    "non-claims present",
+    "claim boundaries present"
+  ],
+  "example_name": "bbb_peptide_reference_example",
+  "failures": [],
+  "limitations": [
+    "reference template only",
+    "no BBB crossing, biological, or model-performance result"
+  ],
+  "next_command": "python3 scripts/permea_validate.py",
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "status": "PASS",
+  "warnings": []
+}

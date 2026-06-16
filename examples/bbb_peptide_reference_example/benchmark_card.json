@@ -1,0 +1,21 @@
+{
+  "artifact_type": "benchmark_card",
+  "benchmark_id": "bbb_peptide_reference_benchmark",
+  "claim_boundary": "Benchmark reference template only; no BBB crossing performance claim and no model performance claim.",
+  "dataset_card": "dataset_card.json",
+  "metrics": [
+    "example_pr_auc_placeholder",
+    "example_roc_auc_placeholder"
+  ],
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "task_type": "bbb_peptide_reference_template"
+}

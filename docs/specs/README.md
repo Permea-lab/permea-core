@@ -30,10 +30,13 @@ python3 scripts/permea_check.py
 
 The validator checks current public example artifacts against lightweight Permea standard expectations for required fields, artifact type recognition, repo-relative paths, non-claims, claim-boundary wording, and evidence linkage.
 
+Copyable validator-compatible packages are available in [External Examples](../../examples/README.md).
+
 ## Evidence Reference
 
 - [EVIDENCE-036: Artifact Specification Layer](../evidence/EVIDENCE-036-artifact-specification-layer.md)
 - [EVIDENCE-038: Artifact Validator Bundle](../evidence/EVIDENCE-038-artifact-validator-bundle.md)
+- [EVIDENCE-040: External Example Packages](../evidence/EVIDENCE-040-external-example-packages.md)
 
 ## Explicit Non-Claims
 

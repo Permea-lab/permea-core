@@ -1,0 +1,20 @@
+{
+  "artifact_type": "benchmark_card",
+  "benchmark_id": "synthetic_reference_benchmark",
+  "claim_boundary": "Reference benchmark metadata only; no model performance claim.",
+  "dataset_card": "dataset_card.json",
+  "metrics": [
+    "example_metric_placeholder"
+  ],
+  "non_claims": [
+    "no dataset downloaded",
+    "no acquisition executed",
+    "no redistribution rights confirmed",
+    "no wet-lab validation by Permea",
+    "no clinical efficacy claim",
+    "no model performance claim",
+    "no SOTA claim",
+    "no solved-delivery claim"
+  ],
+  "task_type": "synthetic_structure_example"
+}

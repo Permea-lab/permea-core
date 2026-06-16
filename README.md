@@ -161,6 +161,7 @@ Core project documents:
 - [Review Hub](REVIEW_HUB.md)
 - [Evidence Layer](docs/evidence/README.md)
 - [Claim Registry](docs/claims/claim-registry.md)
+- [External Examples](examples/README.md)
 - [Decision Records](docs/decisions/README.md)
 - [Manifesto](MANIFESTO.md)
 - [Delivery Taxonomy](docs/DELIVERY-TAXONOMY.md)
@@ -243,6 +244,8 @@ Check public artifact examples against the current Permea artifact standards:
 ```bash
 python3 scripts/permea_check.py
 ```
+
+Copyable external examples are available at [External Examples](examples/README.md).
 
 Run the deterministic benchmark dry-run:
 

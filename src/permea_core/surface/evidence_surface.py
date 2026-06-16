@@ -64,6 +64,11 @@ PRIMARY_ENTRY_POINTS: tuple[tuple[str, str, str], ...] = (
         "../../../scripts/permea_check.py",
         "Local checker for public artifact structure, non-claims, claim boundaries, and evidence linkage.",
     ),
+    (
+        "External examples",
+        "../../../examples/README.md",
+        "Copyable public-safe reference packages for using the artifact standard.",
+    ),
 )
 
 ARTIFACT_FAMILIES: tuple[tuple[str, str, str], ...] = (
@@ -83,6 +88,7 @@ REPRODUCIBILITY_COMMANDS: tuple[tuple[str, str], ...] = (
     ("reproduce public bundle", "python3 scripts/permea_reproduce.py"),
     ("validate public bundle", "python3 scripts/permea_validate.py"),
     ("check artifact standards", "python3 scripts/permea_check.py"),
+    ("check synthetic example", "python3 scripts/permea_check.py examples/synthetic_reference_example"),
     ("inspect artifact specs", "python3 scripts/permea_specs.py"),
     ("generate evaluation packet", "python3 scripts/permea_evaluate.py"),
     ("generate evidence surface", "python3 scripts/generate_evidence_surface.py"),

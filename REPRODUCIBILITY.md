@@ -26,14 +26,15 @@ The current public contract is local and deterministic: repository metadata is u
 3. [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
 4. [EVALUATION.md](EVALUATION.md)
 5. [Public artifact specifications](docs/specs/README.md)
-6. [Generated evidence surface](docs/examples/generated/README.md)
-7. [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
-8. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
-9. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
-10. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
-11. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
-12. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
-13. Generated artifact families under `docs/examples/generated/`
+6. [External examples](examples/README.md)
+7. [Generated evidence surface](docs/examples/generated/README.md)
+8. [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
+9. [Demo packet](docs/examples/generated/DEMO_PACKET.md)
+10. [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
+11. [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
+12. [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
+13. [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
+14. Generated artifact families under `docs/examples/generated/`
 
 ## Validation map
 
@@ -76,6 +77,7 @@ The current public contract is local and deterministic: repository metadata is u
 
 - Add dataset-card inputs with bounded source and claim metadata.
 - Add benchmark-task metadata with explicit labels, splits, metrics, and limitations.
+- Copy an external example from [examples/](examples/README.md) and validate it before proposing changes.
 - Add artifact generators with matching validation and tests.
 - Run `python3 scripts/permea_check.py` before proposing new public artifact examples.
 - Add evidence cards only when uncertainty, source, and review status are clear.
