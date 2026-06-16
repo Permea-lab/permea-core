@@ -157,6 +157,8 @@ Wet-lab validation is a future or external validation path, not a current claim 
 
 Core project documents:
 
+- [Open This First](OPEN_THIS_FIRST.md)
+- [Review Hub](REVIEW_HUB.md)
 - [Manifesto](MANIFESTO.md)
 - [Delivery Taxonomy](docs/DELIVERY-TAXONOMY.md)
 - [Evidence Ladder](docs/EVIDENCE-LADDER.md)
@@ -164,6 +166,7 @@ Core project documents:
 - [Roadmap](docs/ROADMAP.md)
 - [ADR-0001: Open-Source-First](docs/adr/ADR-0001-open-source-first.md)
 - [ADR-0002: Benchmark-First](docs/adr/ADR-0002-benchmark-first.md)
+- [ADR-001: Project Breadcrumb and Review Hub Standard](docs/adr/ADR-001-project-breadcrumb-and-review-hub-standard.md)
 
 Scientific governance:
 
@@ -175,6 +178,8 @@ Scientific governance:
 
 Open-source operating docs:
 
+- [Project Documentation Operating Standard](docs/runbooks/project-documentation-operating-standard.md)
+- [P-DOC-001 Project Operating System Adoption Report](docs/reports/p-doc-001-project-operating-system-adoption-v0.md)
 - [OSS Operating Docs Map](docs/OSS_OPERATING_DOCS_MAP.md)
 - [OSS Operating PR Summary](docs/OSS_OPERATING_PR_SUMMARY.md)
 - [Release Review Process](docs/release/RELEASE_REVIEW_PROCESS.md)
