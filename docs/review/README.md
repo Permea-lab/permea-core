@@ -1,0 +1,46 @@
+# Public Review Packet Layer
+
+The public review packet layer is the guided entry point for reviewing Permea Core without repository archaeology.
+
+It answers what to read first, what to run first, what evidence exists, what benchmark, dataset, and research-package infrastructure exists, what claims are supported, what claims are not supported, and what remains proposed, computational-only, or requiring future validation.
+
+## Review Path
+
+Start with the deterministic CLI:
+
+```bash
+python3 scripts/permea_review.py
+```
+
+Then follow the packet:
+
+- [Public review packet](public-review-packet.md)
+- [Public review packet template](public-review-packet-template.md)
+- [Public review packet assembly](public-review-packet-assembly.md)
+- [Public review packet governance](public-review-packet-governance.md)
+- [Public review checklist](public-review-checklist.md)
+- [Public review packet schema](../../schemas/public-review-packet.schema.json)
+
+## Status
+
+Public Review Packet Ready
+
+This layer does not create new scientific evidence, write a paper, submit a paper, publish a paper, or claim biological outcomes.
+
+## Claim Boundaries
+
+Public review packets organize current computational evidence, validation commands, reproducibility surfaces, and explicit claim boundaries. They do not establish biological effect, experimental validation, therapeutic outcome, clinical evidence, expression improvement, or solved delivery.
+
+Explicit non-claims:
+
+- no new scientific result claim from this layer
+- no paper claim from this layer
+- no wet-lab validation by Permea
+- no biological efficacy claim
+- no therapeutic outcome claim
+- no BBB success claim
+- no solved-delivery claim
+- no SOTA performance claim
+- no experimental validation claim
+- no clinical evidence claim
+- no expression improvement claim
