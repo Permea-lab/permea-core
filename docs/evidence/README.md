@@ -13,6 +13,7 @@ It is a public review layer. It does not add scientific evidence, execute acquis
 - [EVIDENCE-036: Artifact Specification Layer](EVIDENCE-036-artifact-specification-layer.md)
 - [EVIDENCE-038: Artifact Validator Bundle](EVIDENCE-038-artifact-validator-bundle.md)
 - [EVIDENCE-040: External Example Packages](EVIDENCE-040-external-example-packages.md)
+- [EVIDENCE-042: Quickstart Experience Layer](EVIDENCE-042-quickstart-experience-layer.md)
 
 ## Claim Registry
 

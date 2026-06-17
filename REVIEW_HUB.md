@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, artifact validation, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, public artifact specification inspection, copyable external examples, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, public artifact specification inspection, copyable external examples, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `6934d05738b269dd9933bc5d268b6194dab75be6`.
+At this update point, the reviewed public baseline was `main` at `ab8393df12a555b3c5cb5ffbd605db11b081b9db`.
 
 ## Permea Layer Model
 
@@ -43,6 +43,7 @@ At this update point, the reviewed public baseline was `main` at `6934d05738b269
 | Specification Layer | Strong | Public standards and schemas for artifact families. |
 | Standard Enforcement Layer | Developing | Lightweight public artifact checks for current example files. |
 | Example Layer | Developing | Copyable public-safe reference packages for external users. |
+| Quickstart Experience Layer | Implemented | One-command first-user path for discovery, validation, evidence links, and non-claims. |
 | Memory Layer | Established | Breadcrumb, review hub, ADR, runbook, and reports for continuation. |
 
 ## Current State Summary
@@ -53,6 +54,7 @@ At this update point, the reviewed public baseline was `main` at `6934d05738b269
 - Reproducibility and evaluation bundles exist at [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [EVALUATION.md](EVALUATION.md).
 - Public artifact specifications exist at [docs/specs/README.md](docs/specs/README.md).
 - Public artifact validator exists at [scripts/permea_check.py](scripts/permea_check.py).
+- Quickstart demo exists at [scripts/permea_demo.py](scripts/permea_demo.py).
 - External example packages exist at [examples/README.md](examples/README.md).
 - Decision records exist at [docs/decisions/README.md](docs/decisions/README.md).
 - Artifact schemas exist under [schemas/](schemas/).
@@ -79,6 +81,7 @@ Paper-related status:
 - [EVIDENCE-036: Artifact Specification Layer](docs/evidence/EVIDENCE-036-artifact-specification-layer.md)
 - [EVIDENCE-038: Artifact Validator Bundle](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
 - [EVIDENCE-040: External Example Packages](docs/evidence/EVIDENCE-040-external-example-packages.md)
+- [EVIDENCE-042: Quickstart Experience Layer](docs/evidence/EVIDENCE-042-quickstart-experience-layer.md)
 - [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
 - [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
 - [Demo packet](docs/examples/generated/DEMO_PACKET.md)
@@ -106,6 +109,7 @@ Paper-related status:
 - [P-DOC-007 evidence layer bootstrap v0](docs/reports/p-doc-007-evidence-layer-bootstrap-v0.md)
 - [P-CORE-038 artifact validator bundle v0](docs/reports/p-core-038-artifact-validator-bundle-v0.md)
 - [P-CORE-040 external example packages v0](docs/reports/p-core-040-external-example-packages-v0.md)
+- [P-CORE-042 quickstart experience layer v0](docs/reports/p-core-042-quickstart-experience-layer-v0.md)
 
 Generated report-like surfaces:
 
@@ -126,6 +130,7 @@ Allowed public framing:
 - open technical foundation
 - benchmark-first infrastructure
 - deterministic artifact generation and validation
+- deterministic quickstart demo for example discovery and validator execution
 - public artifact standards
 - computational evidence surfaces
 - candidate prioritization before experimental follow-up
@@ -152,6 +157,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Evidence layer: Implemented and Public-Safe.
 - Artifact validator bundle: Implemented for current public example artifact families.
 - External examples: Implemented for three public-safe reference packages.
+- Quickstart demo: Implemented for first-user discovery, validation, evidence links, and next commands.
 
 ## Validation Status
 
@@ -159,6 +165,7 @@ Current evidence-layer validation uses:
 
 ```bash
 python3 scripts/permea_check.py
+python3 scripts/permea_demo.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
 python3 scripts/permea_specs.py
 python3 scripts/permea_evaluate.py
@@ -189,7 +196,7 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review and merge the external example packages branch if validation and scans remain clean.
+1. Review the quickstart experience branch if validation and scans remain clean.
 2. Extend example packages only when public-safe fixture values and validator coverage are ready.
 3. Extend validator coverage only when new public artifact families or stricter schemas require it.
 4. Add evidence records for future merged artifact or validation layers.
@@ -217,6 +224,7 @@ Start from the repository root and run:
 ```bash
 git status --short --branch
 git log -1 --oneline
+python3 scripts/permea_demo.py
 python3 scripts/permea_specs.py
 python3 scripts/permea_check.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
