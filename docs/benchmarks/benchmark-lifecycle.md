@@ -4,6 +4,8 @@ The benchmark lifecycle defines how a benchmark moves from idea to active refere
 
 Lifecycle status is about public review maturity. It does not imply biological efficacy, experimental validation, therapeutic outcome, clinical evidence, or solved delivery.
 
+Benchmark execution status is tracked separately for benchmark run artifacts. See [Benchmark execution model](benchmark-execution-model.md) and [Benchmark run template](benchmark-run-template.md).
+
 ## Statuses
 
 The allowed benchmark card statuses are:
@@ -43,7 +45,10 @@ Before a benchmark can become an Active Reference Benchmark, it must have:
 - claim boundaries
 - limitations
 - validation command results
+- benchmark run metadata when a run artifact is used to support promotion
 
 ## Current Position
 
 Current benchmark surfaces remain Proposed or Draft unless this lifecycle explicitly promotes them with evidence.
+
+Current benchmark execution status is framework-only. No benchmark results are currently registered.

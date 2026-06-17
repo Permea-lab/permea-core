@@ -4,11 +4,15 @@ The benchmark registry is the public operating index for Permea Core benchmark s
 
 It answers what benchmark framework exists, what a benchmark measures, which benchmark cards are required, what evidence is required before a benchmark becomes active, and what remains proposed, computational-only, or not yet validated.
 
+Benchmark execution is recorded separately in [Benchmark execution model](benchmark-execution-model.md) and [Benchmark run template](benchmark-run-template.md). The registry defines benchmark surfaces; benchmark runs record execution artifacts against those surfaces.
+
 ## Registry Status
 
 Benchmark Framework Ready
 
 No active reference benchmark is claimed by this registry. Proposed and draft entries are included only as public review surfaces.
+
+No benchmark results are currently registered by this execution layer.
 
 ## Registry Fields
 
@@ -46,6 +50,7 @@ A benchmark cannot be considered active until it has:
 
 - Registry entries: this file
 - Benchmark card metadata: future benchmark card files or public YAML fixtures
+- Benchmark run artifacts: future benchmark run records that satisfy [Benchmark run template](benchmark-run-template.md) and [benchmark-run.schema.json](../../schemas/benchmark-run.schema.json)
 - Lifecycle requirements: [Benchmark lifecycle](benchmark-lifecycle.md)
 - Governance: [Benchmark governance](benchmark-governance.md)
 - Schemas: [benchmark-card.schema.json](../../schemas/benchmark-card.schema.json)

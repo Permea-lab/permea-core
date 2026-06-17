@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, benchmark registry governance, dataset registry governance, research package governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, benchmark registry and execution governance, dataset registry governance, research package governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `0bc7404b8e8e6fa4c8e839ba7e7ddfe9e20da811`.
+At this update point, the reviewed public baseline was `main` at `2a8c9efbb5705244b316bfc42645b96744067ad2`.
 
 ## Permea Layer Model
 
@@ -46,6 +46,7 @@ At this update point, the reviewed public baseline was `main` at `0bc7404b8e8e6f
 | Quickstart Experience Layer | Implemented | One-command first-user path for discovery, validation, evidence links, and non-claims. |
 | Evidence Navigation Layer | Implemented | Evidence map, claim matrix, maturity model, timeline, and CLI for review. |
 | Benchmark Registry Layer | Implemented | Benchmark registry, lifecycle, card template, governance, schema, and CLI review. |
+| Benchmark Execution Layer | Implemented | Benchmark execution model, run template, schema, deterministic CLI review, validation path, and claim boundaries. |
 | Dataset Registry Layer | Implemented | Dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review. |
 | Research Package Layer | Implemented | Research package registry, lifecycle, template, assembly, governance, schema, and CLI review. |
 | Public Review Packet Layer | Implemented | Guided public packet, checklist, assembly, governance, schema, and CLI review. |
@@ -68,8 +69,11 @@ At this update point, the reviewed public baseline was `main` at `0bc7404b8e8e6f
 - Benchmark registry exists at [docs/benchmarks/benchmark-registry.md](docs/benchmarks/benchmark-registry.md).
 - Benchmark lifecycle exists at [docs/benchmarks/benchmark-lifecycle.md](docs/benchmarks/benchmark-lifecycle.md).
 - Benchmark card template exists at [docs/benchmarks/benchmark-card-template.md](docs/benchmarks/benchmark-card-template.md).
+- Benchmark execution model exists at [docs/benchmarks/benchmark-execution-model.md](docs/benchmarks/benchmark-execution-model.md).
+- Benchmark run template exists at [docs/benchmarks/benchmark-run-template.md](docs/benchmarks/benchmark-run-template.md).
 - Benchmark governance exists at [docs/benchmarks/benchmark-governance.md](docs/benchmarks/benchmark-governance.md).
 - Benchmark review command exists at [scripts/permea_benchmarks.py](scripts/permea_benchmarks.py).
+- Benchmark execution review command exists at [scripts/permea_benchmark_run.py](scripts/permea_benchmark_run.py).
 - Dataset registry exists at [docs/datasets/dataset-registry.md](docs/datasets/dataset-registry.md).
 - Dataset lifecycle exists at [docs/datasets/dataset-lifecycle.md](docs/datasets/dataset-lifecycle.md).
 - Dataset card template exists at [docs/datasets/dataset-card-template.md](docs/datasets/dataset-card-template.md).
@@ -112,6 +116,7 @@ Paper-related status:
 - [Evidence timeline](docs/evidence/evidence-timeline.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
+- [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md)
 - [Benchmark governance](docs/benchmarks/benchmark-governance.md)
 - [Dataset registry](docs/datasets/dataset-registry.md)
 - [Dataset lifecycle](docs/datasets/dataset-lifecycle.md)
@@ -162,6 +167,7 @@ Paper-related status:
 - [P-CORE-045 dataset registry layer v0](docs/reports/p-core-045-dataset-registry-layer-v0.md)
 - [P-CORE-046 research package layer v0](docs/reports/p-core-046-research-package-layer-v0.md)
 - [P-CORE-047 public review packet layer v0](docs/reports/p-core-047-public-review-packet-layer-v0.md)
+- [P-CORE-048 benchmark execution layer v0](docs/reports/p-core-048-benchmark-execution-layer-v0.md)
 
 Generated report-like surfaces:
 
@@ -185,6 +191,7 @@ Allowed public framing:
 - deterministic quickstart demo for example discovery and validator execution
 - deterministic evidence review command for inventory, claim boundaries, maturity, and validation status
 - deterministic benchmark review command for registry counts, lifecycle status, docs, and claim boundaries
+- deterministic benchmark execution command for framework status, benchmark run artifact status, validation reminders, docs, and claim boundaries
 - deterministic dataset review command for registry counts, provenance status, docs, and claim boundaries
 - deterministic research package review command for package counts, reproducibility status, docs, and claim boundaries
 - deterministic public review packet command for reviewer path, registry commands, validation commands, and claim boundaries
@@ -217,6 +224,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Quickstart demo: Implemented for first-user discovery, validation, evidence links, and next commands.
 - Evidence navigation: Implemented for evidence inventory, claim-to-evidence mapping, maturity levels, timeline, and CLI review.
 - Benchmark registry layer: Implemented for benchmark registry, lifecycle, card template, governance, schema, and CLI review.
+- Benchmark execution layer: Implemented for execution model, run template, run schema, CLI review, validation path, and claim boundaries.
 - Dataset registry layer: Implemented for dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review.
 - Research package layer: Implemented for research package registry, lifecycle, template, assembly, governance, schema, and CLI review.
 - Public review packet layer: Implemented for guided packet, checklist, assembly, governance, schema, and CLI review.
@@ -230,6 +238,7 @@ python3 scripts/permea_check.py
 python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
+python3 scripts/permea_benchmark_run.py
 python3 scripts/permea_datasets.py
 python3 scripts/permea_research.py
 python3 scripts/permea_review.py
@@ -263,12 +272,13 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the public review packet branch if validation and scans remain clean.
-2. Promote review packets only when evidence, benchmark, dataset, research, claim, validation, and reproducibility links are current.
-3. Promote research packages only when lifecycle evidence, dataset, benchmark, reproducibility, validation, and claim-boundary requirements are met.
-4. Promote dataset entries only when lifecycle provenance and evidence requirements are met.
-5. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
-6. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
+1. Review the benchmark execution branch if validation and scans remain clean.
+2. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
+3. Promote review packets only when evidence, benchmark, dataset, research, claim, validation, and reproducibility links are current.
+4. Promote research packages only when lifecycle evidence, dataset, benchmark, reproducibility, validation, and claim-boundary requirements are met.
+5. Promote dataset entries only when lifecycle provenance and evidence requirements are met.
+6. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
+7. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
 
 ## How To Resume With A Review Assistant
 
@@ -282,6 +292,7 @@ Start with:
 - [Evidence map](docs/evidence/evidence-map.md)
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
+- [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md)
 - [Decision Records](docs/decisions/README.md)
 - [Generated evidence surface](docs/examples/generated/README.md)
 

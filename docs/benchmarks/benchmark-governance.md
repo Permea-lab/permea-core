@@ -2,6 +2,8 @@
 
 Benchmark governance defines how Permea Core benchmark surfaces are proposed, reviewed, promoted, changed, deprecated, and archived.
 
+Benchmark run governance defines how future execution artifacts link back to benchmark definitions, dataset surfaces, evidence records, validation outputs, reproducibility paths, limitations, and claim boundaries.
+
 ## Proposing A Benchmark
 
 A benchmark proposal should include:
@@ -46,6 +48,23 @@ Each benchmark should link to:
 
 If a claim cannot be linked to evidence, narrow the claim or remove it.
 
+## Reviewing Benchmark Runs
+
+Benchmark run changes should review:
+
+- benchmark run schema compatibility
+- benchmark registry and benchmark card links
+- dataset links and provenance status
+- evaluation protocol and metrics
+- execution environment summary
+- reproducibility path
+- validation outputs
+- evidence links
+- claim boundaries
+- limitations
+
+Framework readiness does not imply biological benchmark results. No benchmark result should be treated as registered until the run artifact, validation outputs, evidence links, and governance review are complete.
+
 ## Constraining Claims
 
 Benchmark language should prefer:
@@ -82,6 +101,7 @@ Benchmark changes should review:
 - lifecycle status
 - schema compatibility
 - evidence links
+- benchmark run links where applicable
 - validation commands
 - claim boundaries
 - limitations
