@@ -39,6 +39,16 @@ python3 scripts/permea_demo.py
 
 The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Evidence index](docs/evidence/evidence-index.md), and [Claim registry](docs/claims/claim-registry.md).
 
+## Evidence And Claims
+
+After the quickstart, review the evidence path:
+
+```bash
+python3 scripts/permea_evidence.py
+```
+
+Start with [Evidence map](docs/evidence/evidence-map.md), then review [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md), [Evidence maturity model](docs/evidence/evidence-maturity-model.md), [Evidence timeline](docs/evidence/evidence-timeline.md), [Claim registry](docs/claims/claim-registry.md), and [Validation](#documentation-map).
+
 ## Why This Exists
 
 Delivery is one of the bottlenecks for next-generation therapeutics. Peptides, RNA systems, mRNA designs, protein therapeutics, gene-editing payloads, and targeted biologics all depend on reaching the right biological context, but delivery evidence is still fragmented across datasets, papers, predictors, assays, and internal pipelines.
@@ -170,6 +180,10 @@ Core project documents:
 - [Open This First](OPEN_THIS_FIRST.md)
 - [Review Hub](REVIEW_HUB.md)
 - [Evidence Layer](docs/evidence/README.md)
+- [Evidence Map](docs/evidence/evidence-map.md)
+- [Claim-to-Evidence Matrix](docs/evidence/claim-to-evidence-matrix.md)
+- [Evidence Maturity Model](docs/evidence/evidence-maturity-model.md)
+- [Evidence Timeline](docs/evidence/evidence-timeline.md)
 - [Claim Registry](docs/claims/claim-registry.md)
 - [External Examples](examples/README.md)
 - [Decision Records](docs/decisions/README.md)

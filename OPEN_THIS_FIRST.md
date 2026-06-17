@@ -4,12 +4,12 @@ This file is the first continuation breadcrumb for Permea Core. It summarizes th
 
 ## Current Status
 
-Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
+Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence navigation, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-042-quickstart-experience`
-- Public baseline reviewed: `main` at `ab8393df12a555b3c5cb5ffbd605db11b081b9db`
+- Branch used for this update: `p-core-043-evidence-navigation-layer`
+- Public baseline reviewed: `main` at `019eae46adfbe0fea1aca39104a004eb74ce0cc2`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -22,6 +22,8 @@ Permea Core currently provides:
 - deterministic generated example artifact surfaces under `docs/examples/generated/`
 - local commands for reproduction, validation, evaluation packet generation, dry-run generation, and specification registry inspection
 - public evidence records under `docs/evidence/`
+- evidence navigation docs at `docs/evidence/evidence-map.md`, `docs/evidence/claim-to-evidence-matrix.md`, `docs/evidence/evidence-maturity-model.md`, and `docs/evidence/evidence-timeline.md`
+- an evidence review command at `python3 scripts/permea_evidence.py`
 - public claim registry at `docs/claims/claim-registry.md`
 - decision records for major program choices under `docs/decisions/`
 - public claim-boundary and paper-alignment policies
@@ -43,15 +45,18 @@ Permea's current public program model is:
 - Memory Layer: Established
 - Example Layer: Developing
 - Quickstart Experience Layer: Implemented
+- Evidence Navigation Layer: Implemented
 
 See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
-The latest completed major public infrastructure layer is the quickstart experience layer:
+The latest completed major public infrastructure layer is the evidence navigation layer:
 
-- [P-CORE-042 quickstart experience layer report](docs/reports/p-core-042-quickstart-experience-layer-v0.md)
-- [Quickstart experience evidence](docs/evidence/EVIDENCE-042-quickstart-experience-layer.md)
+- [Evidence map](docs/evidence/evidence-map.md)
+- [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
+- [Evidence maturity model](docs/evidence/evidence-maturity-model.md)
+- [Evidence timeline](docs/evidence/evidence-timeline.md)
 
 ## Current Branch / Commit
 
@@ -62,7 +67,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `ab8393df12a555b3c5cb5ffbd605db11b081b9db`.
+At this update, the reviewed public baseline was `019eae46adfbe0fea1aca39104a004eb74ce0cc2`.
 
 ## Primary Reports
 
@@ -82,6 +87,10 @@ At this update, the reviewed public baseline was `ab8393df12a555b3c5cb5ffbd605db
 
 - [Generated evidence surface](docs/examples/generated/README.md)
 - [Evidence layer](docs/evidence/README.md)
+- [Evidence map](docs/evidence/evidence-map.md)
+- [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
+- [Evidence maturity model](docs/evidence/evidence-maturity-model.md)
+- [Evidence timeline](docs/evidence/evidence-timeline.md)
 - [Evidence index](docs/evidence/evidence-index.md)
 - [Claim registry](docs/claims/claim-registry.md)
 - [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
@@ -111,10 +120,10 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after this quickstart experience layer:
+Recommended next task after this evidence navigation layer:
 
-- Review the quickstart experience PR if validation and scans remain clean.
-- Then continue with the next scoped example, validation, or contributor-flow task.
+- Review the evidence navigation PR if validation and scans remain clean.
+- Then continue with the next scoped evidence, validation, or contributor-flow task.
 
 ## How To Continue
 
@@ -127,6 +136,7 @@ Recommended next task after this quickstart experience layer:
 ```bash
 python3 scripts/permea_specs.py
 python3 scripts/permea_demo.py
+python3 scripts/permea_evidence.py
 python3 scripts/permea_check.py
 python3 scripts/permea_validate.py
 python3 scripts/validate_permea_artifacts.py

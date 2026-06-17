@@ -7,6 +7,10 @@ It is a public review layer. It does not add scientific evidence, execute acquis
 ## Evidence Index
 
 - [Evidence index](evidence-index.md)
+- [Evidence map](evidence-map.md)
+- [Claim-to-evidence matrix](claim-to-evidence-matrix.md)
+- [Evidence maturity model](evidence-maturity-model.md)
+- [Evidence timeline](evidence-timeline.md)
 - [EVIDENCE-030: Evidence Surface Layer](EVIDENCE-030-evidence-surface-layer.md)
 - [EVIDENCE-032: Reproducibility Bundle](EVIDENCE-032-reproducibility-bundle.md)
 - [EVIDENCE-034: Evaluation Bundle](EVIDENCE-034-evaluation-bundle.md)
@@ -14,6 +18,12 @@ It is a public review layer. It does not add scientific evidence, execute acquis
 - [EVIDENCE-038: Artifact Validator Bundle](EVIDENCE-038-artifact-validator-bundle.md)
 - [EVIDENCE-040: External Example Packages](EVIDENCE-040-external-example-packages.md)
 - [EVIDENCE-042: Quickstart Experience Layer](EVIDENCE-042-quickstart-experience-layer.md)
+
+## Evidence Review Command
+
+```bash
+python3 scripts/permea_evidence.py
+```
 
 ## Claim Registry
 

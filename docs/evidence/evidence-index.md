@@ -13,6 +13,7 @@ This index maps current public evidence surfaces to reports, generated artifacts
 | EVIDENCE-038 | Artifact Validator Bundle | Implemented, Public-Safe | Group P-CORE-038 | [Artifact validator report](../reports/p-core-038-artifact-validator-bundle-v0.md) | `python3 scripts/permea_check.py` |
 | EVIDENCE-040 | External Example Packages | Implemented, Public-Safe | Group P-CORE-040 | [External examples report](../reports/p-core-040-external-example-packages-v0.md) | `python3 scripts/permea_check.py examples/synthetic_reference_example` |
 | EVIDENCE-042 | Quickstart Experience Layer | Implemented, Public-Safe | Group P-CORE-042 | [Quickstart experience report](../reports/p-core-042-quickstart-experience-layer-v0.md) | `python3 scripts/permea_demo.py` |
+| EVIDENCE-043 | Evidence Navigation Layer | Implemented, Public-Safe | Group P-CORE-043 | [Evidence map](evidence-map.md) | `python3 scripts/permea_evidence.py` |
 
 ## Detailed Mapping
 
@@ -121,3 +122,19 @@ This index maps current public evidence surfaces to reports, generated artifacts
 - Unsupported claims: no dataset download, acquisition execution, redistribution-rights confirmation, biological validation, clinical effectiveness, model performance, or delivery outcome claim.
 - Limitations: The quickstart demo validates public example package structure and claim-boundary hygiene; it does not create scientific results.
 - Next evidence step: Keep quickstart output aligned with future example package and validator changes.
+
+### EVIDENCE-043: Evidence Navigation Layer
+
+- Evidence ID: EVIDENCE-043
+- Status: Implemented, Public-Safe
+- Source task/group: Group P-CORE-043
+- Primary report: [Evidence map](evidence-map.md)
+- Primary docs: [Claim-to-evidence matrix](claim-to-evidence-matrix.md), [Evidence maturity model](evidence-maturity-model.md), [Evidence timeline](evidence-timeline.md)
+- Primary command: `python3 scripts/permea_evidence.py`
+- Relevant evidence: [EVIDENCE-030](EVIDENCE-030-evidence-surface-layer.md), [EVIDENCE-032](EVIDENCE-032-reproducibility-bundle.md), [EVIDENCE-034](EVIDENCE-034-evaluation-bundle.md), [EVIDENCE-036](EVIDENCE-036-artifact-specification-layer.md), [EVIDENCE-038](EVIDENCE-038-artifact-validator-bundle.md), [EVIDENCE-040](EVIDENCE-040-external-example-packages.md), [EVIDENCE-042](EVIDENCE-042-quickstart-experience-layer.md)
+- Relevant decisions: [DEC-002](../decisions/DEC-002-evidence-bundle-before-claims.md), [DEC-005](../decisions/DEC-005-no-production-or-clinical-claims-without-evidence.md)
+- Validation surface: `python3 scripts/permea_evidence.py` and `python3 -m pytest tests/test_evidence_navigation.py`
+- Supported public claims: Existing public evidence is discoverable, reviewable, auditable, and extensible through a navigation map, claim matrix, maturity model, timeline, and CLI.
+- Unsupported claims: no biological efficacy, therapeutic outcome, BBB success, solved-delivery, SOTA performance, experimental validation, or clinical evidence claim.
+- Limitations: The navigation layer organizes existing evidence only; it does not add scientific evidence.
+- Next evidence step: Add new evidence records, reports, validators, and claim-registry links as evidence matures.
