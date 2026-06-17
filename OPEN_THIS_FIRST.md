@@ -4,12 +4,12 @@ This file is the first continuation breadcrumb for Permea Core. It summarizes th
 
 ## Current Status
 
-Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence navigation, benchmark and dataset registry governance, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
+Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence navigation, benchmark, dataset, and research package registry governance, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-045-dataset-registry-layer`
-- Public baseline reviewed: `main` at `326edbe9568afb9240348094978ce23e6723fb19`
+- Branch used for this update: `p-core-046-research-package-layer`
+- Public baseline reviewed: `main` at `bb188de525f73803bacc601b319a147862b50f0c`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -33,6 +33,8 @@ Permea Core currently provides:
 - a benchmark review command at `python3 scripts/permea_benchmarks.py`
 - a dataset registry layer at `docs/datasets/`
 - a dataset review command at `python3 scripts/permea_datasets.py`
+- a research package layer at `docs/research/`
+- a research package review command at `python3 scripts/permea_research.py`
 
 Permea Core does not currently claim dataset download, acquisition execution, redistribution-rights confirmation, wet-lab validation by Permea, clinical effectiveness, model performance, state-of-the-art status, or solved delivery.
 
@@ -52,12 +54,13 @@ Permea's current public program model is:
 - Evidence Navigation Layer: Implemented
 - Benchmark Registry Layer: Implemented
 - Dataset Registry Layer: Implemented
+- Research Package Layer: Implemented
 
 See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
-The latest completed major public infrastructure layer is the dataset registry layer:
+The latest completed major public infrastructure layer is the research package layer:
 
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
@@ -68,6 +71,11 @@ The latest completed major public infrastructure layer is the dataset registry l
 - [Dataset card template](docs/datasets/dataset-card-template.md)
 - [Dataset provenance](docs/datasets/dataset-provenance.md)
 - [Dataset governance](docs/datasets/dataset-governance.md)
+- [Research package registry](docs/research/research-package-registry.md)
+- [Research package lifecycle](docs/research/research-package-lifecycle.md)
+- [Research package template](docs/research/research-package-template.md)
+- [Research package assembly](docs/research/research-package-assembly.md)
+- [Research package governance](docs/research/research-package-governance.md)
 
 ## Current Branch / Commit
 
@@ -78,7 +86,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `326edbe9568afb9240348094978ce23e6723fb19`.
+At this update, the reviewed public baseline was `bb188de525f73803bacc601b319a147862b50f0c`.
 
 ## Primary Reports
 
@@ -91,6 +99,7 @@ At this update, the reviewed public baseline was `326edbe9568afb9240348094978ce2
 - [P-CORE-042 quickstart experience layer report](docs/reports/p-core-042-quickstart-experience-layer-v0.md)
 - [P-CORE-044 benchmark registry layer report](docs/reports/p-core-044-benchmark-registry-layer-v0.md)
 - [P-CORE-045 dataset registry layer report](docs/reports/p-core-045-dataset-registry-layer-v0.md)
+- [P-CORE-046 research package layer report](docs/reports/p-core-046-research-package-layer-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -120,6 +129,8 @@ At this update, the reviewed public baseline was `326edbe9568afb9240348094978ce2
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
 - [Dataset registry](docs/datasets/dataset-registry.md)
 - [Dataset provenance](docs/datasets/dataset-provenance.md)
+- [Research package registry](docs/research/research-package-registry.md)
+- [Research package assembly](docs/research/research-package-assembly.md)
 - [Decision records](docs/decisions/README.md)
 
 ## Current Research Direction
@@ -139,8 +150,8 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 Recommended next task after this benchmark registry layer:
 
-- Review the dataset registry PR if validation and scans remain clean.
-- Then continue with the next scoped dataset, benchmark, evidence, or validation task.
+- Review the research package PR if validation and scans remain clean.
+- Then continue with the next scoped research package, dataset, benchmark, evidence, or validation task.
 
 ## How To Continue
 
@@ -156,6 +167,7 @@ python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_datasets.py
+python3 scripts/permea_research.py
 python3 scripts/permea_check.py
 python3 scripts/permea_validate.py
 python3 scripts/validate_permea_artifacts.py

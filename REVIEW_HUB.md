@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, benchmark registry governance, dataset registry governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, benchmark registry governance, dataset registry governance, research package governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `326edbe9568afb9240348094978ce23e6723fb19`.
+At this update point, the reviewed public baseline was `main` at `bb188de525f73803bacc601b319a147862b50f0c`.
 
 ## Permea Layer Model
 
@@ -47,6 +47,7 @@ At this update point, the reviewed public baseline was `main` at `326edbe9568afb
 | Evidence Navigation Layer | Implemented | Evidence map, claim matrix, maturity model, timeline, and CLI for review. |
 | Benchmark Registry Layer | Implemented | Benchmark registry, lifecycle, card template, governance, schema, and CLI review. |
 | Dataset Registry Layer | Implemented | Dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review. |
+| Research Package Layer | Implemented | Research package registry, lifecycle, template, assembly, governance, schema, and CLI review. |
 | Memory Layer | Established | Breadcrumb, review hub, ADR, runbook, and reports for continuation. |
 
 ## Current State Summary
@@ -74,6 +75,12 @@ At this update point, the reviewed public baseline was `main` at `326edbe9568afb
 - Dataset provenance exists at [docs/datasets/dataset-provenance.md](docs/datasets/dataset-provenance.md).
 - Dataset governance exists at [docs/datasets/dataset-governance.md](docs/datasets/dataset-governance.md).
 - Dataset review command exists at [scripts/permea_datasets.py](scripts/permea_datasets.py).
+- Research package registry exists at [docs/research/research-package-registry.md](docs/research/research-package-registry.md).
+- Research package lifecycle exists at [docs/research/research-package-lifecycle.md](docs/research/research-package-lifecycle.md).
+- Research package template exists at [docs/research/research-package-template.md](docs/research/research-package-template.md).
+- Research package assembly exists at [docs/research/research-package-assembly.md](docs/research/research-package-assembly.md).
+- Research package governance exists at [docs/research/research-package-governance.md](docs/research/research-package-governance.md).
+- Research package review command exists at [scripts/permea_research.py](scripts/permea_research.py).
 - External example packages exist at [examples/README.md](examples/README.md).
 - Decision records exist at [docs/decisions/README.md](docs/decisions/README.md).
 - Artifact schemas exist under [schemas/](schemas/).
@@ -104,6 +111,9 @@ Paper-related status:
 - [Dataset registry](docs/datasets/dataset-registry.md)
 - [Dataset lifecycle](docs/datasets/dataset-lifecycle.md)
 - [Dataset provenance](docs/datasets/dataset-provenance.md)
+- [Research package registry](docs/research/research-package-registry.md)
+- [Research package lifecycle](docs/research/research-package-lifecycle.md)
+- [Research package assembly](docs/research/research-package-assembly.md)
 - [EVIDENCE-030: Evidence Surface Layer](docs/evidence/EVIDENCE-030-evidence-surface-layer.md)
 - [EVIDENCE-032: Reproducibility Bundle](docs/evidence/EVIDENCE-032-reproducibility-bundle.md)
 - [EVIDENCE-034: Evaluation Bundle](docs/evidence/EVIDENCE-034-evaluation-bundle.md)
@@ -143,6 +153,7 @@ Paper-related status:
 - [P-CORE-043 evidence navigation map](docs/evidence/evidence-map.md)
 - [P-CORE-044 benchmark registry layer v0](docs/reports/p-core-044-benchmark-registry-layer-v0.md)
 - [P-CORE-045 dataset registry layer v0](docs/reports/p-core-045-dataset-registry-layer-v0.md)
+- [P-CORE-046 research package layer v0](docs/reports/p-core-046-research-package-layer-v0.md)
 
 Generated report-like surfaces:
 
@@ -167,6 +178,7 @@ Allowed public framing:
 - deterministic evidence review command for inventory, claim boundaries, maturity, and validation status
 - deterministic benchmark review command for registry counts, lifecycle status, docs, and claim boundaries
 - deterministic dataset review command for registry counts, provenance status, docs, and claim boundaries
+- deterministic research package review command for package counts, reproducibility status, docs, and claim boundaries
 - public artifact standards
 - computational evidence surfaces
 - candidate prioritization before experimental follow-up
@@ -197,6 +209,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Evidence navigation: Implemented for evidence inventory, claim-to-evidence mapping, maturity levels, timeline, and CLI review.
 - Benchmark registry layer: Implemented for benchmark registry, lifecycle, card template, governance, schema, and CLI review.
 - Dataset registry layer: Implemented for dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review.
+- Research package layer: Implemented for research package registry, lifecycle, template, assembly, governance, schema, and CLI review.
 
 ## Validation Status
 
@@ -208,6 +221,7 @@ python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_datasets.py
+python3 scripts/permea_research.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
 python3 scripts/permea_specs.py
 python3 scripts/permea_evaluate.py
@@ -238,10 +252,10 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the dataset registry branch if validation and scans remain clean.
-2. Promote dataset entries only when lifecycle provenance and evidence requirements are met.
-3. Promote benchmark entries only when lifecycle evidence requirements are met.
-4. Extend validator coverage only when new dataset or benchmark card fields require stricter schemas.
+1. Review the research package branch if validation and scans remain clean.
+2. Promote research packages only when lifecycle evidence, dataset, benchmark, reproducibility, validation, and claim-boundary requirements are met.
+3. Promote dataset entries only when lifecycle provenance and evidence requirements are met.
+4. Promote benchmark entries only when lifecycle evidence requirements are met.
 5. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
 6. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
 
