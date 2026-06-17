@@ -1,109 +1,117 @@
 # Permea Core Quickstart
 
-## Overview
+This quickstart is the first-user path for Permea Core. It is designed for researchers and developers who want one successful local result in under five minutes without downloading datasets, executing acquisition, or running a model workflow.
 
-Permea Core is a public infrastructure layer for deterministic artifact generation, validation, and review. This quickstart shows how to reproduce the current public artifact surfaces locally.
-
-## Who this is for
-
-- Researchers who want to inspect generated evidence artifacts before extending them.
-- Developers who want to run the local artifact system and verify expected outputs.
-- Reviewers who want one path from repository entry points to generated reports and non-claims.
-
-## Install / local setup assumptions
+## Setup Assumptions
 
 - Python 3 is available as `python3`.
 - The repository has been cloned locally.
 - Commands are run from the repository root.
-- No dataset download, external service call, acquisition execution, or ML run is required.
+- No private data, external service, dataset download, or model run is required.
 
-## One-command reproduction
+## What Permea Core Is
+
+Permea Core is a public execution and specification layer for benchmark-first delivery evidence artifacts. It provides artifact standards, deterministic examples, local validators, evidence links, and claim boundaries so computational delivery evidence can be inspected before experimental follow-up.
+
+## What The Example Packages Demonstrate
+
+The copyable packages under [examples/](examples/) demonstrate the current artifact standard:
+
+- dataset cards
+- benchmark cards
+- evidence cards
+- run manifests
+- output packages
+- validation results
+- explicit non-claims and claim-boundary wording
+
+The examples are reference fixtures. They demonstrate package structure and validation compatibility, not biological or model results.
+
+## One Command To Run
+
+From the repository root:
 
 ```bash
-python3 scripts/permea_reproduce.py
+python3 scripts/permea_demo.py
 ```
 
-This regenerates the public artifact surfaces and writes the reproducibility report.
+## What Output To Expect
 
-## One-command validation
+The demo prints:
 
-```bash
-python3 scripts/permea_validate.py
+- a short description of Permea Core
+- discovered example packages
+- validator status for each package
+- links to evidence and claim-boundary surfaces
+- generated evaluation and evidence output paths
+- explicit non-claims
+- next recommended commands
+
+A successful run ends with:
+
+```text
+Status: PASS
 ```
 
-This runs unified artifact validation and reproducibility bundle checks.
+## How To Validate Examples
 
-## One-command artifact standard check
+Validate all built-in public examples and generated artifacts:
 
 ```bash
 python3 scripts/permea_check.py
 ```
 
-This checks built-in public dataset-card, benchmark-card, evidence-card, run-manifest, and output-package examples for required fields, repo-relative paths, non-claims, claim-boundary wording, and evidence linkage.
-
-You can also validate a copyable example package:
+Validate one example package:
 
 ```bash
 python3 scripts/permea_check.py examples/synthetic_reference_example
 ```
 
-## One-command evaluation packet generation
+Run the broader local validation bundle:
 
 ```bash
-python3 scripts/permea_evaluate.py
+python3 scripts/permea_validate.py
+python3 scripts/validate_permea_artifacts.py
 ```
 
-This writes a public template/reference evaluation packet that links current input families, generated surfaces, validation handoff, reproducibility handoff, explicit non-claims, and next evidence steps.
+## How To Inspect Evidence And Claim Boundaries
 
-## Where generated outputs appear
+Start with:
 
-- [Generated evidence surface](docs/examples/generated/README.md)
-- [Demo packet](docs/examples/generated/DEMO_PACKET.md)
-- [Artifact index](docs/examples/generated/ARTIFACT_INDEX.md)
-- [Evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
-- [Evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
-- [Reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
-- [Dry-run report](docs/examples/generated/dry_runs/example_benchmark_dry_run.md)
+- [Evidence index](docs/evidence/evidence-index.md)
+- [Evidence layer](docs/evidence/README.md)
+- [Claim registry](docs/claims/claim-registry.md)
+- [Claim boundary](docs/CLAIM_BOUNDARY.md)
 - [External examples](examples/README.md)
+- [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
+- [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
+- [Generated evidence surface](docs/examples/generated/README.md)
 
-## How to inspect the evidence surface
+These surfaces explain which claims are supported by current public artifacts, which claims are unsupported, and which validation commands reviewers should run.
 
-Start with [docs/examples/generated/README.md](docs/examples/generated/README.md), then follow the links to the evaluation packet, demo packet, artifact index, evidence matrix, reproducibility report, dry-run report, and generated artifact families.
-
-## How to extend the artifact system
-
-Start with the [public artifact specifications](docs/specs/README.md), then add generator logic, validation logic, generated examples, tests, and claim-boundary language together. New artifact families should be linked from the generated evidence surface and covered by validation before they become public reviewer-facing surfaces.
-
-Inspect the specification registry with:
-
-```bash
-python3 scripts/permea_specs.py
-```
-
-Check current public examples against the artifact standards with:
-
-```bash
-python3 scripts/permea_check.py
-```
-
-## Explicit Non-Claims
+## What Is Not Claimed
 
 - no dataset downloaded
 - no acquisition executed
 - no redistribution rights confirmed
 - no wet-lab validation by Permea
-- no clinical-effectiveness claim
+- no clinical efficacy claim
 - no model performance claim
-- no state-of-the-art claim
+- no SOTA claim
 - no solved-delivery claim
+
+## Next Recommended Commands
+
+```bash
+python3 scripts/permea_check.py
+python3 scripts/permea_specs.py
+python3 scripts/permea_evaluate.py
+python3 scripts/permea_reproduce.py
+python3 scripts/permea_validate.py
+```
 
 ## Troubleshooting
 
-- If reproduction fails, run `python3 scripts/generate_permea_artifacts.py` to identify the failing generator step.
-- If validation fails, run `python3 scripts/validate_permea_artifacts.py` to identify the failing validation step.
-- If an artifact standard check fails, run `python3 scripts/permea_check.py path/to/artifact` to inspect a single public artifact path.
-- If generated files look stale, rerun `python3 scripts/permea_reproduce.py` from the repository root.
-
-## Next steps
-
-Read [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [EVALUATION.md](EVALUATION.md), then inspect the generated [evaluation packet](docs/examples/generated/EVALUATION_PACKET.md) and [reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md).
+- If the demo cannot find examples, confirm you are running from the repository root.
+- If validation fails, run `python3 scripts/permea_check.py path/to/example` for the failing package.
+- If generated files look stale, run `python3 scripts/permea_reproduce.py`.

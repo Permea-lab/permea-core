@@ -12,6 +12,7 @@ Permea Core public materials may state that the repository currently has:
 - public artifact specifications and lightweight schemas for current artifact families
 - an artifact validator command for checking current public examples against structural, non-claim, claim-boundary, and evidence-linkage expectations
 - external reference example packages that demonstrate how to use the artifact standard
+- a deterministic quickstart demo that discovers example packages, runs validation, links evidence surfaces, and prints next commands
 - public decision records for major program choices
 - public claim-boundary and documentation memory surfaces
 
@@ -19,16 +20,16 @@ Permea Core public materials may state that the repository currently has:
 
 Permea Core public materials must not claim:
 
-- dataset download
-- acquisition execution
-- redistribution-rights confirmation
-- wet-lab validation by Permea
-- clinical efficacy
-- model performance
-- SOTA status
-- solved delivery
-- broad delivery prediction
-- production readiness for biological or clinical use
+- no dataset download
+- no acquisition execution
+- no redistribution-rights confirmation
+- no wet-lab validation by Permea
+- no clinical efficacy claim
+- no model performance claim
+- no SOTA status claim
+- no solved delivery claim
+- no broad delivery prediction claim
+- no production readiness for biological or clinical use
 
 ## Evidence Dependencies
 
@@ -40,6 +41,7 @@ Permea Core public materials must not claim:
 | Artifact standards exist | [EVIDENCE-036](../evidence/EVIDENCE-036-artifact-specification-layer.md) |
 | Artifact examples can be checked against Permea standards | [EVIDENCE-038](../evidence/EVIDENCE-038-artifact-validator-bundle.md) |
 | External example packages demonstrate the standard | [EVIDENCE-040](../evidence/EVIDENCE-040-external-example-packages.md) |
+| Quickstart command provides a first-user validation path | [EVIDENCE-042](../evidence/EVIDENCE-042-quickstart-experience-layer.md) |
 | Claim-boundary discipline exists | [DEC-005](../decisions/DEC-005-no-production-or-clinical-claims-without-evidence.md) and [Claim Boundary](../CLAIM_BOUNDARY.md) |
 
 ## Required Non-Claims
@@ -63,6 +65,7 @@ Prefer:
 - reproducibility bundle
 - evaluation template/reference workflow
 - artifact specification layer
+- first-user quickstart demo
 - project memory layer
 - decision layer
 

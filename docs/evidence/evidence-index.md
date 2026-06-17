@@ -12,6 +12,7 @@ This index maps current public evidence surfaces to reports, generated artifacts
 | EVIDENCE-036 | Artifact Specification Layer | Implemented, Public-Safe | Group P-CORE-036 | [Artifact specification report](../reports/p-core-036-artifact-specification-layer.md) | `python3 scripts/permea_specs.py` |
 | EVIDENCE-038 | Artifact Validator Bundle | Implemented, Public-Safe | Group P-CORE-038 | [Artifact validator report](../reports/p-core-038-artifact-validator-bundle-v0.md) | `python3 scripts/permea_check.py` |
 | EVIDENCE-040 | External Example Packages | Implemented, Public-Safe | Group P-CORE-040 | [External examples report](../reports/p-core-040-external-example-packages-v0.md) | `python3 scripts/permea_check.py examples/synthetic_reference_example` |
+| EVIDENCE-042 | Quickstart Experience Layer | Implemented, Public-Safe | Group P-CORE-042 | [Quickstart experience report](../reports/p-core-042-quickstart-experience-layer-v0.md) | `python3 scripts/permea_demo.py` |
 
 ## Detailed Mapping
 
@@ -104,3 +105,19 @@ This index maps current public evidence surfaces to reports, generated artifacts
 - Unsupported claims: no biological performance, source-rights confirmation, wet-lab validation by Permea, clinical effectiveness, or model-performance claim.
 - Limitations: The examples are reference fixtures only; they do not create biological or model evidence.
 - Next evidence step: Add future examples only with public-safe fixture values, validator coverage, and explicit non-claims.
+
+### EVIDENCE-042: Quickstart Experience Layer
+
+- Evidence ID: EVIDENCE-042
+- Status: Implemented, Public-Safe
+- Source task/group: Group P-CORE-042
+- Primary report: [Quickstart experience layer report](../reports/p-core-042-quickstart-experience-layer-v0.md)
+- Primary docs: [Quickstart](../../QUICKSTART.md), [README](../../README.md), [Review hub](../../REVIEW_HUB.md)
+- Primary command: `python3 scripts/permea_demo.py`
+- Relevant evidence: [EVIDENCE-038](EVIDENCE-038-artifact-validator-bundle.md), [EVIDENCE-040](EVIDENCE-040-external-example-packages.md)
+- Relevant decisions: [DEC-002](../decisions/DEC-002-evidence-bundle-before-claims.md), [DEC-005](../decisions/DEC-005-no-production-or-clinical-claims-without-evidence.md)
+- Validation surface: `python3 scripts/permea_demo.py` and `python3 -m pytest tests/test_quickstart_experience.py`
+- Supported public claims: Permea Core provides a deterministic first-user command that discovers example packages, runs validation, links evidence and claim-boundary surfaces, and prints next recommended commands.
+- Unsupported claims: no dataset download, acquisition execution, redistribution-rights confirmation, biological validation, clinical effectiveness, model performance, or delivery outcome claim.
+- Limitations: The quickstart demo validates public example package structure and claim-boundary hygiene; it does not create scientific results.
+- Next evidence step: Keep quickstart output aligned with future example package and validator changes.
