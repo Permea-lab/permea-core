@@ -4,12 +4,12 @@ This file is the first continuation breadcrumb for Permea Core. It summarizes th
 
 ## Current Status
 
-Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public review packet guidance, public evidence navigation, benchmark registry and execution governance, dataset and research package registry governance, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
+Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public review packet guidance, public evidence navigation, benchmark registry and execution governance, dataset and research package registry governance, signal integration for adjacent public evidence packages, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-048-benchmark-execution-layer`
-- Public baseline reviewed: `main` at `2a8c9efbb5705244b316bfc42645b96744067ad2`
+- Branch used for this update: `p-core-049-signal-integration-layer`
+- Public baseline reviewed: `main` at `13c7904076461d5c29172438aaff4b1a560061d6`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -37,6 +37,8 @@ Permea Core currently provides:
 - a dataset review command at `python3 scripts/permea_datasets.py`
 - a research package layer at `docs/research/`
 - a research package review command at `python3 scripts/permea_research.py`
+- a signal integration layer at `docs/integrations/`
+- a signal integration review command at `python3 scripts/permea_signal.py`
 - a public review packet layer at `docs/review/`
 - a public review packet command at `python3 scripts/permea_review.py`
 
@@ -60,13 +62,14 @@ Permea's current public program model is:
 - Benchmark Execution Layer: Implemented
 - Dataset Registry Layer: Implemented
 - Research Package Layer: Implemented
+- Signal Integration Layer: Implemented
 - Public Review Packet Layer: Implemented
 
 See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
-The latest completed major public infrastructure layer is the benchmark execution layer:
+The latest completed major public infrastructure layer is the signal integration layer:
 
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
@@ -84,6 +87,10 @@ The latest completed major public infrastructure layer is the benchmark executio
 - [Research package template](docs/research/research-package-template.md)
 - [Research package assembly](docs/research/research-package-assembly.md)
 - [Research package governance](docs/research/research-package-governance.md)
+- [Signal integration](docs/integrations/README.md)
+- [Permea Signal ML integration](docs/integrations/permea-signal-ml.md)
+- [External evidence package template](docs/integrations/external-evidence-package-template.md)
+- [External evidence package governance](docs/integrations/external-evidence-package-governance.md)
 - [Public review packet](docs/review/public-review-packet.md)
 - [Public review packet assembly](docs/review/public-review-packet-assembly.md)
 - [Public review checklist](docs/review/public-review-checklist.md)
@@ -97,7 +104,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `2a8c9efbb5705244b316bfc42645b96744067ad2`.
+At this update, the reviewed public baseline was `13c7904076461d5c29172438aaff4b1a560061d6`.
 
 ## Primary Reports
 
@@ -113,6 +120,7 @@ At this update, the reviewed public baseline was `2a8c9efbb5705244b316bfc42645b9
 - [P-CORE-046 research package layer report](docs/reports/p-core-046-research-package-layer-v0.md)
 - [P-CORE-047 public review packet layer report](docs/reports/p-core-047-public-review-packet-layer-v0.md)
 - [P-CORE-048 benchmark execution layer report](docs/reports/p-core-048-benchmark-execution-layer-v0.md)
+- [P-CORE-049 signal integration layer report](docs/reports/p-core-049-signal-integration-layer-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -145,6 +153,8 @@ At this update, the reviewed public baseline was `2a8c9efbb5705244b316bfc42645b9
 - [Dataset provenance](docs/datasets/dataset-provenance.md)
 - [Research package registry](docs/research/research-package-registry.md)
 - [Research package assembly](docs/research/research-package-assembly.md)
+- [Signal integration](docs/integrations/README.md)
+- [Permea Signal ML integration](docs/integrations/permea-signal-ml.md)
 - [Public review packet](docs/review/public-review-packet.md)
 - [Public review checklist](docs/review/public-review-checklist.md)
 - [Decision records](docs/decisions/README.md)
@@ -164,10 +174,10 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after this benchmark execution layer:
+Recommended next task after this signal integration layer:
 
-- Review the benchmark execution PR if validation and scans remain clean.
-- Then continue with the next scoped benchmark run, review packet, research package, dataset, evidence, or validation task.
+- Review the signal integration PR if validation and scans remain clean.
+- Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
 
 ## How To Continue
 
@@ -185,6 +195,7 @@ python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py
 python3 scripts/permea_datasets.py
 python3 scripts/permea_research.py
+python3 scripts/permea_signal.py
 python3 scripts/permea_review.py
 python3 scripts/permea_check.py
 python3 scripts/permea_validate.py

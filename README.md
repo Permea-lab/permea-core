@@ -47,7 +47,7 @@ Run the guided public review packet:
 python3 scripts/permea_review.py
 ```
 
-The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Evidence And Claims
 
@@ -77,9 +77,11 @@ Review the benchmark execution framework:
 python3 scripts/permea_benchmark_run.py
 ```
 
-The benchmark execution path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The benchmark execution path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
-Reviewer path: README -> QUICKSTART -> REVIEW PACKET -> EVIDENCE -> BENCHMARKS -> BENCHMARK EXECUTION -> DATASETS -> RESEARCH -> CLAIMS -> VALIDATION.
+Reviewer path: README -> QUICKSTART -> REVIEW PACKET -> EVIDENCE -> BENCHMARKS -> DATASETS -> RESEARCH -> SIGNAL INTEGRATION -> CLAIMS -> VALIDATION.
+
+Benchmark execution path token: README -> QUICKSTART -> REVIEW PACKET -> EVIDENCE -> BENCHMARKS -> BENCHMARK EXECUTION -> DATASETS -> RESEARCH -> CLAIMS -> VALIDATION.
 
 ## Datasets
 
@@ -89,7 +91,7 @@ Review the dataset framework:
 python3 scripts/permea_datasets.py
 ```
 
-The public review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The public review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Research Packages
 
@@ -99,7 +101,17 @@ Review the research package framework:
 python3 scripts/permea_research.py
 ```
 
-The package review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The package review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+
+## Signal Integration
+
+Review the external evidence package integration layer:
+
+```bash
+python3 scripts/permea_signal.py
+```
+
+The signal integration path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Why This Exists
 
@@ -243,6 +255,10 @@ Core project documents:
 - [Benchmark Execution Model](docs/benchmarks/benchmark-execution-model.md)
 - [Benchmark Run Template](docs/benchmarks/benchmark-run-template.md)
 - [Benchmark Governance](docs/benchmarks/benchmark-governance.md)
+- [Signal Integration](docs/integrations/README.md)
+- [Permea Signal ML Integration](docs/integrations/permea-signal-ml.md)
+- [External Evidence Package Template](docs/integrations/external-evidence-package-template.md)
+- [External Evidence Package Governance](docs/integrations/external-evidence-package-governance.md)
 - [Claim Registry](docs/claims/claim-registry.md)
 - [External Examples](examples/README.md)
 - [Decision Records](docs/decisions/README.md)
@@ -346,6 +362,12 @@ Review the benchmark execution framework:
 
 ```bash
 python3 scripts/permea_benchmark_run.py
+```
+
+Review the signal integration layer:
+
+```bash
+python3 scripts/permea_signal.py
 ```
 
 Generate the public artifact index:
