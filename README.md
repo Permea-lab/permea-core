@@ -29,6 +29,16 @@ Permea Core is an open technical foundation for making biological delivery more 
 
 Permea is not another single predictor. Permea Core is the public execution layer for benchmark-first delivery engineering: shared specifications, reusable artifacts, and reproducible workflows for computational evidence before experimental follow-up.
 
+## Quickstart
+
+Run the first-user demo from the repository root:
+
+```bash
+python3 scripts/permea_demo.py
+```
+
+The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Evidence index](docs/evidence/evidence-index.md), and [Claim registry](docs/claims/claim-registry.md).
+
 ## Why This Exists
 
 Delivery is one of the bottlenecks for next-generation therapeutics. Peptides, RNA systems, mRNA designs, protein therapeutics, gene-editing payloads, and targeted biologics all depend on reaching the right biological context, but delivery evidence is still fragmented across datasets, papers, predictors, assays, and internal pipelines.
@@ -243,6 +253,12 @@ Check public artifact examples against the current Permea artifact standards:
 
 ```bash
 python3 scripts/permea_check.py
+```
+
+Run the first-user quickstart demo:
+
+```bash
+python3 scripts/permea_demo.py
 ```
 
 Copyable external examples are available at [External Examples](examples/README.md).
