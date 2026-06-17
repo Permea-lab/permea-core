@@ -37,7 +37,7 @@ Run the first-user demo from the repository root:
 python3 scripts/permea_demo.py
 ```
 
-The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Evidence index](docs/evidence/evidence-index.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), and [Claim registry](docs/claims/claim-registry.md).
+The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Evidence index](docs/evidence/evidence-index.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), and [Claim registry](docs/claims/claim-registry.md).
 
 ## Evidence And Claims
 
@@ -47,7 +47,7 @@ After the quickstart, review the evidence path:
 python3 scripts/permea_evidence.py
 ```
 
-Start with [Evidence map](docs/evidence/evidence-map.md), then review [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md), [Evidence maturity model](docs/evidence/evidence-maturity-model.md), [Evidence timeline](docs/evidence/evidence-timeline.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Claim registry](docs/claims/claim-registry.md), and [Validation](#documentation-map).
+Start with [Evidence map](docs/evidence/evidence-map.md), then review [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md), [Evidence maturity model](docs/evidence/evidence-maturity-model.md), [Evidence timeline](docs/evidence/evidence-timeline.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), [Claim registry](docs/claims/claim-registry.md), and [Validation](#documentation-map).
 
 ## Benchmarks
 
@@ -68,6 +68,16 @@ python3 scripts/permea_datasets.py
 ```
 
 The public review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+
+## Research Packages
+
+Review the research package framework:
+
+```bash
+python3 scripts/permea_research.py
+```
+
+The package review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Why This Exists
 

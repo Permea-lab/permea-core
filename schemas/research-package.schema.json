@@ -1,0 +1,123 @@
+{
+  "$id": "https://permea-core.local/schemas/research-package.schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "claim_boundaries": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "figures_tables_inventory": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "intended_audience": {
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_benchmarks": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_claims": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_datasets": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_evidence": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_specifications": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "maintainer_notes": {
+      "type": "string"
+    },
+    "package_type": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "research_package_id": {
+      "type": "string"
+    },
+    "reproducibility_path": {
+      "type": "string"
+    },
+    "reproducibility_status": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "Proposed",
+        "Draft Package",
+        "Internally Reproducible",
+        "Public Review Package",
+        "External Review Ready",
+        "Submitted",
+        "Published",
+        "Superseded",
+        "Archived"
+      ],
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "validation_path": {
+      "type": "string"
+    },
+    "validation_status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "research_package_id",
+    "title",
+    "purpose",
+    "package_type",
+    "status",
+    "linked_evidence",
+    "linked_benchmarks",
+    "linked_datasets",
+    "linked_specifications",
+    "linked_claims",
+    "reproducibility_status",
+    "validation_status",
+    "claim_boundaries",
+    "limitations",
+    "version"
+  ],
+  "title": "Permea Research Package",
+  "type": "object"
+}
