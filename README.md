@@ -47,7 +47,7 @@ Run the guided public review packet:
 python3 scripts/permea_review.py
 ```
 
-The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Research](docs/research/README.md) -> [Datasets](docs/datasets/README.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Claims](docs/claims/claim-registry.md) -> [Lineage](docs/lineage/README.md) -> validation commands.
 
 ## Evidence And Claims
 
@@ -79,7 +79,7 @@ python3 scripts/permea_benchmark_run.py
 
 The benchmark execution path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
-Reviewer path: README -> QUICKSTART -> REVIEW PACKET -> EVIDENCE -> BENCHMARKS -> DATASETS -> RESEARCH -> SIGNAL INTEGRATION -> CLAIMS -> VALIDATION.
+Reviewer path: README -> QUICKSTART -> REVIEW PACKET -> RESEARCH -> DATASETS -> BENCHMARKS -> EVIDENCE -> CLAIMS -> LINEAGE -> VALIDATION.
 
 Benchmark execution path token: README -> QUICKSTART -> REVIEW PACKET -> EVIDENCE -> BENCHMARKS -> BENCHMARK EXECUTION -> DATASETS -> RESEARCH -> CLAIMS -> VALIDATION.
 
@@ -111,7 +111,21 @@ Review the external evidence package integration layer:
 python3 scripts/permea_signal.py
 ```
 
-The signal integration path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The signal integration path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Signal Integration](docs/integrations/README.md) -> [Claims](docs/claims/claim-registry.md) -> [Lineage](docs/lineage/README.md) -> validation commands.
+
+## Evidence Lineage
+
+Review the lineage and provenance framework:
+
+```bash
+python3 scripts/permea_lineage.py
+```
+
+The lineage path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Research](docs/research/README.md) -> [Datasets](docs/datasets/README.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Claims](docs/claims/claim-registry.md) -> [Lineage](docs/lineage/README.md) -> validation commands.
+
+Lineage path token: README -> QUICKSTART -> REVIEW PACKET -> RESEARCH -> DATASETS -> BENCHMARKS -> EVIDENCE -> CLAIMS -> LINEAGE -> VALIDATION.
+
+Signal integration path token: README -> QUICKSTART -> REVIEW PACKET -> EVIDENCE -> BENCHMARKS -> DATASETS -> RESEARCH -> SIGNAL INTEGRATION -> CLAIMS -> VALIDATION.
 
 ## Why This Exists
 
@@ -256,6 +270,7 @@ Core project documents:
 - [Benchmark Run Template](docs/benchmarks/benchmark-run-template.md)
 - [Benchmark Governance](docs/benchmarks/benchmark-governance.md)
 - [Signal Integration](docs/integrations/README.md)
+- [Evidence Lineage](docs/lineage/README.md)
 - [Permea Signal ML Integration](docs/integrations/permea-signal-ml.md)
 - [External Evidence Package Template](docs/integrations/external-evidence-package-template.md)
 - [External Evidence Package Governance](docs/integrations/external-evidence-package-governance.md)
