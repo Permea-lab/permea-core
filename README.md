@@ -37,7 +37,17 @@ Run the first-user demo from the repository root:
 python3 scripts/permea_demo.py
 ```
 
-The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Evidence index](docs/evidence/evidence-index.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), and [Claim registry](docs/claims/claim-registry.md).
+The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Public review packet](docs/review/public-review-packet.md), [Evidence index](docs/evidence/evidence-index.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), and [Claim registry](docs/claims/claim-registry.md).
+
+## Public Review Packet
+
+Run the guided public review packet:
+
+```bash
+python3 scripts/permea_review.py
+```
+
+The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Evidence And Claims
 
@@ -47,7 +57,7 @@ After the quickstart, review the evidence path:
 python3 scripts/permea_evidence.py
 ```
 
-Start with [Evidence map](docs/evidence/evidence-map.md), then review [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md), [Evidence maturity model](docs/evidence/evidence-maturity-model.md), [Evidence timeline](docs/evidence/evidence-timeline.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), [Claim registry](docs/claims/claim-registry.md), and [Validation](#documentation-map).
+Start with [Evidence map](docs/evidence/evidence-map.md), then review [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md), [Evidence maturity model](docs/evidence/evidence-maturity-model.md), [Evidence timeline](docs/evidence/evidence-timeline.md), [Public review packet](docs/review/public-review-packet.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), [Claim registry](docs/claims/claim-registry.md), and [Validation](#documentation-map).
 
 ## Benchmarks
 

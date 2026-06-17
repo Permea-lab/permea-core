@@ -1,0 +1,119 @@
+{
+  "$id": "https://permea-core.local/schemas/public-review-packet.schema.json",
+  "additionalProperties": true,
+  "properties": {
+    "benchmark_summary": {
+      "type": "string"
+    },
+    "claim_boundary_summary": {
+      "type": "string"
+    },
+    "dataset_summary": {
+      "type": "string"
+    },
+    "evidence_summary": {
+      "type": "string"
+    },
+    "intended_reviewer": {
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_benchmarks": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_claims": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_datasets": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_evidence": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "linked_research_packages": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "maintainer_notes": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "required_commands": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "required_reading_path": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "research_package_summary": {
+      "type": "string"
+    },
+    "review_objective": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "unsupported_claims": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "validation_summary": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "packet_id",
+    "title",
+    "purpose",
+    "intended_reviewer",
+    "review_objective",
+    "required_reading_path",
+    "required_commands",
+    "linked_evidence",
+    "linked_benchmarks",
+    "linked_datasets",
+    "linked_research_packages",
+    "linked_claims",
+    "validation_summary",
+    "unsupported_claims",
+    "limitations",
+    "version"
+  ],
+  "title": "Permea Public Review Packet",
+  "type": "object"
+}
