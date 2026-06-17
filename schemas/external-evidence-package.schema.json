@@ -1,0 +1,106 @@
+{
+  "$id": "https://permea-core.local/schemas/external-evidence-package.schema.json",
+  "title": "Permea External Evidence Package",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "evidence_package_id": {
+      "type": "string"
+    },
+    "package_name": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "evidence_type": {
+      "type": "string"
+    },
+    "linked_datasets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_benchmarks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_research_packages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reproducibility_path": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_path": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claim_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "documented",
+        "reproducible_computational",
+        "public_review_ready",
+        "externally_validated",
+        "superseded",
+        "archived"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "maintainer_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "evidence_package_id",
+    "package_name",
+    "repository",
+    "purpose",
+    "evidence_type",
+    "linked_datasets",
+    "linked_benchmarks",
+    "linked_research_packages",
+    "linked_claims",
+    "reproducibility_path",
+    "validation_path",
+    "claim_boundaries",
+    "limitations",
+    "status",
+    "version"
+  ]
+}

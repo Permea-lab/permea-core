@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, benchmark registry and execution governance, dataset registry governance, research package governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, benchmark registry and execution governance, dataset registry governance, research package governance, signal integration for adjacent public evidence packages, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `2a8c9efbb5705244b316bfc42645b96744067ad2`.
+At this update point, the reviewed public baseline was `main` at `13c7904076461d5c29172438aaff4b1a560061d6`.
 
 ## Permea Layer Model
 
@@ -49,6 +49,7 @@ At this update point, the reviewed public baseline was `main` at `2a8c9efbb57052
 | Benchmark Execution Layer | Implemented | Benchmark execution model, run template, schema, deterministic CLI review, validation path, and claim boundaries. |
 | Dataset Registry Layer | Implemented | Dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review. |
 | Research Package Layer | Implemented | Research package registry, lifecycle, template, assembly, governance, schema, and CLI review. |
+| Signal Integration Layer | Implemented | External evidence package integration docs, template, governance, schema, deterministic CLI review, and repository-boundary guidance. |
 | Public Review Packet Layer | Implemented | Guided public packet, checklist, assembly, governance, schema, and CLI review. |
 | Memory Layer | Established | Breadcrumb, review hub, ADR, runbook, and reports for continuation. |
 
@@ -86,6 +87,11 @@ At this update point, the reviewed public baseline was `main` at `2a8c9efbb57052
 - Research package assembly exists at [docs/research/research-package-assembly.md](docs/research/research-package-assembly.md).
 - Research package governance exists at [docs/research/research-package-governance.md](docs/research/research-package-governance.md).
 - Research package review command exists at [scripts/permea_research.py](scripts/permea_research.py).
+- Signal integration docs exist at [docs/integrations/README.md](docs/integrations/README.md).
+- Permea Signal ML integration exists at [docs/integrations/permea-signal-ml.md](docs/integrations/permea-signal-ml.md).
+- External evidence package template exists at [docs/integrations/external-evidence-package-template.md](docs/integrations/external-evidence-package-template.md).
+- External evidence package governance exists at [docs/integrations/external-evidence-package-governance.md](docs/integrations/external-evidence-package-governance.md).
+- Signal integration review command exists at [scripts/permea_signal.py](scripts/permea_signal.py).
 - Public review packet exists at [docs/review/public-review-packet.md](docs/review/public-review-packet.md).
 - Public review packet assembly exists at [docs/review/public-review-packet-assembly.md](docs/review/public-review-packet-assembly.md).
 - Public review checklist exists at [docs/review/public-review-checklist.md](docs/review/public-review-checklist.md).
@@ -124,6 +130,8 @@ Paper-related status:
 - [Research package registry](docs/research/research-package-registry.md)
 - [Research package lifecycle](docs/research/research-package-lifecycle.md)
 - [Research package assembly](docs/research/research-package-assembly.md)
+- [Signal integration](docs/integrations/README.md)
+- [Permea Signal ML integration](docs/integrations/permea-signal-ml.md)
 - [Public review packet](docs/review/public-review-packet.md)
 - [Public review checklist](docs/review/public-review-checklist.md)
 - [EVIDENCE-030: Evidence Surface Layer](docs/evidence/EVIDENCE-030-evidence-surface-layer.md)
@@ -168,6 +176,7 @@ Paper-related status:
 - [P-CORE-046 research package layer v0](docs/reports/p-core-046-research-package-layer-v0.md)
 - [P-CORE-047 public review packet layer v0](docs/reports/p-core-047-public-review-packet-layer-v0.md)
 - [P-CORE-048 benchmark execution layer v0](docs/reports/p-core-048-benchmark-execution-layer-v0.md)
+- [P-CORE-049 signal integration layer v0](docs/reports/p-core-049-signal-integration-layer-v0.md)
 
 Generated report-like surfaces:
 
@@ -194,6 +203,7 @@ Allowed public framing:
 - deterministic benchmark execution command for framework status, benchmark run artifact status, validation reminders, docs, and claim boundaries
 - deterministic dataset review command for registry counts, provenance status, docs, and claim boundaries
 - deterministic research package review command for package counts, reproducibility status, docs, and claim boundaries
+- deterministic signal integration command for external evidence package status, linked Core layers, repository-boundary reminders, validation reminders, docs, and claim boundaries
 - deterministic public review packet command for reviewer path, registry commands, validation commands, and claim boundaries
 - public artifact standards
 - computational evidence surfaces
@@ -227,6 +237,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Benchmark execution layer: Implemented for execution model, run template, run schema, CLI review, validation path, and claim boundaries.
 - Dataset registry layer: Implemented for dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review.
 - Research package layer: Implemented for research package registry, lifecycle, template, assembly, governance, schema, and CLI review.
+- Signal integration layer: Implemented for external evidence package docs, template, governance, schema, deterministic CLI review, and repository-boundary guidance.
 - Public review packet layer: Implemented for guided packet, checklist, assembly, governance, schema, and CLI review.
 
 ## Validation Status
@@ -241,6 +252,7 @@ python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py
 python3 scripts/permea_datasets.py
 python3 scripts/permea_research.py
+python3 scripts/permea_signal.py
 python3 scripts/permea_review.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
 python3 scripts/permea_specs.py
@@ -272,13 +284,14 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the benchmark execution branch if validation and scans remain clean.
-2. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
-3. Promote review packets only when evidence, benchmark, dataset, research, claim, validation, and reproducibility links are current.
-4. Promote research packages only when lifecycle evidence, dataset, benchmark, reproducibility, validation, and claim-boundary requirements are met.
-5. Promote dataset entries only when lifecycle provenance and evidence requirements are met.
-6. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
-7. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
+1. Review the signal integration branch if validation and scans remain clean.
+2. Add external evidence package records only when repository boundaries, schema metadata, reproducibility, validation, and claim-boundary requirements are met.
+3. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
+4. Promote review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.
+5. Promote research packages only when lifecycle evidence, dataset, benchmark, reproducibility, validation, and claim-boundary requirements are met.
+6. Promote dataset entries only when lifecycle provenance and evidence requirements are met.
+7. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
+8. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
 
 ## How To Resume With A Review Assistant
 
@@ -293,6 +306,7 @@ Start with:
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md)
+- [Signal integration](docs/integrations/README.md)
 - [Decision Records](docs/decisions/README.md)
 - [Generated evidence surface](docs/examples/generated/README.md)
 
@@ -308,6 +322,7 @@ git log -1 --oneline
 python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
+python3 scripts/permea_signal.py
 python3 scripts/permea_specs.py
 python3 scripts/permea_check.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
