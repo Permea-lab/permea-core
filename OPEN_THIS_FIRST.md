@@ -4,12 +4,12 @@ This file is the first continuation breadcrumb for Permea Core. It summarizes th
 
 ## Current Status
 
-Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence navigation, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
+Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public evidence navigation, benchmark registry governance, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-043-evidence-navigation-layer`
-- Public baseline reviewed: `main` at `019eae46adfbe0fea1aca39104a004eb74ce0cc2`
+- Branch used for this update: `p-core-044-benchmark-registry-layer`
+- Public baseline reviewed: `main` at `5a3d5f79ca29c367e73d03be6976cb2aef4e762d`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -29,6 +29,8 @@ Permea Core currently provides:
 - public claim-boundary and paper-alignment policies
 - lightweight schemas under `schemas/`
 - a first-user quickstart demo at `python3 scripts/permea_demo.py`
+- a benchmark registry layer at `docs/benchmarks/`
+- a benchmark review command at `python3 scripts/permea_benchmarks.py`
 
 Permea Core does not currently claim dataset download, acquisition execution, redistribution-rights confirmation, wet-lab validation by Permea, clinical effectiveness, model performance, state-of-the-art status, or solved delivery.
 
@@ -46,17 +48,18 @@ Permea's current public program model is:
 - Example Layer: Developing
 - Quickstart Experience Layer: Implemented
 - Evidence Navigation Layer: Implemented
+- Benchmark Registry Layer: Implemented
 
 See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
-The latest completed major public infrastructure layer is the evidence navigation layer:
+The latest completed major public infrastructure layer is the benchmark registry layer:
 
-- [Evidence map](docs/evidence/evidence-map.md)
-- [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
-- [Evidence maturity model](docs/evidence/evidence-maturity-model.md)
-- [Evidence timeline](docs/evidence/evidence-timeline.md)
+- [Benchmark registry](docs/benchmarks/benchmark-registry.md)
+- [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
+- [Benchmark card template](docs/benchmarks/benchmark-card-template.md)
+- [Benchmark governance](docs/benchmarks/benchmark-governance.md)
 
 ## Current Branch / Commit
 
@@ -67,7 +70,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `019eae46adfbe0fea1aca39104a004eb74ce0cc2`.
+At this update, the reviewed public baseline was `5a3d5f79ca29c367e73d03be6976cb2aef4e762d`.
 
 ## Primary Reports
 
@@ -78,6 +81,7 @@ At this update, the reviewed public baseline was `019eae46adfbe0fea1aca39104a004
 - [P-CORE-038 artifact validator bundle report](docs/reports/p-core-038-artifact-validator-bundle-v0.md)
 - [P-CORE-040 external example packages report](docs/reports/p-core-040-external-example-packages-v0.md)
 - [P-CORE-042 quickstart experience layer report](docs/reports/p-core-042-quickstart-experience-layer-v0.md)
+- [P-CORE-044 benchmark registry layer report](docs/reports/p-core-044-benchmark-registry-layer-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -103,6 +107,8 @@ At this update, the reviewed public baseline was `019eae46adfbe0fea1aca39104a004
 - [Benchmark registry](benchmarks/registry.yaml)
 - [Artifact schemas](schemas/)
 - [Public artifact specifications](docs/specs/README.md)
+- [Benchmark registry](docs/benchmarks/benchmark-registry.md)
+- [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
 - [Decision records](docs/decisions/README.md)
 
 ## Current Research Direction
@@ -120,10 +126,10 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after this evidence navigation layer:
+Recommended next task after this benchmark registry layer:
 
-- Review the evidence navigation PR if validation and scans remain clean.
-- Then continue with the next scoped evidence, validation, or contributor-flow task.
+- Review the benchmark registry PR if validation and scans remain clean.
+- Then continue with the next scoped benchmark, evidence, or validation task.
 
 ## How To Continue
 
@@ -137,6 +143,7 @@ Recommended next task after this evidence navigation layer:
 python3 scripts/permea_specs.py
 python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
+python3 scripts/permea_benchmarks.py
 python3 scripts/permea_check.py
 python3 scripts/permea_validate.py
 python3 scripts/validate_permea_artifacts.py

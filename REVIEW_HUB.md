@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, benchmark registry governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `019eae46adfbe0fea1aca39104a004eb74ce0cc2`.
+At this update point, the reviewed public baseline was `main` at `5a3d5f79ca29c367e73d03be6976cb2aef4e762d`.
 
 ## Permea Layer Model
 
@@ -45,6 +45,7 @@ At this update point, the reviewed public baseline was `main` at `019eae46adfbe0
 | Example Layer | Developing | Copyable public-safe reference packages for external users. |
 | Quickstart Experience Layer | Implemented | One-command first-user path for discovery, validation, evidence links, and non-claims. |
 | Evidence Navigation Layer | Implemented | Evidence map, claim matrix, maturity model, timeline, and CLI for review. |
+| Benchmark Registry Layer | Implemented | Benchmark registry, lifecycle, card template, governance, schema, and CLI review. |
 | Memory Layer | Established | Breadcrumb, review hub, ADR, runbook, and reports for continuation. |
 
 ## Current State Summary
@@ -61,6 +62,11 @@ At this update point, the reviewed public baseline was `main` at `019eae46adfbe0
 - Claim-to-evidence matrix exists at [docs/evidence/claim-to-evidence-matrix.md](docs/evidence/claim-to-evidence-matrix.md).
 - Evidence maturity model exists at [docs/evidence/evidence-maturity-model.md](docs/evidence/evidence-maturity-model.md).
 - Evidence timeline exists at [docs/evidence/evidence-timeline.md](docs/evidence/evidence-timeline.md).
+- Benchmark registry exists at [docs/benchmarks/benchmark-registry.md](docs/benchmarks/benchmark-registry.md).
+- Benchmark lifecycle exists at [docs/benchmarks/benchmark-lifecycle.md](docs/benchmarks/benchmark-lifecycle.md).
+- Benchmark card template exists at [docs/benchmarks/benchmark-card-template.md](docs/benchmarks/benchmark-card-template.md).
+- Benchmark governance exists at [docs/benchmarks/benchmark-governance.md](docs/benchmarks/benchmark-governance.md).
+- Benchmark review command exists at [scripts/permea_benchmarks.py](scripts/permea_benchmarks.py).
 - External example packages exist at [examples/README.md](examples/README.md).
 - Decision records exist at [docs/decisions/README.md](docs/decisions/README.md).
 - Artifact schemas exist under [schemas/](schemas/).
@@ -85,6 +91,9 @@ Paper-related status:
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
 - [Evidence maturity model](docs/evidence/evidence-maturity-model.md)
 - [Evidence timeline](docs/evidence/evidence-timeline.md)
+- [Benchmark registry](docs/benchmarks/benchmark-registry.md)
+- [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
+- [Benchmark governance](docs/benchmarks/benchmark-governance.md)
 - [EVIDENCE-030: Evidence Surface Layer](docs/evidence/EVIDENCE-030-evidence-surface-layer.md)
 - [EVIDENCE-032: Reproducibility Bundle](docs/evidence/EVIDENCE-032-reproducibility-bundle.md)
 - [EVIDENCE-034: Evaluation Bundle](docs/evidence/EVIDENCE-034-evaluation-bundle.md)
@@ -122,6 +131,7 @@ Paper-related status:
 - [P-CORE-040 external example packages v0](docs/reports/p-core-040-external-example-packages-v0.md)
 - [P-CORE-042 quickstart experience layer v0](docs/reports/p-core-042-quickstart-experience-layer-v0.md)
 - [P-CORE-043 evidence navigation map](docs/evidence/evidence-map.md)
+- [P-CORE-044 benchmark registry layer v0](docs/reports/p-core-044-benchmark-registry-layer-v0.md)
 
 Generated report-like surfaces:
 
@@ -144,6 +154,7 @@ Allowed public framing:
 - deterministic artifact generation and validation
 - deterministic quickstart demo for example discovery and validator execution
 - deterministic evidence review command for inventory, claim boundaries, maturity, and validation status
+- deterministic benchmark review command for registry counts, lifecycle status, docs, and claim boundaries
 - public artifact standards
 - computational evidence surfaces
 - candidate prioritization before experimental follow-up
@@ -172,6 +183,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - External examples: Implemented for three public-safe reference packages.
 - Quickstart demo: Implemented for first-user discovery, validation, evidence links, and next commands.
 - Evidence navigation: Implemented for evidence inventory, claim-to-evidence mapping, maturity levels, timeline, and CLI review.
+- Benchmark registry layer: Implemented for benchmark registry, lifecycle, card template, governance, schema, and CLI review.
 
 ## Validation Status
 
@@ -181,6 +193,7 @@ Current evidence-layer validation uses:
 python3 scripts/permea_check.py
 python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
+python3 scripts/permea_benchmarks.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
 python3 scripts/permea_specs.py
 python3 scripts/permea_evaluate.py
@@ -211,10 +224,10 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the evidence navigation branch if validation and scans remain clean.
-2. Extend example packages only when public-safe fixture values and validator coverage are ready.
-3. Extend validator coverage only when new public artifact families or stricter schemas require it.
-4. Add evidence records for future merged artifact or validation layers.
+1. Review the benchmark registry branch if validation and scans remain clean.
+2. Promote benchmark entries only when lifecycle evidence requirements are met.
+3. Extend validator coverage only when new benchmark card fields or stricter schemas require it.
+4. Add evidence records for future merged benchmark or validation layers.
 5. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
 6. Keep the claim boundary and paper-alignment policy synchronized with any new public report.
 
@@ -229,6 +242,7 @@ Start with:
 - [Evidence Layer](docs/evidence/README.md)
 - [Evidence map](docs/evidence/evidence-map.md)
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
+- [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Decision Records](docs/decisions/README.md)
 - [Generated evidence surface](docs/examples/generated/README.md)
 
@@ -243,6 +257,7 @@ git status --short --branch
 git log -1 --oneline
 python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
+python3 scripts/permea_benchmarks.py
 python3 scripts/permea_specs.py
 python3 scripts/permea_check.py
 python3 scripts/permea_check.py examples/synthetic_reference_example

@@ -47,7 +47,17 @@ After the quickstart, review the evidence path:
 python3 scripts/permea_evidence.py
 ```
 
-Start with [Evidence map](docs/evidence/evidence-map.md), then review [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md), [Evidence maturity model](docs/evidence/evidence-maturity-model.md), [Evidence timeline](docs/evidence/evidence-timeline.md), [Claim registry](docs/claims/claim-registry.md), and [Validation](#documentation-map).
+Start with [Evidence map](docs/evidence/evidence-map.md), then review [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md), [Evidence maturity model](docs/evidence/evidence-maturity-model.md), [Evidence timeline](docs/evidence/evidence-timeline.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Claim registry](docs/claims/claim-registry.md), and [Validation](#documentation-map).
+
+## Benchmarks
+
+Review the benchmark framework:
+
+```bash
+python3 scripts/permea_benchmarks.py
+```
+
+The benchmark path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Why This Exists
 
@@ -184,6 +194,11 @@ Core project documents:
 - [Claim-to-Evidence Matrix](docs/evidence/claim-to-evidence-matrix.md)
 - [Evidence Maturity Model](docs/evidence/evidence-maturity-model.md)
 - [Evidence Timeline](docs/evidence/evidence-timeline.md)
+- [Benchmark Layer](docs/benchmarks/README.md)
+- [Benchmark Registry](docs/benchmarks/benchmark-registry.md)
+- [Benchmark Lifecycle](docs/benchmarks/benchmark-lifecycle.md)
+- [Benchmark Card Template](docs/benchmarks/benchmark-card-template.md)
+- [Benchmark Governance](docs/benchmarks/benchmark-governance.md)
 - [Claim Registry](docs/claims/claim-registry.md)
 - [External Examples](examples/README.md)
 - [Decision Records](docs/decisions/README.md)
