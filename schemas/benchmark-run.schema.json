@@ -1,0 +1,102 @@
+{
+  "$id": "https://permea-core.local/schemas/benchmark-run.schema.json",
+  "title": "Permea Benchmark Run",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "benchmark_run_id": {
+      "type": "string"
+    },
+    "benchmark_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "draft",
+        "executed",
+        "validated",
+        "superseded",
+        "archived"
+      ]
+    },
+    "dataset_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "benchmark_card_link": {
+      "type": "string"
+    },
+    "evaluation_protocol": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "execution_environment_summary": {
+      "type": "string"
+    },
+    "reproducibility_path": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claim_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string"
+    },
+    "maintainer_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "benchmark_run_id",
+    "benchmark_id",
+    "name",
+    "purpose",
+    "status",
+    "dataset_links",
+    "benchmark_card_link",
+    "evaluation_protocol",
+    "metrics",
+    "reproducibility_path",
+    "validation_outputs",
+    "evidence_links",
+    "claim_boundaries",
+    "limitations",
+    "version"
+  ]
+}

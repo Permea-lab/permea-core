@@ -37,7 +37,7 @@ Run the first-user demo from the repository root:
 python3 scripts/permea_demo.py
 ```
 
-The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Public review packet](docs/review/public-review-packet.md), [Evidence index](docs/evidence/evidence-index.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), and [Claim registry](docs/claims/claim-registry.md).
+The demo discovers public example packages, runs local validation, links evidence and claim-boundary surfaces, and prints next recommended commands. See [Quickstart](QUICKSTART.md), [Public review packet](docs/review/public-review-packet.md), [Evidence index](docs/evidence/evidence-index.md), [Benchmark registry](docs/benchmarks/benchmark-registry.md), [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md), [Dataset registry](docs/datasets/dataset-registry.md), [Research package registry](docs/research/research-package-registry.md), and [Claim registry](docs/claims/claim-registry.md).
 
 ## Public Review Packet
 
@@ -47,7 +47,7 @@ Run the guided public review packet:
 python3 scripts/permea_review.py
 ```
 
-The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Evidence And Claims
 
@@ -69,6 +69,18 @@ python3 scripts/permea_benchmarks.py
 
 The benchmark path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
+## Benchmark Execution
+
+Review the benchmark execution framework:
+
+```bash
+python3 scripts/permea_benchmark_run.py
+```
+
+The benchmark execution path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+
+Reviewer path: README -> QUICKSTART -> REVIEW PACKET -> EVIDENCE -> BENCHMARKS -> BENCHMARK EXECUTION -> DATASETS -> RESEARCH -> CLAIMS -> VALIDATION.
+
 ## Datasets
 
 Review the dataset framework:
@@ -77,7 +89,7 @@ Review the dataset framework:
 python3 scripts/permea_datasets.py
 ```
 
-The public review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The public review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Research Packages
 
@@ -87,7 +99,7 @@ Review the research package framework:
 python3 scripts/permea_research.py
 ```
 
-The package review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
+The package review path is [Quickstart](QUICKSTART.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Benchmark Execution](docs/benchmarks/benchmark-execution-model.md) -> [Datasets](docs/datasets/README.md) -> [Research](docs/research/README.md) -> [Claims](docs/claims/claim-registry.md) -> validation commands.
 
 ## Why This Exists
 
@@ -228,6 +240,8 @@ Core project documents:
 - [Benchmark Registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark Lifecycle](docs/benchmarks/benchmark-lifecycle.md)
 - [Benchmark Card Template](docs/benchmarks/benchmark-card-template.md)
+- [Benchmark Execution Model](docs/benchmarks/benchmark-execution-model.md)
+- [Benchmark Run Template](docs/benchmarks/benchmark-run-template.md)
 - [Benchmark Governance](docs/benchmarks/benchmark-governance.md)
 - [Claim Registry](docs/claims/claim-registry.md)
 - [External Examples](examples/README.md)
@@ -326,6 +340,12 @@ Run the deterministic benchmark dry-run:
 
 ```bash
 python3 scripts/run_permea_dry_run.py
+```
+
+Review the benchmark execution framework:
+
+```bash
+python3 scripts/permea_benchmark_run.py
 ```
 
 Generate the public artifact index:
