@@ -57,6 +57,14 @@ Review public artifact consistency with:
 python3 scripts/permea_artifacts.py
 ```
 
+Generate reviewer-facing evidence packets for public artifact systems with:
+
+```bash
+python3 scripts/permea_review_packet.py
+```
+
+The first generated packet is [P-CORE-053 Artifact Consistency System Review Packet](docs/review/packets/p-core-053-artifact-consistency-system.md). It links the reviewed script, module, docs, tests, report, validation commands, claim boundaries, and limitations.
+
 ## Evidence And Claims
 
 After the quickstart, review the evidence path:

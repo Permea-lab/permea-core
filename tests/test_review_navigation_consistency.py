@@ -4,8 +4,9 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CURRENT_PUBLIC_HEAD = "ff67926773c86cecfec43d3af3f5fecb454464fa"
+CURRENT_PUBLIC_HEAD = "6a3d60ce06f7a7f53179a406d4297edf22c71382"
 STALE_PUBLIC_HEADS = (
+    "ff67926773c86cecfec43d3af3f5fecb454464fa",
     "db1fd4bb1e5d6b216a34b65db198786df5bda59e",
     "5ab200290fe77829f6f5483da983efc34e04b1a0",
     "a5595eb3be23e6a19c7f9166591e9a499718b793",
@@ -20,6 +21,7 @@ REVIEW_NAVIGATION_FILES = (
     "docs/reports/p-core-051-long-run-supervisor-pilot-v0.md",
     "docs/reports/p-core-052-autonomous-queue-pilot-v0.md",
     "docs/reports/p-core-053-artifact-consistency-system-v0.md",
+    "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
 )
 REQUIRED_NAVIGATION_TARGETS = (
     "docs/architecture/README.md",
@@ -29,7 +31,9 @@ REQUIRED_NAVIGATION_TARGETS = (
     "docs/reports/p-core-051-long-run-supervisor-pilot-v0.md",
     "docs/reports/p-core-052-autonomous-queue-pilot-v0.md",
     "docs/reports/p-core-053-artifact-consistency-system-v0.md",
+    "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
     "scripts/permea_artifacts.py",
+    "scripts/permea_review_packet.py",
     "scripts/permea_lineage.py",
     "scripts/permea_review.py",
 )
@@ -99,6 +103,7 @@ def test_review_navigation_targets_are_linked() -> None:
     assert "P-CORE-051 long-run supervisor pilot" in combined
     assert "P-CORE-052 autonomous queue pilot" in combined
     assert "P-CORE-053 artifact consistency system" in combined
+    assert "P-CORE-054 evidence review packet system" in combined
     assert "Architecture index" in combined
     assert "Artifact consistency" in combined
     assert "Reports index" in combined

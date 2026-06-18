@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, benchmark registry and execution governance, dataset registry governance, research package governance, signal integration for adjacent public evidence packages, evidence lineage and provenance governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, evidence review packet generation, benchmark registry and execution governance, dataset registry governance, research package governance, signal integration for adjacent public evidence packages, evidence lineage and provenance governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `ff67926773c86cecfec43d3af3f5fecb454464fa`.
+At this update point, the reviewed public baseline was `main` at `6a3d60ce06f7a7f53179a406d4297edf22c71382`.
 
 ## Permea Layer Model
 
@@ -52,6 +52,7 @@ At this update point, the reviewed public baseline was `main` at `ff67926773c86c
 | Signal Integration Layer | Implemented | External evidence package integration docs, template, governance, schema, deterministic CLI review, and repository-boundary guidance. |
 | Evidence Lineage Layer | Implemented | Lineage model, governance, review guide, record template, schema, deterministic CLI review, provenance reminders, and claim boundaries. |
 | Public Review Packet Layer | Implemented | Guided public packet, checklist, assembly, governance, schema, and CLI review. |
+| Evidence Review Packet System | Implemented | Generated reviewer packets for selected public artifact systems with concrete files, validation commands, claim boundaries, and limitations. |
 | Memory Layer | Established | Breadcrumb, review hub, ADR, runbook, and reports for continuation. |
 
 ## Current State Summary
@@ -71,6 +72,9 @@ At this update point, the reviewed public baseline was `main` at `ff67926773c86c
 - Architecture index exists at [docs/architecture/README.md](docs/architecture/README.md).
 - Artifact consistency docs exist at [docs/artifacts/README.md](docs/artifacts/README.md).
 - Artifact consistency command exists at [scripts/permea_artifacts.py](scripts/permea_artifacts.py).
+- Evidence review packet system docs exist at [docs/review/review-packet-system.md](docs/review/review-packet-system.md).
+- Evidence review packet generator exists at [scripts/permea_review_packet.py](scripts/permea_review_packet.py).
+- P-CORE-053 artifact consistency review packet exists at [docs/review/packets/p-core-053-artifact-consistency-system.md](docs/review/packets/p-core-053-artifact-consistency-system.md).
 - Reports index exists at [docs/reports/README.md](docs/reports/README.md).
 - Benchmark registry exists at [docs/benchmarks/benchmark-registry.md](docs/benchmarks/benchmark-registry.md).
 - Benchmark lifecycle exists at [docs/benchmarks/benchmark-lifecycle.md](docs/benchmarks/benchmark-lifecycle.md).
@@ -134,6 +138,8 @@ Paper-related status:
 - [Review packet layer](docs/review/README.md)
 - [Architecture index](docs/architecture/README.md)
 - [Artifact consistency](docs/artifacts/README.md)
+- [Evidence review packet system](docs/review/review-packet-system.md)
+- [P-CORE-053 artifact consistency review packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark layer](docs/benchmarks/README.md)
@@ -203,6 +209,7 @@ Paper-related status:
 - [P-CORE-051 long-run supervisor pilot v0](docs/reports/p-core-051-long-run-supervisor-pilot-v0.md)
 - [P-CORE-052 autonomous queue pilot v0](docs/reports/p-core-052-autonomous-queue-pilot-v0.md)
 - [P-CORE-053 artifact consistency system v0](docs/reports/p-core-053-artifact-consistency-system-v0.md)
+- [P-CORE-054 evidence review packet system v0](docs/reports/p-core-054-evidence-review-packet-system-v0.md)
 
 Generated report-like surfaces:
 
@@ -232,6 +239,7 @@ Allowed public framing:
 - deterministic signal integration command for external evidence package status, linked Core layers, repository-boundary reminders, validation reminders, docs, and claim boundaries
 - deterministic evidence lineage command for lineage-capable artifact classes, status categories, provenance reminders, docs, and claim boundaries
 - deterministic public review packet command for reviewer path, registry commands, validation commands, and claim boundaries
+- deterministic evidence review packet command for selected public artifact systems, concrete review files, validation commands, claim boundaries, and limitations
 - public artifact standards
 - computational evidence surfaces
 - candidate prioritization before experimental follow-up
@@ -270,6 +278,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Architecture navigation: Implemented as a compact index over existing architecture, specification, decision, ADR, and lineage surfaces.
 - Report navigation: Implemented as a compact index over public implementation, evidence, review, and maintenance reports.
 - Artifact consistency system: Implemented for public markdown inventory, local link existence, review-surface reachability, reports-index coverage, deterministic CLI review, and regression tests.
+- Evidence review packet system: Implemented for generated review packets, concrete artifact links, validation commands, claim-boundary notes, reviewer checklists, limitations, deterministic CLI generation, and regression tests.
 
 ## Validation Status
 
@@ -279,6 +288,7 @@ Current evidence-layer validation uses:
 python3 scripts/permea_check.py
 python3 scripts/permea_demo.py
 python3 scripts/permea_artifacts.py
+python3 scripts/permea_review_packet.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py
@@ -317,10 +327,10 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the P-CORE-053 artifact consistency system branch if validation and scans remain clean.
+1. Review the P-CORE-054 evidence review packet system branch if validation and scans remain clean.
 2. Add external evidence package records only when repository boundaries, schema metadata, reproducibility, validation, and claim-boundary requirements are met.
 3. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
-4. Promote review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.
+4. Promote additional review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.
 5. Promote research packages only when lifecycle evidence, dataset, benchmark, reproducibility, validation, and claim-boundary requirements are met.
 6. Promote dataset entries only when lifecycle provenance and evidence requirements are met.
 7. Keep generated evidence surfaces, reports, decision records, and evidence records refreshed as new artifact families are added.
@@ -337,6 +347,8 @@ Start with:
 - [Evidence Layer](docs/evidence/README.md)
 - [Architecture index](docs/architecture/README.md)
 - [Artifact consistency](docs/artifacts/README.md)
+- [Evidence review packet system](docs/review/review-packet-system.md)
+- [P-CORE-053 artifact consistency review packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Evidence map](docs/evidence/evidence-map.md)
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
@@ -358,6 +370,7 @@ git status --short --branch
 git log -1 --oneline
 python3 scripts/permea_demo.py
 python3 scripts/permea_artifacts.py
+python3 scripts/permea_review_packet.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py
