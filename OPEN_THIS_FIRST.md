@@ -8,8 +8,8 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-051-long-run-supervisor-pilot`
-- Public baseline reviewed: `main` at `5ab200290fe77829f6f5483da983efc34e04b1a0`
+- Branch used for this update: `p-core-052-autonomous-queue-pilot`
+- Public baseline reviewed: `main` at `a5595eb3be23e6a19c7f9166591e9a499718b793`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -25,6 +25,7 @@ Permea Core currently provides:
 - evidence navigation docs at `docs/evidence/evidence-map.md`, `docs/evidence/claim-to-evidence-matrix.md`, `docs/evidence/evidence-maturity-model.md`, and `docs/evidence/evidence-timeline.md`
 - an evidence review command at `python3 scripts/permea_evidence.py`
 - architecture navigation at `docs/architecture/README.md`
+- report navigation at `docs/reports/README.md`
 - public claim registry at `docs/claims/claim-registry.md`
 - decision records for major program choices under `docs/decisions/`
 - public claim-boundary and paper-alignment policies
@@ -113,10 +114,11 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `5ab200290fe77829f6f5483da983efc34e04b1a0`.
+At this update, the reviewed public baseline was `a5595eb3be23e6a19c7f9166591e9a499718b793`.
 
 ## Primary Reports
 
+- [Reports index](docs/reports/README.md)
 - [P-CORE-036 artifact specification layer report](docs/reports/p-core-036-artifact-specification-layer.md)
 - [P-DOC-001 project operating-system adoption report](docs/reports/p-doc-001-project-operating-system-adoption-v0.md)
 - [P-DOC-004 decision and documentation backfill report](docs/reports/p-doc-004-decision-and-documentation-backfill-v0.md)
@@ -132,6 +134,7 @@ At this update, the reviewed public baseline was `5ab200290fe77829f6f5483da983ef
 - [P-CORE-049 signal integration layer report](docs/reports/p-core-049-signal-integration-layer-v0.md)
 - [P-CORE-050 evidence lineage layer report](docs/reports/p-core-050-evidence-lineage-layer-v0.md)
 - [P-CORE-051 long-run supervisor pilot report](docs/reports/p-core-051-long-run-supervisor-pilot-v0.md)
+- [P-CORE-052 autonomous queue pilot report](docs/reports/p-core-052-autonomous-queue-pilot-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -148,6 +151,7 @@ At this update, the reviewed public baseline was `5ab200290fe77829f6f5483da983ef
 - [Evidence index](docs/evidence/evidence-index.md)
 - [Claim registry](docs/claims/claim-registry.md)
 - [Architecture index](docs/architecture/README.md)
+- [Reports index](docs/reports/README.md)
 - [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
 - [External examples](examples/README.md)
 - [External examples evidence](docs/evidence/EVIDENCE-040-external-example-packages.md)
@@ -186,9 +190,9 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after the evidence lineage layer and supervisor pilot:
+Recommended next task after the autonomous queue pilot:
 
-- Review the P-CORE-051 long-run supervisor pilot PR if validation and scans remain clean.
+- Review the P-CORE-052 autonomous queue pilot PR if validation and scans remain clean.
 - Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
 
 ## How To Continue

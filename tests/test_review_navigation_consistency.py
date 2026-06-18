@@ -4,20 +4,26 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CURRENT_PUBLIC_HEAD = "5ab200290fe77829f6f5483da983efc34e04b1a0"
+CURRENT_PUBLIC_HEAD = "a5595eb3be23e6a19c7f9166591e9a499718b793"
 STALE_PUBLIC_HEADS = (
     "db1fd4bb1e5d6b216a34b65db198786df5bda59e",
+    "5ab200290fe77829f6f5483da983efc34e04b1a0",
 )
 REVIEW_NAVIGATION_FILES = (
+    "README.md",
     "OPEN_THIS_FIRST.md",
     "REVIEW_HUB.md",
     "docs/architecture/README.md",
+    "docs/reports/README.md",
     "docs/reports/p-core-051-long-run-supervisor-pilot-v0.md",
+    "docs/reports/p-core-052-autonomous-queue-pilot-v0.md",
 )
 REQUIRED_NAVIGATION_TARGETS = (
     "docs/architecture/README.md",
+    "docs/reports/README.md",
     "docs/lineage/README.md",
     "docs/reports/p-core-051-long-run-supervisor-pilot-v0.md",
+    "docs/reports/p-core-052-autonomous-queue-pilot-v0.md",
     "scripts/permea_lineage.py",
     "scripts/permea_review.py",
 )
@@ -73,6 +79,8 @@ def test_review_breadcrumbs_reference_current_public_head() -> None:
         assert stale_head not in combined
     assert ("Review the " + "signal integration branch") not in combined
     assert ("Review the " + "signal integration PR") not in combined
+    assert ("Review the P-CORE-051 " + "long-run supervisor pilot PR") not in combined
+    assert ("Review the P-CORE-051 " + "long-run supervisor pilot branch") not in combined
 
 
 def test_review_navigation_targets_are_linked() -> None:
@@ -81,7 +89,9 @@ def test_review_navigation_targets_are_linked() -> None:
     for target in REQUIRED_NAVIGATION_TARGETS:
         assert target in combined
     assert "P-CORE-051 long-run supervisor pilot" in combined
+    assert "P-CORE-052 autonomous queue pilot" in combined
     assert "Architecture index" in combined
+    assert "Reports index" in combined
 
 
 def test_architecture_index_links_existing_surfaces() -> None:
@@ -96,6 +106,20 @@ def test_architecture_index_links_existing_surfaces() -> None:
         "../decisions/README.md",
         "../adr/ADR-0002-benchmark-first.md",
         "../lineage/lineage-model.md",
+        "../reports/README.md",
+        "../review/README.md",
+        "../evidence/evidence-map.md",
+    ):
+        assert target in architecture_index
+        assert (ROOT / "docs/architecture" / target).resolve().exists()
+
+    for target in (
+        "../evidence/README.md",
+        "../benchmarks/README.md",
+        "../datasets/README.md",
+        "../research/README.md",
+        "../integrations/README.md",
+        "../claims/claim-registry.md",
     ):
         assert target in architecture_index
         assert (ROOT / "docs/architecture" / target).resolve().exists()
@@ -103,6 +127,28 @@ def test_architecture_index_links_existing_surfaces() -> None:
     assert (
         "README -> QUICKSTART -> REVIEW PACKET -> ARCHITECTURE -> EVIDENCE -> LINEAGE -> CLAIMS -> VALIDATION"
         in architecture_index
+    )
+    assert "python3 scripts/permea_review.py" in architecture_index
+    assert "python3 scripts/validate_permea_artifacts.py" in architecture_index
+
+
+def test_reports_index_links_current_reports_and_generated_surfaces() -> None:
+    reports_index = (ROOT / "docs/reports/README.md").read_text(encoding="utf-8")
+
+    for target in (
+        "p-core-050-evidence-lineage-layer-v0.md",
+        "p-core-051-long-run-supervisor-pilot-v0.md",
+        "p-core-052-autonomous-queue-pilot-v0.md",
+        "../examples/generated/REPRODUCIBILITY_REPORT.md",
+        "../examples/generated/EVALUATION_PACKET.md",
+        "../examples/generated/ARTIFACT_INDEX.md",
+    ):
+        assert target in reports_index
+        assert (ROOT / "docs/reports" / target).resolve().exists()
+
+    assert (
+        "OPEN_THIS_FIRST -> REVIEW_HUB -> REPORTS INDEX -> ARCHITECTURE -> EVIDENCE -> LINEAGE -> CLAIMS -> VALIDATION"
+        in reports_index
     )
 
 

@@ -75,4 +75,4 @@ This pilot does not add scientific evidence, benchmark results, dataset records,
 
 ## Next Recommended Task
 
-Review the P-CORE-051 pull request. After merge, continue with the next scoped evidence, benchmark-run, dataset, research-package, review-packet, signal-integration, lineage, or validation task.
+Continue with the next scoped evidence, benchmark-run, dataset, research-package, review-packet, signal-integration, lineage, validation, or review-navigation task.
