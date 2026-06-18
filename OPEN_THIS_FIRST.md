@@ -8,8 +8,8 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-052-autonomous-queue-pilot`
-- Public baseline reviewed: `main` at `a5595eb3be23e6a19c7f9166591e9a499718b793`
+- Branch used for this update: `p-core-053-artifact-consistency-system`
+- Public baseline reviewed: `main` at `ff67926773c86cecfec43d3af3f5fecb454464fa`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -25,6 +25,8 @@ Permea Core currently provides:
 - evidence navigation docs at `docs/evidence/evidence-map.md`, `docs/evidence/claim-to-evidence-matrix.md`, `docs/evidence/evidence-maturity-model.md`, and `docs/evidence/evidence-timeline.md`
 - an evidence review command at `python3 scripts/permea_evidence.py`
 - architecture navigation at `docs/architecture/README.md`
+- artifact consistency documentation at `docs/artifacts/README.md`
+- artifact consistency review command at `python3 scripts/permea_artifacts.py`
 - report navigation at `docs/reports/README.md`
 - public claim registry at `docs/claims/claim-registry.md`
 - decision records for major program choices under `docs/decisions/`
@@ -70,7 +72,7 @@ Permea's current public program model is:
 - Evidence Lineage Layer: Implemented
 - Public Review Packet Layer: Implemented
 
-See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
+See [Evidence Layer](docs/evidence/README.md), [Artifact Consistency](docs/artifacts/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
@@ -114,7 +116,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `a5595eb3be23e6a19c7f9166591e9a499718b793`.
+At this update, the reviewed public baseline was `ff67926773c86cecfec43d3af3f5fecb454464fa`.
 
 ## Primary Reports
 
@@ -135,6 +137,7 @@ At this update, the reviewed public baseline was `a5595eb3be23e6a19c7f9166591e9a
 - [P-CORE-050 evidence lineage layer report](docs/reports/p-core-050-evidence-lineage-layer-v0.md)
 - [P-CORE-051 long-run supervisor pilot report](docs/reports/p-core-051-long-run-supervisor-pilot-v0.md)
 - [P-CORE-052 autonomous queue pilot report](docs/reports/p-core-052-autonomous-queue-pilot-v0.md)
+- [P-CORE-053 artifact consistency system report](docs/reports/p-core-053-artifact-consistency-system-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -149,8 +152,10 @@ At this update, the reviewed public baseline was `a5595eb3be23e6a19c7f9166591e9a
 - [Evidence maturity model](docs/evidence/evidence-maturity-model.md)
 - [Evidence timeline](docs/evidence/evidence-timeline.md)
 - [Evidence index](docs/evidence/evidence-index.md)
+- [Review packet layer](docs/review/README.md)
 - [Claim registry](docs/claims/claim-registry.md)
 - [Architecture index](docs/architecture/README.md)
+- [Artifact consistency](docs/artifacts/README.md)
 - [Reports index](docs/reports/README.md)
 - [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
 - [External examples](examples/README.md)
@@ -162,12 +167,15 @@ At this update, the reviewed public baseline was `a5595eb3be23e6a19c7f9166591e9a
 - [Benchmark registry](benchmarks/registry.yaml)
 - [Artifact schemas](schemas/)
 - [Public artifact specifications](docs/specs/README.md)
+- [Benchmark layer](docs/benchmarks/README.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
 - [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md)
 - [Dataset registry](docs/datasets/dataset-registry.md)
+- [Dataset layer](docs/datasets/README.md)
 - [Dataset provenance](docs/datasets/dataset-provenance.md)
 - [Research package registry](docs/research/research-package-registry.md)
+- [Research package layer](docs/research/README.md)
 - [Research package assembly](docs/research/research-package-assembly.md)
 - [Signal integration](docs/integrations/README.md)
 - [Permea Signal ML integration](docs/integrations/permea-signal-ml.md)
@@ -190,9 +198,9 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after the autonomous queue pilot:
+Recommended next task after the artifact consistency system:
 
-- Review the P-CORE-052 autonomous queue pilot PR if validation and scans remain clean.
+- Review the P-CORE-053 artifact consistency system PR if validation and scans remain clean.
 - Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
 
 ## How To Continue
@@ -206,6 +214,7 @@ Recommended next task after the autonomous queue pilot:
 ```bash
 python3 scripts/permea_specs.py
 python3 scripts/permea_demo.py
+python3 scripts/permea_artifacts.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py

@@ -17,6 +17,7 @@ This index gives reviewers one place to find current Permea Core reports. It is 
 - [P-CORE-050 evidence lineage layer v0](p-core-050-evidence-lineage-layer-v0.md)
 - [P-CORE-051 long-run supervisor pilot v0](p-core-051-long-run-supervisor-pilot-v0.md)
 - [P-CORE-052 autonomous queue pilot v0](p-core-052-autonomous-queue-pilot-v0.md)
+- [P-CORE-053 artifact consistency system v0](p-core-053-artifact-consistency-system-v0.md)
 
 ## Operating-System Reports
 

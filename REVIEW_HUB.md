@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `a5595eb3be23e6a19c7f9166591e9a499718b793`.
+At this update point, the reviewed public baseline was `main` at `ff67926773c86cecfec43d3af3f5fecb454464fa`.
 
 ## Permea Layer Model
 
@@ -69,6 +69,8 @@ At this update point, the reviewed public baseline was `main` at `a5595eb3be23e6
 - Evidence maturity model exists at [docs/evidence/evidence-maturity-model.md](docs/evidence/evidence-maturity-model.md).
 - Evidence timeline exists at [docs/evidence/evidence-timeline.md](docs/evidence/evidence-timeline.md).
 - Architecture index exists at [docs/architecture/README.md](docs/architecture/README.md).
+- Artifact consistency docs exist at [docs/artifacts/README.md](docs/artifacts/README.md).
+- Artifact consistency command exists at [scripts/permea_artifacts.py](scripts/permea_artifacts.py).
 - Reports index exists at [docs/reports/README.md](docs/reports/README.md).
 - Benchmark registry exists at [docs/benchmarks/benchmark-registry.md](docs/benchmarks/benchmark-registry.md).
 - Benchmark lifecycle exists at [docs/benchmarks/benchmark-lifecycle.md](docs/benchmarks/benchmark-lifecycle.md).
@@ -129,16 +131,21 @@ Paper-related status:
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
 - [Evidence maturity model](docs/evidence/evidence-maturity-model.md)
 - [Evidence timeline](docs/evidence/evidence-timeline.md)
+- [Review packet layer](docs/review/README.md)
 - [Architecture index](docs/architecture/README.md)
+- [Artifact consistency](docs/artifacts/README.md)
 - [Reports index](docs/reports/README.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
+- [Benchmark layer](docs/benchmarks/README.md)
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
 - [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md)
 - [Benchmark governance](docs/benchmarks/benchmark-governance.md)
 - [Dataset registry](docs/datasets/dataset-registry.md)
+- [Dataset layer](docs/datasets/README.md)
 - [Dataset lifecycle](docs/datasets/dataset-lifecycle.md)
 - [Dataset provenance](docs/datasets/dataset-provenance.md)
 - [Research package registry](docs/research/research-package-registry.md)
+- [Research package layer](docs/research/README.md)
 - [Research package lifecycle](docs/research/research-package-lifecycle.md)
 - [Research package assembly](docs/research/research-package-assembly.md)
 - [Signal integration](docs/integrations/README.md)
@@ -195,6 +202,7 @@ Paper-related status:
 - [P-CORE-050 evidence lineage layer v0](docs/reports/p-core-050-evidence-lineage-layer-v0.md)
 - [P-CORE-051 long-run supervisor pilot v0](docs/reports/p-core-051-long-run-supervisor-pilot-v0.md)
 - [P-CORE-052 autonomous queue pilot v0](docs/reports/p-core-052-autonomous-queue-pilot-v0.md)
+- [P-CORE-053 artifact consistency system v0](docs/reports/p-core-053-artifact-consistency-system-v0.md)
 
 Generated report-like surfaces:
 
@@ -261,6 +269,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Public review packet layer: Implemented for guided packet, checklist, assembly, governance, schema, and CLI review.
 - Architecture navigation: Implemented as a compact index over existing architecture, specification, decision, ADR, and lineage surfaces.
 - Report navigation: Implemented as a compact index over public implementation, evidence, review, and maintenance reports.
+- Artifact consistency system: Implemented for public markdown inventory, local link existence, review-surface reachability, reports-index coverage, deterministic CLI review, and regression tests.
 
 ## Validation Status
 
@@ -269,6 +278,7 @@ Current evidence-layer validation uses:
 ```bash
 python3 scripts/permea_check.py
 python3 scripts/permea_demo.py
+python3 scripts/permea_artifacts.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py
@@ -307,7 +317,7 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the P-CORE-052 autonomous queue pilot branch if validation and scans remain clean.
+1. Review the P-CORE-053 artifact consistency system branch if validation and scans remain clean.
 2. Add external evidence package records only when repository boundaries, schema metadata, reproducibility, validation, and claim-boundary requirements are met.
 3. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
 4. Promote review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.
@@ -326,6 +336,7 @@ Start with:
 - [Claim Registry](docs/claims/claim-registry.md)
 - [Evidence Layer](docs/evidence/README.md)
 - [Architecture index](docs/architecture/README.md)
+- [Artifact consistency](docs/artifacts/README.md)
 - [Reports index](docs/reports/README.md)
 - [Evidence map](docs/evidence/evidence-map.md)
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
@@ -346,6 +357,7 @@ Start from the repository root and run:
 git status --short --branch
 git log -1 --oneline
 python3 scripts/permea_demo.py
+python3 scripts/permea_artifacts.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py
