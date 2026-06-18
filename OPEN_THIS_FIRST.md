@@ -8,8 +8,8 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-050-evidence-lineage-layer`
-- Public baseline reviewed: `main` at `db1fd4bb1e5d6b216a34b65db198786df5bda59e`
+- Branch used for this update: `p-core-051-long-run-supervisor-pilot`
+- Public baseline reviewed: `main` at `5ab200290fe77829f6f5483da983efc34e04b1a0`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -24,6 +24,7 @@ Permea Core currently provides:
 - public evidence records under `docs/evidence/`
 - evidence navigation docs at `docs/evidence/evidence-map.md`, `docs/evidence/claim-to-evidence-matrix.md`, `docs/evidence/evidence-maturity-model.md`, and `docs/evidence/evidence-timeline.md`
 - an evidence review command at `python3 scripts/permea_evidence.py`
+- architecture navigation at `docs/architecture/README.md`
 - public claim registry at `docs/claims/claim-registry.md`
 - decision records for major program choices under `docs/decisions/`
 - public claim-boundary and paper-alignment policies
@@ -112,7 +113,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `db1fd4bb1e5d6b216a34b65db198786df5bda59e`.
+At this update, the reviewed public baseline was `5ab200290fe77829f6f5483da983efc34e04b1a0`.
 
 ## Primary Reports
 
@@ -130,6 +131,7 @@ At this update, the reviewed public baseline was `db1fd4bb1e5d6b216a34b65db19878
 - [P-CORE-048 benchmark execution layer report](docs/reports/p-core-048-benchmark-execution-layer-v0.md)
 - [P-CORE-049 signal integration layer report](docs/reports/p-core-049-signal-integration-layer-v0.md)
 - [P-CORE-050 evidence lineage layer report](docs/reports/p-core-050-evidence-lineage-layer-v0.md)
+- [P-CORE-051 long-run supervisor pilot report](docs/reports/p-core-051-long-run-supervisor-pilot-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -145,6 +147,7 @@ At this update, the reviewed public baseline was `db1fd4bb1e5d6b216a34b65db19878
 - [Evidence timeline](docs/evidence/evidence-timeline.md)
 - [Evidence index](docs/evidence/evidence-index.md)
 - [Claim registry](docs/claims/claim-registry.md)
+- [Architecture index](docs/architecture/README.md)
 - [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
 - [External examples](examples/README.md)
 - [External examples evidence](docs/evidence/EVIDENCE-040-external-example-packages.md)
@@ -183,9 +186,9 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after this signal integration layer:
+Recommended next task after the evidence lineage layer and supervisor pilot:
 
-- Review the signal integration PR if validation and scans remain clean.
+- Review the P-CORE-051 long-run supervisor pilot PR if validation and scans remain clean.
 - Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
 
 ## How To Continue
@@ -205,10 +208,14 @@ python3 scripts/permea_benchmark_run.py
 python3 scripts/permea_datasets.py
 python3 scripts/permea_research.py
 python3 scripts/permea_signal.py
+python3 scripts/permea_lineage.py
 python3 scripts/permea_review.py
 python3 scripts/permea_check.py
+python3 scripts/permea_evaluate.py
+python3 scripts/permea_reproduce.py
 python3 scripts/permea_validate.py
 python3 scripts/validate_permea_artifacts.py
+python3 -m pytest
 git diff --check
 ```
 

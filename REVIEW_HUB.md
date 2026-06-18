@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `db1fd4bb1e5d6b216a34b65db198786df5bda59e`.
+At this update point, the reviewed public baseline was `main` at `5ab200290fe77829f6f5483da983efc34e04b1a0`.
 
 ## Permea Layer Model
 
@@ -68,6 +68,7 @@ At this update point, the reviewed public baseline was `main` at `db1fd4bb1e5d6b
 - Claim-to-evidence matrix exists at [docs/evidence/claim-to-evidence-matrix.md](docs/evidence/claim-to-evidence-matrix.md).
 - Evidence maturity model exists at [docs/evidence/evidence-maturity-model.md](docs/evidence/evidence-maturity-model.md).
 - Evidence timeline exists at [docs/evidence/evidence-timeline.md](docs/evidence/evidence-timeline.md).
+- Architecture index exists at [docs/architecture/README.md](docs/architecture/README.md).
 - Benchmark registry exists at [docs/benchmarks/benchmark-registry.md](docs/benchmarks/benchmark-registry.md).
 - Benchmark lifecycle exists at [docs/benchmarks/benchmark-lifecycle.md](docs/benchmarks/benchmark-lifecycle.md).
 - Benchmark card template exists at [docs/benchmarks/benchmark-card-template.md](docs/benchmarks/benchmark-card-template.md).
@@ -127,6 +128,7 @@ Paper-related status:
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
 - [Evidence maturity model](docs/evidence/evidence-maturity-model.md)
 - [Evidence timeline](docs/evidence/evidence-timeline.md)
+- [Architecture index](docs/architecture/README.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
 - [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md)
@@ -188,6 +190,7 @@ Paper-related status:
 - [P-CORE-048 benchmark execution layer v0](docs/reports/p-core-048-benchmark-execution-layer-v0.md)
 - [P-CORE-049 signal integration layer v0](docs/reports/p-core-049-signal-integration-layer-v0.md)
 - [P-CORE-050 evidence lineage layer v0](docs/reports/p-core-050-evidence-lineage-layer-v0.md)
+- [P-CORE-051 long-run supervisor pilot v0](docs/reports/p-core-051-long-run-supervisor-pilot-v0.md)
 
 Generated report-like surfaces:
 
@@ -252,6 +255,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Signal integration layer: Implemented for external evidence package docs, template, governance, schema, deterministic CLI review, and repository-boundary guidance.
 - Evidence lineage layer: Implemented for lineage model, governance, review guide, record template, schema, deterministic CLI review, provenance reminders, and claim boundaries.
 - Public review packet layer: Implemented for guided packet, checklist, assembly, governance, schema, and CLI review.
+- Architecture navigation: Implemented as a compact index over existing architecture, specification, decision, ADR, and lineage surfaces.
 
 ## Validation Status
 
@@ -298,7 +302,7 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the signal integration branch if validation and scans remain clean.
+1. Review the P-CORE-051 long-run supervisor pilot branch if validation and scans remain clean.
 2. Add external evidence package records only when repository boundaries, schema metadata, reproducibility, validation, and claim-boundary requirements are met.
 3. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
 4. Promote review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.
@@ -316,11 +320,13 @@ Start with:
 - [Claim Boundary](docs/CLAIM_BOUNDARY.md)
 - [Claim Registry](docs/claims/claim-registry.md)
 - [Evidence Layer](docs/evidence/README.md)
+- [Architecture index](docs/architecture/README.md)
 - [Evidence map](docs/evidence/evidence-map.md)
 - [Claim-to-evidence matrix](docs/evidence/claim-to-evidence-matrix.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark execution model](docs/benchmarks/benchmark-execution-model.md)
 - [Signal integration](docs/integrations/README.md)
+- [Evidence lineage](docs/lineage/README.md)
 - [Decision Records](docs/decisions/README.md)
 - [Generated evidence surface](docs/examples/generated/README.md)
 
@@ -336,11 +342,20 @@ git log -1 --oneline
 python3 scripts/permea_demo.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
+python3 scripts/permea_benchmark_run.py
+python3 scripts/permea_datasets.py
+python3 scripts/permea_research.py
 python3 scripts/permea_signal.py
+python3 scripts/permea_lineage.py
+python3 scripts/permea_review.py
 python3 scripts/permea_specs.py
 python3 scripts/permea_check.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
+python3 scripts/permea_evaluate.py
+python3 scripts/permea_reproduce.py
 python3 scripts/permea_validate.py
+python3 scripts/validate_permea_artifacts.py
+python3 -m pytest
 ```
 
 Before completing a task, the coding agent should update the relevant memory surface for the work completed. If the task makes or changes a strategic or technical decision, it must create or update a [Decision Record](docs/decisions/README.md).
