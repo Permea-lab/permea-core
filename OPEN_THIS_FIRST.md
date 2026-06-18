@@ -4,12 +4,12 @@ This file is the first continuation breadcrumb for Permea Core. It summarizes th
 
 ## Current Status
 
-Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public review packet guidance, public evidence navigation, benchmark registry and execution governance, dataset and research package registry governance, signal integration for adjacent public evidence packages, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
+Permea Core is a public, benchmark-first infrastructure repository for sequence-first biological delivery engineering. The current repository state emphasizes reproducible artifact generation, public review packet guidance, public evidence navigation, evidence lineage and provenance governance, benchmark registry and execution governance, dataset and research package registry governance, signal integration for adjacent public evidence packages, public evidence indexing, evaluation and reproducibility bundles, artifact specifications, artifact validation, external examples, decision records, project memory, and bounded claim language.
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-049-signal-integration-layer`
-- Public baseline reviewed: `main` at `13c7904076461d5c29172438aaff4b1a560061d6`
+- Branch used for this update: `p-core-050-evidence-lineage-layer`
+- Public baseline reviewed: `main` at `db1fd4bb1e5d6b216a34b65db198786df5bda59e`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -39,6 +39,8 @@ Permea Core currently provides:
 - a research package review command at `python3 scripts/permea_research.py`
 - a signal integration layer at `docs/integrations/`
 - a signal integration review command at `python3 scripts/permea_signal.py`
+- an evidence lineage layer at `docs/lineage/`
+- an evidence lineage review command at `python3 scripts/permea_lineage.py`
 - a public review packet layer at `docs/review/`
 - a public review packet command at `python3 scripts/permea_review.py`
 
@@ -63,13 +65,14 @@ Permea's current public program model is:
 - Dataset Registry Layer: Implemented
 - Research Package Layer: Implemented
 - Signal Integration Layer: Implemented
+- Evidence Lineage Layer: Implemented
 - Public Review Packet Layer: Implemented
 
 See [Evidence Layer](docs/evidence/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
-The latest completed major public infrastructure layer is the signal integration layer:
+The latest completed major public infrastructure layer is the evidence lineage layer:
 
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
 - [Benchmark lifecycle](docs/benchmarks/benchmark-lifecycle.md)
@@ -91,6 +94,11 @@ The latest completed major public infrastructure layer is the signal integration
 - [Permea Signal ML integration](docs/integrations/permea-signal-ml.md)
 - [External evidence package template](docs/integrations/external-evidence-package-template.md)
 - [External evidence package governance](docs/integrations/external-evidence-package-governance.md)
+- [Evidence lineage](docs/lineage/README.md)
+- [Lineage model](docs/lineage/lineage-model.md)
+- [Lineage governance](docs/lineage/lineage-governance.md)
+- [Lineage review guide](docs/lineage/lineage-review-guide.md)
+- [Lineage record template](docs/lineage/lineage-record-template.md)
 - [Public review packet](docs/review/public-review-packet.md)
 - [Public review packet assembly](docs/review/public-review-packet-assembly.md)
 - [Public review checklist](docs/review/public-review-checklist.md)
@@ -104,7 +112,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `13c7904076461d5c29172438aaff4b1a560061d6`.
+At this update, the reviewed public baseline was `db1fd4bb1e5d6b216a34b65db198786df5bda59e`.
 
 ## Primary Reports
 
@@ -121,6 +129,7 @@ At this update, the reviewed public baseline was `13c7904076461d5c29172438aaff4b
 - [P-CORE-047 public review packet layer report](docs/reports/p-core-047-public-review-packet-layer-v0.md)
 - [P-CORE-048 benchmark execution layer report](docs/reports/p-core-048-benchmark-execution-layer-v0.md)
 - [P-CORE-049 signal integration layer report](docs/reports/p-core-049-signal-integration-layer-v0.md)
+- [P-CORE-050 evidence lineage layer report](docs/reports/p-core-050-evidence-lineage-layer-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)

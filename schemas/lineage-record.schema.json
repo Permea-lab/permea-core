@@ -1,0 +1,114 @@
+{
+  "$id": "https://permea-core.local/schemas/lineage-record.schema.json",
+  "title": "Permea Lineage Record",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "lineage_record_id": {
+      "type": "string"
+    },
+    "artifact_type": {
+      "type": "string"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "parent_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "child_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_benchmarks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_datasets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_research_packages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_review_packets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_external_evidence_packages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_specifications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lineage_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "documented",
+        "linked",
+        "reviewed",
+        "superseded",
+        "archived"
+      ]
+    },
+    "provenance_notes": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "maintainer_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "lineage_record_id",
+    "artifact_type",
+    "artifact_id",
+    "parent_artifacts",
+    "child_artifacts",
+    "related_claims",
+    "lineage_status",
+    "provenance_notes",
+    "version"
+  ]
+}

@@ -16,7 +16,7 @@ Primary public repository role:
 
 ## Current Public Truth
 
-The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, benchmark registry and execution governance, dataset registry governance, research package governance, signal integration for adjacent public evidence packages, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
+The repository currently supports local artifact generation, artifact validation, a first-user quickstart demo, public review packet guidance, benchmark registry and execution governance, dataset registry governance, research package governance, signal integration for adjacent public evidence packages, evidence lineage and provenance governance, reproducibility, evaluation packet generation, dry-run reporting, generated evidence navigation, public evidence records, evidence navigation docs, public artifact specification inspection, copyable external examples, decision records, and project memory.
 
 The repository does not currently prove biological transport, mechanism, safety, therapeutic effect, clinical effectiveness, generalization, model performance, data acquisition completion, or redistribution rights.
 
@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `13c7904076461d5c29172438aaff4b1a560061d6`.
+At this update point, the reviewed public baseline was `main` at `db1fd4bb1e5d6b216a34b65db198786df5bda59e`.
 
 ## Permea Layer Model
 
@@ -50,6 +50,7 @@ At this update point, the reviewed public baseline was `main` at `13c7904076461d
 | Dataset Registry Layer | Implemented | Dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review. |
 | Research Package Layer | Implemented | Research package registry, lifecycle, template, assembly, governance, schema, and CLI review. |
 | Signal Integration Layer | Implemented | External evidence package integration docs, template, governance, schema, deterministic CLI review, and repository-boundary guidance. |
+| Evidence Lineage Layer | Implemented | Lineage model, governance, review guide, record template, schema, deterministic CLI review, provenance reminders, and claim boundaries. |
 | Public Review Packet Layer | Implemented | Guided public packet, checklist, assembly, governance, schema, and CLI review. |
 | Memory Layer | Established | Breadcrumb, review hub, ADR, runbook, and reports for continuation. |
 
@@ -92,6 +93,12 @@ At this update point, the reviewed public baseline was `main` at `13c7904076461d
 - External evidence package template exists at [docs/integrations/external-evidence-package-template.md](docs/integrations/external-evidence-package-template.md).
 - External evidence package governance exists at [docs/integrations/external-evidence-package-governance.md](docs/integrations/external-evidence-package-governance.md).
 - Signal integration review command exists at [scripts/permea_signal.py](scripts/permea_signal.py).
+- Evidence lineage docs exist at [docs/lineage/README.md](docs/lineage/README.md).
+- Lineage model exists at [docs/lineage/lineage-model.md](docs/lineage/lineage-model.md).
+- Lineage governance exists at [docs/lineage/lineage-governance.md](docs/lineage/lineage-governance.md).
+- Lineage review guide exists at [docs/lineage/lineage-review-guide.md](docs/lineage/lineage-review-guide.md).
+- Lineage record template exists at [docs/lineage/lineage-record-template.md](docs/lineage/lineage-record-template.md).
+- Evidence lineage review command exists at [scripts/permea_lineage.py](scripts/permea_lineage.py).
 - Public review packet exists at [docs/review/public-review-packet.md](docs/review/public-review-packet.md).
 - Public review packet assembly exists at [docs/review/public-review-packet-assembly.md](docs/review/public-review-packet-assembly.md).
 - Public review checklist exists at [docs/review/public-review-checklist.md](docs/review/public-review-checklist.md).
@@ -132,6 +139,9 @@ Paper-related status:
 - [Research package assembly](docs/research/research-package-assembly.md)
 - [Signal integration](docs/integrations/README.md)
 - [Permea Signal ML integration](docs/integrations/permea-signal-ml.md)
+- [Evidence lineage](docs/lineage/README.md)
+- [Lineage model](docs/lineage/lineage-model.md)
+- [Lineage review guide](docs/lineage/lineage-review-guide.md)
 - [Public review packet](docs/review/public-review-packet.md)
 - [Public review checklist](docs/review/public-review-checklist.md)
 - [EVIDENCE-030: Evidence Surface Layer](docs/evidence/EVIDENCE-030-evidence-surface-layer.md)
@@ -177,6 +187,7 @@ Paper-related status:
 - [P-CORE-047 public review packet layer v0](docs/reports/p-core-047-public-review-packet-layer-v0.md)
 - [P-CORE-048 benchmark execution layer v0](docs/reports/p-core-048-benchmark-execution-layer-v0.md)
 - [P-CORE-049 signal integration layer v0](docs/reports/p-core-049-signal-integration-layer-v0.md)
+- [P-CORE-050 evidence lineage layer v0](docs/reports/p-core-050-evidence-lineage-layer-v0.md)
 
 Generated report-like surfaces:
 
@@ -204,6 +215,7 @@ Allowed public framing:
 - deterministic dataset review command for registry counts, provenance status, docs, and claim boundaries
 - deterministic research package review command for package counts, reproducibility status, docs, and claim boundaries
 - deterministic signal integration command for external evidence package status, linked Core layers, repository-boundary reminders, validation reminders, docs, and claim boundaries
+- deterministic evidence lineage command for lineage-capable artifact classes, status categories, provenance reminders, docs, and claim boundaries
 - deterministic public review packet command for reviewer path, registry commands, validation commands, and claim boundaries
 - public artifact standards
 - computational evidence surfaces
@@ -238,6 +250,7 @@ Use [Public Claim Registry](docs/claims/claim-registry.md), [Claim Boundary](doc
 - Dataset registry layer: Implemented for dataset registry, lifecycle, card template, provenance, governance, schema, and CLI review.
 - Research package layer: Implemented for research package registry, lifecycle, template, assembly, governance, schema, and CLI review.
 - Signal integration layer: Implemented for external evidence package docs, template, governance, schema, deterministic CLI review, and repository-boundary guidance.
+- Evidence lineage layer: Implemented for lineage model, governance, review guide, record template, schema, deterministic CLI review, provenance reminders, and claim boundaries.
 - Public review packet layer: Implemented for guided packet, checklist, assembly, governance, schema, and CLI review.
 
 ## Validation Status
@@ -253,6 +266,7 @@ python3 scripts/permea_benchmark_run.py
 python3 scripts/permea_datasets.py
 python3 scripts/permea_research.py
 python3 scripts/permea_signal.py
+python3 scripts/permea_lineage.py
 python3 scripts/permea_review.py
 python3 scripts/permea_check.py examples/synthetic_reference_example
 python3 scripts/permea_specs.py
