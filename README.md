@@ -51,6 +51,12 @@ The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/
 
 For navigation across current architecture and implementation reports, use [Architecture Index](docs/architecture/README.md) and [Reports Index](docs/reports/README.md).
 
+Review public artifact consistency with:
+
+```bash
+python3 scripts/permea_artifacts.py
+```
+
 ## Evidence And Claims
 
 After the quickstart, review the evidence path:
@@ -260,6 +266,7 @@ Core project documents:
 - [Open This First](OPEN_THIS_FIRST.md)
 - [Review Hub](REVIEW_HUB.md)
 - [Architecture Index](docs/architecture/README.md)
+- [Artifact Consistency](docs/artifacts/README.md)
 - [Reports Index](docs/reports/README.md)
 - [Evidence Layer](docs/evidence/README.md)
 - [Evidence Map](docs/evidence/evidence-map.md)
@@ -435,6 +442,12 @@ Inspect the public artifact specification registry:
 
 ```bash
 python3 scripts/permea_specs.py
+```
+
+Inspect public artifact consistency:
+
+```bash
+python3 scripts/permea_artifacts.py
 ```
 
 Current generated artifacts are indexed at [Public Artifact Index](docs/examples/generated/ARTIFACT_INDEX.md).

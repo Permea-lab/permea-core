@@ -10,6 +10,7 @@ This index points reviewers to the current Permea Core architecture surfaces. It
 - [Decision records](../decisions/README.md)
 - [Benchmark-first ADR](../adr/ADR-0002-benchmark-first.md)
 - [Lineage model](../lineage/lineage-model.md)
+- [Artifact consistency](../artifacts/README.md)
 - [Reports index](../reports/README.md)
 - [Public review packet](../review/README.md)
 - [Evidence map](../evidence/evidence-map.md)
@@ -29,6 +30,7 @@ This index points reviewers to the current Permea Core architecture surfaces. It
 
 ```bash
 python3 scripts/permea_review.py
+python3 scripts/permea_artifacts.py
 python3 scripts/permea_lineage.py
 python3 scripts/permea_validate.py
 python3 scripts/validate_permea_artifacts.py
