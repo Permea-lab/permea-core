@@ -49,6 +49,8 @@ python3 scripts/permea_review.py
 
 The reviewer path is [Quickstart](QUICKSTART.md) -> [Review Packet](docs/review/README.md) -> [Research](docs/research/README.md) -> [Datasets](docs/datasets/README.md) -> [Benchmarks](docs/benchmarks/README.md) -> [Evidence](docs/evidence/evidence-map.md) -> [Claims](docs/claims/claim-registry.md) -> [Lineage](docs/lineage/README.md) -> validation commands.
 
+For navigation across current architecture and implementation reports, use [Architecture Index](docs/architecture/README.md) and [Reports Index](docs/reports/README.md).
+
 ## Evidence And Claims
 
 After the quickstart, review the evidence path:
@@ -257,6 +259,8 @@ Core project documents:
 
 - [Open This First](OPEN_THIS_FIRST.md)
 - [Review Hub](REVIEW_HUB.md)
+- [Architecture Index](docs/architecture/README.md)
+- [Reports Index](docs/reports/README.md)
 - [Evidence Layer](docs/evidence/README.md)
 - [Evidence Map](docs/evidence/evidence-map.md)
 - [Claim-to-Evidence Matrix](docs/evidence/claim-to-evidence-matrix.md)
