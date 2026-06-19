@@ -4,6 +4,7 @@ import json
 import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -155,6 +156,52 @@ def test_review_packet_markdown_is_physical_multiline_text() -> None:
     assert "## Validation Commands" in lines
     assert "## Reviewer Checklist" in lines
     assert "## Limitations" in lines
+
+
+def test_generated_packet_files_have_no_hidden_unicode_or_bad_line_endings() -> None:
+    bidi_markers = {
+        "\u061c",
+        "\u200e",
+        "\u200f",
+        "\u202a",
+        "\u202b",
+        "\u202c",
+        "\u202d",
+        "\u202e",
+        "\u2066",
+        "\u2067",
+        "\u2068",
+        "\u2069",
+    }
+    zero_width = {"\u200b", "\u200c", "\u200d", "\ufeff"}
+
+    for packet_path, minimum_lines in ((PACKET_MD, 40), (PACKET_JSON, 10)):
+        raw = packet_path.read_bytes()
+        text = raw.decode("utf-8")
+
+        assert raw.count(b"\n") >= minimum_lines
+        assert raw.endswith(b"\n")
+        assert b"\r" not in raw
+        assert b"\r\n" not in raw
+        assert b"\\n" not in raw
+        assert "\u2028".encode("utf-8") not in raw
+        assert "\u2029".encode("utf-8") not in raw
+
+        suspicious = []
+        for index, char in enumerate(text):
+            category = unicodedata.category(char)
+            bidi = unicodedata.bidirectional(char)
+            if char in {"\n", "\t"}:
+                continue
+            if (
+                category.startswith("C")
+                or char in bidi_markers
+                or char in zero_width
+                or bidi in {"RLO", "LRO", "RLE", "LRE", "PDF", "RLI", "LRI", "FSI", "PDI"}
+            ):
+                suspicious.append((index, f"U+{ord(char):04X}", category, bidi))
+
+        assert suspicious == []
 
 
 def test_review_packet_json_is_pretty_printed_with_stable_key_order() -> None:
