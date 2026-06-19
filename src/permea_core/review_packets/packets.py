@@ -177,7 +177,7 @@ def render_packet_markdown(packet: ReviewPacket, output_path: Path, root: Path) 
             "Then inspect this packet together with the P-CORE-053 report and artifact consistency command output.",
         ]
     )
-    return "\n".join(lines) + "\n"
+    return _newline_terminated_text(lines)
 
 
 def render_packet_json(packet: ReviewPacket) -> str:
@@ -217,7 +217,7 @@ def render_summary(result: dict[str, object]) -> str:
             "- python3 -m pytest",
         ]
     )
-    return "\n".join(lines) + "\n"
+    return _newline_terminated_text(lines)
 
 
 def _link(target: str, output_path: Path, root: Path) -> str:
@@ -229,3 +229,8 @@ def _link(target: str, output_path: Path, root: Path) -> str:
         )
     )
     return f"[{target}]({from_output.as_posix()})"
+
+
+def _newline_terminated_text(lines: list[str]) -> str:
+    """Return physical line-separated text suitable for raw GitHub review."""
+    return "\n".join(lines) + "\n"

@@ -141,10 +141,30 @@ def test_review_packet_markdown_contains_review_sections() -> None:
     assert "does not create scientific evidence" in text
 
 
+def test_review_packet_markdown_is_physical_multiline_text() -> None:
+    raw = PACKET_MD.read_bytes()
+    text = raw.decode("utf-8")
+    lines = text.splitlines()
+
+    assert raw.endswith(b"\n")
+    assert raw.count(b"\n") >= 70
+    assert b"\\n" not in raw
+    assert len(lines) >= 70
+    assert lines[0] == "# P-CORE-053 Artifact Consistency System Review Packet"
+    assert "## Packet Metadata" in lines
+    assert "## Validation Commands" in lines
+    assert "## Reviewer Checklist" in lines
+    assert "## Limitations" in lines
+
+
 def test_review_packet_json_is_pretty_printed_with_stable_key_order() -> None:
-    raw = PACKET_JSON.read_text(encoding="utf-8")
+    raw_bytes = PACKET_JSON.read_bytes()
+    raw = raw_bytes.decode("utf-8")
     payload = json.loads(raw)
 
+    assert raw_bytes.endswith(b"\n")
+    assert raw_bytes.count(b"\n") >= 35
+    assert b"\\n" not in raw_bytes
     assert raw.startswith('{\n  "artifact_path":')
     assert '\n  "validation_commands": [\n' in raw
     assert raw == json.dumps(payload, indent=2, sort_keys=True) + "\n"
