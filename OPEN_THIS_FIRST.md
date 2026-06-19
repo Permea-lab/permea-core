@@ -9,7 +9,7 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 Current public baseline when this breadcrumb was refreshed:
 
 - Branch used for this update: `p-core-059-review-packet-expansion`
-- Public baseline reviewed: `main` at `6a3d60ce06f7a7f53179a406d4297edf22c71382`
+- Public baseline reviewed: `main` at `95677e5796cdbc14f6f57586a52a1b60d4c4a252`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -120,7 +120,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `6a3d60ce06f7a7f53179a406d4297edf22c71382`.
+At this update, the reviewed public baseline was `95677e5796cdbc14f6f57586a52a1b60d4c4a252`.
 
 ## Primary Reports
 

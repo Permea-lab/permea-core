@@ -24,6 +24,7 @@ This index gives reviewers one place to find current Permea Core reports. It is 
 - [P-CORE-060B review packet coverage check v0](p-core-060b-review-packet-coverage-check-v0.md)
 - [P-CORE-061 autonomous review-merge loop pilot v0](p-core-061-autonomous-review-merge-loop-pilot-v0.md)
 - [P-CORE-062 review bundle completeness check v0](p-core-062-review-bundle-completeness-check-v0.md)
+- [P-CORE-063 review bundle fixture example v0](p-core-063-review-bundle-fixture-example-v0.md)
 - [P-CORE-056 truth verification investigation v0](p-core-056-truth-verification-investigation-v0.md)
 
 ## Operating-System Reports

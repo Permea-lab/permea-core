@@ -16,6 +16,7 @@ Then follow the packet:
 
 - [Public review packet](public-review-packet.md)
 - [Review loop operating standard](review-loop-operating-standard.md)
+- [Review bundle examples](examples/README.md)
 - [Evidence review packet system](review-packet-system.md)
 - [Generated review packets](packets/README.md)
 - [P-CORE-030 Evidence Surface Layer Review Packet](packets/p-core-030-evidence-surface-layer.md)
@@ -45,6 +46,7 @@ Review bundle completeness can be checked with:
 
 ```bash
 python3 scripts/check_review_bundle_completeness.py
+python3 scripts/check_review_bundle_completeness.py docs/review/examples/final-review-bundle-complete-example.md
 ```
 
 ## Claim Boundaries
