@@ -10,11 +10,19 @@ The fixture lives at:
 
 ## Why It Exists
 
-P-CORE-061 defined the Review Loop Operating Standard. P-CORE-062 added a deterministic checker for required review-bundle fields. P-CORE-063 makes the expected final bundle concrete, so future loops can copy a public-safe fixture instead of reconstructing the format from hidden conversation context.
+P-CORE-061 defined the Review Loop Operating Standard. P-CORE-062 added a
+deterministic checker for required review-bundle fields.
+
+P-CORE-063 makes the expected final bundle concrete, so future loops can copy a
+public-safe fixture instead of reconstructing the format from hidden
+conversation context.
 
 ## How It Reduces User Intervention
 
-Future loops can start from the fixture, fill in the live PR details, run the completeness checker, and produce a final review bundle that already includes the required local paths, remote URLs, validation results, audits, review packet decision, and stop reason.
+Future loops can start from the fixture, fill in the live PR details, run the
+completeness checker, and produce a final review bundle that already includes
+the required local paths, remote URLs, validation results, audits, review packet
+decision, and stop reason.
 
 That reduces repeated reviewer setup work and makes missing handoff fields visible before final review.
 
@@ -44,7 +52,10 @@ The checker confirms required field presence for:
 
 ## What It Does Not Check
 
-The fixture and checker do not verify factual correctness, live GitHub state, merge readiness, scientific evidence, benchmark results, biological validation, wet-lab validation, in-vivo validation, clinical evidence, model performance evidence, or solved-delivery evidence.
+The fixture and checker do not verify factual correctness, live GitHub state,
+merge readiness, scientific evidence, benchmark results, biological validation,
+wet-lab validation, in-vivo validation, clinical evidence, model performance
+evidence, or solved-delivery evidence.
 
 ## Future Loop Use
 
@@ -63,7 +74,8 @@ Future Permea Core loops should:
 - `git diff --check`: PASS
 - `python3 scripts/check_review_bundle_completeness.py`: PASS
 - `python3 scripts/check_review_bundle_completeness.py --json`: PASS
-- `python3 scripts/check_review_bundle_completeness.py docs/review/examples/final-review-bundle-complete-example.md`: PASS
+- `python3 scripts/check_review_bundle_completeness.py docs/review/examples/final-review-bundle-complete-example.md`:
+  PASS
 - `python3 scripts/permea_review.py`: PASS
 - `python3 scripts/permea_artifacts.py`: PASS
 - `python3 scripts/validate_permea_artifacts.py`: PASS
@@ -72,4 +84,6 @@ Future Permea Core loops should:
 
 ## Boundary
 
-This report documents a reviewability fixture only. It does not create new evidence, benchmark results, biological validation, clinical evidence, model performance evidence, or solved-delivery evidence.
+This report documents a reviewability fixture only. It does not create new
+evidence, benchmark results, biological validation, clinical evidence, model
+performance evidence, or solved-delivery evidence.

@@ -2,9 +2,12 @@
 
 Fixture status: example only.
 
-This is a canonical complete example for the final review bundle shape expected by the Review Loop Operating Standard and checked by the Review Bundle Completeness Checker.
+This is a canonical complete example for the final review bundle shape expected
+by the Review Loop Operating Standard and checked by the Review Bundle
+Completeness Checker.
 
-It is fictional and fixture-only. It does not describe a real unmerged pull request, does not approve a merge, and does not establish factual correctness.
+It is fictional and fixture-only. It does not describe a real unmerged pull
+request, does not approve a merge, and does not establish factual correctness.
 
 Group P-CORE-000
 
@@ -15,7 +18,8 @@ Head SHA: 0123456789abcdef0123456789abcdef01234567
 Selected task and rationale:
 
 - Task: P-CORE-000 Fixture Review Bundle Example
-- Rationale: Demonstrate the complete final review bundle format future Permea Core maintenance loops can copy before review.
+- Rationale: Demonstrate the complete final review bundle format future Permea
+  Core maintenance loops can copy before review.
 
 Changed files:
 
@@ -54,11 +58,15 @@ Scope audit result: PASS, fixture-only review bundle example, examples index, re
 
 Boundary audit result: PASS, no non-public material, non-public operational details, or adjacent-repository changes.
 
-Claim-discipline audit result: PASS, fixture language is reviewability and field-presence focused, with explicit non-claims.
+Claim-discipline audit result: PASS, fixture language is reviewability and
+field-presence focused, with explicit non-claims.
 
-Review packet decision: not needed; this fixture demonstrates final review bundle text and does not introduce a generated artifact packet surface.
+Review packet decision: not needed; this fixture demonstrates final review
+bundle text and does not introduce a generated artifact packet surface.
 
-Final human/model-assisted review gate recommendation: approved as a complete example fixture after validation, but not a merge approval for any real pull request.
+Final human/model-assisted review gate recommendation: approved as a complete
+example fixture after validation, but not a merge approval for any real pull
+request.
 
 Stop reason: PR opened and left unmerged for final human review; fixture is complete and ready to inspect.
 
@@ -75,4 +83,6 @@ Limitations:
 - Field-presence example only.
 - Does not verify factual correctness.
 - Does not approve merge readiness.
-- Does not create scientific evidence, benchmark results, biological validation, wet-lab validation, in-vivo validation, clinical evidence, model performance evidence, or solved-delivery evidence.
+- Does not create scientific evidence, benchmark results, biological
+  validation, wet-lab validation, in-vivo validation, clinical evidence, model
+  performance evidence, or solved-delivery evidence.

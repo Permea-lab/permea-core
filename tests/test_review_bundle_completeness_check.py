@@ -21,6 +21,27 @@ from permea_core.review_packets.bundle_completeness import (  # noqa: E402
 )
 
 FIXTURE_PATH = ROOT / "docs/review/examples/final-review-bundle-complete-example.md"
+REPORT_PATH = ROOT / "docs/reports/p-core-063-review-bundle-fixture-example-v0.md"
+THIS_TEST_PATH = ROOT / "tests/test_review_bundle_completeness_check.py"
+READABILITY_FILES = (FIXTURE_PATH, REPORT_PATH, THIS_TEST_PATH)
+MIN_PHYSICAL_LINES = {
+    FIXTURE_PATH: 80,
+    REPORT_PATH: 80,
+    THIS_TEST_PATH: 240,
+}
+MAX_LINE_LENGTH = 240
+LINE_FEED = chr(10)
+BAD_CODEPOINTS = {
+    0x2028,
+    0x2029,
+    0x200B,
+    0x200C,
+    0x200D,
+    0x2060,
+    0xFEFF,
+    0x061C,
+    *range(0x202A, 0x202F),
+}
 TOUCHED_PUBLIC_FILES = (
     "scripts/check_review_bundle_completeness.py",
     "src/permea_core/review_packets/bundle_completeness.py",
@@ -205,6 +226,42 @@ def test_review_navigation_includes_bundle_examples() -> None:
     assert "p-core-063-review-bundle-fixture-example-v0.md" in reports_index
 
 
+def test_review_bundle_fixture_files_are_physically_readable() -> None:
+    for path, minimum in MIN_PHYSICAL_LINES.items():
+        lines = path.read_text(encoding="utf-8").splitlines()
+
+        assert len(lines) >= minimum, path
+        assert max(len(line) for line in lines) <= MAX_LINE_LENGTH, path
+
+
+def test_review_bundle_fixture_files_use_lf_only() -> None:
+    for path in READABILITY_FILES:
+        content = path.read_bytes()
+
+        assert bytes([13]) not in content, path
+        assert content.count(bytes([10])) >= MIN_PHYSICAL_LINES[path], path
+
+
+def test_review_bundle_fixture_files_have_no_hidden_unicode() -> None:
+    for path in READABILITY_FILES:
+        text = path.read_text(encoding="utf-8")
+        hidden = [hex(ord(char)) for char in text if ord(char) in BAD_CODEPOINTS]
+
+        assert hidden == [], path
+
+
+def test_review_bundle_fixture_files_have_no_literal_escaped_newlines() -> None:
+    for path in (FIXTURE_PATH, REPORT_PATH):
+        assert bytes([92, 110]) not in path.read_bytes(), path
+
+
+def test_review_bundle_test_file_is_not_compressed() -> None:
+    source = THIS_TEST_PATH.read_text(encoding="utf-8")
+
+    assert "def test_complete_fixture_file_passes" in source
+    assert source.count(f"{LINE_FEED}def test_") >= 15
+
+
 def test_public_safe_boundary_scan_for_bundle_check_files() -> None:
     lowered = _combined_touched_text().lower()
 
@@ -224,8 +281,8 @@ def test_prohibited_claim_scan_for_bundle_check_files() -> None:
 
 def _without_section(section: str) -> str:
     lines = DEFAULT_SAMPLE_BUNDLE.splitlines()
-    return "\n".join(line for line in lines if not line.lower().startswith(section.lower())) + "\n"
+    return LINE_FEED.join(line for line in lines if not line.lower().startswith(section.lower())) + LINE_FEED
 
 
 def _combined_touched_text() -> str:
-    return "\n".join((ROOT / path).read_text(encoding="utf-8") for path in TOUCHED_PUBLIC_FILES)
+    return LINE_FEED.join((ROOT / path).read_text(encoding="utf-8") for path in TOUCHED_PUBLIC_FILES)
