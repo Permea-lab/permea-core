@@ -68,9 +68,12 @@ Use the deterministic completeness checker before sending a final review bundle 
 ```bash
 python3 scripts/check_review_bundle_completeness.py
 python3 scripts/check_review_bundle_completeness.py --json
+python3 scripts/check_review_bundle_completeness.py docs/review/examples/final-review-bundle-complete-example.md
 ```
 
 The checker verifies field presence only. It does not approve content, factual correctness, or merge readiness.
+
+Use the [complete final review bundle example](examples/final-review-bundle-complete-example.md) as the copyable public-safe fixture for future review bundles. The example is fictional and fixture-only; replace its values with live PR data before final review.
 
 ## Boundaries
 
