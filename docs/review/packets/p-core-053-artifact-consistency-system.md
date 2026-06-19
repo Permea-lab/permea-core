@@ -84,4 +84,4 @@ Regenerate this packet:
 python3 scripts/permea_review_packet.py
 ```
 
-Then inspect this packet together with the P-CORE-053 report and artifact consistency command output.
+Then inspect this packet together with the linked report, generated artifacts, and command output.

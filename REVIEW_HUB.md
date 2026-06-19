@@ -74,6 +74,9 @@ At this update point, the reviewed public baseline was `main` at `6a3d60ce06f7a7
 - Artifact consistency command exists at [scripts/permea_artifacts.py](scripts/permea_artifacts.py).
 - Evidence review packet system docs exist at [docs/review/review-packet-system.md](docs/review/review-packet-system.md).
 - Evidence review packet generator exists at [scripts/permea_review_packet.py](scripts/permea_review_packet.py).
+- P-CORE-030 evidence surface layer review packet exists at [docs/review/packets/p-core-030-evidence-surface-layer.md](docs/review/packets/p-core-030-evidence-surface-layer.md).
+- P-CORE-032 reproducibility bundle review packet exists at [docs/review/packets/p-core-032-reproducibility-bundle.md](docs/review/packets/p-core-032-reproducibility-bundle.md).
+- P-CORE-034 evaluation bundle review packet exists at [docs/review/packets/p-core-034-evaluation-bundle.md](docs/review/packets/p-core-034-evaluation-bundle.md).
 - P-CORE-053 artifact consistency review packet exists at [docs/review/packets/p-core-053-artifact-consistency-system.md](docs/review/packets/p-core-053-artifact-consistency-system.md).
 - Reports index exists at [docs/reports/README.md](docs/reports/README.md).
 - Benchmark registry exists at [docs/benchmarks/benchmark-registry.md](docs/benchmarks/benchmark-registry.md).
@@ -139,6 +142,9 @@ Paper-related status:
 - [Architecture index](docs/architecture/README.md)
 - [Artifact consistency](docs/artifacts/README.md)
 - [Evidence review packet system](docs/review/review-packet-system.md)
+- [P-CORE-030 evidence surface layer review packet](docs/review/packets/p-core-030-evidence-surface-layer.md)
+- [P-CORE-032 reproducibility bundle review packet](docs/review/packets/p-core-032-reproducibility-bundle.md)
+- [P-CORE-034 evaluation bundle review packet](docs/review/packets/p-core-034-evaluation-bundle.md)
 - [P-CORE-053 artifact consistency review packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
@@ -210,6 +216,7 @@ Paper-related status:
 - [P-CORE-052 autonomous queue pilot v0](docs/reports/p-core-052-autonomous-queue-pilot-v0.md)
 - [P-CORE-053 artifact consistency system v0](docs/reports/p-core-053-artifact-consistency-system-v0.md)
 - [P-CORE-054 evidence review packet system v0](docs/reports/p-core-054-evidence-review-packet-system-v0.md)
+- [P-CORE-059 review packet expansion v0](docs/reports/p-core-059-review-packet-expansion-v0.md)
 
 Generated report-like surfaces:
 
@@ -327,7 +334,7 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the P-CORE-054 evidence review packet system branch if validation and scans remain clean.
+1. Review the P-CORE-059 review packet expansion branch if validation and scans remain clean.
 2. Add external evidence package records only when repository boundaries, schema metadata, reproducibility, validation, and claim-boundary requirements are met.
 3. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
 4. Promote additional review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.
@@ -348,6 +355,9 @@ Start with:
 - [Architecture index](docs/architecture/README.md)
 - [Artifact consistency](docs/artifacts/README.md)
 - [Evidence review packet system](docs/review/review-packet-system.md)
+- [P-CORE-030 evidence surface layer review packet](docs/review/packets/p-core-030-evidence-surface-layer.md)
+- [P-CORE-032 reproducibility bundle review packet](docs/review/packets/p-core-032-reproducibility-bundle.md)
+- [P-CORE-034 evaluation bundle review packet](docs/review/packets/p-core-034-evaluation-bundle.md)
 - [P-CORE-053 artifact consistency review packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Evidence map](docs/evidence/evidence-map.md)

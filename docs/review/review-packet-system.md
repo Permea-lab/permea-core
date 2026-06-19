@@ -35,8 +35,11 @@ This command uses `curl` against `raw.githubusercontent.com` and reports HTTP st
 
 Use this check when reviewer feedback depends on raw GitHub readability.
 
-## Current Packet
+## Current Packets
 
+- [P-CORE-030 Evidence Surface Layer Review Packet](packets/p-core-030-evidence-surface-layer.md)
+- [P-CORE-032 Reproducibility Bundle Review Packet](packets/p-core-032-reproducibility-bundle.md)
+- [P-CORE-034 Evaluation Bundle Review Packet](packets/p-core-034-evaluation-bundle.md)
 - [P-CORE-053 Artifact Consistency System Review Packet](packets/p-core-053-artifact-consistency-system.md)
 
 ## Future Use
