@@ -41,6 +41,12 @@ The evidence review packet system adds concrete reviewer packets for selected pu
 python3 scripts/permea_review_packet.py
 ```
 
+Review bundle completeness can be checked with:
+
+```bash
+python3 scripts/check_review_bundle_completeness.py
+```
+
 ## Claim Boundaries
 
 Public review packets organize current computational evidence, validation commands, reproducibility surfaces, and explicit claim boundaries. They do not establish biological effect, experimental validation, therapeutic outcome, clinical evidence, expression improvement, or solved delivery.
