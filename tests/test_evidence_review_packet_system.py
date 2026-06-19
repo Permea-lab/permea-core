@@ -133,8 +133,21 @@ def test_review_packet_markdown_contains_review_sections() -> None:
     ):
         assert heading in text
 
+    assert "| Field | Value |" in text
+    assert "| Review surface | Link |" in text
+    assert "```bash\npython3 scripts/permea_artifacts.py\n```" in text
+    assert "```bash\npython3 scripts/permea_review_packet.py\n```" in text
     assert "python3 scripts/permea_artifacts.py" in text
     assert "does not create scientific evidence" in text
+
+
+def test_review_packet_json_is_pretty_printed_with_stable_key_order() -> None:
+    raw = PACKET_JSON.read_text(encoding="utf-8")
+    payload = json.loads(raw)
+
+    assert raw.startswith('{\n  "artifact_path":')
+    assert '\n  "validation_commands": [\n' in raw
+    assert raw == json.dumps(payload, indent=2, sort_keys=True) + "\n"
 
 
 def test_review_packet_surface_integration() -> None:

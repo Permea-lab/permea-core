@@ -91,7 +91,10 @@ def generate_review_packets(root: Path) -> dict[str, object]:
         markdown_path = root / outputs["markdown"]
         json_path = root / outputs["json"]
         markdown_path.parent.mkdir(parents=True, exist_ok=True)
-        markdown_path.write_text(render_packet_markdown(packet, markdown_path, root), encoding="utf-8")
+        markdown_path.write_text(
+            render_packet_markdown(packet, markdown_path, root),
+            encoding="utf-8",
+        )
         json_path.write_text(render_packet_json(packet), encoding="utf-8")
         written.append(
             {
@@ -120,20 +123,36 @@ def render_packet_markdown(packet: ReviewPacket, output_path: Path, root: Path) 
     lines = [
         f"# {packet.title}",
         "",
+        "This packet makes one public Permea artifact system reviewable from GitHub.",
+        "It is intended for human review and structured assisted review.",
+        "",
+        "It should be read together with the linked source files, tests, report, and validation command output.",
+        "",
         "## Packet Metadata",
         "",
-        f"- Packet ID: `{packet.packet_id}`",
-        f"- Artifact path: {_link(packet.artifact_path, output_path, root)}",
-        f"- Artifact type: {packet.artifact_type}",
-        f"- Purpose: {packet.purpose}",
+        "| Field | Value |",
+        "| --- | --- |",
+        f"| Packet ID | `{packet.packet_id}` |",
+        f"| Artifact path | {_link(packet.artifact_path, output_path, root)} |",
+        f"| Artifact type | {packet.artifact_type} |",
+        "",
+        "## Purpose",
+        "",
+        packet.purpose,
         "",
         "## Related Evidence And Report Links",
         "",
+        "| Review surface | Link |",
+        "| --- | --- |",
     ]
-    lines.extend(f"- {_link(path, output_path, root)}" for path in packet.related_evidence_report_links)
+    lines.extend(
+        f"| `{path}` | {_link(path, output_path, root)} |"
+        for path in packet.related_evidence_report_links
+    )
 
     lines.extend(["", "## Validation Commands", ""])
-    lines.extend(f"- `{command}`" for command in packet.validation_commands)
+    for command in packet.validation_commands:
+        lines.extend(["```bash", command, "```", ""])
 
     lines.extend(["", "## Claim Boundary Notes", ""])
     lines.extend(f"- {note}" for note in packet.claim_boundary_notes)
@@ -149,7 +168,13 @@ def render_packet_markdown(packet: ReviewPacket, output_path: Path, root: Path) 
             "",
             "## Next Review Step",
             "",
-            "Run `python3 scripts/permea_review_packet.py`, then inspect this packet together with the P-CORE-053 report and artifact consistency command output.",
+            "Regenerate this packet:",
+            "",
+            "```bash",
+            "python3 scripts/permea_review_packet.py",
+            "```",
+            "",
+            "Then inspect this packet together with the P-CORE-053 report and artifact consistency command output.",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -197,5 +222,10 @@ def render_summary(result: dict[str, object]) -> str:
 
 def _link(target: str, output_path: Path, root: Path) -> str:
     relative_target = Path(target)
-    from_output = Path(os.path.relpath((root / relative_target).resolve(), output_path.parent.resolve()))
+    from_output = Path(
+        os.path.relpath(
+            (root / relative_target).resolve(),
+            output_path.parent.resolve(),
+        )
+    )
     return f"[{target}]({from_output.as_posix()})"

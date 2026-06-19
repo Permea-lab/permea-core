@@ -1,29 +1,53 @@
 # P-CORE-053 Artifact Consistency System Review Packet
 
+This packet makes one public Permea artifact system reviewable from GitHub.
+It is intended for human review and structured assisted review.
+
+It should be read together with the linked source files, tests, report, and validation command output.
+
 ## Packet Metadata
 
-- Packet ID: `p-core-053-artifact-consistency-system`
-- Artifact path: [docs/artifacts/README.md](../../artifacts/README.md)
-- Artifact type: artifact consistency reviewability layer
-- Purpose: Help a reviewer inspect the P-CORE-053 artifact consistency system through concrete files, generated outputs, validation commands, boundaries, and limitations.
+| Field | Value |
+| --- | --- |
+| Packet ID | `p-core-053-artifact-consistency-system` |
+| Artifact path | [docs/artifacts/README.md](../../artifacts/README.md) |
+| Artifact type | artifact consistency reviewability layer |
+
+## Purpose
+
+Help a reviewer inspect the P-CORE-053 artifact consistency system through concrete files, generated outputs, validation commands, boundaries, and limitations.
 
 ## Related Evidence And Report Links
 
-- [scripts/permea_artifacts.py](../../../scripts/permea_artifacts.py)
-- [src/permea_core/consistency/artifacts.py](../../../src/permea_core/consistency/artifacts.py)
-- [docs/artifacts/README.md](../../artifacts/README.md)
-- [docs/reports/p-core-053-artifact-consistency-system-v0.md](../../reports/p-core-053-artifact-consistency-system-v0.md)
-- [tests/test_artifact_consistency_system.py](../../../tests/test_artifact_consistency_system.py)
-- [tests/test_review_navigation_consistency.py](../../../tests/test_review_navigation_consistency.py)
-- [OPEN_THIS_FIRST.md](../../../OPEN_THIS_FIRST.md)
-- [REVIEW_HUB.md](../../../REVIEW_HUB.md)
+| Review surface | Link |
+| --- | --- |
+| `scripts/permea_artifacts.py` | [scripts/permea_artifacts.py](../../../scripts/permea_artifacts.py) |
+| `src/permea_core/consistency/artifacts.py` | [src/permea_core/consistency/artifacts.py](../../../src/permea_core/consistency/artifacts.py) |
+| `docs/artifacts/README.md` | [docs/artifacts/README.md](../../artifacts/README.md) |
+| `docs/reports/p-core-053-artifact-consistency-system-v0.md` | [docs/reports/p-core-053-artifact-consistency-system-v0.md](../../reports/p-core-053-artifact-consistency-system-v0.md) |
+| `tests/test_artifact_consistency_system.py` | [tests/test_artifact_consistency_system.py](../../../tests/test_artifact_consistency_system.py) |
+| `tests/test_review_navigation_consistency.py` | [tests/test_review_navigation_consistency.py](../../../tests/test_review_navigation_consistency.py) |
+| `OPEN_THIS_FIRST.md` | [OPEN_THIS_FIRST.md](../../../OPEN_THIS_FIRST.md) |
+| `REVIEW_HUB.md` | [REVIEW_HUB.md](../../../REVIEW_HUB.md) |
 
 ## Validation Commands
 
-- `python3 scripts/permea_artifacts.py`
-- `python3 scripts/permea_artifacts.py --json`
-- `python3 scripts/validate_permea_artifacts.py`
-- `python3 -m pytest tests/test_artifact_consistency_system.py tests/test_review_navigation_consistency.py`
+```bash
+python3 scripts/permea_artifacts.py
+```
+
+```bash
+python3 scripts/permea_artifacts.py --json
+```
+
+```bash
+python3 scripts/validate_permea_artifacts.py
+```
+
+```bash
+python3 -m pytest tests/test_artifact_consistency_system.py tests/test_review_navigation_consistency.py
+```
+
 
 ## Claim Boundary Notes
 
@@ -48,4 +72,10 @@
 
 ## Next Review Step
 
-Run `python3 scripts/permea_review_packet.py`, then inspect this packet together with the P-CORE-053 report and artifact consistency command output.
+Regenerate this packet:
+
+```bash
+python3 scripts/permea_review_packet.py
+```
+
+Then inspect this packet together with the P-CORE-053 report and artifact consistency command output.
