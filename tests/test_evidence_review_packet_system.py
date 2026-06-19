@@ -28,6 +28,7 @@ TOUCHED_PUBLIC_FILES = (
     "docs/reports/README.md",
     "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
     "docs/reports/p-core-059-review-packet-expansion-v0.md",
+    "docs/reports/p-core-060a-public-review-packet-review-packet-v0.md",
     "docs/review/README.md",
     "docs/review/review-packet-system.md",
     "docs/review/packets/README.md",
@@ -141,6 +142,7 @@ def test_review_packet_links_existing_artifacts() -> None:
     assert "scripts/permea_reproduce.py" in _packet_payload("p-core-032-reproducibility-bundle")["related_evidence_report_links"]
     assert "scripts/permea_evaluate.py" in _packet_payload("p-core-034-evaluation-bundle")["related_evidence_report_links"]
     assert "scripts/permea_evidence.py" in _packet_payload("p-core-030-evidence-surface-layer")["related_evidence_report_links"]
+    assert "scripts/permea_review.py" in _packet_payload("p-core-047-public-review-packet-layer")["related_evidence_report_links"]
 
 
 def test_review_packet_markdown_contains_review_sections() -> None:
@@ -166,6 +168,7 @@ def test_review_packet_markdown_contains_review_sections() -> None:
     assert "```bash\npython3 scripts/permea_reproduce.py\n```" in _packet_markdown("p-core-032-reproducibility-bundle")
     assert "```bash\npython3 scripts/permea_evaluate.py\n```" in _packet_markdown("p-core-034-evaluation-bundle")
     assert "```bash\npython3 scripts/permea_evidence.py\n```" in _packet_markdown("p-core-030-evidence-surface-layer")
+    assert "```bash\npython3 scripts/permea_review.py\n```" in _packet_markdown("p-core-047-public-review-packet-layer")
 
 
 def test_review_packet_markdown_is_physical_multiline_text() -> None:
@@ -262,8 +265,10 @@ def test_review_packet_surface_integration() -> None:
     assert "docs/review/packets/p-core-032-reproducibility-bundle.md" in review_hub
     assert "docs/review/packets/p-core-034-evaluation-bundle.md" in review_hub
     assert "docs/review/packets/p-core-030-evidence-surface-layer.md" in review_hub
+    assert "docs/review/packets/p-core-047-public-review-packet-layer.md" in review_hub
     assert "p-core-054-evidence-review-packet-system-v0.md" in reports
     assert "p-core-059-review-packet-expansion-v0.md" in reports
+    assert "p-core-060a-public-review-packet-review-packet-v0.md" in reports
 
 
 def test_public_safe_boundary_scan_for_review_packet_files() -> None:

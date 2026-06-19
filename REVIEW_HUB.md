@@ -77,6 +77,7 @@ At this update point, the reviewed public baseline was `main` at `6a3d60ce06f7a7
 - P-CORE-030 evidence surface layer review packet exists at [docs/review/packets/p-core-030-evidence-surface-layer.md](docs/review/packets/p-core-030-evidence-surface-layer.md).
 - P-CORE-032 reproducibility bundle review packet exists at [docs/review/packets/p-core-032-reproducibility-bundle.md](docs/review/packets/p-core-032-reproducibility-bundle.md).
 - P-CORE-034 evaluation bundle review packet exists at [docs/review/packets/p-core-034-evaluation-bundle.md](docs/review/packets/p-core-034-evaluation-bundle.md).
+- P-CORE-047 public review packet layer review packet exists at [docs/review/packets/p-core-047-public-review-packet-layer.md](docs/review/packets/p-core-047-public-review-packet-layer.md).
 - P-CORE-053 artifact consistency review packet exists at [docs/review/packets/p-core-053-artifact-consistency-system.md](docs/review/packets/p-core-053-artifact-consistency-system.md).
 - Reports index exists at [docs/reports/README.md](docs/reports/README.md).
 - Benchmark registry exists at [docs/benchmarks/benchmark-registry.md](docs/benchmarks/benchmark-registry.md).
@@ -145,6 +146,7 @@ Paper-related status:
 - [P-CORE-030 evidence surface layer review packet](docs/review/packets/p-core-030-evidence-surface-layer.md)
 - [P-CORE-032 reproducibility bundle review packet](docs/review/packets/p-core-032-reproducibility-bundle.md)
 - [P-CORE-034 evaluation bundle review packet](docs/review/packets/p-core-034-evaluation-bundle.md)
+- [P-CORE-047 public review packet layer review packet](docs/review/packets/p-core-047-public-review-packet-layer.md)
 - [P-CORE-053 artifact consistency review packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Benchmark registry](docs/benchmarks/benchmark-registry.md)
@@ -358,6 +360,7 @@ Start with:
 - [P-CORE-030 evidence surface layer review packet](docs/review/packets/p-core-030-evidence-surface-layer.md)
 - [P-CORE-032 reproducibility bundle review packet](docs/review/packets/p-core-032-reproducibility-bundle.md)
 - [P-CORE-034 evaluation bundle review packet](docs/review/packets/p-core-034-evaluation-bundle.md)
+- [P-CORE-047 public review packet layer review packet](docs/review/packets/p-core-047-public-review-packet-layer.md)
 - [P-CORE-053 artifact consistency review packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Evidence map](docs/evidence/evidence-map.md)

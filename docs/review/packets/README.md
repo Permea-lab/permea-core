@@ -13,6 +13,7 @@ python3 scripts/permea_review_packet.py
 - [P-CORE-030 Evidence Surface Layer Review Packet](p-core-030-evidence-surface-layer.md)
 - [P-CORE-032 Reproducibility Bundle Review Packet](p-core-032-reproducibility-bundle.md)
 - [P-CORE-034 Evaluation Bundle Review Packet](p-core-034-evaluation-bundle.md)
+- [P-CORE-047 Public Review Packet Layer Review Packet](p-core-047-public-review-packet-layer.md)
 - [P-CORE-053 Artifact Consistency System Review Packet](p-core-053-artifact-consistency-system.md)
 
 ## Boundary
