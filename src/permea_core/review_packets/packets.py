@@ -12,7 +12,19 @@ PACKET_OUTPUTS = {
     "p-core-053-artifact-consistency-system": {
         "markdown": "docs/review/packets/p-core-053-artifact-consistency-system.md",
         "json": "docs/review/packets/p-core-053-artifact-consistency-system.json",
-    }
+    },
+    "p-core-032-reproducibility-bundle": {
+        "markdown": "docs/review/packets/p-core-032-reproducibility-bundle.md",
+        "json": "docs/review/packets/p-core-032-reproducibility-bundle.json",
+    },
+    "p-core-034-evaluation-bundle": {
+        "markdown": "docs/review/packets/p-core-034-evaluation-bundle.md",
+        "json": "docs/review/packets/p-core-034-evaluation-bundle.json",
+    },
+    "p-core-030-evidence-surface-layer": {
+        "markdown": "docs/review/packets/p-core-030-evidence-surface-layer.md",
+        "json": "docs/review/packets/p-core-030-evidence-surface-layer.json",
+    },
 }
 
 
@@ -83,6 +95,171 @@ def default_packets() -> tuple[ReviewPacket, ...]:
                 "The packet is manually curated for the current artifact system target.",
                 "The packet checks reviewability and deterministic local validation, not scientific correctness.",
                 "Future packets should be added when new public artifact systems become reviewer-facing.",
+            ),
+        ),
+        ReviewPacket(
+            packet_id="p-core-032-reproducibility-bundle",
+            title="P-CORE-032 Reproducibility Bundle Review Packet",
+            artifact_path="docs/examples/generated/REPRODUCIBILITY_REPORT.md",
+            artifact_type="public reproducibility report and local regeneration surface",
+            purpose=(
+                "Help a reviewer inspect the reproducibility bundle through its public "
+                "report, generator, validation commands, evidence record, tests, lineage, "
+                "claim boundaries, and limitations."
+            ),
+            related_evidence_report_links=(
+                "scripts/permea_reproduce.py",
+                "scripts/permea_validate.py",
+                "scripts/generate_permea_artifacts.py",
+                "scripts/validate_permea_artifacts.py",
+                "src/permea_core/reproducibility/bundle.py",
+                "docs/examples/generated/REPRODUCIBILITY_REPORT.md",
+                "docs/examples/generated/REPRODUCIBILITY_REPORT.json",
+                "docs/evidence/EVIDENCE-032-reproducibility-bundle.md",
+                "REPRODUCIBILITY.md",
+                "tests/test_reproducibility_bundle.py",
+            ),
+            validation_commands=(
+                "python3 scripts/permea_reproduce.py",
+                "python3 scripts/permea_validate.py",
+                "python3 scripts/validate_permea_artifacts.py",
+                "python3 -m pytest tests/test_reproducibility_bundle.py",
+            ),
+            raw_readability_notes=(
+                "The reproducibility packet points to generated Markdown and JSON report outputs.",
+                "This markdown packet is intentionally written as physical newline-separated text.",
+                "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+                "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed.",
+            ),
+            claim_boundary_notes=(
+                "This packet reviews deterministic local reproduction and validation surfaces only.",
+                "It does not download datasets, execute acquisition, call external services, run ML, or score candidates.",
+                "It does not create scientific evidence, benchmark results, or biological validation.",
+                "It does not claim wet-lab validation, clinical efficacy, model performance, or solved delivery.",
+                "A passing packet means the listed reproducibility surface is easier to inspect; it does not prove biological outcomes.",
+            ),
+            reviewer_checklist=(
+                "Open the reproducibility report Markdown and JSON outputs and confirm they are generated from public repository files.",
+                "Run the listed reproduction and validation commands from the repository root.",
+                "Confirm generated artifact lineage points to existing public files and directories.",
+                "Confirm limitations and non-claims remain explicit in the report and evidence record.",
+                "Record any missing generated surface, stale command, unclear boundary, or validation failure before approval.",
+            ),
+            limitations=(
+                "The packet covers local deterministic metadata artifacts, not dataset acquisition or external service execution.",
+                "The packet checks reviewability and reproducibility command coverage, not scientific correctness.",
+                "Generated examples are infrastructure surfaces and should not be treated as experimental evidence.",
+            ),
+        ),
+        ReviewPacket(
+            packet_id="p-core-034-evaluation-bundle",
+            title="P-CORE-034 Evaluation Bundle Review Packet",
+            artifact_path="docs/examples/generated/EVALUATION_PACKET.md",
+            artifact_type="public evaluation template and reference packet surface",
+            purpose=(
+                "Help a reviewer inspect the evaluation bundle through its generated "
+                "packet, template inputs, source module, validation handoff, "
+                "reproducibility handoff, evidence record, tests, boundaries, and limitations."
+            ),
+            related_evidence_report_links=(
+                "scripts/permea_evaluate.py",
+                "scripts/permea_reproduce.py",
+                "scripts/permea_validate.py",
+                "src/permea_core/evaluation/bundle.py",
+                "docs/examples/generated/EVALUATION_PACKET.md",
+                "docs/examples/generated/EVALUATION_PACKET.json",
+                "docs/evidence/EVIDENCE-034-evaluation-bundle.md",
+                "EVALUATION.md",
+                "tests/test_evaluation_bundle.py",
+            ),
+            validation_commands=(
+                "python3 scripts/permea_evaluate.py",
+                "python3 scripts/permea_reproduce.py --report-only",
+                "python3 scripts/permea_validate.py",
+                "python3 -m pytest tests/test_evaluation_bundle.py",
+            ),
+            raw_readability_notes=(
+                "The evaluation packet points to generated Markdown and JSON packet outputs.",
+                "This markdown packet is intentionally written as physical newline-separated text.",
+                "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+                "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed.",
+            ),
+            claim_boundary_notes=(
+                "This packet reviews a template/reference evaluation workflow only.",
+                "It does not load datasets, execute acquisition, call external services, run ML, or score candidates.",
+                "It does not create scientific evidence, benchmark results, or biological validation.",
+                "It does not claim wet-lab validation, clinical efficacy, model performance, or solved delivery.",
+                "A passing packet means the listed evaluation surface is easier to inspect; it does not prove biological outcomes.",
+            ),
+            reviewer_checklist=(
+                "Open the evaluation packet Markdown and JSON outputs and confirm the input-family links are public and existing.",
+                "Run the listed evaluation, reproduction, validation, and focused test commands from the repository root.",
+                "Confirm validation and reproducibility handoffs are visible in the generated evaluation packet.",
+                "Confirm limitations and non-claims remain explicit in the packet and evidence record.",
+                "Record any missing input family, stale command, unclear boundary, or validation failure before approval.",
+            ),
+            limitations=(
+                "The packet covers a reusable template/reference workflow, not a completed external evaluation result.",
+                "The packet checks reviewability and local generation coverage, not scientific correctness.",
+                "The evaluation bundle does not establish access rights, redistribution status, biological performance, or clinical utility.",
+            ),
+        ),
+        ReviewPacket(
+            packet_id="p-core-030-evidence-surface-layer",
+            title="P-CORE-030 Evidence Surface Layer Review Packet",
+            artifact_path="docs/examples/generated/README.md",
+            artifact_type="generated public evidence navigation surface",
+            purpose=(
+                "Help a reviewer inspect the generated evidence surface through its "
+                "navigation README, evidence record, source module, generation command, "
+                "validation commands, linked artifact families, boundaries, and limitations."
+            ),
+            related_evidence_report_links=(
+                "scripts/generate_evidence_surface.py",
+                "scripts/permea_evidence.py",
+                "scripts/permea_validate.py",
+                "scripts/validate_permea_artifacts.py",
+                "src/permea_core/surface/evidence_surface.py",
+                "docs/examples/generated/README.md",
+                "docs/examples/generated/ARTIFACT_INDEX.md",
+                "docs/examples/generated/EVIDENCE_MATRIX.md",
+                "docs/evidence/EVIDENCE-030-evidence-surface-layer.md",
+                "docs/evidence/evidence-index.md",
+                "docs/evidence/evidence-map.md",
+                "docs/evidence/claim-to-evidence-matrix.md",
+                "tests/test_evidence_surface.py",
+                "tests/test_evidence_navigation.py",
+            ),
+            validation_commands=(
+                "python3 scripts/generate_evidence_surface.py",
+                "python3 scripts/permea_evidence.py",
+                "python3 scripts/validate_permea_artifacts.py",
+                "python3 -m pytest tests/test_evidence_surface.py tests/test_evidence_navigation.py",
+            ),
+            raw_readability_notes=(
+                "The evidence surface packet points to generated navigation Markdown and evidence-layer docs.",
+                "This markdown packet is intentionally written as physical newline-separated text.",
+                "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+                "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed.",
+            ),
+            claim_boundary_notes=(
+                "This packet reviews navigation, artifact-family links, and validation surfaces only.",
+                "It does not download datasets, execute acquisition, call external services, run ML, or score candidates.",
+                "It does not create scientific evidence, benchmark results, or biological validation.",
+                "It does not claim wet-lab validation, clinical efficacy, model performance, or solved delivery.",
+                "A passing packet means the listed evidence surface is easier to inspect; it does not prove biological outcomes.",
+            ),
+            reviewer_checklist=(
+                "Open the generated evidence surface and confirm it links current public artifact families and review commands.",
+                "Run the listed generation, evidence summary, validation, and focused test commands from the repository root.",
+                "Confirm the evidence record, evidence index, evidence map, and matrix remain aligned with the generated surface.",
+                "Confirm limitations and non-claims remain explicit in the generated surface and evidence docs.",
+                "Record any missing artifact family, stale link, unclear boundary, or validation failure before approval.",
+            ),
+            limitations=(
+                "The packet covers generated evidence navigation, not source-data acquisition or external validation.",
+                "The packet checks reviewability and local generation coverage, not scientific correctness.",
+                "The generated evidence surface organizes current public artifacts and should not be treated as experimental evidence.",
             ),
         ),
     )
@@ -183,7 +360,7 @@ def render_packet_markdown(packet: ReviewPacket, output_path: Path, root: Path) 
             "python3 scripts/permea_review_packet.py",
             "```",
             "",
-            "Then inspect this packet together with the P-CORE-053 report and artifact consistency command output.",
+            "Then inspect this packet together with the linked report, generated artifacts, and command output.",
         ]
     )
     return _newline_terminated_text(lines)
@@ -221,8 +398,10 @@ def render_summary(result: dict[str, object]) -> str:
             "- no scientific, biological, wet-lab, clinical, performance, or solved-delivery claim is made by this layer",
             "",
             "Next recommended commands:",
+            "- python3 scripts/permea_review_packet.py",
             "- python3 scripts/permea_artifacts.py",
             "- python3 scripts/validate_permea_artifacts.py",
+            "- python3 scripts/permea_evidence.py",
             "- python3 -m pytest",
         ]
     )

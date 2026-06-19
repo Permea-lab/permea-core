@@ -17,6 +17,7 @@ from permea_core.review_packets import (  # noqa: E402
     generate_review_packets,
 )
 
+PACKET_IDS = tuple(PACKET_OUTPUTS)
 PACKET_ID = "p-core-053-artifact-consistency-system"
 PACKET_MD = ROOT / PACKET_OUTPUTS[PACKET_ID]["markdown"]
 PACKET_JSON = ROOT / PACKET_OUTPUTS[PACKET_ID]["json"]
@@ -26,13 +27,16 @@ TOUCHED_PUBLIC_FILES = (
     "REVIEW_HUB.md",
     "docs/reports/README.md",
     "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
+    "docs/reports/p-core-059-review-packet-expansion-v0.md",
+    "docs/review/README.md",
     "docs/review/review-packet-system.md",
     "docs/review/packets/README.md",
-    "docs/review/packets/p-core-053-artifact-consistency-system.md",
     "scripts/permea_review_packet.py",
+    "scripts/verify_review_packet_raw_urls.py",
     "src/permea_core/review_packets/__init__.py",
     "src/permea_core/review_packets/packets.py",
     "tests/test_evidence_review_packet_system.py",
+    "tests/test_review_packet_raw_url_verification.py",
 )
 PROHIBITED_PUBLIC_SAFETY_TERMS = (
     "AI " + "Champion",
@@ -76,86 +80,110 @@ def test_review_packet_cli_executes_and_is_deterministic() -> None:
     assert first_markdown == second_markdown
     assert first_json == second_json
     assert "Evidence Review Packet System Ready" in first
-    assert "Review packets generated: 1" in first
+    assert f"Review packets generated: {len(PACKET_IDS)}" in first
+    for packet_id in PACKET_IDS:
+        assert packet_id in first
 
 
 def test_review_packet_generation_result_structure() -> None:
     result = generate_review_packets(ROOT)
 
     assert result["status"] == "PASS"
-    assert result["packet_count"] == 1
-    assert result["packets"][0]["packet_id"] == PACKET_ID
-    assert PACKET_MD.exists()
-    assert PACKET_JSON.exists()
+    assert result["packet_count"] == len(PACKET_IDS)
+    assert [packet["packet_id"] for packet in result["packets"]] == list(PACKET_IDS)
+    for packet_id in PACKET_IDS:
+        assert (ROOT / PACKET_OUTPUTS[packet_id]["markdown"]).exists()
+        assert (ROOT / PACKET_OUTPUTS[packet_id]["json"]).exists()
 
 
 def test_review_packet_json_contains_required_fields() -> None:
-    payload = json.loads(PACKET_JSON.read_text(encoding="utf-8"))
+    for packet_id in PACKET_IDS:
+        payload = _packet_payload(packet_id)
 
-    for field in (
-        "packet_id",
-        "title",
-        "artifact_path",
-        "artifact_type",
-        "purpose",
-        "related_evidence_report_links",
-        "validation_commands",
-        "claim_boundary_notes",
-        "reviewer_checklist",
-        "limitations",
-    ):
-        assert field in payload
+        for field in (
+            "packet_id",
+            "title",
+            "artifact_path",
+            "artifact_type",
+            "purpose",
+            "related_evidence_report_links",
+            "validation_commands",
+            "raw_readability_notes",
+            "claim_boundary_notes",
+            "reviewer_checklist",
+            "limitations",
+        ):
+            assert field in payload
 
-    assert payload["packet_id"] == PACKET_ID
-    assert payload["artifact_path"] == "docs/artifacts/README.md"
+        assert payload["packet_id"] == packet_id
+        assert (ROOT / payload["artifact_path"]).exists(), payload["artifact_path"]
+        for field in (
+            "related_evidence_report_links",
+            "validation_commands",
+            "raw_readability_notes",
+            "claim_boundary_notes",
+            "reviewer_checklist",
+            "limitations",
+        ):
+            assert payload[field], f"{packet_id} missing {field}"
 
 
 def test_review_packet_links_existing_artifacts() -> None:
-    payload = json.loads(PACKET_JSON.read_text(encoding="utf-8"))
+    for packet_id in PACKET_IDS:
+        payload = _packet_payload(packet_id)
 
-    for path in payload["related_evidence_report_links"]:
-        assert (ROOT / path).exists(), path
+        for path in payload["related_evidence_report_links"]:
+            assert (ROOT / path).exists(), f"{packet_id}: {path}"
 
-    assert "scripts/permea_artifacts.py" in payload["related_evidence_report_links"]
-    assert "src/permea_core/consistency/artifacts.py" in payload["related_evidence_report_links"]
-    assert "docs/reports/p-core-053-artifact-consistency-system-v0.md" in payload["related_evidence_report_links"]
+    assert "scripts/permea_artifacts.py" in _packet_payload(PACKET_ID)["related_evidence_report_links"]
+    assert "src/permea_core/consistency/artifacts.py" in _packet_payload(PACKET_ID)["related_evidence_report_links"]
+    assert "docs/reports/p-core-053-artifact-consistency-system-v0.md" in _packet_payload(PACKET_ID)["related_evidence_report_links"]
+    assert "scripts/permea_reproduce.py" in _packet_payload("p-core-032-reproducibility-bundle")["related_evidence_report_links"]
+    assert "scripts/permea_evaluate.py" in _packet_payload("p-core-034-evaluation-bundle")["related_evidence_report_links"]
+    assert "scripts/permea_evidence.py" in _packet_payload("p-core-030-evidence-surface-layer")["related_evidence_report_links"]
 
 
 def test_review_packet_markdown_contains_review_sections() -> None:
-    text = PACKET_MD.read_text(encoding="utf-8")
+    for packet_id in PACKET_IDS:
+        text = _packet_markdown(packet_id)
 
-    for heading in (
-        "## Packet Metadata",
-        "## Related Evidence And Report Links",
-        "## Validation Commands",
-        "## Claim Boundary Notes",
-        "## Reviewer Checklist",
-        "## Limitations",
-    ):
-        assert heading in text
+        for heading in (
+            "## Packet Metadata",
+            "## Related Evidence And Report Links",
+            "## Validation Commands",
+            "## Claim Boundary Notes",
+            "## Reviewer Checklist",
+            "## Limitations",
+        ):
+            assert heading in text
 
-    assert "| Field | Value |" in text
-    assert "| Review surface | Link |" in text
-    assert "```bash\npython3 scripts/permea_artifacts.py\n```" in text
-    assert "```bash\npython3 scripts/permea_review_packet.py\n```" in text
-    assert "python3 scripts/permea_artifacts.py" in text
-    assert "does not create scientific evidence" in text
+        assert "| Field | Value |" in text
+        assert "| Review surface | Link |" in text
+        assert "```bash\npython3 scripts/permea_review_packet.py\n```" in text
+        assert "does not create scientific evidence" in text
+
+    assert "```bash\npython3 scripts/permea_artifacts.py\n```" in _packet_markdown(PACKET_ID)
+    assert "```bash\npython3 scripts/permea_reproduce.py\n```" in _packet_markdown("p-core-032-reproducibility-bundle")
+    assert "```bash\npython3 scripts/permea_evaluate.py\n```" in _packet_markdown("p-core-034-evaluation-bundle")
+    assert "```bash\npython3 scripts/permea_evidence.py\n```" in _packet_markdown("p-core-030-evidence-surface-layer")
 
 
 def test_review_packet_markdown_is_physical_multiline_text() -> None:
-    raw = PACKET_MD.read_bytes()
-    text = raw.decode("utf-8")
-    lines = text.splitlines()
+    for packet_id in PACKET_IDS:
+        raw = _packet_markdown_path(packet_id).read_bytes()
+        text = raw.decode("utf-8")
+        lines = text.splitlines()
+        payload = _packet_payload(packet_id)
 
-    assert raw.endswith(b"\n")
-    assert raw.count(b"\n") >= 70
-    assert b"\\n" not in raw
-    assert len(lines) >= 70
-    assert lines[0] == "# P-CORE-053 Artifact Consistency System Review Packet"
-    assert "## Packet Metadata" in lines
-    assert "## Validation Commands" in lines
-    assert "## Reviewer Checklist" in lines
-    assert "## Limitations" in lines
+        assert raw.endswith(b"\n")
+        assert raw.count(b"\n") >= 70
+        assert b"\\n" not in raw
+        assert len(lines) >= 70
+        assert lines[0] == f"# {payload['title']}"
+        assert "## Packet Metadata" in lines
+        assert "## Validation Commands" in lines
+        assert "## Reviewer Checklist" in lines
+        assert "## Limitations" in lines
 
 
 def test_generated_packet_files_have_no_hidden_unicode_or_bad_line_endings() -> None:
@@ -174,8 +202,12 @@ def test_generated_packet_files_have_no_hidden_unicode_or_bad_line_endings() -> 
         "\u2069",
     }
     zero_width = {"\u200b", "\u200c", "\u200d", "\ufeff"}
+    packet_paths = []
+    for packet_id in PACKET_IDS:
+        packet_paths.append((_packet_markdown_path(packet_id), 40))
+        packet_paths.append((_packet_json_path(packet_id), 10))
 
-    for packet_path, minimum_lines in ((PACKET_MD, 40), (PACKET_JSON, 10)):
+    for packet_path, minimum_lines in packet_paths:
         raw = packet_path.read_bytes()
         text = raw.decode("utf-8")
 
@@ -205,16 +237,17 @@ def test_generated_packet_files_have_no_hidden_unicode_or_bad_line_endings() -> 
 
 
 def test_review_packet_json_is_pretty_printed_with_stable_key_order() -> None:
-    raw_bytes = PACKET_JSON.read_bytes()
-    raw = raw_bytes.decode("utf-8")
-    payload = json.loads(raw)
+    for packet_id in PACKET_IDS:
+        raw_bytes = _packet_json_path(packet_id).read_bytes()
+        raw = raw_bytes.decode("utf-8")
+        payload = json.loads(raw)
 
-    assert raw_bytes.endswith(b"\n")
-    assert raw_bytes.count(b"\n") >= 35
-    assert b"\\n" not in raw_bytes
-    assert raw.startswith('{\n  "artifact_path":')
-    assert '\n  "validation_commands": [\n' in raw
-    assert raw == json.dumps(payload, indent=2, sort_keys=True) + "\n"
+        assert raw_bytes.endswith(b"\n")
+        assert raw_bytes.count(b"\n") >= 35
+        assert b"\\n" not in raw_bytes
+        assert raw.startswith('{\n  "artifact_path":')
+        assert '\n  "validation_commands": [\n' in raw
+        assert raw == json.dumps(payload, indent=2, sort_keys=True) + "\n"
 
 
 def test_review_packet_surface_integration() -> None:
@@ -226,7 +259,11 @@ def test_review_packet_surface_integration() -> None:
     assert "python3 scripts/permea_review_packet.py" in readme
     assert "docs/review/review-packet-system.md" in open_first
     assert "docs/review/packets/p-core-053-artifact-consistency-system.md" in review_hub
+    assert "docs/review/packets/p-core-032-reproducibility-bundle.md" in review_hub
+    assert "docs/review/packets/p-core-034-evaluation-bundle.md" in review_hub
+    assert "docs/review/packets/p-core-030-evidence-surface-layer.md" in review_hub
     assert "p-core-054-evidence-review-packet-system-v0.md" in reports
+    assert "p-core-059-review-packet-expansion-v0.md" in reports
 
 
 def test_public_safe_boundary_scan_for_review_packet_files() -> None:
@@ -247,4 +284,24 @@ def test_prohibited_claim_scan_for_review_packet_files() -> None:
 
 
 def _combined_touched_text() -> str:
-    return "\n".join((ROOT / path).read_text(encoding="utf-8") for path in TOUCHED_PUBLIC_FILES)
+    paths = [ROOT / path for path in TOUCHED_PUBLIC_FILES]
+    for packet_id in PACKET_IDS:
+        paths.append(_packet_markdown_path(packet_id))
+        paths.append(_packet_json_path(packet_id))
+    return "\n".join(path.read_text(encoding="utf-8") for path in paths)
+
+
+def _packet_markdown_path(packet_id: str) -> Path:
+    return ROOT / PACKET_OUTPUTS[packet_id]["markdown"]
+
+
+def _packet_json_path(packet_id: str) -> Path:
+    return ROOT / PACKET_OUTPUTS[packet_id]["json"]
+
+
+def _packet_markdown(packet_id: str) -> str:
+    return _packet_markdown_path(packet_id).read_text(encoding="utf-8")
+
+
+def _packet_payload(packet_id: str) -> dict[str, object]:
+    return json.loads(_packet_json_path(packet_id).read_text(encoding="utf-8"))

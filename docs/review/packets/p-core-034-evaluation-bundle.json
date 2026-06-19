@@ -1,0 +1,49 @@
+{
+  "artifact_path": "docs/examples/generated/EVALUATION_PACKET.md",
+  "artifact_type": "public evaluation template and reference packet surface",
+  "claim_boundary_notes": [
+    "This packet reviews a template/reference evaluation workflow only.",
+    "It does not load datasets, execute acquisition, call external services, run ML, or score candidates.",
+    "It does not create scientific evidence, benchmark results, or biological validation.",
+    "It does not claim wet-lab validation, clinical efficacy, model performance, or solved delivery.",
+    "A passing packet means the listed evaluation surface is easier to inspect; it does not prove biological outcomes."
+  ],
+  "limitations": [
+    "The packet covers a reusable template/reference workflow, not a completed external evaluation result.",
+    "The packet checks reviewability and local generation coverage, not scientific correctness.",
+    "The evaluation bundle does not establish access rights, redistribution status, biological performance, or clinical utility."
+  ],
+  "packet_id": "p-core-034-evaluation-bundle",
+  "purpose": "Help a reviewer inspect the evaluation bundle through its generated packet, template inputs, source module, validation handoff, reproducibility handoff, evidence record, tests, boundaries, and limitations.",
+  "raw_readability_notes": [
+    "The evaluation packet points to generated Markdown and JSON packet outputs.",
+    "This markdown packet is intentionally written as physical newline-separated text.",
+    "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+    "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed."
+  ],
+  "related_evidence_report_links": [
+    "scripts/permea_evaluate.py",
+    "scripts/permea_reproduce.py",
+    "scripts/permea_validate.py",
+    "src/permea_core/evaluation/bundle.py",
+    "docs/examples/generated/EVALUATION_PACKET.md",
+    "docs/examples/generated/EVALUATION_PACKET.json",
+    "docs/evidence/EVIDENCE-034-evaluation-bundle.md",
+    "EVALUATION.md",
+    "tests/test_evaluation_bundle.py"
+  ],
+  "reviewer_checklist": [
+    "Open the evaluation packet Markdown and JSON outputs and confirm the input-family links are public and existing.",
+    "Run the listed evaluation, reproduction, validation, and focused test commands from the repository root.",
+    "Confirm validation and reproducibility handoffs are visible in the generated evaluation packet.",
+    "Confirm limitations and non-claims remain explicit in the packet and evidence record.",
+    "Record any missing input family, stale command, unclear boundary, or validation failure before approval."
+  ],
+  "title": "P-CORE-034 Evaluation Bundle Review Packet",
+  "validation_commands": [
+    "python3 scripts/permea_evaluate.py",
+    "python3 scripts/permea_reproduce.py --report-only",
+    "python3 scripts/permea_validate.py",
+    "python3 -m pytest tests/test_evaluation_bundle.py"
+  ]
+}

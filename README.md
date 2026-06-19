@@ -63,7 +63,7 @@ Generate reviewer-facing evidence packets for public artifact systems with:
 python3 scripts/permea_review_packet.py
 ```
 
-The first generated packet is [P-CORE-053 Artifact Consistency System Review Packet](docs/review/packets/p-core-053-artifact-consistency-system.md). It links the reviewed script, module, docs, tests, report, validation commands, claim boundaries, and limitations.
+Generated packets currently cover [evidence surface navigation](docs/review/packets/p-core-030-evidence-surface-layer.md), [reproducibility](docs/review/packets/p-core-032-reproducibility-bundle.md), [evaluation](docs/review/packets/p-core-034-evaluation-bundle.md), and [artifact consistency](docs/review/packets/p-core-053-artifact-consistency-system.md). They link reviewed scripts, modules, docs, tests, reports, validation commands, claim boundaries, and limitations.
 
 ## Evidence And Claims
 

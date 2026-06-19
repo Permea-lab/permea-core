@@ -1,0 +1,54 @@
+{
+  "artifact_path": "docs/examples/generated/README.md",
+  "artifact_type": "generated public evidence navigation surface",
+  "claim_boundary_notes": [
+    "This packet reviews navigation, artifact-family links, and validation surfaces only.",
+    "It does not download datasets, execute acquisition, call external services, run ML, or score candidates.",
+    "It does not create scientific evidence, benchmark results, or biological validation.",
+    "It does not claim wet-lab validation, clinical efficacy, model performance, or solved delivery.",
+    "A passing packet means the listed evidence surface is easier to inspect; it does not prove biological outcomes."
+  ],
+  "limitations": [
+    "The packet covers generated evidence navigation, not source-data acquisition or external validation.",
+    "The packet checks reviewability and local generation coverage, not scientific correctness.",
+    "The generated evidence surface organizes current public artifacts and should not be treated as experimental evidence."
+  ],
+  "packet_id": "p-core-030-evidence-surface-layer",
+  "purpose": "Help a reviewer inspect the generated evidence surface through its navigation README, evidence record, source module, generation command, validation commands, linked artifact families, boundaries, and limitations.",
+  "raw_readability_notes": [
+    "The evidence surface packet points to generated navigation Markdown and evidence-layer docs.",
+    "This markdown packet is intentionally written as physical newline-separated text.",
+    "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+    "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed."
+  ],
+  "related_evidence_report_links": [
+    "scripts/generate_evidence_surface.py",
+    "scripts/permea_evidence.py",
+    "scripts/permea_validate.py",
+    "scripts/validate_permea_artifacts.py",
+    "src/permea_core/surface/evidence_surface.py",
+    "docs/examples/generated/README.md",
+    "docs/examples/generated/ARTIFACT_INDEX.md",
+    "docs/examples/generated/EVIDENCE_MATRIX.md",
+    "docs/evidence/EVIDENCE-030-evidence-surface-layer.md",
+    "docs/evidence/evidence-index.md",
+    "docs/evidence/evidence-map.md",
+    "docs/evidence/claim-to-evidence-matrix.md",
+    "tests/test_evidence_surface.py",
+    "tests/test_evidence_navigation.py"
+  ],
+  "reviewer_checklist": [
+    "Open the generated evidence surface and confirm it links current public artifact families and review commands.",
+    "Run the listed generation, evidence summary, validation, and focused test commands from the repository root.",
+    "Confirm the evidence record, evidence index, evidence map, and matrix remain aligned with the generated surface.",
+    "Confirm limitations and non-claims remain explicit in the generated surface and evidence docs.",
+    "Record any missing artifact family, stale link, unclear boundary, or validation failure before approval."
+  ],
+  "title": "P-CORE-030 Evidence Surface Layer Review Packet",
+  "validation_commands": [
+    "python3 scripts/generate_evidence_surface.py",
+    "python3 scripts/permea_evidence.py",
+    "python3 scripts/validate_permea_artifacts.py",
+    "python3 -m pytest tests/test_evidence_surface.py tests/test_evidence_navigation.py"
+  ]
+}

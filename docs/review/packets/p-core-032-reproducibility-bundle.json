@@ -1,0 +1,50 @@
+{
+  "artifact_path": "docs/examples/generated/REPRODUCIBILITY_REPORT.md",
+  "artifact_type": "public reproducibility report and local regeneration surface",
+  "claim_boundary_notes": [
+    "This packet reviews deterministic local reproduction and validation surfaces only.",
+    "It does not download datasets, execute acquisition, call external services, run ML, or score candidates.",
+    "It does not create scientific evidence, benchmark results, or biological validation.",
+    "It does not claim wet-lab validation, clinical efficacy, model performance, or solved delivery.",
+    "A passing packet means the listed reproducibility surface is easier to inspect; it does not prove biological outcomes."
+  ],
+  "limitations": [
+    "The packet covers local deterministic metadata artifacts, not dataset acquisition or external service execution.",
+    "The packet checks reviewability and reproducibility command coverage, not scientific correctness.",
+    "Generated examples are infrastructure surfaces and should not be treated as experimental evidence."
+  ],
+  "packet_id": "p-core-032-reproducibility-bundle",
+  "purpose": "Help a reviewer inspect the reproducibility bundle through its public report, generator, validation commands, evidence record, tests, lineage, claim boundaries, and limitations.",
+  "raw_readability_notes": [
+    "The reproducibility packet points to generated Markdown and JSON report outputs.",
+    "This markdown packet is intentionally written as physical newline-separated text.",
+    "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+    "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed."
+  ],
+  "related_evidence_report_links": [
+    "scripts/permea_reproduce.py",
+    "scripts/permea_validate.py",
+    "scripts/generate_permea_artifacts.py",
+    "scripts/validate_permea_artifacts.py",
+    "src/permea_core/reproducibility/bundle.py",
+    "docs/examples/generated/REPRODUCIBILITY_REPORT.md",
+    "docs/examples/generated/REPRODUCIBILITY_REPORT.json",
+    "docs/evidence/EVIDENCE-032-reproducibility-bundle.md",
+    "REPRODUCIBILITY.md",
+    "tests/test_reproducibility_bundle.py"
+  ],
+  "reviewer_checklist": [
+    "Open the reproducibility report Markdown and JSON outputs and confirm they are generated from public repository files.",
+    "Run the listed reproduction and validation commands from the repository root.",
+    "Confirm generated artifact lineage points to existing public files and directories.",
+    "Confirm limitations and non-claims remain explicit in the report and evidence record.",
+    "Record any missing generated surface, stale command, unclear boundary, or validation failure before approval."
+  ],
+  "title": "P-CORE-032 Reproducibility Bundle Review Packet",
+  "validation_commands": [
+    "python3 scripts/permea_reproduce.py",
+    "python3 scripts/permea_validate.py",
+    "python3 scripts/validate_permea_artifacts.py",
+    "python3 -m pytest tests/test_reproducibility_bundle.py"
+  ]
+}

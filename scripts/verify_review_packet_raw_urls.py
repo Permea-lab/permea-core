@@ -11,18 +11,19 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_BRANCH = "p-core-054-evidence-review-packet-system"
-RAW_TARGETS = (
-    (
-        "markdown",
-        "docs/review/packets/p-core-053-artifact-consistency-system.md",
-        70,
-    ),
-    (
-        "json",
-        "docs/review/packets/p-core-053-artifact-consistency-system.json",
-        35,
-    ),
+SRC = ROOT / "src"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
+
+from permea_core.review_packets import PACKET_OUTPUTS  # noqa: E402
+
+DEFAULT_BRANCH = "p-core-059-review-packet-expansion"
+RAW_TARGETS = tuple(
+    (f"{packet_id} markdown", outputs["markdown"], 70)
+    for packet_id, outputs in PACKET_OUTPUTS.items()
+) + tuple(
+    (f"{packet_id} json", outputs["json"], 35)
+    for packet_id, outputs in PACKET_OUTPUTS.items()
 )
 
 

@@ -8,7 +8,7 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-054-evidence-review-packet-system`
+- Branch used for this update: `p-core-059-review-packet-expansion`
 - Public baseline reviewed: `main` at `6a3d60ce06f7a7f53179a406d4297edf22c71382`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
@@ -29,7 +29,7 @@ Permea Core currently provides:
 - artifact consistency review command at `python3 scripts/permea_artifacts.py`
 - evidence review packet documentation at `docs/review/review-packet-system.md`
 - evidence review packet generation command at `python3 scripts/permea_review_packet.py`
-- generated evidence review packet at `docs/review/packets/p-core-053-artifact-consistency-system.md`
+- generated evidence review packets at `docs/review/packets/`
 - report navigation at `docs/reports/README.md`
 - public claim registry at `docs/claims/claim-registry.md`
 - decision records for major program choices under `docs/decisions/`
@@ -143,6 +143,7 @@ At this update, the reviewed public baseline was `6a3d60ce06f7a7f53179a406d4297e
 - [P-CORE-052 autonomous queue pilot report](docs/reports/p-core-052-autonomous-queue-pilot-v0.md)
 - [P-CORE-053 artifact consistency system report](docs/reports/p-core-053-artifact-consistency-system-v0.md)
 - [P-CORE-054 evidence review packet system report](docs/reports/p-core-054-evidence-review-packet-system-v0.md)
+- [P-CORE-059 review packet expansion report](docs/reports/p-core-059-review-packet-expansion-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -162,6 +163,9 @@ At this update, the reviewed public baseline was `6a3d60ce06f7a7f53179a406d4297e
 - [Architecture index](docs/architecture/README.md)
 - [Artifact consistency](docs/artifacts/README.md)
 - [Evidence review packet system](docs/review/review-packet-system.md)
+- [P-CORE-030 Evidence Surface Layer Review Packet](docs/review/packets/p-core-030-evidence-surface-layer.md)
+- [P-CORE-032 Reproducibility Bundle Review Packet](docs/review/packets/p-core-032-reproducibility-bundle.md)
+- [P-CORE-034 Evaluation Bundle Review Packet](docs/review/packets/p-core-034-evaluation-bundle.md)
 - [P-CORE-053 Artifact Consistency System Review Packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
@@ -205,9 +209,9 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after the artifact consistency system:
+Recommended next task after the review packet expansion:
 
-- Review the P-CORE-054 evidence review packet system PR if validation and scans remain clean.
+- Review the P-CORE-059 review packet expansion PR if validation and scans remain clean.
 - Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
 
 ## How To Continue

@@ -21,9 +21,19 @@ def test_raw_url_verifier_uses_curl_and_expected_urls() -> None:
 
     assert '"curl"' in text
     assert "raw.githubusercontent.com/Permea-lab/permea-core" in text
-    assert "p-core-054-evidence-review-packet-system" in text
-    assert "p-core-053-artifact-consistency-system.md" in text
-    assert "p-core-053-artifact-consistency-system.json" in text
+    assert "p-core-059-review-packet-expansion" in text
+    assert "PACKET_OUTPUTS" in text
+
+    module = _load_module()
+    target_paths = [target[1] for target in module.RAW_TARGETS]
+    assert "docs/review/packets/p-core-053-artifact-consistency-system.md" in target_paths
+    assert "docs/review/packets/p-core-053-artifact-consistency-system.json" in target_paths
+    assert "docs/review/packets/p-core-032-reproducibility-bundle.md" in target_paths
+    assert "docs/review/packets/p-core-032-reproducibility-bundle.json" in target_paths
+    assert "docs/review/packets/p-core-034-evaluation-bundle.md" in target_paths
+    assert "docs/review/packets/p-core-034-evaluation-bundle.json" in target_paths
+    assert "docs/review/packets/p-core-030-evidence-surface-layer.md" in target_paths
+    assert "docs/review/packets/p-core-030-evidence-surface-layer.json" in target_paths
 
 
 def test_raw_byte_analysis_detects_physical_lines() -> None:
