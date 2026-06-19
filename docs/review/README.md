@@ -15,6 +15,9 @@ python3 scripts/permea_review.py
 Then follow the packet:
 
 - [Public review packet](public-review-packet.md)
+- [Evidence review packet system](review-packet-system.md)
+- [Generated review packets](packets/README.md)
+- [P-CORE-053 Artifact Consistency System Review Packet](packets/p-core-053-artifact-consistency-system.md)
 - [Public review packet template](public-review-packet-template.md)
 - [Public review packet assembly](public-review-packet-assembly.md)
 - [Public review packet governance](public-review-packet-governance.md)
@@ -26,6 +29,12 @@ Then follow the packet:
 Public Review Packet Ready
 
 This layer does not create new scientific evidence, write a paper, submit a paper, publish a paper, or claim biological outcomes.
+
+The evidence review packet system adds concrete reviewer packets for selected public artifact systems. Generate them with:
+
+```bash
+python3 scripts/permea_review_packet.py
+```
 
 ## Claim Boundaries
 

@@ -8,8 +8,8 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-053-artifact-consistency-system`
-- Public baseline reviewed: `main` at `ff67926773c86cecfec43d3af3f5fecb454464fa`
+- Branch used for this update: `p-core-054-evidence-review-packet-system`
+- Public baseline reviewed: `main` at `6a3d60ce06f7a7f53179a406d4297edf22c71382`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -27,6 +27,9 @@ Permea Core currently provides:
 - architecture navigation at `docs/architecture/README.md`
 - artifact consistency documentation at `docs/artifacts/README.md`
 - artifact consistency review command at `python3 scripts/permea_artifacts.py`
+- evidence review packet documentation at `docs/review/review-packet-system.md`
+- evidence review packet generation command at `python3 scripts/permea_review_packet.py`
+- generated evidence review packet at `docs/review/packets/p-core-053-artifact-consistency-system.md`
 - report navigation at `docs/reports/README.md`
 - public claim registry at `docs/claims/claim-registry.md`
 - decision records for major program choices under `docs/decisions/`
@@ -71,8 +74,9 @@ Permea's current public program model is:
 - Signal Integration Layer: Implemented
 - Evidence Lineage Layer: Implemented
 - Public Review Packet Layer: Implemented
+- Evidence Review Packet System: Implemented
 
-See [Evidence Layer](docs/evidence/README.md), [Artifact Consistency](docs/artifacts/README.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
+See [Evidence Layer](docs/evidence/README.md), [Artifact Consistency](docs/artifacts/README.md), [Evidence Review Packet System](docs/review/review-packet-system.md), [Evidence Index](docs/evidence/evidence-index.md), and [Decision Records](docs/decisions/README.md) for the current review surfaces.
 
 ## Last Completed Major Work
 
@@ -116,7 +120,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `ff67926773c86cecfec43d3af3f5fecb454464fa`.
+At this update, the reviewed public baseline was `6a3d60ce06f7a7f53179a406d4297edf22c71382`.
 
 ## Primary Reports
 
@@ -138,6 +142,7 @@ At this update, the reviewed public baseline was `ff67926773c86cecfec43d3af3f5fe
 - [P-CORE-051 long-run supervisor pilot report](docs/reports/p-core-051-long-run-supervisor-pilot-v0.md)
 - [P-CORE-052 autonomous queue pilot report](docs/reports/p-core-052-autonomous-queue-pilot-v0.md)
 - [P-CORE-053 artifact consistency system report](docs/reports/p-core-053-artifact-consistency-system-v0.md)
+- [P-CORE-054 evidence review packet system report](docs/reports/p-core-054-evidence-review-packet-system-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -156,6 +161,8 @@ At this update, the reviewed public baseline was `ff67926773c86cecfec43d3af3f5fe
 - [Claim registry](docs/claims/claim-registry.md)
 - [Architecture index](docs/architecture/README.md)
 - [Artifact consistency](docs/artifacts/README.md)
+- [Evidence review packet system](docs/review/review-packet-system.md)
+- [P-CORE-053 Artifact Consistency System Review Packet](docs/review/packets/p-core-053-artifact-consistency-system.md)
 - [Reports index](docs/reports/README.md)
 - [Artifact validator evidence](docs/evidence/EVIDENCE-038-artifact-validator-bundle.md)
 - [External examples](examples/README.md)
@@ -200,7 +207,7 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 Recommended next task after the artifact consistency system:
 
-- Review the P-CORE-053 artifact consistency system PR if validation and scans remain clean.
+- Review the P-CORE-054 evidence review packet system PR if validation and scans remain clean.
 - Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
 
 ## How To Continue
@@ -215,6 +222,7 @@ Recommended next task after the artifact consistency system:
 python3 scripts/permea_specs.py
 python3 scripts/permea_demo.py
 python3 scripts/permea_artifacts.py
+python3 scripts/permea_review_packet.py
 python3 scripts/permea_evidence.py
 python3 scripts/permea_benchmarks.py
 python3 scripts/permea_benchmark_run.py
