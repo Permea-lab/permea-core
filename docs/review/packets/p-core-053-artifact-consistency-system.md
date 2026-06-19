@@ -49,6 +49,12 @@ python3 -m pytest tests/test_artifact_consistency_system.py tests/test_review_na
 ```
 
 
+## Raw Readability Notes
+
+- This markdown packet is intentionally written as physical newline-separated text.
+- This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.
+- Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed.
+
 ## Claim Boundary Notes
 
 - This packet reviews documentation and reproducibility surfaces only.

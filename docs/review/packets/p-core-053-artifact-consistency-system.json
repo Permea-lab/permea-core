@@ -14,6 +14,11 @@
   ],
   "packet_id": "p-core-053-artifact-consistency-system",
   "purpose": "Help a reviewer inspect the P-CORE-053 artifact consistency system through concrete files, generated outputs, validation commands, boundaries, and limitations.",
+  "raw_readability_notes": [
+    "This markdown packet is intentionally written as physical newline-separated text.",
+    "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+    "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed."
+  ],
   "related_evidence_report_links": [
     "scripts/permea_artifacts.py",
     "src/permea_core/consistency/artifacts.py",

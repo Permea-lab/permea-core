@@ -27,6 +27,7 @@ class ReviewPacket:
     purpose: str
     related_evidence_report_links: tuple[str, ...]
     validation_commands: tuple[str, ...]
+    raw_readability_notes: tuple[str, ...]
     claim_boundary_notes: tuple[str, ...]
     reviewer_checklist: tuple[str, ...]
     limitations: tuple[str, ...]
@@ -59,6 +60,11 @@ def default_packets() -> tuple[ReviewPacket, ...]:
                 "python3 scripts/permea_artifacts.py --json",
                 "python3 scripts/validate_permea_artifacts.py",
                 "python3 -m pytest tests/test_artifact_consistency_system.py tests/test_review_navigation_consistency.py",
+            ),
+            raw_readability_notes=(
+                "This markdown packet is intentionally written as physical newline-separated text.",
+                "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+                "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed.",
             ),
             claim_boundary_notes=(
                 "This packet reviews documentation and reproducibility surfaces only.",
@@ -153,6 +159,9 @@ def render_packet_markdown(packet: ReviewPacket, output_path: Path, root: Path) 
     lines.extend(["", "## Validation Commands", ""])
     for command in packet.validation_commands:
         lines.extend(["```bash", command, "```", ""])
+
+    lines.extend(["", "## Raw Readability Notes", ""])
+    lines.extend(f"- {note}" for note in packet.raw_readability_notes)
 
     lines.extend(["", "## Claim Boundary Notes", ""])
     lines.extend(f"- {note}" for note in packet.claim_boundary_notes)
