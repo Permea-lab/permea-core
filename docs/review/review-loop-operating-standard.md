@@ -61,6 +61,17 @@ When the loop opens a follow-on pull request, the task should be:
 
 The pull request description should make review possible from repository files and URLs, not from hidden chat state.
 
+## Local Completeness Check
+
+Use the deterministic completeness checker before sending a final review bundle for review:
+
+```bash
+python3 scripts/check_review_bundle_completeness.py
+python3 scripts/check_review_bundle_completeness.py --json
+```
+
+The checker verifies field presence only. It does not approve content, factual correctness, or merge readiness.
+
 ## Boundaries
 
 The loop must not introduce:
