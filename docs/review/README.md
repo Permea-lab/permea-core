@@ -15,6 +15,7 @@ python3 scripts/permea_review.py
 Then follow the packet:
 
 - [Public review packet](public-review-packet.md)
+- [Review loop operating standard](review-loop-operating-standard.md)
 - [Evidence review packet system](review-packet-system.md)
 - [Generated review packets](packets/README.md)
 - [P-CORE-030 Evidence Surface Layer Review Packet](packets/p-core-030-evidence-surface-layer.md)
