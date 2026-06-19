@@ -63,7 +63,7 @@ Generate reviewer-facing evidence packets for public artifact systems with:
 python3 scripts/permea_review_packet.py
 ```
 
-Generated packets currently cover [evidence surface navigation](docs/review/packets/p-core-030-evidence-surface-layer.md), [reproducibility](docs/review/packets/p-core-032-reproducibility-bundle.md), [evaluation](docs/review/packets/p-core-034-evaluation-bundle.md), and [artifact consistency](docs/review/packets/p-core-053-artifact-consistency-system.md). They link reviewed scripts, modules, docs, tests, reports, validation commands, claim boundaries, and limitations.
+Generated packets currently cover [evidence surface navigation](docs/review/packets/p-core-030-evidence-surface-layer.md), [reproducibility](docs/review/packets/p-core-032-reproducibility-bundle.md), [evaluation](docs/review/packets/p-core-034-evaluation-bundle.md), [public review packet guidance](docs/review/packets/p-core-047-public-review-packet-layer.md), and [artifact consistency](docs/review/packets/p-core-053-artifact-consistency-system.md). They link reviewed scripts, modules, docs, tests, reports, validation commands, claim boundaries, and limitations.
 
 ## Evidence And Claims
 

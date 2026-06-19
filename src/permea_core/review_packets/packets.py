@@ -25,6 +25,10 @@ PACKET_OUTPUTS = {
         "markdown": "docs/review/packets/p-core-030-evidence-surface-layer.md",
         "json": "docs/review/packets/p-core-030-evidence-surface-layer.json",
     },
+    "p-core-047-public-review-packet-layer": {
+        "markdown": "docs/review/packets/p-core-047-public-review-packet-layer.md",
+        "json": "docs/review/packets/p-core-047-public-review-packet-layer.json",
+    },
 }
 
 
@@ -260,6 +264,61 @@ def default_packets() -> tuple[ReviewPacket, ...]:
                 "The packet covers generated evidence navigation, not source-data acquisition or external validation.",
                 "The packet checks reviewability and local generation coverage, not scientific correctness.",
                 "The generated evidence surface organizes current public artifacts and should not be treated as experimental evidence.",
+            ),
+        ),
+        ReviewPacket(
+            packet_id="p-core-047-public-review-packet-layer",
+            title="P-CORE-047 Public Review Packet Layer Review Packet",
+            artifact_path="docs/review/public-review-packet.md",
+            artifact_type="guided public review packet operating layer",
+            purpose=(
+                "Help a reviewer inspect the public review packet layer through its "
+                "guided packet, review command, template, assembly guide, governance, "
+                "checklist, schema, report, tests, claim boundaries, and limitations."
+            ),
+            related_evidence_report_links=(
+                "scripts/permea_review.py",
+                "docs/review/public-review-packet.md",
+                "docs/review/public-review-packet-template.md",
+                "docs/review/public-review-packet-assembly.md",
+                "docs/review/public-review-packet-governance.md",
+                "docs/review/public-review-checklist.md",
+                "schemas/public-review-packet.schema.json",
+                "docs/reports/p-core-047-public-review-packet-layer-v0.md",
+                "tests/test_public_review_packet_layer.py",
+                "README.md",
+                "OPEN_THIS_FIRST.md",
+                "REVIEW_HUB.md",
+            ),
+            validation_commands=(
+                "python3 scripts/permea_review.py",
+                "python3 scripts/permea_review_packet.py",
+                "python3 scripts/validate_permea_artifacts.py",
+                "python3 -m pytest tests/test_public_review_packet_layer.py tests/test_evidence_review_packet_system.py",
+            ),
+            raw_readability_notes=(
+                "The public review packet layer packet points to the committed guide, template, assembly, governance, checklist, and schema files.",
+                "This markdown packet is intentionally written as physical newline-separated text.",
+                "This JSON packet is intentionally written with indent=2, sort_keys=True, and a trailing newline.",
+                "Use commit-SHA raw URLs for external review when branch raw views may be stale or transformed.",
+            ),
+            claim_boundary_notes=(
+                "This packet reviews public orientation, reviewer workflow, and validation guidance only.",
+                "It does not create scientific evidence, benchmark results, or biological validation.",
+                "It does not claim wet-lab validation, clinical efficacy, model performance, or solved delivery.",
+                "A passing packet means the listed public review layer is easier to inspect; it does not prove biological outcomes.",
+            ),
+            reviewer_checklist=(
+                "Open the public review packet, template, assembly guide, governance document, checklist, schema, and report.",
+                "Run the public review command and listed validation commands from the repository root.",
+                "Confirm the guided reading path, registry commands, validation commands, unsupported claims, and limitations are explicit.",
+                "Confirm the packet can be reviewed without hidden chat context.",
+                "Record any missing guide, stale command, unclear boundary, or validation failure before approval.",
+            ),
+            limitations=(
+                "The packet covers review workflow and public orientation, not scientific correctness.",
+                "The public review packet layer organizes current public infrastructure and does not establish external validation.",
+                "The packet is curated for the existing P-CORE-047 layer and should be refreshed when that layer changes materially.",
             ),
         ),
     )
