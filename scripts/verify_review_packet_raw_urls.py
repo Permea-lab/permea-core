@@ -17,7 +17,7 @@ if str(SRC) not in sys.path:
 
 from permea_core.review_packets import PACKET_OUTPUTS  # noqa: E402
 
-DEFAULT_BRANCH = "p-core-059-review-packet-expansion"
+DEFAULT_BRANCH = None
 RAW_TARGETS = tuple(
     (f"{packet_id} markdown", outputs["markdown"], 70)
     for packet_id, outputs in PACKET_OUTPUTS.items()
@@ -32,7 +32,7 @@ def main() -> int:
     parser.add_argument(
         "--branch",
         default=DEFAULT_BRANCH,
-        help="GitHub branch or ref to verify",
+        help="GitHub branch or ref to verify; defaults to the current git branch",
     )
     parser.add_argument(
         "--json",
@@ -41,7 +41,8 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    result = verify_raw_urls(args.branch)
+    branch = args.branch or _current_branch()
+    result = verify_raw_urls(branch)
     if args.json:
         print(json.dumps(result, indent=2, sort_keys=True))
     else:
@@ -152,6 +153,17 @@ def _remote_branch_head(branch: str) -> str:
     if not completed.stdout.strip():
         return "missing"
     return completed.stdout.split()[0]
+
+
+def _current_branch() -> str:
+    completed = subprocess.run(
+        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+        cwd=ROOT,
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+    return completed.stdout.strip()
 
 
 if __name__ == "__main__":

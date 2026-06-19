@@ -21,7 +21,8 @@ def test_raw_url_verifier_uses_curl_and_expected_urls() -> None:
 
     assert '"curl"' in text
     assert "raw.githubusercontent.com/Permea-lab/permea-core" in text
-    assert "p-core-059-review-packet-expansion" in text
+    assert "rev-parse" in text
+    assert "--abbrev-ref" in text
     assert "PACKET_OUTPUTS" in text
 
     module = _load_module()

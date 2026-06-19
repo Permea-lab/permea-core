@@ -21,6 +21,7 @@ This index gives reviewers one place to find current Permea Core reports. It is 
 - [P-CORE-054 evidence review packet system v0](p-core-054-evidence-review-packet-system-v0.md)
 - [P-CORE-059 review packet expansion v0](p-core-059-review-packet-expansion-v0.md)
 - [P-CORE-060A public review packet review packet v0](p-core-060a-public-review-packet-review-packet-v0.md)
+- [P-CORE-060B review packet coverage check v0](p-core-060b-review-packet-coverage-check-v0.md)
 - [P-CORE-056 truth verification investigation v0](p-core-056-truth-verification-investigation-v0.md)
 
 ## Operating-System Reports
