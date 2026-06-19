@@ -58,8 +58,21 @@ Required validation for this task:
 - `git diff --check`
 - `python3 scripts/permea_artifacts.py`
 - `python3 scripts/permea_review_packet.py`
+- `python3 scripts/verify_review_packet_raw_urls.py`
 - existing Permea review and validation scripts
 - `python3 -m pytest`
+
+## Raw GitHub Verification
+
+Reviewer-facing packet files must be checked after push through GitHub raw URLs, because local generation alone is not sufficient evidence of what an external reviewer sees.
+
+Run:
+
+```bash
+python3 scripts/verify_review_packet_raw_urls.py
+```
+
+The command uses `curl` and reports HTTP status, byte counts, physical line counts, trailing-newline status, literal `\n` sequence counts, first 20 raw lines, and remote branch HEAD.
 
 ## Public-Safety Boundary Result
 

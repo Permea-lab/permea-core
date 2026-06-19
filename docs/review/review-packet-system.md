@@ -23,6 +23,18 @@ python3 scripts/permea_review_packet.py
 
 Generated packets are written under [packets](packets/README.md).
 
+## Post-Push Raw URL Verification
+
+Before merging a review-packet PR, verify the committed GitHub raw files, not only local generated files:
+
+```bash
+python3 scripts/verify_review_packet_raw_urls.py
+```
+
+This command uses `curl` against `raw.githubusercontent.com` and reports HTTP status, byte count, physical line count, trailing-newline status, literal `\n` sequence count, the first 20 raw lines, and the remote branch HEAD.
+
+Use this check when reviewer feedback depends on raw GitHub readability.
+
 ## Current Packet
 
 - [P-CORE-053 Artifact Consistency System Review Packet](packets/p-core-053-artifact-consistency-system.md)
