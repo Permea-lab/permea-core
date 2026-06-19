@@ -22,6 +22,7 @@ REVIEW_NAVIGATION_FILES = (
     "docs/reports/p-core-052-autonomous-queue-pilot-v0.md",
     "docs/reports/p-core-053-artifact-consistency-system-v0.md",
     "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
+    "docs/reports/p-core-061-autonomous-review-merge-loop-pilot-v0.md",
 )
 REQUIRED_NAVIGATION_TARGETS = (
     "docs/architecture/README.md",
@@ -32,6 +33,8 @@ REQUIRED_NAVIGATION_TARGETS = (
     "docs/reports/p-core-052-autonomous-queue-pilot-v0.md",
     "docs/reports/p-core-053-artifact-consistency-system-v0.md",
     "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
+    "docs/review/review-loop-operating-standard.md",
+    "docs/reports/p-core-061-autonomous-review-merge-loop-pilot-v0.md",
     "scripts/permea_artifacts.py",
     "scripts/permea_review_packet.py",
     "scripts/permea_lineage.py",
@@ -157,6 +160,7 @@ def test_reports_index_links_current_reports_and_generated_surfaces() -> None:
         "p-core-051-long-run-supervisor-pilot-v0.md",
         "p-core-052-autonomous-queue-pilot-v0.md",
         "p-core-053-artifact-consistency-system-v0.md",
+        "p-core-061-autonomous-review-merge-loop-pilot-v0.md",
         "../examples/generated/REPRODUCIBILITY_REPORT.md",
         "../examples/generated/EVALUATION_PACKET.md",
         "../examples/generated/ARTIFACT_INDEX.md",
