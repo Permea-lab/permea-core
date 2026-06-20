@@ -4,12 +4,13 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CURRENT_PUBLIC_HEAD = "95677e5796cdbc14f6f57586a52a1b60d4c4a252"
+CURRENT_PUBLIC_HEAD = "b6c2a15c61d87a2baa27f3cde595bcdf38c029fd"
 STALE_PUBLIC_HEADS = (
     "6a3d60ce06f7a7f53179a406d4297edf22c71382",
     "ff67926773c86cecfec43d3af3f5fecb454464fa",
     "db1fd4bb1e5d6b216a34b65db198786df5bda59e",
     "5ab200290fe77829f6f5483da983efc34e04b1a0",
+    "95677e5796cdbc14f6f57586a52a1b60d4c4a252",
     "a5595eb3be23e6a19c7f9166591e9a499718b793",
 )
 REVIEW_NAVIGATION_FILES = (
@@ -24,6 +25,7 @@ REVIEW_NAVIGATION_FILES = (
     "docs/reports/p-core-053-artifact-consistency-system-v0.md",
     "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
     "docs/reports/p-core-061-autonomous-review-merge-loop-pilot-v0.md",
+    "docs/reports/p-core-064-review-loop-enforcement-pilot-v0.md",
     "docs/review/README.md",
 )
 REQUIRED_NAVIGATION_TARGETS = (
@@ -37,8 +39,11 @@ REQUIRED_NAVIGATION_TARGETS = (
     "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
     "docs/review/review-loop-operating-standard.md",
     "docs/review/examples/README.md",
+    "docs/review/examples/final-review-bundle-complete-example.md",
     "docs/reports/p-core-063-review-bundle-fixture-example-v0.md",
+    "docs/reports/p-core-064-review-loop-enforcement-pilot-v0.md",
     "docs/reports/p-core-061-autonomous-review-merge-loop-pilot-v0.md",
+    "scripts/check_review_loop_readiness.py",
     "scripts/permea_artifacts.py",
     "scripts/permea_review_packet.py",
     "scripts/permea_lineage.py",
@@ -165,6 +170,7 @@ def test_reports_index_links_current_reports_and_generated_surfaces() -> None:
         "p-core-052-autonomous-queue-pilot-v0.md",
         "p-core-053-artifact-consistency-system-v0.md",
         "p-core-061-autonomous-review-merge-loop-pilot-v0.md",
+        "p-core-064-review-loop-enforcement-pilot-v0.md",
         "p-core-063-review-bundle-fixture-example-v0.md",
         "../examples/generated/REPRODUCIBILITY_REPORT.md",
         "../examples/generated/EVALUATION_PACKET.md",

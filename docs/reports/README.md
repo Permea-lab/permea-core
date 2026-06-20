@@ -25,6 +25,7 @@ This index gives reviewers one place to find current Permea Core reports. It is 
 - [P-CORE-061 autonomous review-merge loop pilot v0](p-core-061-autonomous-review-merge-loop-pilot-v0.md)
 - [P-CORE-062 review bundle completeness check v0](p-core-062-review-bundle-completeness-check-v0.md)
 - [P-CORE-063 review bundle fixture example v0](p-core-063-review-bundle-fixture-example-v0.md)
+- [P-CORE-064 review loop enforcement pilot v0](p-core-064-review-loop-enforcement-pilot-v0.md)
 - [P-CORE-056 truth verification investigation v0](p-core-056-truth-verification-investigation-v0.md)
 
 ## Operating-System Reports
@@ -44,6 +45,17 @@ This index gives reviewers one place to find current Permea Core reports. It is 
 ## Review Path
 
 OPEN_THIS_FIRST -> REVIEW_HUB -> REPORTS INDEX -> ARCHITECTURE -> EVIDENCE -> LINEAGE -> CLAIMS -> VALIDATION
+
+Review loop readiness check:
+
+```bash
+python3 scripts/check_review_loop_readiness.py
+python3 scripts/check_review_loop_readiness.py --json
+```
+
+The readiness check keeps the canonical final review bundle fixture reachable
+and verifies that review-loop docs continue to reference
+`scripts/check_review_bundle_completeness.py`.
 
 ## Boundary
 
