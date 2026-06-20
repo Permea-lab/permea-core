@@ -8,8 +8,8 @@ Permea Core is a public, benchmark-first infrastructure repository for sequence-
 
 Current public baseline when this breadcrumb was refreshed:
 
-- Branch used for this update: `p-core-059-review-packet-expansion`
-- Public baseline reviewed: `main` at `95677e5796cdbc14f6f57586a52a1b60d4c4a252`
+- Branch used for this update: `p-core-064-review-loop-enforcement-pilot`
+- Public baseline reviewed: `main` at `b6c2a15c61d87a2baa27f3cde595bcdf38c029fd`
 - Refresh command: `git status --short --branch && git log -1 --oneline`
 
 ## Current Public Truth
@@ -50,6 +50,7 @@ Permea Core currently provides:
 - an evidence lineage review command at `python3 scripts/permea_lineage.py`
 - a public review packet layer at `docs/review/`
 - a public review packet command at `python3 scripts/permea_review.py`
+- a review loop readiness command at `python3 scripts/check_review_loop_readiness.py`
 
 Permea Core does not currently claim dataset download, acquisition execution, redistribution-rights confirmation, wet-lab validation by Permea, clinical effectiveness, model performance, state-of-the-art status, or solved delivery.
 
@@ -120,7 +121,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update, the reviewed public baseline was `95677e5796cdbc14f6f57586a52a1b60d4c4a252`.
+At this update, the reviewed public baseline was `b6c2a15c61d87a2baa27f3cde595bcdf38c029fd`.
 
 ## Primary Reports
 
@@ -144,6 +145,7 @@ At this update, the reviewed public baseline was `95677e5796cdbc14f6f57586a52a1b
 - [P-CORE-053 artifact consistency system report](docs/reports/p-core-053-artifact-consistency-system-v0.md)
 - [P-CORE-054 evidence review packet system report](docs/reports/p-core-054-evidence-review-packet-system-v0.md)
 - [P-CORE-059 review packet expansion report](docs/reports/p-core-059-review-packet-expansion-v0.md)
+- [P-CORE-064 review loop enforcement pilot report](docs/reports/p-core-064-review-loop-enforcement-pilot-v0.md)
 - [Generated reproducibility report](docs/examples/generated/REPRODUCIBILITY_REPORT.md)
 - [Generated evaluation packet](docs/examples/generated/EVALUATION_PACKET.md)
 - [Generated evidence matrix](docs/examples/generated/EVIDENCE_MATRIX.md)
@@ -210,10 +212,11 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after the review packet expansion:
+Recommended next task after P-CORE-064:
 
-- Review the P-CORE-059 review packet expansion PR if validation and scans remain clean.
-- Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
+- Add a small PR-template or release-gate note that lists
+  `python3 scripts/check_review_loop_readiness.py` beside the existing final
+  review bundle completeness command, without changing merge automation.
 
 ## How To Continue
 

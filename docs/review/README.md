@@ -17,6 +17,7 @@ Then follow the packet:
 - [Public review packet](public-review-packet.md)
 - [Review loop operating standard](review-loop-operating-standard.md)
 - [Review bundle examples](examples/README.md)
+- [Complete final review bundle example](examples/final-review-bundle-complete-example.md)
 - [Evidence review packet system](review-packet-system.md)
 - [Generated review packets](packets/README.md)
 - [P-CORE-030 Evidence Surface Layer Review Packet](packets/p-core-030-evidence-surface-layer.md)
@@ -48,6 +49,16 @@ Review bundle completeness can be checked with:
 python3 scripts/check_review_bundle_completeness.py
 python3 scripts/check_review_bundle_completeness.py docs/review/examples/final-review-bundle-complete-example.md
 ```
+
+Review loop readiness can be checked with:
+
+```bash
+python3 scripts/check_review_loop_readiness.py
+python3 scripts/check_review_loop_readiness.py --json
+```
+
+The readiness check confirms the canonical fixture is present, passes the
+completeness checker, and remains reachable from public review navigation.
 
 ## Claim Boundaries
 
