@@ -212,10 +212,11 @@ Current work should continue strengthening Permea Core as public infrastructure:
 
 ## Recommended Next Task
 
-Recommended next task after the review packet expansion:
+Recommended next task after P-CORE-064:
 
-- Review the P-CORE-059 review packet expansion PR if validation and scans remain clean.
-- Then continue with the next scoped external evidence package, benchmark run, review packet, research package, dataset, evidence, or validation task.
+- Add a small PR-template or release-gate note that lists
+  `python3 scripts/check_review_loop_readiness.py` beside the existing final
+  review bundle completeness command, without changing merge automation.
 
 ## How To Continue
 

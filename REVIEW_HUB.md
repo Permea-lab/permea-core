@@ -347,7 +347,7 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Review the P-CORE-059 review packet expansion branch if validation and scans remain clean.
+1. Add a PR-template or release-gate note for `python3 scripts/check_review_loop_readiness.py`, without merge automation.
 2. Add external evidence package records only when repository boundaries, schema metadata, reproducibility, validation, and claim-boundary requirements are met.
 3. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
 4. Promote additional review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.

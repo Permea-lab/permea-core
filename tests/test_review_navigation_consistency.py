@@ -107,6 +107,18 @@ def test_review_breadcrumbs_reference_current_public_head() -> None:
     assert ("Review the P-CORE-052 " + "autonomous queue pilot branch") not in combined
 
 
+def test_recommended_next_tasks_do_not_reference_stale_review_packet_expansion() -> None:
+    open_first = (ROOT / "OPEN_THIS_FIRST.md").read_text(encoding="utf-8")
+    review_hub = (ROOT / "REVIEW_HUB.md").read_text(encoding="utf-8")
+
+    for text in (open_first, review_hub):
+        assert ("Recommended next task after the " + "review packet expansion") not in text
+        assert ("Review the P-CORE-059 " + "review packet expansion PR") not in text
+        assert ("Review the P-CORE-059 " + "review packet expansion branch") not in text
+        assert "python3 scripts/check_review_loop_readiness.py" in text
+        assert "merge automation" in text
+
+
 def test_review_navigation_targets_are_linked() -> None:
     combined = _combined_review_text()
 
