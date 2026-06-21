@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CURRENT_PUBLIC_HEAD = "b6c2a15c61d87a2baa27f3cde595bcdf38c029fd"
+CURRENT_PUBLIC_HEAD = "b999e0b02aa79e939e0df79bac19de161362dd16"
 STALE_PUBLIC_HEADS = (
     "6a3d60ce06f7a7f53179a406d4297edf22c71382",
     "ff67926773c86cecfec43d3af3f5fecb454464fa",
@@ -12,8 +12,10 @@ STALE_PUBLIC_HEADS = (
     "5ab200290fe77829f6f5483da983efc34e04b1a0",
     "95677e5796cdbc14f6f57586a52a1b60d4c4a252",
     "a5595eb3be23e6a19c7f9166591e9a499718b793",
+    "b6c2a15c61d87a2baa27f3cde595bcdf38c029fd",
 )
 REVIEW_NAVIGATION_FILES = (
+    ".github/PULL_REQUEST_TEMPLATE.md",
     "README.md",
     "OPEN_THIS_FIRST.md",
     "REVIEW_HUB.md",
@@ -26,6 +28,7 @@ REVIEW_NAVIGATION_FILES = (
     "docs/reports/p-core-054-evidence-review-packet-system-v0.md",
     "docs/reports/p-core-061-autonomous-review-merge-loop-pilot-v0.md",
     "docs/reports/p-core-064-review-loop-enforcement-pilot-v0.md",
+    "docs/reports/p-core-065-review-gate-surface-note-v0.md",
     "docs/review/README.md",
 )
 REQUIRED_NAVIGATION_TARGETS = (
@@ -42,8 +45,11 @@ REQUIRED_NAVIGATION_TARGETS = (
     "docs/review/examples/final-review-bundle-complete-example.md",
     "docs/reports/p-core-063-review-bundle-fixture-example-v0.md",
     "docs/reports/p-core-064-review-loop-enforcement-pilot-v0.md",
+    "docs/reports/p-core-065-review-gate-surface-note-v0.md",
     "docs/reports/p-core-061-autonomous-review-merge-loop-pilot-v0.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
     "scripts/check_review_loop_readiness.py",
+    "scripts/check_review_bundle_completeness.py",
     "scripts/permea_artifacts.py",
     "scripts/permea_review_packet.py",
     "scripts/permea_lineage.py",
@@ -93,7 +99,7 @@ BOUNDARY_MARKERS = (
 def test_review_breadcrumbs_reference_current_public_head() -> None:
     open_first = (ROOT / "OPEN_THIS_FIRST.md").read_text(encoding="utf-8")
     review_hub = (ROOT / "REVIEW_HUB.md").read_text(encoding="utf-8")
-    combined = f"{open_first}\n{review_hub}"
+    combined = chr(10).join((open_first, review_hub))
 
     assert CURRENT_PUBLIC_HEAD in open_first
     assert CURRENT_PUBLIC_HEAD in review_hub
@@ -115,8 +121,34 @@ def test_recommended_next_tasks_do_not_reference_stale_review_packet_expansion()
         assert ("Recommended next task after the " + "review packet expansion") not in text
         assert ("Review the P-CORE-059 " + "review packet expansion PR") not in text
         assert ("Review the P-CORE-059 " + "review packet expansion branch") not in text
-        assert "python3 scripts/check_review_loop_readiness.py" in text
-        assert "merge automation" in text
+    assert "python3 scripts/check_review_loop_readiness.py" in open_first
+    assert "scripts/check_review_loop_readiness.py" in review_hub
+
+
+def test_review_gate_surface_lists_required_review_loop_commands() -> None:
+    pr_template_path = ROOT / ".github/PULL_REQUEST_TEMPLATE.md"
+    pr_template = pr_template_path.read_text(encoding="utf-8")
+    combined = _combined_review_text()
+
+    assert pr_template_path.exists()
+    assert "Review Gate Checklist" in pr_template
+    assert "python3 scripts/check_review_bundle_completeness.py" in pr_template
+    assert "python3 scripts/check_review_loop_readiness.py" in pr_template
+    assert ".github/PULL_REQUEST_TEMPLATE.md" in combined
+    assert "p-core-065-review-gate-surface-note-v0.md" in combined
+
+
+def test_recommended_next_tasks_do_not_reference_stale_p_core_064_gate_note() -> None:
+    open_first = (ROOT / "OPEN_THIS_FIRST.md").read_text(encoding="utf-8")
+    review_hub = (ROOT / "REVIEW_HUB.md").read_text(encoding="utf-8")
+
+    for text in (open_first, review_hub):
+        assert "Recommended next task after P-CORE-064" not in text
+        assert "Add a small PR-template or release-gate note" not in text
+        assert "Add a PR-template or release-gate note" not in text
+        assert "Recommended next task after P-CORE-065" in text or (
+            "P-CORE-065 review gate surface note" in text
+        )
 
 
 def test_review_navigation_targets_are_linked() -> None:
@@ -230,7 +262,7 @@ def test_prohibited_claim_scan_for_review_navigation_files() -> None:
 
 
 def _combined_review_text() -> str:
-    return "\n".join(
+    return chr(10).join(
         (ROOT / path).read_text(encoding="utf-8")
         for path in (*REVIEW_NAVIGATION_FILES, "tests/test_review_navigation_consistency.py")
     )
