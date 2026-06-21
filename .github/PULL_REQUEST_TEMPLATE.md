@@ -24,6 +24,13 @@ Select all that apply:
 
 Describe commands, environment, input assumptions, output artifacts, and any deviations from documented workflows.
 
+## Review Gate Checklist
+
+- [ ] Final review bundle completeness was checked:
+  `python3 scripts/check_review_bundle_completeness.py`
+- [ ] Review loop readiness was checked:
+  `python3 scripts/check_review_loop_readiness.py`
+
 ## Claim-Boundary Checklist
 
 - [ ] This PR does not claim solved delivery.

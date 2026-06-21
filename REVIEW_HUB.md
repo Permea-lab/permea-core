@@ -29,7 +29,7 @@ git status --short --branch
 git log -1 --oneline
 ```
 
-At this update point, the reviewed public baseline was `main` at `b6c2a15c61d87a2baa27f3cde595bcdf38c029fd`.
+At this update point, the reviewed public baseline was `main` at `b999e0b02aa79e939e0df79bac19de161362dd16`.
 
 ## Permea Layer Model
 
@@ -77,6 +77,7 @@ At this update point, the reviewed public baseline was `main` at `b6c2a15c61d87a
 - Review loop operating standard exists at [docs/review/review-loop-operating-standard.md](docs/review/review-loop-operating-standard.md).
 - Review bundle completeness checker exists at [scripts/check_review_bundle_completeness.py](scripts/check_review_bundle_completeness.py).
 - Review loop readiness checker exists at [scripts/check_review_loop_readiness.py](scripts/check_review_loop_readiness.py).
+- Pull request review gate checklist exists at [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
 - Review bundle examples exist at [docs/review/examples/README.md](docs/review/examples/README.md).
 - P-CORE-030 evidence surface layer review packet exists at [docs/review/packets/p-core-030-evidence-surface-layer.md](docs/review/packets/p-core-030-evidence-surface-layer.md).
 - P-CORE-032 reproducibility bundle review packet exists at [docs/review/packets/p-core-032-reproducibility-bundle.md](docs/review/packets/p-core-032-reproducibility-bundle.md).
@@ -228,6 +229,7 @@ Paper-related status:
 - [P-CORE-059 review packet expansion v0](docs/reports/p-core-059-review-packet-expansion-v0.md)
 - [P-CORE-061 autonomous review-merge loop pilot v0](docs/reports/p-core-061-autonomous-review-merge-loop-pilot-v0.md)
 - [P-CORE-064 review loop enforcement pilot v0](docs/reports/p-core-064-review-loop-enforcement-pilot-v0.md)
+- [P-CORE-065 review gate surface note v0](docs/reports/p-core-065-review-gate-surface-note-v0.md)
 - [P-CORE-063 review bundle fixture example v0](docs/reports/p-core-063-review-bundle-fixture-example-v0.md)
 - [P-CORE-062 review bundle completeness check v0](docs/reports/p-core-062-review-bundle-completeness-check-v0.md)
 
@@ -347,7 +349,7 @@ python3 scripts/validate_permea_artifacts.py
 
 ## Recommended Next Tasks
 
-1. Add a PR-template or release-gate note for `python3 scripts/check_review_loop_readiness.py`, without merge automation.
+1. Keep using the PR review gate checklist and promote additional gate-surface notes only when a recurring human review step needs explicit reviewer visibility.
 2. Add external evidence package records only when repository boundaries, schema metadata, reproducibility, validation, and claim-boundary requirements are met.
 3. Add benchmark run artifacts only when schema, evidence, validation, reproducibility, and claim-boundary requirements are met.
 4. Promote additional review packets only when evidence, benchmark, dataset, research, signal integration, claim, validation, and reproducibility links are current.

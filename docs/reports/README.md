@@ -26,6 +26,7 @@ This index gives reviewers one place to find current Permea Core reports. It is 
 - [P-CORE-062 review bundle completeness check v0](p-core-062-review-bundle-completeness-check-v0.md)
 - [P-CORE-063 review bundle fixture example v0](p-core-063-review-bundle-fixture-example-v0.md)
 - [P-CORE-064 review loop enforcement pilot v0](p-core-064-review-loop-enforcement-pilot-v0.md)
+- [P-CORE-065 review gate surface note v0](p-core-065-review-gate-surface-note-v0.md)
 - [P-CORE-056 truth verification investigation v0](p-core-056-truth-verification-investigation-v0.md)
 
 ## Operating-System Reports
@@ -56,6 +57,14 @@ python3 scripts/check_review_loop_readiness.py --json
 The readiness check keeps the canonical final review bundle fixture reachable
 and verifies that review-loop docs continue to reference
 `scripts/check_review_bundle_completeness.py`.
+
+Pull request review gate surface:
+
+- [.github/PULL_REQUEST_TEMPLATE.md](../../.github/PULL_REQUEST_TEMPLATE.md)
+
+The PR template lists both `python3 scripts/check_review_bundle_completeness.py`
+and `python3 scripts/check_review_loop_readiness.py` in the review gate
+checklist so reviewers see the commands together before final review.
 
 ## Boundary
 
