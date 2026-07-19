@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://permea-lab.org/schemas/permea-eval/1.0/label_schema.schema.json",
+  "title": "Permea Label Schema",
+  "description": "What the labels actually mean. The negative-set construction is a declared enum -- this is Paper 1's P3 finding made machine-readable. Task-type dispatch is additive: adding regression in 1.1 means adding an enum value and a $defs branch, not a breaking change.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "task_type", "task"],
+
+  "properties": {
+    "schema_version": { "const": "permea-label/1.0" },
+
+    "task_type": {
+      "$comment": "EXTENSIBILITY POINT (amendment A3). permea-eval/1.0 implements binary_classification ONLY. The reserved names below are documented but not yet accepted by the enum; adding one is a MINOR version bump because widening an enum keeps every existing document valid. mRNA expression is continuous and is in Permea's charter, so regression is the first planned addition.",
+      "enum": ["binary_classification"],
+      "$reserved": ["regression", "multiclass_classification", "ranking", "multilabel_classification"]
+    },
+
+    "task": {
+      "description": "Task-specific label definition. Discriminated by task_type.",
+      "oneOf": [{ "$ref": "#/$defs/binary_classification_task" }]
+    },
+
+    "label_noise_estimate": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1,
+      "default": null,
+      "description": "Estimated fraction of mislabelled records, if known. null means unknown, which is honest and common."
+    }
+  },
+
+  "allOf": [
+    {
+      "$comment": "Task dispatch. Each future task_type adds one branch here.",
+      "if": { "properties": { "task_type": { "const": "binary_classification" } }, "required": ["task_type"] },
+      "then": { "properties": { "task": { "$ref": "#/$defs/binary_classification_task" } } }
+    }
+  ],
+
+  "$defs": {
+
+    "binary_classification_task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["positive_class", "negative_class", "class_balance"],
+      "properties": {
+        "positive_class": { "$ref": "#/$defs/positive_class" },
+        "negative_class": { "$ref": "#/$defs/negative_class" },
+        "class_balance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["positive", "negative"],
+          "properties": {
+            "positive": { "type": "integer", "minimum": 0 },
+            "negative": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+
+    "positive_class": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["definition", "evidence_type"],
+      "properties": {
+        "definition": {
+          "type": "string",
+          "minLength": 10,
+          "description": "The property actually measured, in words. e.g. 'experimentally observed blood-brain barrier penetration'."
+        },
+        "evidence_type": {
+          "description": "Strength of evidence FOR the positive label, strongest first.",
+          "enum": ["experimental_direct", "curated_literature", "predicted", "assumed"]
+        },
+        "assays": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "e.g. in_vivo_brain_uptake, in_situ_perfusion. Empty is permitted but uninformative."
+        },
+        "provenance_ref": { "type": "string", "description": "Path or URI of the dataset card documenting origin." }
+      }
+    },
+
+    "negative_class": {
+      "$comment": "THE P3 FIELD. Paper 1's third finding is that a 'BBB penetration' classifier may in fact be a classifier of *which pool the sequence was drawn from*. That failure is invisible unless negative construction is declared. It is now declared.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["construction", "validated_fraction"],
+      "properties": {
+        "construction": {
+          "description": "How the negative set was built, strongest evidence first. validated_experimental means the sequences were MEASURED and found non-penetrant. presumed_random / assumed_unlabeled mean nobody checked.",
+          "enum": [
+            "validated_experimental",
+            "matched_control",
+            "decoy_generated",
+            "presumed_random",
+            "assumed_unlabeled"
+          ]
+        },
+        "validated_fraction": {
+          "description": "Fraction of negatives with DIRECT experimental evidence of the property being absent. For most published benchmarks this is 0.0. Saying so is not a failure; not knowing is.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "source_pool": {
+          "type": "string",
+          "description": "Where the negatives came from. e.g. 'random protein fragments, non-BBB-related'."
+        },
+        "matched_on": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["length", "composition", "charge", "hydrophobicity", "source_organism"] },
+          "default": [],
+          "description": "Covariates the negatives were matched to positives on. Required and non-empty iff construction == matched_control."
+        },
+        "known_confounds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "length_distribution_shift",
+              "composition_shift",
+              "source_pool_shift",
+              "publication_bias"
+            ]
+          },
+          "default": []
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "A matched control that does not say what it matched on is not a matched control.",
+          "if": { "properties": { "construction": { "const": "matched_control" } }, "required": ["construction"] },
+          "then": { "properties": { "matched_on": { "minItems": 1 } }, "required": ["matched_on"] }
+        },
+        {
+          "$comment": "Claiming validated_experimental with validated_fraction 0 is incoherent. Caught at schema level rather than left to a reviewer.",
+          "if": { "properties": { "construction": { "const": "validated_experimental" } }, "required": ["construction"] },
+          "then": { "properties": { "validated_fraction": { "exclusiveMinimum": 0 } } }
+        },
+        {
+          "$comment": "Assumed negatives must say what pool they came from -- that pool IS the confound.",
+          "if": {
+            "properties": { "construction": { "enum": ["presumed_random", "assumed_unlabeled"] } },
+            "required": ["construction"]
+          },
+          "then": { "required": ["source_pool"] }
+        }
+      ]
+    }
+  },
+
+  "$runtime_rules": {
+    "$comment": "Not JSON Schema -- documented here so the enforcement lives next to the field it enforces. Implemented in permea_core.diagnose.",
+    "PERMEA-W301": "construction in {presumed_random, assumed_unlabeled} AND validated_fraction < 0.5 -> emit PERMEA-W301 and AUTO-RUN the matched-negative probe (check D3). In this regime a headline metric may be measuring pool membership rather than the biological property, and the benchmark cannot rule that out on its own."
+  }
+}

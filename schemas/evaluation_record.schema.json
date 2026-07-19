@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://permea-lab.org/schemas/permea-eval/1.0/evaluation_record.schema.json",
+  "title": "Permea Evaluation Record",
+  "description": "evaluation_record.json -- the numbers a run produces. This artifact previously had NO schema anywhere in permea-core: metrics were typed as bare `object`. Defining it is the core gap this contract fills.\n\nNOTE ON STRICTNESS: additionalProperties:false at EVERY level is a safety property, not fussiness. There is no notes field, no metadata escape hatch, no free-text slot. This is what makes it structurally impossible for LLM narration to enter the evaluation record (design doc §9.2). A narrated record does not validate, therefore it is not a Permea record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "run_id", "benchmark_id", "identity_controlled",
+    "headline_condition", "results", "provenance", "claim_boundary"
+  ],
+
+  "properties": {
+    "schema": { "const": "permea.evaluation_record/1.0" },
+
+    "run_id":       { "type": "string", "minLength": 1 },
+    "benchmark_id": { "type": "string", "minLength": 1 },
+
+    "identity_controlled": {
+      "$comment": "Stamped into EVERY artifact. When false, the run cannot reach conformance L2 and PERMEA-W001 is present in warnings[]. A consumer (e.g. a leaderboard) can filter on this single boolean.",
+      "type": "boolean"
+    },
+
+    "conformance_level": { "enum": ["L0", "L1", "L2", "L3"] },
+
+    "headline_condition": { "const": "B" },
+
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/metric_result" }
+    },
+
+    "deltas": {
+      "description": "Paired contrasts. B_minus_A is the leakage estimate; vs_composition_only is the representation-inflation estimate. These ARE the findings -- the absolute numbers are context.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/delta" }
+    },
+
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label_permutation":      { "$ref": "#/$defs/control_result" },
+        "permutation_gap_control": { "$ref": "#/$defs/control_result" }
+      }
+    },
+
+    "warnings": {
+      "description": "Warning codes emitted by this run. See WARNING_CODES.md. Codes are stable across a major version and are intended to be cited.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/warning_code" }
+    },
+
+    "claim_boundary": {
+      "type": "string",
+      "minLength": 20,
+      "default": "Computational evaluation only. No wet-lab, transport, or clinical claim is made or implied."
+    },
+
+    "provenance": { "$ref": "#/$defs/provenance" }
+  },
+
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+
+    "warning_code": { "type": "string", "pattern": "^PERMEA-W[0-9]{3}$" },
+
+    "ci": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lo", "hi", "method", "resample_unit", "n_boot", "level"],
+      "properties": {
+        "lo":            { "type": "number" },
+        "hi":            { "type": "number" },
+        "method":        { "enum": ["cluster_bootstrap", "row_bootstrap"] },
+        "resample_unit": { "enum": ["cluster", "row"] },
+        "n_boot":        { "type": "integer", "minimum": 200 },
+        "level":         { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1 }
+      }
+    },
+
+    "metric_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition", "representation", "model", "metric", "seed_mean"],
+      "properties": {
+        "condition":      { "enum": ["A", "B"] },
+        "representation": { "type": "string" },
+        "model":          { "type": "string" },
+        "metric":         { "type": "string" },
+        "seed_mean":      { "type": "number" },
+        "seed_std":       { "type": "number", "minimum": 0 },
+        "seeds":          { "type": "integer", "minimum": 1 },
+        "ci":             { "$ref": "#/$defs/ci" },
+        "chance_reference": {
+          "type": "number",
+          "description": "The resolved chance value for this metric on this dataset (e.g. base rate for pr_auc). Resolved from metrics_spec.chance_reference -- carried here so a reader never has to recompute it, and so regression tasks slot in unchanged."
+        },
+        "n_clusters":     { "type": "integer", "minimum": 1 },
+        "operating_point": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+
+    "delta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contrast", "metric", "point", "ci_excludes_zero"],
+      "properties": {
+        "contrast": {
+          "enum": ["B_minus_A", "vs_composition_only", "vs_length_only", "vs_dummy"],
+          "description": "B_minus_A: leakage. vs_composition_only: representation inflation. Negative B_minus_A means performance FELL under identity control -- i.e. the original number was partly memorisation."
+        },
+        "representation": { "type": "string" },
+        "model":          { "type": "string" },
+        "metric":         { "type": "string" },
+        "point":          { "type": "number" },
+        "boot_median":    { "type": "number" },
+        "ci":             { "$ref": "#/$defs/ci" },
+        "ci_excludes_zero": { "type": "boolean" },
+        "p_value":        { "type": "number", "minimum": 0, "maximum": 1 },
+        "q_value": {
+          "type": "number", "minimum": 0, "maximum": 1,
+          "description": "BH-adjusted, over the family declared UP FRONT in evaluation_protocol.inference.multiple_testing.family_members."
+        }
+      }
+    },
+
+    "control_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "enum": ["PASS", "FAIL", "NOT_RUN"],
+          "description": "PASS = permuted labels yielded chance performance, i.e. the harness is not manufacturing signal. FAIL invalidates everything downstream and emits PERMEA-W502."
+        },
+        "observed":  { "type": "number" },
+        "expected":  { "type": "number" },
+        "p_value":   { "type": "number", "minimum": 0, "maximum": 1 },
+        "n_permutations": { "type": "integer", "minimum": 1 }
+      }
+    },
+
+    "provenance": {
+      "$comment": "Everything needed to re-execute. A number without provenance is an assertion, not a measurement.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["data_sha256", "code_commit", "protocol_version"],
+      "properties": {
+        "data_sha256":            { "$ref": "#/$defs/sha256" },
+        "cluster_artifact_sha256": { "$ref": "#/$defs/sha256" },
+        "code_commit":            { "type": "string", "minLength": 7 },
+        "permea_version":         { "type": "string" },
+        "protocol_version":       { "const": "permea-eval/1.0" },
+        "split_policy_sha256":    { "$ref": "#/$defs/sha256" },
+        "clustering_tool":        { "type": "string" },
+        "clustering_tool_version": { "type": "string" },
+        "reproduce_command":      { "type": "string" },
+        "created_utc":            { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

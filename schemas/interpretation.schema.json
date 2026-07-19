@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://permea-lab.org/schemas/permea-eval/1.0/interpretation.schema.json",
+  "title": "Permea Interpretation (NON-AUTHORITATIVE)",
+  "description": "interpretation.json -- OPTIONAL, OPT-IN, NON-AUTHORITATIVE natural-language narration of a diagnostic report.\n\nTHIS IS NOT PART OF THE EVALUATION RECORD AND NEVER CAN BE.\n\nProduced by the separate `permea_explain` package, which imports permea_core; permea_core has no knowledge of permea_explain and offers no hook through which narration could be injected -- a plugin hook is a write path, so there deliberately isn't one.\n\nThe model NARRATES; it never COMPUTES. Enforcement is not a policy, it is a postcondition: before this artifact is written, every numeric literal in `narrative` is extracted and checked to occur in the source diagnostic_report. Any number the model introduces that is not already in the report is a HARD FAIL and the artifact is not written (design doc §9.4).\n\nThis file lives in interpretations/, is excluded from output_package, and is never an input to any permea_core function.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "authoritative", "source_report_sha256", "model",
+    "narrative", "numeric_provenance", "disclaimer"
+  ],
+
+  "properties": {
+    "schema": { "const": "permea.interpretation/1.0" },
+
+    "authoritative": {
+      "$comment": "const false. Not a default, not a flag -- a constant. There is no valid interpretation.json that claims authority.",
+      "const": false
+    },
+
+    "source_report_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "Hash of the FROZEN diagnostic_report.json this narrates. Pins the narration to exactly one set of numbers; if the report changes, the interpretation is stale and detectably so."
+    },
+
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "model_id"],
+      "properties": {
+        "provider":    { "type": "string", "examples": ["exaone"] },
+        "model_id":    { "type": "string" },
+        "temperature": { "type": "number", "minimum": 0 },
+        "prompt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "Hash of the exact prompt template. Narration should be as auditable as the numbers it narrates."
+        }
+      }
+    },
+
+    "narrative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary"],
+      "properties": {
+        "summary":   { "type": "string" },
+        "per_finding": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["finding_id", "text"],
+            "properties": {
+              "finding_id": { "type": "string", "pattern": "^PERMEA-W[0-9]{3}$" },
+              "text":       { "type": "string" }
+            }
+          }
+        },
+        "audience": {
+          "enum": ["non_specialist", "domain_expert", "reviewer"],
+          "default": "non_specialist",
+          "description": "The genuine, honest job of this layer: make a correct diagnostic legible to someone who cannot read a cluster-bootstrap CI. That is a real task and worth doing."
+        },
+        "language": { "type": "string", "default": "en" }
+      }
+    },
+
+    "numeric_provenance": {
+      "$comment": "The receipt for the check described above. Written by permea_explain AFTER verification, so the artifact carries proof that it passed rather than merely asserting it did.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verified", "numbers_in_narrative", "all_numbers_traced"],
+      "properties": {
+        "verified": {
+          "const": true,
+          "description": "const true: an unverified interpretation is never written to disk, so no valid document can carry false here."
+        },
+        "numbers_in_narrative": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Every numeric literal extracted from the narrative text."
+        },
+        "all_numbers_traced": {
+          "const": true,
+          "description": "Every extracted literal was found in the source diagnostic_report. If this could not be asserted, generation failed and nothing was written."
+        },
+        "verifier_version": { "type": "string" }
+      }
+    },
+
+    "disclaimer": {
+      "type": "string",
+      "minLength": 40,
+      "default": "This is a machine-generated interpretation of a Permea diagnostic report. It is NOT part of the evaluation record, carries no authority, and introduces no numbers of its own. All numeric values are traceable to the source report. Where this text and the diagnostic report disagree, the diagnostic report is correct."
+    }
+  }
+}

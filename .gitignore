@@ -1,6 +1,13 @@
 .DS_Store
 permea-signal-ml/
+__pycache__/
+*.egg-info/
+build/
 # Private/local operator artifacts
 .local/
 *.local.md
 *_private*
+# Credentials. Only .env.example (key names, empty values) is ever committed.
+.env
+.env.*
+!.env.example
