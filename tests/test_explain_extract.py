@@ -60,7 +60,7 @@ def _doc():
         "status": "candidate",
         "source_text_sha256": SOURCE_SHA,
         "dataset_card": {"ref": "dataset_cards/bbb_peptides.json"},
-        "model": {"provider": "exaone", "model_id": "fake-exaone-model"},
+        "model": {"provider": "configured", "model_id": "fake-model"},
         "extracted": {
             "task_type": _leaf("binary_classification", "binary classification benchmark"),
             "positive_class": {
@@ -511,17 +511,17 @@ _ALL_NULL = json.dumps({
 class _StubProvider(Provider):
     """Offline. Behavioural coverage of extract() lives in test_explain_generate.py."""
 
-    name = "exaone"
+    name = "configured"
 
     def __init__(self, text):
         self._text = text
 
     @property
     def model_id(self) -> str:
-        return "fake-exaone-model"
+        return "fake-model"
 
     def complete(self, system, user, *, max_tokens, temperature=None, stop=None):
-        return ProviderResponse(text=self._text, provider="exaone", model_id="fake-exaone-model")
+        return ProviderResponse(text=self._text, provider="configured", model_id="fake-model")
 
 
 def test_candidate_generation_is_wired_to_the_postcondition():

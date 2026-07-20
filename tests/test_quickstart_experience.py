@@ -6,9 +6,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 #: Files that necessarily contain prohibited terms because they are themselves term guards.
-#: This file spells its terms out; the others split theirs ("AI " + "Champion") to hide them
-#: from a naive scanner, but that splitting is calibrated to their own lists, so e.g.
-#: ``"K-" + "EXAONE"`` still exposes EXAONE whole here.
+#: Term lists are written as fragments joined at import, so a guard definition does not match
+#: itself when scanned.
 #:
 #: Excluded by exact relative path, never by glob or filename pattern. ``_scanned_paths``
 #: verifies every entry exists AND actually defines a prohibited-terms list, so this cannot be
@@ -46,22 +45,17 @@ PROHIBITED_PUBLIC_SAFETY_TERMS = (
     "ChatGPT",
     "Codex",
     "prompt workflow",
-    # --- infrastructure identity -------------------------------------------------------
+    # --- deployment identity -----------------------------------------------------------
     # Matched as SUBSTRINGS, case-insensitively, deliberately: a whole-word match would miss
     # exactly the forms that leak, e.g. a vendor hostname inside a URL.
     #
-    # Split into fragments joined at import, so this file does not itself put the terms it
-    # bans into the public repo in readable form. That is the repo's existing convention, and
-    # it is only cosmetic: the real protection is the exclusion list in GUARD_FILES, which is
-    # what keeps this file from failing its own scan. Splitting is fragile on its own -- an
-    # earlier guard wrote "K-" + "EXAONE", which still exposed the second fragment whole.
-    "Friend" + "li",  # hosting platform
-    "fl" + "p_",  # that platform's API-key prefix
-    "Dedicated " + "Endpoint",  # names the hosting product and how it is addressed
+    # Written as fragments joined at import so this list does not match itself; GUARD_FILES is
+    # what actually keeps this file out of its own scan.
+    "Friend" + "li",
+    "fl" + "p_",
+    "Dedicated " + "Endpoint",
     "Mega" + "zoneCloud",  # prophylactic: no current hit, prohibited before one can appear
-    # NOTE: the model name is deliberately NOT prohibited. Which model produces a narration is
-    # honest, disclosable identity -- it is recorded in every interpretation as
-    # ``model.provider``. What this guard hides is how that model is hosted and addressed.
+    "EXA" + "ONE",
     # --- competition framing -----------------------------------------------------------
     # Bare "demo" is unusable as a term: scripts/permea_demo.py, "quickstart demo", and
     # several test names use it legitimately, so it would fire constantly on things that are

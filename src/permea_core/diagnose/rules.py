@@ -16,7 +16,7 @@ Boundaries:
 CLOSED-SCHEMA SEAM: every result field is typed and sourced from the EvalRun (or the policy
 threshold that fired the code). ``evidence_str`` is machine-generated from the ``Evidence``
 numbers via a fixed template -- there is NO free-form text field an LLM could inject into. A
-future narration layer (e.g. Exaone) reads FROM a Diagnosis, never INTO it. The hook is not
+future narration layer (the configured narration provider) reads FROM a Diagnosis, never INTO it. The hook is not
 built here.
 """
 
@@ -125,8 +125,8 @@ class Diagnosis:
     def to_dict(self) -> dict:
         """Faithful, JSON-ready serialization of this closed diagnosis.
 
-        This dict IS the permea-eval/1.0 diagnosis contract: the narration layer (e.g.
-        Exaone) and the Drylab web UI read FROM it, never INTO it. Every value comes from
+        This dict IS the permea-eval/1.0 diagnosis contract: the narration layer (the
+        configured narration provider) and the Drylab web UI read FROM it, never INTO it. Every value comes from
         this object -- nothing is added, and there is no free-form field to inject into
         (``evidence_str`` is already machine-generated from the evidence numbers). Severity
         StrEnums are emitted as their string values so the output is pure JSON scalars.

@@ -1,7 +1,8 @@
 """Provider transport layer.
 
-``exaone`` is implemented. ``anthropic`` and ``openai`` are declared but not implemented:
-their ``complete()`` raises ``NotImplementedError``. ``get_provider`` defaults to Exaone.
+``configured`` is implemented -- it calls whatever deployment the environment points it at.
+``anthropic`` and ``openai`` are declared but not implemented: their ``complete()`` raises
+``NotImplementedError``. ``get_provider`` defaults to the configured provider.
 """
 from __future__ import annotations
 
@@ -9,26 +10,28 @@ import os
 
 from .anthropic import AnthropicProvider
 from .base import Provider, ProviderResponse
-from .exaone import ExaoneProvider
+from .configured import ConfiguredProvider
 from .openai import OpenAIProvider
 
 # ``__all__`` lists the implemented provider only; the unimplemented ones are still
 # importable and reachable by explicit name.
-__all__ = ["Provider", "ProviderResponse", "ExaoneProvider", "get_provider"]
+__all__ = ["Provider", "ProviderResponse", "ConfiguredProvider", "get_provider"]
 
 _PROVIDERS = {
-    "exaone": ExaoneProvider,
+    "configured": ConfiguredProvider,
     "anthropic": AnthropicProvider,
     "openai": OpenAIProvider,
 }
 
 
 def get_provider(name: str | None = None) -> Provider:
-    """Return a provider by name, or by env ``PERMEA_EXPLAIN_PROVIDER`` (default ``exaone``).
+    """Return a provider by name, or by env ``PERMEA_EXPLAIN_PROVIDER`` (default
+    ``configured``).
 
-    Unknown or blank names fall back to Exaone. The unimplemented providers are reachable by
-    explicit name; calling ``complete()`` on one raises ``NotImplementedError``.
+    Unknown or blank names fall back to the configured provider. The unimplemented providers
+    are reachable by explicit name; calling ``complete()`` on one raises
+    ``NotImplementedError``.
     """
-    key = name if name is not None else os.environ.get("PERMEA_EXPLAIN_PROVIDER", "exaone")
+    key = name if name is not None else os.environ.get("PERMEA_EXPLAIN_PROVIDER", "configured")
     key = (key or "").strip().lower()
-    return _PROVIDERS.get(key, ExaoneProvider)()
+    return _PROVIDERS.get(key, ConfiguredProvider)()

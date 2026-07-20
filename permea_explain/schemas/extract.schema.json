@@ -53,7 +53,7 @@
       "additionalProperties": false,
       "required": ["provider", "model_id"],
       "properties": {
-        "provider":    { "type": "string", "examples": ["exaone"] },
+        "provider":    { "type": "string", "examples": ["configured"] },
         "model_id":    { "type": "string" },
         "temperature": { "type": "number", "minimum": 0 },
         "prompt_sha256": {

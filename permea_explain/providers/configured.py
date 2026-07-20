@@ -1,4 +1,4 @@
-"""exaone.py -- the live Exaone provider.
+"""configured.py -- the live provider, resolved entirely from configuration.
 
 Calls an OpenAI-compatible chat-completions API. Three env vars are required and none has a
 default, so nothing about the deployment is baked into this source:
@@ -11,10 +11,11 @@ default, so nothing about the deployment is baked into this source:
 If any is unset a live call raises: there is no silent fall back to a fake or alternative
 model, because a narration that quietly came from somewhere else is worse than no narration.
 
-Exaone is a controllable-reasoning model with reasoning ON by default. NARRATE only rephrases
-numbers the engine already computed, so reasoning is switched OFF per request via
-``chat_template_kwargs.enable_thinking``. ``parse_reasoning`` is left at its server-side
-default (true) so no reasoning trace can reach ``content`` even if thinking were emitted.
+The configured deployment may be a controllable-reasoning model with reasoning ON by default.
+NARRATE only rephrases numbers the engine already computed, so reasoning is switched OFF per
+request via ``chat_template_kwargs.enable_thinking``. ``parse_reasoning`` is left at its
+server-side default (true) so no reasoning trace can reach ``content`` even if thinking were
+emitted.
 
 ``requests`` is imported *locally* so this module imports without the ``[explain]`` extra
 installed; without it a live call surfaces a clean install hint rather than an ImportError
@@ -58,10 +59,10 @@ _MISSING_EXTRA = (
 )
 
 
-class ExaoneProvider(Provider):
-    """Narrate via a live Exaone call against the configured deployment."""
+class ConfiguredProvider(Provider):
+    """Narrate via a live call against the configured deployment."""
 
-    name = "exaone"
+    name = "configured"
 
     def __init__(self, token: str | None = None, endpoint_id: str | None = None):
         # Read env at construction so selection is cheap, but validate at call time: an
