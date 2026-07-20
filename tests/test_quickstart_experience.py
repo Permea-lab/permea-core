@@ -55,10 +55,7 @@ PROHIBITED_PUBLIC_SAFETY_TERMS = (
     "fl" + "p_",
     "Dedicated " + "Endpoint",
     "Mega" + "zoneCloud",  # prophylactic: no current hit, prohibited before one can appear
-    # Substring matching means this also covers the hyphenated form.
     "EXA" + "ONE",
-    # The provider identity an interpretation records is the selector value resolved from
-    # configuration (``model.provider``), not a model name written into source.
     # --- competition framing -----------------------------------------------------------
     # Bare "demo" is unusable as a term: scripts/permea_demo.py, "quickstart demo", and
     # several test names use it legitimately, so it would fire constantly on things that are
