@@ -1,0 +1,490 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://permea-lab.org/schemas/permea-eval/1.1/extract.schema.json",
+  "title": "Permea Extract (NON-AUTHORITATIVE CANDIDATE)",
+  "description": "extract.json -- a NON-AUTHORITATIVE candidate description of ONE dataset's label construction, read out of a (dataset_card, methods_text) PAIR by a model.\n\nTHIS IS NOT A LABEL SCHEMA AND NEVER CAN BE. It is a proposal about what the methods text SAYS, not a ruling about what the labels ARE. The authoritative permea-label document (label_schema.schema.json) is produced by the engine reconciling this candidate against evidence; where the two disagree, the engine wins.\n\nDESIGN CONTRACT:\n1. Text-in only. The sole textual input is methods_text (frozen and hashed as source_text_sha256), paired with a dataset_card reference. No PDF or binary input is referenced or required.\n2. Per-field provenance. Every extracted field is an object {value, evidence_span, offset, confidence}, never a bare value. evidence_span is the VERBATIM quote from methods_text and offset is its character offset there. Each enum choice carries its own grounding.\n3. Abstention is first-class and REQUIRED. Every extracted field permits value:null, meaning 'not stated in methods'. null is honest; forcing a value would fabricate provenance. A null value carries no evidence_span or offset -- see abstention_coherence.\n4. Structural coherence only. This schema encodes the abstention coherence between value and evidence, and nothing else. Cross-field semantic rules (e.g. matched_control requires matched_on, W301) belong to the engine, not here -- see $runtime_rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "authoritative", "status", "source_text_sha256",
+    "dataset_card", "model", "extracted", "extraction_provenance", "disclaimer"
+  ],
+
+  "properties": {
+    "schema": { "const": "permea.extract/1.1" },
+
+    "authoritative": {
+      "$comment": "const false. Not a default, not a flag -- a constant. There is no valid extract.json that claims authority. Mirrors interpretation.schema.json.",
+      "const": false
+    },
+
+    "status": {
+      "$comment": "const candidate. An extract is a proposal awaiting reconciliation, never a settled record. Pairs with authoritative:false to make the non-authoritative posture explicit and unforgeable.",
+      "const": "candidate"
+    },
+
+    "source_text_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "Hash of the FROZEN methods_text every evidence_span and offset is measured against. Pins the extraction to exactly one string; if the methods text changes, every offset is stale and detectably so."
+    },
+
+    "dataset_card": {
+      "$comment": "The other half of the input pair. EXTRACT describes ONE dataset's construction, not an arbitrary paper -- the dataset_card names which dataset.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref"],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path or URI of the dataset card this extraction describes."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "Optional hash pinning the frozen dataset card, so the whole (dataset_card, methods_text) pair is reproducible."
+        }
+      }
+    },
+
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "model_id"],
+      "properties": {
+        "provider":    { "type": "string", "examples": ["exaone"] },
+        "model_id":    { "type": "string" },
+        "temperature": { "type": "number", "minimum": 0 },
+        "prompt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "Hash of the exact extraction prompt template. The reading should be as auditable as the spans it produces."
+        }
+      }
+    },
+
+    "extracted": {
+      "$comment": "The candidate reading, structured to mirror label_schema's binary_classification_task. Every leaf is a per-field-provenance object (see $defs) and every leaf permits value:null. All leaves are REQUIRED: the extractor must explicitly state or explicitly abstain, never silently omit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_type", "positive_class", "negative_class", "class_balance", "label_noise_estimate"],
+      "properties": {
+        "task_type": { "$ref": "#/$defs/prov_task_type" },
+
+        "positive_class": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["definition", "evidence_type", "assays", "provenance_ref"],
+          "properties": {
+            "definition":     { "$ref": "#/$defs/prov_definition" },
+            "evidence_type":  { "$ref": "#/$defs/prov_evidence_type" },
+            "assays":         { "$ref": "#/$defs/prov_assays" },
+            "provenance_ref": { "$ref": "#/$defs/prov_provenance_ref" }
+          }
+        },
+
+        "negative_class": {
+          "$comment": "THE P3 AUDIT SURFACE. How the negative set was built is where a 'BBB penetration' classifier is silently a pool-membership classifier. Every enum choice here is grounded by its own verbatim span, or honestly null.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["construction", "validated_fraction", "source_pool", "matched_on", "known_confounds"],
+          "properties": {
+            "construction":      { "$ref": "#/$defs/prov_construction" },
+            "validated_fraction":{ "$ref": "#/$defs/prov_validated_fraction" },
+            "source_pool":       { "$ref": "#/$defs/prov_source_pool" },
+            "matched_on":        { "$ref": "#/$defs/prov_matched_on" },
+            "known_confounds":   { "$ref": "#/$defs/prov_known_confounds" }
+          }
+        },
+
+        "class_balance":        { "$ref": "#/$defs/prov_class_balance" },
+        "label_noise_estimate": { "$ref": "#/$defs/prov_label_noise_estimate" }
+      }
+    },
+
+    "extraction_provenance": {
+      "$comment": "The receipt, written AFTER span validation so the artifact carries proof it passed rather than merely asserting it. Mirrors numeric_provenance in interpretation.schema.json. An extract that could not assert every const true below was never written.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verified", "all_spans_verbatim", "all_span_enums_valid", "demoted"],
+      "properties": {
+        "demoted": {
+          "$comment": "1.1. Which fields are abstentions because the VERIFIER reset them, as opposed to because the model honestly found nothing. Without this an artifact cannot tell an extractor that abstained nine times from one that guessed nine times and was demoted nine times -- identical documents, opposite instruments. REQUIRED, and [] is the positive assertion that nothing was demoted: an absent list would be ambiguous between 'nothing demoted' and 'written by a verifier that does not track demotion', and that ambiguity is the whole thing this field exists to remove. Lives inside extraction_provenance because write_checked overwrites this block wholesale, so a model cannot add, empty, or forge an entry -- the same reason authoritative is a const rather than a default.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/demotion_record" }
+        },
+        "verified": {
+          "const": true,
+          "description": "const true: an unverified extraction is never written to disk, so no valid document can carry false here."
+        },
+        "all_spans_verbatim": {
+          "const": true,
+          "description": "Every non-null field's evidence_span was found VERBATIM at its stated offset in the source_text_sha256'd methods_text. Matching is exact, or whitespace-normalized as a fallback; it is CASE-PRESERVED and never fuzzy. The offset is in RAW methods_text coordinates, never normalized coordinates. Abstained fields (value:null) carry no span and are excluded from this assertion."
+        },
+        "all_span_enums_valid": {
+          "const": true,
+          "description": "Every enum-typed field with a non-null value is a MEMBER of its label_schema enum and is grounded by an evidence_span found verbatim in methods_text. This does NOT assert ENTAILMENT -- that the span semantically supports that specific enum choice. Entailment is a reconciliation judgment owned by the engine (permea_core.diagnose); see $runtime_rules. Proof-carrying; mirrors numeric_provenance.all_numbers_traced."
+        },
+        "spans_checked":    { "type": "integer", "minimum": 0 },
+        "verifier_version": { "type": "string" }
+      }
+    },
+
+    "disclaimer": {
+      "type": "string",
+      "minLength": 40,
+      "default": "This is a machine-generated candidate extraction of one dataset's label construction, read from its frozen methods text. It is NON-AUTHORITATIVE, carries no evaluation authority, and asserts nothing beyond what its cited evidence spans support. A null value means 'not stated in the methods text', not 'false'. Where this candidate and the Permea engine's authoritative label schema disagree, the engine is correct."
+    }
+  },
+
+  "$defs": {
+
+    "demotion_record": {
+      "$comment": "One field the verifier reset to abstention because the model's reading failed a gate.\n\nTHERE IS NO FIELD HERE FOR WHAT THE MODEL ACTUALLY SAID, and that is the point. Everything in a document stamped verified:true is grounded or null; copying a rejected reading back in would break exactly that. A rejected evidence_span is the sharp case -- it is text that LOOKS like a source quote and is not, so storing it would defeat the one guarantee Gate 2 buys (any quoted string in a passing extract can be pasted into a search over the source and found). A rejected free-text value is the other: it is model prose the forbidden-phrase gate already scans, so recording it would either fail the gate or need a hole cut through it.\n\nWhat is stored instead is inert: a COMPUTED classification of how the reading failed, plus sha256 digests and lengths. The digests support the two things an evaluator actually needs -- counting distinct failures and checking run-to-run reproducibility -- and a hash cannot be mistaken for a quote.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pointer", "kinds", "failure_class"],
+      "properties": {
+        "pointer": {
+          "$comment": "Closed enum rather than a pattern: the twelve provenance leaves are a fixed set, so an invented or mistyped pointer is a schema error caught by the validity gate rather than a record nobody can resolve.",
+          "enum": [
+            "/extracted/task_type",
+            "/extracted/positive_class/definition",
+            "/extracted/positive_class/evidence_type",
+            "/extracted/positive_class/assays",
+            "/extracted/positive_class/provenance_ref",
+            "/extracted/negative_class/construction",
+            "/extracted/negative_class/validated_fraction",
+            "/extracted/negative_class/source_pool",
+            "/extracted/negative_class/matched_on",
+            "/extracted/negative_class/known_confounds",
+            "/extracted/class_balance",
+            "/extracted/label_noise_estimate"
+          ]
+        },
+        "kinds": {
+          "$comment": "The Violation kinds that caused the demotion. Restricted to the DEMOTABLE seven, which makes the non-demotable kinds structurally unrecordable: enum_mirror_drift is a schema divergence and demoting it would bury a schema bug as an honest abstention; leaf_missing and leaf_missing_value mean the model never answered, and model silence is not text silence; forbidden_phrase carries no pointer and cannot be attributed to a field at all. Those rules were policy in the recovery path; here the validity gate enforces them. An ARRAY because the gates deliberately overlap -- an out-of-enum value is also schema-invalid, so one field routinely fails in more than one way.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "enum_invalid",
+              "span_not_found",
+              "span_empty",
+              "span_missing_on_nonnull",
+              "span_offset_mismatch",
+              "offset_invalid",
+              "schema_invalid"
+            ]
+          }
+        },
+        "failure_class": {
+          "$comment": "HOW the reading failed, computed by the verifier from the rejected value and then discarded. Inert by construction: every member is a fixed vocabulary word, so no model-authored string reaches the artifact. This is what makes the record diagnostic without relaxing the no-unverified-content rule -- 'case_variant' says the model picked a real member and mis-cased it, 'not_a_member' says it invented one, and those are different instruments. An ARRAY for the same reason kinds is: independent gates can reject one leaf for genuinely different reasons.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "case_variant",
+              "whitespace_variant",
+              "not_a_member",
+              "out_of_range",
+              "wrong_type",
+              "span_absent",
+              "offset_wrong",
+              "structural"
+            ]
+          }
+        },
+        "rejected_value_sha256": {
+          "$comment": "sha256 of the JSON serialization of the rejected value. Identifies it across runs without reproducing it.",
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rejected_span_sha256": {
+          "$comment": "sha256 of the rejected evidence_span. NEVER the span itself -- see the note on this $def.",
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rejected_span_length": {
+          "$comment": "Character length of the rejected span. A shape fact, not content.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "rejected_confidence": {
+          "$comment": "What the model claimed for the reading that was rejected. A bare number, inert, and the single most useful evaluator signal: an extractor that abstains at 0.3 and guesses at 0.95 is not the same instrument as one that guesses at 0.4.",
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+
+    "evidence_span_field": {
+      "$comment": "The verbatim source quote grounding a value. null when (and only when) the value is null -- see abstention_coherence.",
+      "type": ["string", "null"]
+    },
+
+    "offset_field": {
+      "$comment": "Character offset of evidence_span in the frozen methods_text. null when the value is null.",
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+
+    "confidence_field": {
+      "$comment": "Model confidence in this reading, 0..1. Permitted null (e.g. an abstention the model is not sure is a true absence).",
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+
+    "abstention_coherence": {
+      "$comment": "The one structural coherence rule of this schema: a value and its provenance agree about abstention. A null value fabricates no span or offset; a stated value is grounded by a non-empty verbatim span at a real offset. Applied via allOf to every per-field-provenance object.",
+      "allOf": [
+        {
+          "$comment": "Abstention: no value -> no fabricated provenance.",
+          "if": { "properties": { "value": { "const": null } }, "required": ["value"] },
+          "then": { "properties": { "evidence_span": { "const": null }, "offset": { "const": null } } }
+        },
+        {
+          "$comment": "Grounding: a stated value carries a non-empty verbatim span and its offset.",
+          "if": { "properties": { "value": { "not": { "const": null } } }, "required": ["value"] },
+          "then": {
+            "required": ["evidence_span", "offset"],
+            "properties": {
+              "evidence_span": { "type": "string", "minLength": 1 },
+              "offset": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      ]
+    },
+
+    "prov_task_type": {
+      "$comment": "Mirrors label_schema task_type. permea-eval/1.0 accepts only binary_classification; null added here because an extraction may honestly fail to find the task type stated.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "enum": ["binary_classification", null] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_definition": {
+      "$comment": "Mirrors positive_class.definition (string, minLength 10). The minLength is preserved on the string branch and relaxed for the null abstention branch.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "anyOf": [{ "type": "string", "minLength": 10 }, { "type": "null" }] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_evidence_type": {
+      "$comment": "Mirrors positive_class.evidence_type enum, strongest evidence first, plus null.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "enum": ["experimental_direct", "curated_literature", "predicted", "assumed", null] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_assays": {
+      "$comment": "Mirrors positive_class.assays (array of strings). In label_schema an empty array is permitted but uninformative; here null (not stated) is distinct from [] (stated as none).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "anyOf": [{ "type": "array", "items": { "type": "string" } }, { "type": "null" }] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_provenance_ref": {
+      "$comment": "Mirrors positive_class.provenance_ref (string path/URI of the origin card).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "type": ["string", "null"] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_construction": {
+      "$comment": "THE P3 FIELD. Mirrors negative_class.construction enum verbatim, strongest evidence first, plus null. validated_experimental means MEASURED non-penetrant; presumed_random / assumed_unlabeled mean nobody checked.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": {
+          "enum": [
+            "validated_experimental",
+            "matched_control",
+            "decoy_generated",
+            "presumed_random",
+            "assumed_unlabeled",
+            null
+          ]
+        },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_validated_fraction": {
+      "$comment": "Mirrors negative_class.validated_fraction (number 0..1). For most published benchmarks this is 0.0; null means the fraction is not stated, which is different from stated-as-zero.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "anyOf": [{ "type": "number", "minimum": 0, "maximum": 1 }, { "type": "null" }] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_source_pool": {
+      "$comment": "Mirrors negative_class.source_pool (string). For assumed negatives, the pool IS the confound -- but abstention is still permitted here; the requirement that assumed constructions declare a pool is a semantic reconciliation rule owned by the engine, not this schema.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "type": ["string", "null"] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_matched_on": {
+      "$comment": "Mirrors negative_class.matched_on (array, unique items from the covariate enum). null means the methods text did not state matching covariates; [] means it stated none.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "enum": ["length", "composition", "charge", "hydrophobicity", "source_organism"] }
+            },
+            { "type": "null" }
+          ]
+        },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_known_confounds": {
+      "$comment": "Mirrors negative_class.known_confounds (array, unique items from the confound enum). null = not stated; [] = stated as none.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "length_distribution_shift",
+                  "composition_shift",
+                  "source_pool_shift",
+                  "publication_bias"
+                ]
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_class_balance": {
+      "$comment": "Mirrors class_balance (object {positive, negative} of non-negative integers). The compound is grounded as ONE value by ONE evidence_span (the sentence stating the balance); null means the balance is not stated.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["positive", "negative"],
+              "properties": {
+                "positive": { "type": "integer", "minimum": 0 },
+                "negative": { "type": "integer", "minimum": 0 }
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    },
+
+    "prov_label_noise_estimate": {
+      "$comment": "Mirrors label_schema.label_noise_estimate (number 0..1, null = unknown, which is honest and common). Here it is wrapped in per-field provenance like every other field.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "evidence_span", "offset", "confidence"],
+      "properties": {
+        "value": { "anyOf": [{ "type": "number", "minimum": 0, "maximum": 1 }, { "type": "null" }] },
+        "evidence_span": { "$ref": "#/$defs/evidence_span_field" },
+        "offset": { "$ref": "#/$defs/offset_field" },
+        "confidence": { "$ref": "#/$defs/confidence_field" }
+      },
+      "allOf": [{ "$ref": "#/$defs/abstention_coherence" }]
+    }
+  },
+
+  "$runtime_rules": {
+    "$comment": "Not JSON Schema. Documented here so it is clear what this schema deliberately does NOT enforce. These are cross-field SEMANTIC rules that reconcile a candidate against evidence; they are owned by the engine (permea_core.diagnose), because in an abstention-first extract any of the fields they relate may honestly be null. They are label_schema's negative_class allOf rules -- valid for the AUTHORITATIVE label, wrong to impose on a NON-AUTHORITATIVE reading of what the text happens to say.",
+    "matched_control_requires_matched_on": "label_schema: construction == matched_control -> matched_on non-empty. NOT enforced here: an extract may record construction=matched_control while matched_on is null because the methods text names no covariates. Forcing matched_on would fabricate provenance.",
+    "validated_experimental_requires_positive_fraction": "label_schema: construction == validated_experimental -> validated_fraction > 0. NOT enforced here for the same abstention reason.",
+    "assumed_requires_source_pool": "label_schema: construction in {presumed_random, assumed_unlabeled} -> source_pool required. NOT enforced here; abstention is permitted and the engine flags the gap.",
+    "PERMEA-W301": "construction in {presumed_random, assumed_unlabeled} AND validated_fraction < 0.5 -> engine warning. A W301-style semantic rule; belongs to permea_core.diagnose, never to this schema.",
+    "demotion_one_record_per_pointer": "extraction_provenance.demoted contains AT MOST ONE record per pointer; a field that failed several ways carries one record with several kinds. Not expressible here: uniqueItems compares whole objects, so two records sharing a pointer but differing in kinds are 'unique' to JSON Schema while being contradictory to a reader. Asserted in permea_explain.extract.write_checked.",
+    "demotion_pointer_resolves_to_abstention": "Every pointer in extraction_provenance.demoted resolves to a leaf whose value is null. A demotion IS an abstention -- recording one against a field that still carries a value would make the receipt and the reading disagree about what happened. Not expressible here: JSON Schema cannot dereference a pointer held in the instance. Asserted in permea_explain.extract.write_checked."
+  }
+}

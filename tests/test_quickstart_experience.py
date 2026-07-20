@@ -5,6 +5,23 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+#: Files that necessarily contain prohibited terms because they are themselves term guards.
+#: This file spells its terms out; the others split theirs ("AI " + "Champion") to hide them
+#: from a naive scanner, but that splitting is calibrated to their own lists, so e.g.
+#: ``"K-" + "EXAONE"`` still exposes EXAONE whole here.
+#:
+#: Excluded by exact relative path, never by glob or filename pattern. ``_scanned_paths``
+#: verifies every entry exists AND actually defines a prohibited-terms list, so this cannot be
+#: quietly pointed at ordinary source to bury a real leak.
+GUARD_FILES = (
+    "tests/test_quickstart_experience.py",
+    "tests/test_artifact_consistency_system.py",
+    "tests/test_evidence_review_packet_system.py",
+    "tests/test_review_bundle_completeness_check.py",
+    "tests/test_review_navigation_consistency.py",
+    "tests/test_review_packet_coverage_check.py",
+)
+GUARD_MARKER = "PROHIBITED_PUBLIC" + "_SAFETY_TERMS"
 TOUCHED_PUBLIC_FILES = (
     "OPEN_THIS_FIRST.md",
     "QUICKSTART.md",
@@ -29,6 +46,30 @@ PROHIBITED_PUBLIC_SAFETY_TERMS = (
     "ChatGPT",
     "Codex",
     "prompt workflow",
+    # --- infrastructure identity -------------------------------------------------------
+    # Matched as SUBSTRINGS, case-insensitively, deliberately: a whole-word match would miss
+    # exactly the forms that leak, e.g. a vendor hostname inside a URL.
+    #
+    # Split into fragments joined at import, so this file does not itself put the terms it
+    # bans into the public repo in readable form. That is the repo's existing convention, and
+    # it is only cosmetic: the real protection is the exclusion list in GUARD_FILES, which is
+    # what keeps this file from failing its own scan. Splitting is fragile on its own -- an
+    # earlier guard wrote "K-" + "EXAONE", which still exposed the second fragment whole.
+    "Friend" + "li",  # hosting platform
+    "fl" + "p_",  # that platform's API-key prefix
+    "Dedicated " + "Endpoint",  # names the hosting product and how it is addressed
+    "Mega" + "zoneCloud",  # prophylactic: no current hit, prohibited before one can appear
+    # NOTE: the model name is deliberately NOT prohibited. Which model produces a narration is
+    # honest, disclosable identity -- it is recorded in every interpretation as
+    # ``model.provider``. What this guard hides is how that model is hosted and addressed.
+    # --- competition framing -----------------------------------------------------------
+    # Bare "demo" is unusable as a term: scripts/permea_demo.py, "quickstart demo", and
+    # several test names use it legitimately, so it would fire constantly on things that are
+    # fine. Scoped to the phrases that actually carry the framing.
+    "demo surface",
+    "demo-visible",
+    "for a demo",
+    "domestic LLM",  # prophylactic: no current hit
 )
 PROHIBITED_AFFIRMATIVE_CLAIMS = (
     "wet-lab validation",
@@ -154,3 +195,46 @@ def _combined_touched_text() -> str:
     return "\n".join(
         (ROOT / path).read_text(encoding="utf-8") for path in TOUCHED_PUBLIC_FILES
     )
+
+
+def _scanned_paths() -> list[Path]:
+    """Every file the broad prohibited-term scan reads, minus this guard file itself.
+
+    Wider than ``TOUCHED_PUBLIC_FILES``, which covers top-level docs only. A term that never
+    reaches a doc but sits in shipped package source is still public the moment the repo is.
+    """
+    paths = [ROOT / path for path in TOUCHED_PUBLIC_FILES]
+    paths.append(ROOT / ".env.example")
+    paths.extend(sorted((ROOT / "permea_explain").rglob("*.py")))
+    paths.extend(sorted((ROOT / "tests").rglob("*.py")))
+
+    excluded = set()
+    for relative in GUARD_FILES:
+        path = ROOT / relative
+        # An exclusion that names a missing file, or a file that is not a term guard, is a
+        # hole rather than an exemption. Both are load-bearing: without the marker check,
+        # adding a path here would be enough to hide any leak from this scan.
+        assert path.is_file(), f"excluded guard file does not exist: {relative}"
+        assert GUARD_MARKER in path.read_text(encoding="utf-8"), (
+            f"excluded file is not a term guard (no {GUARD_MARKER}): {relative}"
+        )
+        excluded.add(path.resolve())
+
+    kept = [path for path in paths if path.resolve() not in excluded]
+    # A silently-empty scan would report "no leaks" for the same reason a correct one does.
+    assert kept, "prohibited-term scan matched no files at all"
+    return kept
+
+
+def test_public_sources_avoid_prohibited_terms() -> None:
+    violations: list[str] = []
+
+    for path in _scanned_paths():
+        relative = path.relative_to(ROOT)
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            lowered = line.lower()
+            for term in PROHIBITED_PUBLIC_SAFETY_TERMS:
+                if term.lower() in lowered:
+                    violations.append(f"{relative}:{lineno}: {term!r} -- {line.strip()}")
+
+    assert not violations, "prohibited terms found:\n" + "\n".join(violations)

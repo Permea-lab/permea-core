@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://permea-lab.org/schemas/permea-eval/1.0/evaluation_protocol.schema.json",
+  "title": "Permea Evaluation Protocol",
+  "description": "How the evaluation is run. Encodes the Condition A vs B design as a protocol REQUIREMENT rather than a courtesy: both conditions are always run, and the identity-controlled condition is always the headline.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "conditions", "headline_condition", "required_baselines", "operating_point", "inference"],
+
+  "properties": {
+    "protocol_version": { "const": "permea-eval/1.0" },
+
+    "conditions": {
+      "$comment": "BOTH conditions are always run and always reported. Reporting only the identity-controlled number hides how much leakage the field's prior numbers contained; reporting only the uncontrolled number is the original sin. The DELTA is the finding.",
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/condition" },
+      "default": [
+        { "id": "A", "name": "uncontrolled",        "split_policy_ref": "random",  "report_as": "optimistic_upper_bound" },
+        { "id": "B", "name": "identity_controlled", "split_policy_ref": "primary", "report_as": "headline" }
+      ]
+    },
+
+    "headline_condition": {
+      "$comment": "Schema-constrained to B. This single line is the contract's sharpest edge: an uncontrolled number may be reported, but it may never be THE number.",
+      "const": "B"
+    },
+
+    "required_baselines": {
+      "$comment": "A run without these is INVALID, not merely weak. composition_only is the load-bearing one: if a model does not beat 20-dim amino-acid composition under Condition B, it has demonstrated no sequence-specific signal, and any claim built on it is unsupported. length_only is the cheapest and most brutal control there is.",
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 3,
+      "items": { "enum": ["dummy_most_frequent", "length_only", "composition_only", "physchem_only"] },
+      "default": ["dummy_most_frequent", "length_only", "composition_only"]
+    },
+
+    "models": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": ["logistic_regression", "random_forest"],
+      "description": "Models under evaluation, beyond the required baselines."
+    },
+
+    "representations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": ["physchem"],
+      "description": "Feature representations. Registry-resolved; free-form so third-party representations are first-class."
+    },
+
+    "operating_point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selection", "fixed_across_conditions"],
+      "properties": {
+        "selection": {
+          "enum": ["f1_max_on_oof", "youden_j_on_oof", "fixed_threshold", "prevalence_matched"],
+          "default": "f1_max_on_oof"
+        },
+        "fixed_threshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "fixed_across_conditions": {
+          "$comment": "MUST be true. Re-tuning the threshold separately in A and B makes the A-vs-B delta uninterpretable: you would be measuring threshold movement, not generalisation loss. This is a subtle and very common error.",
+          "const": true
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "selection": { "const": "fixed_threshold" } }, "required": ["selection"] },
+          "then": { "required": ["fixed_threshold"] }
+        }
+      ]
+    },
+
+    "inference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "resample_unit", "n_boot", "ci_level", "paired"],
+      "properties": {
+        "method": {
+          "enum": ["cluster_bootstrap", "row_bootstrap", "none"],
+          "default": "cluster_bootstrap"
+        },
+        "resample_unit": {
+          "$comment": "DEFAULT cluster. Under identity control the independent unit IS the cluster, not the row -- rows within a cluster are near-duplicates and carry no independent information. Row-level resampling therefore understates the CI, sometimes badly. Choosing 'row' emits PERMEA-W003.",
+          "enum": ["cluster", "row"],
+          "default": "cluster"
+        },
+        "n_boot":   { "type": "integer", "minimum": 0, "default": 2000 },
+        "ci_level": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1, "default": 0.95 },
+        "paired": {
+          "const": true,
+          "description": "A and B deltas are computed on the SAME bootstrap resample indices. Unpaired comparison discards the correlation between conditions and inflates the interval."
+        },
+        "multiple_testing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "q", "family"],
+          "properties": {
+            "method": { "enum": ["benjamini_hochberg", "bonferroni", "none"], "default": "benjamini_hochberg" },
+            "q":      { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1, "default": 0.05 },
+            "family": {
+              "$comment": "The test family must be ENUMERATED UP FRONT, before results are seen. This is a pre-registration hook, and it is the difference between a correction and a rationalisation. 'declared' means the family is listed in family_members.",
+              "enum": ["declared"],
+              "default": "declared"
+            },
+            "family_members": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Test identifiers, declared before the run. e.g. ['B_minus_A:pr_auc:rf:esm2_150m', ...]"
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "Bootstrap with n_boot=0 is not inference.",
+          "if": {
+            "properties": { "method": { "enum": ["cluster_bootstrap", "row_bootstrap"] } },
+            "required": ["method"]
+          },
+          "then": { "properties": { "n_boot": { "minimum": 200 } } }
+        }
+      ]
+    },
+
+    "negative_controls": {
+      "$comment": "These must PASS or the run is marked suspect: they verify the harness itself is not manufacturing signal. A pipeline that reports above-chance performance on permuted labels is broken, and no amount of downstream rigour rescues it.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["label_permutation", "permutation_gap_control"] },
+      "default": ["label_permutation", "permutation_gap_control"]
+    },
+
+    "minimum_reporting": {
+      "$comment": "A conformant report MUST contain all of these. This is what stops a conformant-but-selective report: you cannot claim the badge and then publish only the flattering half.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "condition_B_absolute",
+          "delta_B_minus_A_with_ci",
+          "delta_vs_composition_baseline_with_ci"
+        ]
+      },
+      "default": [
+        "condition_B_absolute",
+        "delta_B_minus_A_with_ci",
+        "delta_vs_composition_baseline_with_ci"
+      ]
+    }
+  },
+
+  "$defs": {
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "split_policy_ref", "report_as"],
+      "properties": {
+        "id":   { "enum": ["A", "B"] },
+        "name": { "type": "string" },
+        "split_policy_ref": {
+          "enum": ["random", "primary"],
+          "description": "'random' = uncontrolled splits; 'primary' = the benchmark's declared split_policy."
+        },
+        "report_as": {
+          "enum": ["headline", "optimistic_upper_bound"],
+          "description": "An uncontrolled condition may only ever be reported as an optimistic upper bound."
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "Condition A can never be the headline. Enforced structurally, not by convention.",
+          "if": { "properties": { "id": { "const": "A" } }, "required": ["id"] },
+          "then": { "properties": { "report_as": { "const": "optimistic_upper_bound" } } }
+        }
+      ]
+    }
+  }
+}

@@ -18,6 +18,10 @@ from .cards import (
     validate_dataset_card_file,
 )
 
+# NOTE: `load` (numpy-backed) is intentionally NOT re-exported here so that
+# `import permea_core.datasets` (the card/schema layer) stays numpy-free. Reach the
+# dataset loader explicitly as `permea_core.datasets.load`.
+
 __all__ = [
     "ALLOWED_ACQUISITION_STATUSES",
     "ALLOWED_REDISTRIBUTION_STATUSES",

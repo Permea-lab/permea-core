@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://permea-lab.org/schemas/permea-eval/1.0/metrics_spec.schema.json",
+  "title": "Permea Metrics Specification",
+  "description": "Which metrics a benchmark reports, which one is primary, and -- critically -- each metric's chance reference. The chance_reference abstraction is the extensibility hook that lets regression be added in 1.1 without a breaking change (amendment A3).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metrics_version", "task_type", "primary", "secondary"],
+
+  "properties": {
+    "metrics_version": { "const": "permea-metrics/1.0" },
+
+    "task_type": {
+      "$comment": "Must agree with label_schema.task_type. Cross-document consistency is checked by the validator, not by the schema.",
+      "enum": ["binary_classification"],
+      "$reserved": ["regression", "multiclass_classification", "ranking"]
+    },
+
+    "primary": {
+      "$comment": "PR-AUC, not ROC-AUC, is the recommended default under class imbalance. ROC-AUC is optimistic and stable-looking when negatives vastly outnumber positives -- exactly the regime these benchmarks live in (B3Pred Dataset_3 is 269 pos / 2690 neg). We do not FORBID roc_auc as primary; we make the choice visible.",
+      "$ref": "#/$defs/binary_metric",
+      "default": "pr_auc"
+    },
+
+    "secondary": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/binary_metric" },
+      "default": ["roc_auc", "mcc", "f1", "balanced_accuracy", "precision", "recall"]
+    },
+
+    "chance_reference": {
+      "$comment": "EXTENSIBILITY HOOK. Paper 1's harness hardcoded `0.5 if metric == roc_auc else base_rate`, which is a binary-classification assumption baked into the inference layer. Declaring the chance reference per metric instead means a regression task (chance R^2 = 0) slots in additively, with no change to the bootstrap or permutation code. This is the single change that keeps mRNA expression from forcing a 2.0.",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "number" },
+          { "enum": ["base_rate", "zero", "empirical_permutation"] }
+        ]
+      },
+      "default": {
+        "roc_auc": 0.5,
+        "pr_auc": "base_rate",
+        "mcc": 0.0,
+        "f1": "base_rate",
+        "balanced_accuracy": 0.5,
+        "precision": "base_rate",
+        "recall": "empirical_permutation"
+      }
+    },
+
+    "direction": {
+      "type": "object",
+      "additionalProperties": { "enum": ["higher_is_better", "lower_is_better"] },
+      "default": {
+        "roc_auc": "higher_is_better",
+        "pr_auc": "higher_is_better",
+        "mcc": "higher_is_better",
+        "f1": "higher_is_better",
+        "balanced_accuracy": "higher_is_better",
+        "precision": "higher_is_better",
+        "recall": "higher_is_better"
+      }
+    },
+
+    "enrichment": {
+      "description": "Optional top-k% enrichment reporting (precision at top-k divided by base rate). Useful because it is the metric a screening campaign actually cares about, and it can stay meaningful when PR-AUC collapses.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "top_k_fractions": {
+          "type": "array",
+          "items": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+          "default": [0.01, 0.05, 0.10]
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "$comment": "Task dispatch. Adding regression = adding a branch here plus a regression_metric $def. Existing documents remain valid.",
+      "if": { "properties": { "task_type": { "const": "binary_classification" } }, "required": ["task_type"] },
+      "then": {
+        "properties": {
+          "primary":   { "$ref": "#/$defs/binary_metric" },
+          "secondary": { "items": { "$ref": "#/$defs/binary_metric" } }
+        }
+      }
+    }
+  ],
+
+  "$defs": {
+    "binary_metric": {
+      "enum": ["pr_auc", "roc_auc", "mcc", "f1", "balanced_accuracy", "precision", "recall"]
+    },
+
+    "$reserved_regression_metric": {
+      "$comment": "NOT ACTIVE IN 1.0. Documented to show the extension is additive and to fix the vocabulary before anyone else does. Activating it in 1.1 requires: widen task_type enum, add an allOf branch, add chance_reference defaults (r2: 0, spearman: 0, rmse: 'empirical_permutation'). No existing document breaks.",
+      "enum": ["r2", "rmse", "mae", "spearman", "pearson", "concordance_index"]
+    }
+  }
+}

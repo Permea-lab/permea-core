@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://permea-lab.org/schemas/permea-eval/1.0/diagnostic_report.schema.json",
+  "title": "Permea Diagnostic Report",
+  "description": "diagnostic_report.json -- output of `permea bench diagnose`. Turns Paper 1's findings into a health check any user can run on THEIR benchmark.\n\nTHERE IS NO COMPOSITE SCORE AND NO LETTER GRADE (amendment A1). A grade compresses defensible per-check effect sizes into one indefensible number, and it would place Permea in the role of judge. We are the instrument. Each check reports its own status, effect size, CI, and a command that reproduces it; the reader composes the verdict.\n\nadditionalProperties:false at every level -- no field exists into which LLM narration could be placed (design doc §9.2).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "benchmark_id", "generated_by", "summary", "findings", "claim_boundary", "provenance"],
+
+  "properties": {
+    "schema": { "const": "permea.diagnostic_report/1.0" },
+
+    "benchmark_id": { "type": "string", "minLength": 1 },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "What was diagnosed. Either a registered benchmark or a user-supplied dataset (bring-your-own mode).",
+      "properties": {
+        "mode":         { "enum": ["registered_benchmark", "user_dataset"] },
+        "data_path":    { "type": "string" },
+        "n_records":    { "type": "integer", "minimum": 1 },
+        "n_positive":   { "type": "integer", "minimum": 0 },
+        "n_negative":   { "type": "integer", "minimum": 0 }
+      }
+    },
+
+    "generated_by": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["permea_version", "protocol_version"],
+      "properties": {
+        "permea_version":   { "type": "string" },
+        "protocol_version": { "const": "permea-eval/1.0" }
+      }
+    },
+
+    "summary": {
+      "$comment": "A COUNT, not a judgment. 'checks_failed: 2' is a fact. 'Grade: D' is an opinion we are not entitled to publish about someone else's work with a tool we also wrote.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["checks_run", "checks_passed", "checks_warned", "checks_failed", "checks_inconclusive"],
+      "properties": {
+        "checks_run":          { "type": "integer", "minimum": 0 },
+        "checks_passed":       { "type": "integer", "minimum": 0 },
+        "checks_warned":       { "type": "integer", "minimum": 0 },
+        "checks_failed":       { "type": "integer", "minimum": 0 },
+        "checks_inconclusive": { "type": "integer", "minimum": 0 },
+        "headline": {
+          "type": "string",
+          "description": "One deterministic sentence, TEMPLATED from the finding statuses -- never model-generated. Kept here so a reader gets the gist without a composite score."
+        }
+      }
+    },
+
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/finding" }
+    },
+
+    "warnings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^PERMEA-W[0-9]{3}$" }
+    },
+
+    "claim_boundary": { "type": "string", "minLength": 20 },
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["data_sha256", "code_commit"],
+      "properties": {
+        "data_sha256":            { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "cluster_artifact_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "code_commit":            { "type": "string", "minLength": 7 },
+        "evaluation_record_ref":  { "type": "string" },
+        "created_utc":            { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "status", "evidence", "interpretation", "remedy", "reproduce"],
+      "properties": {
+        "id": {
+          "enum": ["D1", "D2", "D3", "D4", "D5"],
+          "description": "D1 similarity-memorization leakage (Paper 1 P1) | D2 representation inflation (P2) | D3 assumed-negative confound (P3) | D4 cross-dataset archive overlap | D5 negative controls."
+        },
+        "name": { "type": "string" },
+
+        "status": {
+          "$comment": "INSUFFICIENT_DATA is first-class and load-bearing. Silence must be distinguishable from a pass -- a check that could not run must never look like a check that passed. That distinction is most of what makes this tool trustworthy.",
+          "enum": ["PASS", "WARN", "FAIL", "NOT_APPLICABLE", "INSUFFICIENT_DATA"]
+        },
+
+        "severity": { "enum": ["critical", "major", "minor", "informational"] },
+
+        "warning_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^PERMEA-W[0-9]{3}$" },
+          "description": "The citable codes this finding raises. THIS is the field a referee quotes."
+        },
+
+        "evidence": {
+          "$comment": "Numbers only, no prose. Every number that appears in `interpretation` must also appear here -- that invariant is what the permea_explain numeric-provenance check verifies against (design doc §9.4).",
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "metric":     { "type": "string" },
+            "effect":     { "type": "number", "description": "The effect size, signed." },
+            "ci":         { "type": "object" },
+            "q_value":    { "type": "number" },
+            "threshold":  { "type": "number", "description": "The declared threshold this effect was compared against, so the verdict is auditable." }
+          }
+        },
+
+        "interpretation": {
+          "$comment": "DETERMINISTIC, human-written, keyed to the finding and its status. NOT model-generated. If these are written well, the LLM layer is a convenience rather than a necessity -- which is exactly the relationship we want it to have.",
+          "type": "string",
+          "minLength": 20
+        },
+
+        "remedy": {
+          "type": "string",
+          "minLength": 20,
+          "description": "What the benchmark author should actually DO. A diagnosis without a remedy is a complaint."
+        },
+
+        "reproduce": {
+          "type": "string",
+          "minLength": 5,
+          "description": "A runnable command that regenerates this finding. A diagnosis without a reproduction command is an accusation, not a measurement. Required, always."
+        }
+      }
+    }
+  }
+}

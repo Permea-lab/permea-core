@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "permea-core"
+version = "0.1.0"
+description = "PermeaBench: honest-evaluation engine, warning registry, and diagnose CLI."
+requires-python = ">=3.11"
+license = "Apache-2.0"
+# NOTE (permea-eval/1.0 W403 EnvironmentUnpinned): this is the TOOL's permissive dependency
+# floor, deliberately loose so the CLI installs broadly. It is NOT the paper's pinned
+# reproduction environment -- exact numeric reproduction of published results depends on a
+# fully pinned python/numpy/scikit-learn/architecture stack recorded separately. Do not
+# conflate the two.
+dependencies = [
+    "numpy>=1.24",
+    "scikit-learn>=1.3",
+]
+
+[project.optional-dependencies]
+# Opt-in narration layer (permea_explain). This extra gates ONLY the transport
+# dependencies used by the live model path; permea_explain itself always ships. Without the
+# extra the package still imports, but a live provider call surfaces a clean install hint.
+explain = [
+    "openai>=1.0",
+    "requests>=2.28",
+    # The EXTRACT postcondition's schema gate. Validating against extract.schema.json rather
+    # than re-stating its constraints in Python is what keeps the gate from forking away from
+    # the schema it enforces.
+    "jsonschema>=4.18",
+]
+
+[project.scripts]
+permea = "permea_core.cli.main:main"
+
+[tool.setuptools.packages.find]
+# Two top-level packages: permea_core (src layout) and permea_explain (repo root, opt-in).
+# The include filter keeps discovery to exactly these two trees.
+where = ["src", "."]
+include = ["permea_core*", "permea_explain*"]
+
+[tool.setuptools.package-data]
+# The EXTRACT gates read their enums from these two schemas at runtime and refuse to fall back
+# to hand-copied values, so a wheel that omits them is a wheel where extract() cannot run at
+# all. Not decoration -- load-bearing at import-adjacent runtime.
+permea_explain = ["schemas/*.schema.json"]
