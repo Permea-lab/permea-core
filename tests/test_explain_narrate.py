@@ -60,19 +60,19 @@ def _report_file(tmp_path):
 
 
 class FakeProvider(Provider):
-    """Returns a fixed narration text; no network. Keeps the provider identity 'exaone'."""
+    """Returns a fixed narration text; no network. Keeps the provider identity 'configured'."""
 
-    name = "exaone"
+    name = "configured"
 
     def __init__(self, text: str):
         self._text = text
 
     @property
     def model_id(self) -> str:
-        return "fake-exaone-model"
+        return "fake-model"
 
     def complete(self, system, user, *, max_tokens, temperature=None, stop=None):
-        return ProviderResponse(text=self._text, provider="exaone", model_id="fake-exaone-model")
+        return ProviderResponse(text=self._text, provider="configured", model_id="fake-model")
 
 
 # A faithful narration: every number is a typed field of the W101 report.
@@ -143,8 +143,8 @@ def test_narrate_end_to_end_writes_only_on_pass(tmp_path):
     assert result["schema"] == "permea.interpretation/1.0"
     assert result["authoritative"] is False
     assert result["source_report_sha256"] == source_sha
-    assert result["model"]["provider"] == "exaone"
-    assert result["model"]["model_id"] == "fake-exaone-model"
+    assert result["model"]["provider"] == "configured"
+    assert result["model"]["model_id"] == "fake-model"
     assert re.fullmatch(r"[a-f0-9]{64}", result["model"]["prompt_sha256"])
     assert result["narrative"]["summary"] == FAITHFUL
     assert result["narrative"]["language"] == "ko"
@@ -170,7 +170,7 @@ def test_narrate_fabricated_writes_nothing(tmp_path):
 # --------------------------------------------------------------------------------------
 # Regression: the confidence level is a real report number (live false positive, 2026-07-18)
 # --------------------------------------------------------------------------------------
-# A real K-EXAONE narration said "95% 신뢰구간" and was rejected: the CI in the report IS a
+# A real live narration said "95% 신뢰구간" and was rejected: the CI in the report IS a
 # 95% bootstrap CI, but the level itself was not carried as a field, so "95" traced to
 # nothing. The fix was to emit the level from the engine, not to soften the guardrail --
 # these tests pin both halves of that.
@@ -223,7 +223,7 @@ def test_narrate_end_to_end_accepts_the_confidence_level(tmp_path):
 # --------------------------------------------------------------------------------------
 # Regression: thousands separators (live false positive, 2026-07-18)
 # --------------------------------------------------------------------------------------
-# A real K-EXAONE narration wrote the sample counts as "2,959" and "2,690" -- the correct
+# A real live narration wrote the sample counts as "2,959" and "2,690" -- the correct
 # values, Korean-convention group-formatted. The tokenizer split at the comma and read "2",
 # "959", "2", "690", none of which trace. The fix normalizes grouping commas before
 # tokenizing; it does not make the parser permissive, so every test below that asserts a

@@ -1,4 +1,4 @@
-"""Tests for the live Exaone provider.
+"""Tests for the live configured provider.
 
 Strictly offline. No test here sets a real token and none makes a network call: the wire
 shape is asserted by *constructing* the request, and the one end-to-end test replaces the
@@ -13,15 +13,15 @@ from pathlib import Path
 
 import pytest
 
-import permea_explain.providers.exaone as exaone_module
+import permea_explain.providers.configured as configured_module
 from permea_explain import narrate
 from permea_explain.providers import get_provider
 from permea_explain.providers.base import Provider, ProviderResponse
-from permea_explain.providers.exaone import (
+from permea_explain.providers.configured import (
     BASE_URL_ENV,
     ENDPOINT_ID_ENV,
     TOKEN_ENV,
-    ExaoneProvider,
+    ConfiguredProvider,
     base_url,
     build_request,
 )
@@ -44,19 +44,19 @@ def _no_ambient_credentials(monkeypatch):
 
 # --- selection ---------------------------------------------------------------------------
 
-def test_default_provider_is_exaone():
-    assert isinstance(get_provider(), ExaoneProvider)
+def test_default_provider_is_the_configured_one():
+    assert isinstance(get_provider(), ConfiguredProvider)
 
 
 def test_provider_selected_by_name_and_by_env(monkeypatch):
-    assert isinstance(get_provider("exaone"), ExaoneProvider)
-    monkeypatch.setenv("PERMEA_EXPLAIN_PROVIDER", "exaone")
-    assert isinstance(get_provider(), ExaoneProvider)
+    assert isinstance(get_provider("configured"), ConfiguredProvider)
+    monkeypatch.setenv("PERMEA_EXPLAIN_PROVIDER", "configured")
+    assert isinstance(get_provider(), ConfiguredProvider)
 
 
 def test_provider_reads_endpoint_id_from_env(monkeypatch):
     monkeypatch.setenv(ENDPOINT_ID_ENV, ENDPOINT)
-    assert get_provider("exaone").model_id == ENDPOINT
+    assert get_provider("configured").model_id == ENDPOINT
 
 
 def test_reserved_slots_stay_unwired():
@@ -73,26 +73,26 @@ def test_reserved_slots_stay_unwired():
 def test_missing_token_raises_clear_error(monkeypatch):
     monkeypatch.setenv(ENDPOINT_ID_ENV, ENDPOINT)
     with pytest.raises(RuntimeError, match=f"{TOKEN_ENV} is not set"):
-        ExaoneProvider().complete("s", "u", max_tokens=10)
+        ConfiguredProvider().complete("s", "u", max_tokens=10)
 
 
 def test_missing_endpoint_id_raises_clear_error(monkeypatch):
     monkeypatch.setenv(TOKEN_ENV, TOKEN)
     with pytest.raises(RuntimeError, match=f"{ENDPOINT_ID_ENV} is not set"):
-        ExaoneProvider().complete("s", "u", max_tokens=10)
+        ConfiguredProvider().complete("s", "u", max_tokens=10)
 
 
 def test_missing_credentials_do_not_fall_back(monkeypatch):
     """An unconfigured provider raises rather than narrating from somewhere else."""
     with pytest.raises(RuntimeError):
-        ExaoneProvider().complete("s", "u", max_tokens=10)
+        ConfiguredProvider().complete("s", "u", max_tokens=10)
 
 
 def test_missing_extra_raises_install_hint(monkeypatch):
     """Without the [explain] extra the live path names the extra, it does not ImportError."""
     monkeypatch.setitem(sys.modules, "requests", None)  # makes `import requests` raise
     with pytest.raises(RuntimeError, match=r"permea-core\[explain\]"):
-        ExaoneProvider(token=TOKEN, endpoint_id=ENDPOINT).complete("s", "u", max_tokens=10)
+        ConfiguredProvider(token=TOKEN, endpoint_id=ENDPOINT).complete("s", "u", max_tokens=10)
 
 
 # --- wire shape: constructed, never sent -------------------------------------------------
@@ -105,9 +105,12 @@ def test_request_body_is_well_formed():
     assert headers["Authorization"] == f"Bearer {TOKEN}"
     assert headers["Content-Type"] == "application/json"
 
-    # 'model' carries the deployment identifier, not a model name.
+    # 'model' carries the deployment identifier, not a model name. Asserted as a pass-through
+    # property rather than against one banned string: whatever identifier configuration
+    # supplies is what goes on the wire, so no model name can be substituted in here.
     assert payload["model"] == ENDPOINT
-    assert "EXAONE" not in payload["model"]
+    _, other = build_request(TOKEN, "another-deployment-id", "SYS", "USR")
+    assert other["model"] == "another-deployment-id"
 
     assert payload["messages"] == [
         {"role": "system", "content": "SYS"},
@@ -139,7 +142,7 @@ def test_missing_base_url_raises_clear_error():
 
 def test_no_deployment_url_is_hardcoded_in_source():
     """Regression guard for the packaging leak: a published copy carries no one deployment."""
-    source = Path(inspect.getsourcefile(exaone_module)).read_text(encoding="utf-8")
+    source = Path(inspect.getsourcefile(configured_module)).read_text(encoding="utf-8")
     assert "https://" not in source
 
 
@@ -160,7 +163,7 @@ def test_token_is_never_embedded_in_the_payload():
 # --- interface contract: NARRATE stays provider-agnostic ---------------------------------
 
 def test_complete_signature_matches_fake_provider():
-    live = inspect.signature(ExaoneProvider.complete)
+    live = inspect.signature(ConfiguredProvider.complete)
     fake = inspect.signature(FakeProvider.complete)
     base = inspect.signature(Provider.complete)
     for other in (fake, base):
@@ -170,7 +173,7 @@ def test_complete_signature_matches_fake_provider():
 
 
 def test_narrate_is_unchanged_by_the_live_provider(tmp_path, monkeypatch):
-    """Same Diagnosis -> same interpretation whether the text came from Fake or Exaone.
+    """Same Diagnosis -> same interpretation whether the text came from Fake or the live provider.
 
     The transport is replaced, so no request leaves the process; everything above it -- the
     guardrails and the interpretation assembly -- is the real code path.
@@ -181,14 +184,14 @@ def test_narrate_is_unchanged_by_the_live_provider(tmp_path, monkeypatch):
         sent["headers"], sent["payload"] = headers, payload
         return FAITHFUL
 
-    monkeypatch.setattr("permea_explain.providers.exaone._post", _fake_post)
+    monkeypatch.setattr("permea_explain.providers.configured._post", _fake_post)
     path, _ = _report_file(tmp_path)
 
-    live = narrate(path, provider=ExaoneProvider(token=TOKEN, endpoint_id=ENDPOINT))
+    live = narrate(path, provider=ConfiguredProvider(token=TOKEN, endpoint_id=ENDPOINT))
     fake = narrate(path, provider=FakeProvider(FAITHFUL))
 
     assert isinstance(live, dict)
-    assert live["model"]["provider"] == fake["model"]["provider"] == "exaone"
+    assert live["model"]["provider"] == fake["model"]["provider"] == "configured"
     assert live["model"]["model_id"] == ENDPOINT  # the endpoint id is recorded as the model
     assert live["narrative"] == fake["narrative"]
     assert live["numeric_provenance"] == fake["numeric_provenance"]
@@ -202,4 +205,4 @@ def test_narrate_is_unchanged_by_the_live_provider(tmp_path, monkeypatch):
 
 
 def test_provider_response_shape_is_the_shared_one():
-    assert ProviderResponse(text="t", provider="exaone", model_id=ENDPOINT).provider == "exaone"
+    assert ProviderResponse(text="t", provider="configured", model_id=ENDPOINT).provider == "configured"

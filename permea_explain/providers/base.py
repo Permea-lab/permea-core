@@ -16,7 +16,7 @@ class ProviderResponse:
     """What a provider returns: the completion text plus the identity that produced it."""
 
     text: str
-    provider: str  # provider name, e.g. "exaone"
+    provider: str  # provider name, e.g. "configured"
     model_id: str  # the concrete model id that was called
 
 

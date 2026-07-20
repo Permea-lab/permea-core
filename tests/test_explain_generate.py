@@ -29,7 +29,7 @@ DEFINITION = "/extracted/positive_class/definition"
 class StubProvider(Provider):
     """Returns canned responses in order; records what it was asked. No network."""
 
-    name = "exaone"
+    name = "configured"
 
     def __init__(self, *responses):
         self._responses = list(responses)
@@ -38,13 +38,13 @@ class StubProvider(Provider):
 
     @property
     def model_id(self) -> str:
-        return "fake-exaone-model"
+        return "fake-model"
 
     def complete(self, system, user, *, max_tokens, temperature=None, stop=None):
         self.system, self.user, self.temperature = system, user, temperature
         self.calls += 1
         text = self._responses[min(self.calls - 1, len(self._responses) - 1)]
-        return ProviderResponse(text=text, provider="exaone", model_id="fake-exaone-model")
+        return ProviderResponse(text=text, provider="configured", model_id="fake-model")
 
 
 def _leaf(value=None, span=None, confidence=0.9):
@@ -352,8 +352,8 @@ def test_the_envelope_comes_from_extract_not_the_model():
     assert doc["source_text_sha256"] == extract_mod._sha256(METHODS_TEXT)
     assert doc["dataset_card"] == CARD
     assert len(doc["disclaimer"]) >= 40
-    assert doc["model"]["provider"] == "exaone"
-    assert doc["model"]["model_id"] == "fake-exaone-model"
+    assert doc["model"]["provider"] == "configured"
+    assert doc["model"]["model_id"] == "fake-model"
     assert doc["model"]["temperature"] == 0.0
     assert len(doc["model"]["prompt_sha256"]) == 64
 
