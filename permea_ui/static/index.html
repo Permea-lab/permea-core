@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Permea Drylab</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>Permea <span>Drylab</span></h1>
+  <p class="tagline">Every number on this page is computed by the engine. The interpretation
+    layer describes those numbers and never produces them.</p>
+</header>
+
+<main>
+  <section class="panel" id="input-panel">
+    <h2>1 &middot; Input</h2>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="example" role="tab">Example</button>
+      <button class="tab" data-tab="upload" role="tab">Upload</button>
+    </div>
+
+    <div class="tabpane active" id="pane-example">
+      <p class="note">A synthetic near-duplicate population with two cluster assignments
+        over the <em>same</em> rows. Nothing but the honesty of the clustering changes
+        between the two runs.</p>
+      <div class="choices">
+        <button class="run-example" data-clustering="naive">
+          <strong>Naive clustering</strong>
+          <span>Near-duplicates scattered across clusters</span>
+        </button>
+        <button class="run-example" data-clustering="family">
+          <strong>Identity-aware clustering</strong>
+          <span>Near-duplicates held together</span>
+        </button>
+      </div>
+      <p class="warn-strip" id="example-label"></p>
+    </div>
+
+    <div class="tabpane" id="pane-upload">
+      <label>Dataset CSV
+        <span class="hint">requires <code>sequence_id, sequence, label</code> plus
+          <code>length, charge, gravy, pI, aromaticity</code></span>
+        <input type="file" id="f-dataset" accept=".csv">
+      </label>
+      <label>Cluster TSV
+        <span class="hint">headerless, <code>sequence_id&#9;cluster_id</code>, one row per
+          sequence</span>
+        <input type="file" id="f-clusters" accept=".tsv,.txt">
+      </label>
+      <button id="run-upload">Run diagnose</button>
+    </div>
+
+    <details class="settings">
+      <summary>Evaluation settings</summary>
+      <label>Seeds <input type="number" id="s-seeds" min="1" max="10"></label>
+      <label>CV folds (k) <input type="number" id="s-k" min="2" max="10"></label>
+      <label>Bootstrap resamples <input type="number" id="s-nboot" min="0" max="5000" step="100"></label>
+      <label class="check">
+        <input type="checkbox" id="s-identity">
+        Declare an identity definition
+        <span class="hint">Leaving this unchecked is a real finding about the run, not a
+          UI shortcut &mdash; PERMEA-W001 will fire.</span>
+      </label>
+    </details>
+  </section>
+
+  <section class="panel" id="result-panel">
+    <h2>2 &middot; Result</h2>
+    <div id="status-line" class="idle">Idle</div>
+    <div id="result"></div>
+  </section>
+</main>
+
+<section class="panel" id="catalog-panel">
+  <h2>Warning registry</h2>
+  <p class="note">The full catalog. <strong>Reserved</strong> codes are defined but have no
+    firing logic &mdash; they need inputs an evaluation run does not carry, so they can
+    never appear in a report. They are listed so a clean report is not misread as a
+    broader all-clear than it is.</p>
+  <div id="catalog"></div>
+</section>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
