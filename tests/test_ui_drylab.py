@@ -119,8 +119,16 @@ def test_transport_failure_yields_error_not_an_exception(diagnosis):
     assert "TimeoutError" in (n.detail or "")
 
 
-def test_only_ok_status_ever_carries_text(diagnosis):
-    """Whatever the status, text is non-None only for `ok`. The UI keys off this."""
+def test_only_ok_status_ever_carries_text(diagnosis, monkeypatch):
+    """Whatever the status, text is non-None only for `ok`. The UI keys off this.
+
+    The `None` case must stay offline: with the three vars set it would select the
+    configured provider and bill a real call from the test suite. Cleared here so the
+    branch deterministically takes the `unavailable` path, as at
+    test_missing_credentials_yields_unavailable.
+    """
+    for var in ("PERMEA_LLM_TOKEN", "PERMEA_LLM_ENDPOINT_ID", "PERMEA_LLM_BASE_URL"):
+        monkeypatch.delenv(var, raising=False)
     for provider in (FakeProvider("정확도는 99.7% 입니다."), None):
         n = runner.narrate_diagnosis(diagnosis, provider=provider)
         assert (n.text is not None) == (n.status == "ok")
