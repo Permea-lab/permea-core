@@ -31,17 +31,31 @@ explain = [
     "jsonschema>=4.18",
 ]
 
+# Opt-in Drylab web UI (permea_ui). Deliberately an extra, not a base dependency: the
+# diagnose engine must stay installable without a web stack, and
+# tests/test_ui_drylab.py::test_importing_the_engine_does_not_pull_the_web_stack holds
+# that line. python-multipart is what lets FastAPI accept the dataset/cluster uploads.
+ui = [
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "python-multipart>=0.0.9",
+]
+
 [project.scripts]
 permea = "permea_core.cli.main:main"
+permea-drylab = "permea_ui.__main__:main"
 
 [tool.setuptools.packages.find]
-# Two top-level packages: permea_core (src layout) and permea_explain (repo root, opt-in).
-# The include filter keeps discovery to exactly these two trees.
+# Three top-level packages: permea_core (src layout), plus permea_explain and permea_ui
+# (repo root, both opt-in). The include filter keeps discovery to exactly these trees.
 where = ["src", "."]
-include = ["permea_core*", "permea_explain*"]
+include = ["permea_core*", "permea_explain*", "permea_ui*"]
 
 [tool.setuptools.package-data]
 # The EXTRACT gates read their enums from these two schemas at runtime and refuse to fall back
 # to hand-copied values, so a wheel that omits them is a wheel where extract() cannot run at
 # all. Not decoration -- load-bearing at import-adjacent runtime.
 permea_explain = ["schemas/*.schema.json"]
+# The UI serves these from disk at request time; a wheel without them installs a server
+# that returns 404 for its own front end.
+permea_ui = ["static/*"]
