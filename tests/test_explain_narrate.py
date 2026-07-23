@@ -12,7 +12,7 @@ import pytest
 
 from permea_core.diagnose import diagnose
 from permea_core.eval.run import EvalRun, MetricRow
-from permea_explain import GuardrailViolation, guardrails, narrate, source
+from permea_explain import GuardrailViolation, guardrails, narrate, prompt, source
 from permea_explain.extract import extract
 from permea_explain.providers.base import Provider, ProviderResponse
 from permea_explain.violations import NUMERIC_UNTRACED
@@ -371,6 +371,38 @@ def test_pure_digit_and_decimal_tokenization_unchanged():
     assert guardrails.numbers_in_narrative("표본은 2,959개") == ["2959"]
     # A warning code still loses its digits (W101 -> gone); the standalone 0.87 survives.
     assert guardrails.numbers_in_narrative("PERMEA-W101 이 발화, 정확도 0.87") == ["0.87"]
+
+
+# --------------------------------------------------------------------------------------
+# A-priori sign convention (#0034)
+# --------------------------------------------------------------------------------------
+# SYSTEM_PROMPT carries a standing instruction to always write signed fields (deltas, CI
+# bounds) WITH their sign -- stated ONCE, before any generation, as defence in depth mirroring
+# the guardrail's sign-aware token matching. It is NOT a retry after a violation (the verifier
+# must never become a training signal). The instruction itself must carry no numeric literal:
+# commit b24737a exists because literals injected into prompt-visible text came back in
+# narrations and tripped the number gate, so the added sentence must tokenize to [] under the
+# SAME extractor the gate uses at runtime.
+_SIGN_CONVENTION = (
+    "부호가 있는 숫자 필드(델타, 신뢰구간 경계 등)는 항상 그 부호를 "
+    "붙여 그대로 쓰십시오. 방향을 동사로 나타내더라도 부호를 뗀 크기(절댓값)만 적는 "
+    "것은 허용되지 않습니다. 음수 필드는 반드시 음의 부호와 함께 기재하십시오."
+)
+
+
+def test_sign_convention_present_in_system_prompt():
+    """The convention is a-priori: it lives in the standing prompt, sent before generation.
+
+    Matched whitespace-insensitively because SYSTEM_PROMPT hard-wraps its rules across
+    indented lines, so the sentence spans several ``\\n   `` breaks in the source.
+    """
+    collapse = lambda s: re.sub(r"\s+", " ", s).strip()
+    assert collapse(_SIGN_CONVENTION) in collapse(prompt.SYSTEM_PROMPT)
+
+
+def test_sign_convention_carries_no_numeric_literal():
+    """A faithful copy of the instruction must not itself fail the provenance gate (b24737a)."""
+    assert guardrails._standalone_number_tokens(_SIGN_CONVENTION) == []
 
 
 def test_extract_is_available_alongside_narrate():
