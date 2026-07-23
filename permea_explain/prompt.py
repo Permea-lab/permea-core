@@ -9,6 +9,11 @@ Non-numeric context: the static ``title``/``description`` of each fired code is 
 the ``permea_core`` warning registry (a one-way import) so the model can explain what a code
 means. The numeric allowed-set is taken strictly from the report's typed fields, never from
 registry prose -- and only ACTIVE codes fire, whose descriptions carry no numeric literals.
+That last clause was an unchecked assertion and was false in practice (W001/W002 carried
+"permea-eval/1.0", W101 "Paper 1 P1", W501 a hardcoded "95%"), so faithful narrations copied
+numbers no report field could back and the provenance guard withheld them. The literals are
+gone and ``tests/test_explain_registry_numerals.py`` now enforces the invariant against the
+guardrail's own extractor.
 """
 from __future__ import annotations
 
@@ -30,7 +35,9 @@ Diagnosis 를 계산했습니다. 당신의 유일한 임무는 그 Diagnosis �
    값과 문자 그대로 일치해야 합니다. 리포맷 금지 — 0.0432 를 "4.32%" 나 "4%" 로
    바꾸지 말고 그대로 쓰십시오. JSON 의 숫자 필드에 없는 숫자는 출력에 나올 수
    없습니다. 신뢰수준(예: "95% 신뢰구간"의 95)처럼 숫자 필드가 아니라 설명 문자열
-   안에만 있는 값은 숫자로 다시 쓰지 마십시오.
+   안에만 있는 값은 숫자로 다시 쓰지 마십시오. 아래의 레지스트리 설명(경고 코드의
+   의미)도 숫자의 출처가 아닙니다. 그 안에 숫자·버전·논문 참조가 보이더라도 출력에
+   옮기지 마십시오.
 
 2. fired 목록에 있는 경고만 서술하십시오. fired 에 없는 경고 코드(PERMEA-W###)를
    지어내지 마십시오.

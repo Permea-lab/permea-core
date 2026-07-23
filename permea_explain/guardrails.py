@@ -45,10 +45,20 @@ VERIFIER_VERSION = "permea-explain-narrate-guardrails/0.1"
 # (e.g. delta_point = -0.05) is matched with its sign, not as its absolute value.
 _NUM_TOKEN = re.compile(r"-?\d+(?:\.\d+)?")
 
-# Identifier-like tokens (PERMEA-W101, ref_b58ee4, physchem_rf): digits inside them are part
-# of an opaque reference, not numeric facts, so strip identifiers before reading standalone
-# numbers. "PERMEA-W101" -> "PERMEA" and "W101" are both stripped, so 101 is never read.
-_IDENTIFIER_TOKEN = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
+# Identifier-like tokens (PERMEA-W101, ref_b58ee4, physchem_rf, the hex of a data_sha256):
+# digits inside them are part of an opaque reference, not numeric facts, so strip identifiers
+# before reading standalone numbers. A maximal run of [A-Za-z0-9_] is blanked WHOLE whenever
+# it carries a letter or underscore, so its digits go whether they LEAD or TRAIL the letters:
+# "PERMEA-W101" -> "PERMEA" and "W101" both vanish (101 never read), and a digit-first hash
+# "41dba61b...8004d" vanishes entire (the leading 41 never read). A pure-digit run carries no
+# letter and is left for the number tokenizer, unchanged.
+#
+# The earlier form, [A-Za-z_][A-Za-z0-9_]*, required the run to START on a letter/underscore.
+# That blanked trailing digits ("abc42" whole) but not leading ones ("42abc" left "42"), so a
+# sha256 that began with hex digits left those digits behind as a bare, untraceable number and
+# false-failed a narration that faithfully quoted the hash. Blanking is now symmetric.
+_ALNUM_RUN = re.compile(r"[A-Za-z0-9_]+")
+_HAS_LETTER_OR_UNDERSCORE = re.compile(r"[A-Za-z_]")
 
 _WCODE = re.compile(r"PERMEA-W[0-9]{3}")
 
@@ -78,6 +88,18 @@ def _strip_thousands_separators(text: str) -> str:
     return _THOUSANDS_GROUPED.sub(lambda m: m.group(1).replace(",", ""), text)
 
 
+def _blank_identifiers(text: str) -> str:
+    """Blank every [A-Za-z0-9_] run that carries a letter or underscore, whole.
+
+    A pure-digit run denotes a number and is left in place; a run that also holds a letter or
+    underscore is an opaque identifier (a warning code, a column name, a hash) and is removed
+    entirely -- leading digits included, so a digit-first hash leaves nothing behind."""
+    return _ALNUM_RUN.sub(
+        lambda m: " " if _HAS_LETTER_OR_UNDERSCORE.search(m.group(0)) else m.group(0),
+        text,
+    )
+
+
 def _standalone_number_tokens(text: str) -> list[str]:
     """Numeric tokens that stand alone -- NOT digit runs inside an identifier.
 
@@ -85,7 +107,7 @@ def _standalone_number_tokens(text: str) -> list[str]:
     number it denotes. This changes only how a token is ASSEMBLED from the prose; what counts
     as a match against the report is unchanged.
     """
-    without_ids = _IDENTIFIER_TOKEN.sub(" ", _strip_thousands_separators(text))
+    without_ids = _blank_identifiers(_strip_thousands_separators(text))
     return _NUM_TOKEN.findall(without_ids)
 
 

@@ -84,7 +84,7 @@ WARNINGS: tuple[WarningCode, ...] = (
         fire_condition="EvalRun.identity_definition is None (or a built-in default was used, not an explicit declaration)",
         description=(
             "The identity definition governing the clustering was not explicitly declared. "
-            "Under permea-eval/1.0 it is required with no default: the entire identity-control "
+            "Under the permea-eval contract it is required with no default: the entire identity-control "
             "result depends on how identity is defined (alignment, denominator, gap treatment), "
             "so an undeclared or silently-defaulted definition makes the headline number "
             "uninterpretable and non-comparable across runs."
@@ -99,8 +99,8 @@ WARNINGS: tuple[WarningCode, ...] = (
         severity=Severity.CRITICAL,
         fire_condition='EvalRun.headline_condition != "B"',
         description=(
-            "The reported headline is not the identity-controlled condition B. permea-eval/1.0 "
-            "fixes the headline to the identity-controlled evaluation; reporting the uncontrolled "
+            "The reported headline is not the identity-controlled condition B. The permea-eval "
+            "contract fixes the headline to the identity-controlled evaluation; reporting the uncontrolled "
             "condition A (or anything else) as the headline re-admits exactly the similarity "
             "leakage the protocol exists to remove."
         ),
@@ -132,7 +132,8 @@ WARNINGS: tuple[WarningCode, ...] = (
         description=(
             "Identity-controlled evaluation (B) scores significantly below the uncontrolled "
             "evaluation (A), with the paired-bootstrap CI on the delta excluding zero. This is "
-            "the core Paper 1 P1 finding: a material fraction of the uncontrolled performance was "
+            "the core finding the identity-control protocol exists to expose: a material fraction "
+            "of the uncontrolled performance was "
             "similarity memorisation of near-duplicate train/test peptides, not generalisation. "
             "The magnitude that counts as 'material' is a diagnose-layer policy, not fixed here."
         ),
@@ -148,7 +149,7 @@ WARNINGS: tuple[WarningCode, ...] = (
         severity=Severity.WARN,
         fire_condition="a reported delta has ci_excludes_zero == False (CI straddles zero)",
         description=(
-            "The paired-bootstrap 95% CI on the A-vs-B delta includes zero, so the two conditions "
+            "The paired-bootstrap CI on the A-vs-B delta includes zero, so the two conditions "
             "are not statistically distinguishable at that level. The point estimate should not be "
             "reported as a real effect; the result is inconclusive rather than null."
         ),
