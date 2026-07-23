@@ -15,7 +15,9 @@ status a UI can render honestly instead of letting it become a 500.
 
 from __future__ import annotations
 
+import hashlib
 import json
+import logging
 import os
 import tempfile
 from dataclasses import dataclass, field
@@ -25,6 +27,11 @@ from typing import Any, Literal
 from permea_core.diagnose import diagnose
 from permea_core.diagnose.rules import DiagnosePolicy
 from permea_core.eval.run import run_from_dataset
+
+#: Operator-only sink for withheld narrations. The offending prose is logged HERE (server
+#: side) so a withheld run can be adjudicated after the fact; it is never returned to the
+#: browser -- the HTTP response still carries only the headline. See narrate_diagnosis.
+_log = logging.getLogger("permea_ui.narration")
 
 #: Demo-scale evaluation settings. The CLI defaults (seeds=5, k=5, n_boot=2000) take ~53s
 #: and saturate every core; these take ~9s on the example fixture and are the settings the
@@ -201,7 +208,19 @@ def narrate_diagnosis(diagnosis: dict[str, Any], *, provider: Any = None) -> Nar
         except GuardrailViolation as exc:
             # Show that a check failed and how many -- never the offending text, which the
             # exception appends after a `--- offending output ---` marker.
-            headline = str(exc).split("\n--- offending output ---", 1)[0]
+            message = str(exc)
+            headline = message.split("\n--- offending output ---", 1)[0]
+            # OPERATOR-ONLY observability: the full exception still holds the offending prose
+            # after the marker. Log it here (server side) with the report hash so a withheld
+            # narration can be adjudicated later. This never reaches the browser -- the
+            # returned Narration below carries only the headline, and app.py serializes no
+            # more than that. `message` is logged whole: headline + the offending prose.
+            source_report_sha256 = hashlib.sha256(report_path.read_bytes()).hexdigest()
+            _log.warning(
+                "narration withheld [source_report_sha256=%s]: %s",
+                source_report_sha256,
+                message,
+            )
             return Narration(status="withheld", detail=headline)
         except Exception as exc:  # transport, timeout, malformed response
             return Narration(status="error", detail=f"{type(exc).__name__}: {exc}")

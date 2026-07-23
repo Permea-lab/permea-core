@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import ast
 import json
+import logging
 import sys
 from pathlib import Path
 
@@ -115,6 +116,29 @@ def test_narration_quoting_the_data_sha256_is_not_withheld(diagnosis):
     n = runner.narrate_diagnosis(diagnosis, provider=FakeProvider(text))
     assert n.status == "ok", f"expected ok, got {n.status}: {n.detail}"
     assert n.text == text
+
+
+def test_withheld_narration_logs_offending_prose_for_operator(diagnosis, caplog):
+    """Design 1 (#0034): a withheld narration's offending prose is logged SERVER-SIDE for
+    operator adjudication, while the returned Narration -- and therefore the HTTP response --
+    still carries none of it. The browser redaction is unchanged; only observability is added.
+    """
+    bad = "정확도는 99.7% 였고 PERMEA-W999 경고가 발생했습니다."  # fabricated number + unfired code
+    with caplog.at_level(logging.WARNING, logger="permea_ui.narration"):
+        n = runner.narrate_diagnosis(diagnosis, provider=FakeProvider(bad))
+
+    # What the browser gets: withheld, no prose, no offending text leaked into the detail.
+    assert n.status == "withheld"
+    assert n.text is None, "withheld narration must not carry renderable prose"
+    assert "offending output" not in (n.detail or "")
+    assert bad not in (n.detail or ""), "offending prose must not reach the returned Narration"
+
+    # What the operator gets: the full offending prose, on the dedicated server-side logger.
+    records = [r for r in caplog.records if r.name == "permea_ui.narration"]
+    assert records, "expected a WARNING on the 'permea_ui.narration' logger"
+    logged = "\n".join(r.getMessage() for r in records)
+    assert bad in logged, "offending prose must be present in the operator log"
+    assert "source_report_sha256=" in logged, "log must carry the report hash for adjudication"
 
 
 def test_missing_credentials_yields_unavailable(diagnosis, monkeypatch):
