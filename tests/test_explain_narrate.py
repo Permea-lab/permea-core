@@ -15,6 +15,7 @@ from permea_core.eval.run import EvalRun, MetricRow
 from permea_explain import GuardrailViolation, guardrails, narrate, source
 from permea_explain.extract import extract
 from permea_explain.providers.base import Provider, ProviderResponse
+from permea_explain.violations import NUMERIC_UNTRACED
 
 GOOD_IDENTITY = {"alignment": "global", "denominator": "shorter_sequence", "gap_treatment": "free"}
 
@@ -305,6 +306,71 @@ def test_narrate_end_to_end_accepts_grouped_counts(tmp_path):
     nums = result["numeric_provenance"]["numbers_in_narrative"]
     assert "2959" in nums and "2690" in nums and "1000" in nums and "95" in nums
     assert result["numeric_provenance"]["all_numbers_traced"] is True
+
+
+# --------------------------------------------------------------------------------------
+# Symmetric identifier blanking (#0030)
+# --------------------------------------------------------------------------------------
+# The identifier strip once required a run to START on a letter/underscore, so a sha256 that
+# began with hex digits ("41dba61b...8004d") left its leading "41" behind as a bare number and
+# false-failed a narration that faithfully quoted the hash. Blanking now removes any
+# [A-Za-z0-9_] run carrying a letter/underscore WHOLE -- leading digits included -- while a
+# pure-digit run still reaches the number gate.
+#
+# KNOWN LIMITATION, stated plainly: after this change a FABRICATED identifier-shaped token (a
+# hallucinated hash, a made-up column name with digits) no longer trips the provenance gate
+# via its leading digits. That detection was ACCIDENTAL, never a guarantee -- the number gate
+# exists to catch bare fabricated NUMBERS, not fabricated identifiers, and hash fidelity is out
+# of scope for it. The tests below pin the intended behavior, not that lost side effect.
+
+# The demo fixture (permea_ui.fixtures, _SEED = 20260721) emits this exact digit-first sha256;
+# see tests/test_ui_drylab.py for the end-to-end regression over that fixture.
+_DIGIT_FIRST_SHA256 = "41dba61bf87bd33674c49388075707f5a0dade7060a2da6298bd7f91b1b8004d"
+
+
+def test_digit_first_identifier_leaves_no_bare_number():
+    """A digit-first hash is blanked whole; trailing-digit ids already were -- now symmetric."""
+    assert guardrails.numbers_in_narrative(f"데이터 해시는 {_DIGIT_FIRST_SHA256} 입니다.") == []
+    # "42abc" (leading digits) now matches "abc42" (trailing): both blank whole, neither leaks.
+    assert guardrails.numbers_in_narrative("식별자 42abc 와 abc42 를 봅니다.") == []
+
+
+def test_faithful_hash_quote_passes_provenance(tmp_path):
+    """(a) Quoting the report's data_sha256 no longer trips the number-provenance gate."""
+    _, report = _report_file(tmp_path)
+    report["context"]["data_sha256"] = _DIGIT_FIRST_SHA256  # digit-first, as the demo fixture emits
+    text = f"이 해설은 데이터 해시 {_DIGIT_FIRST_SHA256} 를 참조합니다. 조건 B 가 헤드라인입니다."
+    assert guardrails.render_checked(text, report) == text
+
+
+def test_fabricated_standalone_number_still_untraced(tmp_path):
+    """(b) LOAD-BEARING: a bare fabricated number absent from the report is STILL rejected.
+
+    Proves symmetric blanking did not weaken the gate: only alnum runs CARRYING a letter are
+    swallowed; a standalone "0.87" carries none, reaches the gate, and fails as NUMERIC_UNTRACED.
+    """
+    _, report = _report_file(tmp_path)
+    violations = guardrails.collect_violations(FAITHFUL + " 정확도는 0.87 입니다.", report)
+    assert [v.kind for v in violations] == [NUMERIC_UNTRACED]
+    assert "0.87" in violations[0].message
+
+
+def test_korean_adjacent_digits_still_reach_the_gate(tmp_path):
+    """(c) Hangul is outside [A-Za-z0-9_], so "180개" still yields "180" and is provenance-checked."""
+    assert guardrails.numbers_in_narrative("표본은 180개입니다.") == ["180"]
+    _, report = _report_file(tmp_path)  # this report has n=2959, not 180
+    with pytest.raises(GuardrailViolation, match="180"):
+        guardrails.render_checked("표본은 180개입니다.", report)
+
+
+def test_pure_digit_and_decimal_tokenization_unchanged():
+    """(d) Pure-digit, decimal, and thousands-grouped forms tokenize exactly as before."""
+    assert guardrails.numbers_in_narrative("총 1000 개, 95%, 임계값 0.02, 델타 -0.4344") == [
+        "1000", "95", "0.02", "-0.4344",
+    ]
+    assert guardrails.numbers_in_narrative("표본은 2,959개") == ["2959"]
+    # A warning code still loses its digits (W101 -> gone); the standalone 0.87 survives.
+    assert guardrails.numbers_in_narrative("PERMEA-W101 이 발화, 정확도 0.87") == ["0.87"]
 
 
 def test_extract_is_available_alongside_narrate():

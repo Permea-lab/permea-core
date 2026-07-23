@@ -17,6 +17,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from permea_core.contracts.warnings import Status, WARNINGS
+from permea_explain import guardrails
 from permea_explain.providers.base import ProviderResponse
 from permea_ui import fixtures, runner
 from permea_ui.app import app
@@ -96,6 +97,24 @@ def test_guardrail_failure_yields_withheld_and_no_text(diagnosis):
     assert n.status == "withheld"
     assert n.text is None, "withheld narration must not carry renderable prose"
     assert "offending output" not in (n.detail or ""), "detail must not leak the bad prose"
+
+
+def test_narration_quoting_the_data_sha256_is_not_withheld(diagnosis):
+    """A narration that faithfully quotes the report's data_sha256 must render, not be withheld.
+
+    Regression for #0030 over the demo fixture (fixtures._SEED = 20260721), whose sha256 is
+    digit-first -- 41dba61b...8004d. The old identifier strip left that leading "41" behind as
+    a bare, untraceable number, so the number-provenance gate withheld the narration ~1 in 4
+    live runs. Symmetric blanking removes the hash whole. No live API: the hash is the only
+    numeric-looking content and a FakeProvider supplies the prose.
+    """
+    sha = diagnosis["context"]["data_sha256"]
+    text = f"이 진단의 데이터 해시는 {sha} 입니다."
+    # The crux: the quoted hash contributes no standalone numeric token for the gate to check.
+    assert guardrails.numbers_in_narrative(text) == []
+    n = runner.narrate_diagnosis(diagnosis, provider=FakeProvider(text))
+    assert n.status == "ok", f"expected ok, got {n.status}: {n.detail}"
+    assert n.text == text
 
 
 def test_missing_credentials_yields_unavailable(diagnosis, monkeypatch):
