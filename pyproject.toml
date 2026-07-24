@@ -41,6 +41,16 @@ ui = [
     "python-multipart>=0.0.9",
 ]
 
+# Maintainer tooling: build the canonical sdist+wheel and check/upload with twine, plus the
+# test runner. `build` and `twine` are what a release runs; pytest is here so CI can install
+# `.[dev]` and execute the suite -- including the packaging smoke test, which shells out to
+# `python -m build`. Nothing here is needed to *use* the CLI. No upload happens in-repo.
+dev = [
+    "build>=1.0",
+    "twine>=5.0",
+    "pytest>=8.0",
+]
+
 [project.scripts]
 permea = "permea_core.cli.main:main"
 permea-drylab = "permea_ui.__main__:main"
@@ -59,3 +69,12 @@ permea_explain = ["schemas/*.schema.json"]
 # The UI serves these from disk at request time; a wheel without them installs a server
 # that returns 404 for its own front end.
 permea_ui = ["static/*"]
+
+[tool.pytest.ini_options]
+# Registered so the packaging smoke test's markers are not "unknown". `packaging` (also
+# tagged `slow`) builds a wheel, spins up a throwaway venv, and drives the installed console
+# script -- deselect it in fast runs with:  pytest -m "not packaging"
+markers = [
+    "slow: test is slow (builds/install/subprocess); safe to skip in fast local runs",
+    "packaging: exercises a real wheel build + clean-venv install (implies slow)",
+]
