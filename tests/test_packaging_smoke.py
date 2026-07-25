@@ -17,6 +17,13 @@ Marked ``packaging`` (and ``slow``) so fast unit runs can deselect it::
 
 Needs no network beyond the PyPI dependency resolve that ``build`` (isolated backend) and
 ``pip install`` perform -- i.e. it is CI-safe wherever PyPI is reachable.
+
+IMPORTANT -- this test SKIPS when ``python -m build`` is unavailable (no pypa-build on the
+interpreter). So a green *local* run does NOT mean this test ran: on a maintainer machine
+without the ``dev`` extra it is skipped, not executed. Where it actually runs is CI --
+``.github/workflows/ci.yml`` installs ``.[dev]`` (which provides ``build``) and invokes it
+via the dedicated ``pytest -m packaging`` step. If you want to run it locally, install the
+dev extra first: ``pip install ".[dev]"``.
 """
 
 from __future__ import annotations
@@ -48,7 +55,8 @@ def test_wheel_installs_and_diagnose_runs_from_clean_venv(tmp_path: Path) -> Non
     # `python -m build` is the canonical wheel builder; it ships in the `dev` extra. Gate on
     # the ACTUAL capability, not an `import build`: a bare env may have an unrelated module
     # also named `build` on sys.path, which imports fine yet has no runnable CLI. Probe the
-    # real invocation and skip (don't fail) when it is unavailable -- CI installs `.[dev]`.
+    # real invocation and skip (don't fail) when unavailable -- CI's `.[dev]` install provides
+    # it (.github/workflows/ci.yml), so the skip only ever happens off-CI.
     probe = subprocess.run(
         [sys.executable, "-m", "build", "--version"], capture_output=True, text=True
     )
