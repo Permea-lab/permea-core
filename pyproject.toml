@@ -16,6 +16,14 @@ license = "Apache-2.0"
 dependencies = [
     "numpy>=1.24",
     "scikit-learn>=1.3",
+    # Web UI (permea_ui / the `permea-drylab` server) stack. Shipped in base -- not gated
+    # behind an extra -- so plain `pip install permea-core` (no extras) is enough to run the
+    # UI. python-multipart is what lets FastAPI accept the dataset/cluster uploads. The
+    # engine still imports none of these at diagnose time (held by
+    # tests/test_ui_drylab.py::test_importing_the_engine_does_not_pull_the_web_stack).
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "python-multipart>=0.0.9",
 ]
 
 [project.optional-dependencies]
@@ -31,15 +39,11 @@ explain = [
     "jsonschema>=4.18",
 ]
 
-# Opt-in Drylab web UI (permea_ui). Deliberately an extra, not a base dependency: the
-# diagnose engine must stay installable without a web stack, and
-# tests/test_ui_drylab.py::test_importing_the_engine_does_not_pull_the_web_stack holds
-# that line. python-multipart is what lets FastAPI accept the dataset/cluster uploads.
-ui = [
-    "fastapi>=0.110",
-    "uvicorn>=0.27",
-    "python-multipart>=0.0.9",
-]
+# Drylab web UI (permea_ui). The web deps (fastapi, uvicorn, python-multipart) now live in
+# base `dependencies`, so `pip install permea-core` runs the UI with no extra. This key is
+# kept as an empty alias for backward compatibility: `pip install permea-core[ui]` still
+# resolves, and the dev extra's `permea-core[explain,ui]` reference stays valid.
+ui = []
 
 # The full develop-and-test bundle: `pip install .[dev]` is the single command CI runs to
 # get an environment that can execute the ENTIRE suite. Nothing here is needed to *use* the
