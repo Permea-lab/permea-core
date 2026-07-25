@@ -1,0 +1,41 @@
+name: CI
+
+# Runs the test suite on every PR and on pushes to main. No secrets are used: the suite is
+# fully offline (provider tests clear/monkeypatch PERMEA_LLM_* and never make a network call),
+# so nothing here needs repository secrets.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The versions declared supported by `requires-python = ">=3.11"`.
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # `.[dev]` is self-referential: it pulls the explain+ui feature extras (the suite
+      # imports fastapi/jsonschema unconditionally), PyYAML (optional runtime dep exercised
+      # by the YAML tests), and build/twine/pytest. One command, whole suite runnable.
+      - name: Install
+        run: pip install ".[dev]"
+
+      # Fast lane: everything except the slow packaging build/install test.
+      - name: Fast tests
+        run: pytest -m "not packaging"
+
+      # Packaging lane, kept separate so a packaging regression is obvious in the CI log.
+      # This is the step that makes tests/test_packaging_smoke.py actually RUN (it builds a
+      # real wheel, installs it into a throwaway venv, and drives the console script): on the
+      # maintainer machine it skips for lack of `python -m build`, so CI is where it counts.
+      - name: Packaging tests
+        run: pytest -m packaging

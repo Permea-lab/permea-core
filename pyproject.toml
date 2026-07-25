@@ -41,6 +41,27 @@ ui = [
     "python-multipart>=0.0.9",
 ]
 
+# The full develop-and-test bundle: `pip install .[dev]` is the single command CI runs to
+# get an environment that can execute the ENTIRE suite. Nothing here is needed to *use* the
+# CLI.
+dev = [
+    # Self-referential: pull the feature extras, because the test suite imports their deps
+    # unconditionally (tests/test_ui_drylab.py imports fastapi; several test_explain_*.py
+    # import jsonschema). Without these, pytest fails at COLLECTION, not as skips.
+    "permea-core[explain,ui]",
+    # Release + test tooling. `build`/`twine` are what a release runs (no upload in-repo);
+    # `pytest` runs the suite, including the packaging smoke test that shells out to
+    # `python -m build`.
+    "build>=1.0",
+    "twine>=5.0",
+    "pytest>=8.0",
+    # PyYAML is an OPTIONAL runtime dep of permea_core: the registry/manifest/card loaders
+    # guard `import yaml` and raise a clear error when it is absent, so it is deliberately
+    # NOT in base `dependencies` (the diagnose CLI never needs it). The suite exercises those
+    # YAML paths, so it must be present to develop/test -- hence here.
+    "pyyaml>=6.0",
+]
+
 [project.scripts]
 permea = "permea_core.cli.main:main"
 permea-drylab = "permea_ui.__main__:main"
@@ -59,3 +80,12 @@ permea_explain = ["schemas/*.schema.json"]
 # The UI serves these from disk at request time; a wheel without them installs a server
 # that returns 404 for its own front end.
 permea_ui = ["static/*"]
+
+[tool.pytest.ini_options]
+# Registered so the packaging smoke test's markers are not "unknown". `packaging` (also
+# tagged `slow`) builds a wheel, spins up a throwaway venv, and drives the installed console
+# script -- deselect it in fast runs with:  pytest -m "not packaging"
+markers = [
+    "slow: test is slow (builds/install/subprocess); safe to skip in fast local runs",
+    "packaging: exercises a real wheel build + clean-venv install (implies slow)",
+]
