@@ -5,7 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "permea-core"
 version = "0.1.0"
-description = "PermeaBench: honest-evaluation engine, warning registry, and diagnose CLI."
+description = "Sequence-first honest-evaluation infrastructure for biological delivery — the diagnose engine, warning registry, and CLI behind PermeaBench."
+readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 # NOTE (permea-eval/1.0 W403 EnvironmentUnpinned): this is the TOOL's permissive dependency
@@ -25,6 +26,10 @@ dependencies = [
     "uvicorn>=0.27",
     "python-multipart>=0.0.9",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Permea-lab/permea-core"
+Repository = "https://github.com/Permea-lab/permea-core"
 
 [project.optional-dependencies]
 # Opt-in narration layer (permea_explain). This extra gates ONLY the transport
